@@ -10,7 +10,7 @@ public class TopTrumps {
 	public static void main(String[] args) {
 		
 		System.out.println("--------------------");
-		System.out.println("--- Top Nerd Patrol   ---");
+		System.out.println("--- Top Nerd Patrol   -look at this --");
 		System.out.println("--------------------");
 		
 		// command line switches
