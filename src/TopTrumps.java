@@ -11,7 +11,7 @@ public class TopTrumps {
 		
 		System.out.println("--------------------");
 		System.out.println("--- Top Nerd Patrol   -look at this -- Calvin was here");
-		System.out.println("--------------------");
+		System.out.println("--------------------"); //etest 
 		
 		// command line switches
 		boolean onlineMode = false;
