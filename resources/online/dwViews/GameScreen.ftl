@@ -21,14 +21,41 @@
 	</head>
 
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
-    	<div class="container">
 
-			<!-- Add your HTML Here -->
-		
+	<div class="container">
+
+		<!-- Add your HTML Here -->
+		<nav>
+			<a href="">Home Page</a>
+		</nav>
+
+		<div>
+			<h1>Top Trumps!</h1>
+			<p>Pick the characteristic you think will have the highest
+				score...</p>
+			<br>
 		</div>
-		
-		<script type="text/javascript">
+		<div align="center">
+			<table border="1">
+				<tr>
+					<td bgcolor="#00CCFF" valign="top" align="center" width="200"
+						height="300"><b>Player 1</b></td>
+					<td bgcolor="#CC00FF" valign="top" align="center" width="200"
+						height="300"><b>Player 2</b></td>
+				</tr>
+				<tr>
+					<td bgcolor="#00FF00" valign="top" align="center" width="200"
+						height="300"><b>Player 3</b></td>
+					<td bgcolor="#FFFF00" valign="top" align="center" width="200"
+						height="300"><b>Player 4</b></td>
+				</tr>
+			</table>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
 		
 			// Method that is called on page load
 			function initalize() {
