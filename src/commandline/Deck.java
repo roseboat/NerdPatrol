@@ -23,6 +23,11 @@ public class Deck {
 		loadDeck();
 	}
 	
+	// Calvin added this class
+	// required to access the arraylist in Player class
+	public ArrayList<Card> getCards ()	{
+		return deck;
+	}
 	
 	//reads data in from text file, sends each line from text file into 
 	public void loadDeck() {
