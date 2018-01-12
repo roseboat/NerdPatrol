@@ -14,6 +14,7 @@ public class Deck {
 	}
 	
 	//method that can add to ArrayList - parameter could be string from textFile
+	// think the game manager will use this method right? Or this class could read from file too
 	public void buildDeck(String cardInfo) {
 		deck.add(cardInfo);
 	}
