@@ -104,7 +104,7 @@ public class Deck {
 	
 	public void testPrint() {
 		for (Card each : deck)
-			each.printShit();
+			System.out.println(each.cardToString());
 	}
 	
 	public static void main(String args[]) {
