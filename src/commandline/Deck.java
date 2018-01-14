@@ -56,7 +56,7 @@ public class Deck {
 					}
 					else {
 						dataLine = in.nextLine(); //gets data from other lines
-						buildDeck(dataLine); // sends each line of info to FitnessProgram method
+						buildDeck(dataLine); // sends each line of info to deck building class
 						//System.err.println(dataLine);
 					}
 					
@@ -97,10 +97,20 @@ public class Deck {
 		Collections.shuffle(deck);
 	}
 	
+	//deal out cards - parameter for number of players
+	public void deal(int x) {
+		//so what happens with this - how do players get hands. new arrayLists? 
+	}
+	
 	// getter for deckSize
 	public int getDeckSize() {
 		return deck.size();
 	}
+	
+	//getter for array of categories
+		public String[] getCategories() {
+			return categories;
+		}
 	
 	public void testPrint() {
 		for (Card each : deck)
