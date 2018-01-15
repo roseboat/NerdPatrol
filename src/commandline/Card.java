@@ -1,9 +1,11 @@
+package commandline;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Card implements Comparable<Card> {
 	private String name;
@@ -20,6 +22,18 @@ public class Card implements Comparable<Card> {
 		this.range = range;
 		this.firePower = firePower;
 		this.cargo = cargo;
+	}
+	
+	//Additional constructor which can take an a single input line ~D
+	public Card(String line){
+	    Scanner sc = new Scanner(line);
+	    this.name = sc.next();
+	    this.size = sc.nextInt();
+	    this.speed = sc.nextInt();
+	    this.range = sc.nextInt();
+	    this.firePower = sc.nextInt();
+	    this.cargo = sc.nextInt();
+	    sc.close();
 	}
 
 	public String getName() {
@@ -49,12 +63,14 @@ public class Card implements Comparable<Card> {
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 
-/*	public int compareTo(card other) { 
-	  if (this.pickedCategory() == other.pickedCategory()) { 
-	  return 0; 
-	  } if else(this.pickedCategory() < other.pickedCategory()) { 
-	  return -1; 
-	  } else return 1; }*/
+	public int compareTo(Card other) { 
+//	  if (this.pickedCategory() == other.pickedCategory()) { 
+//	  return 0; 
+//	  } if else(this.pickedCategory() < other.pickedCategory()) { 
+//	  return -1; 
+//	  } else return 1; 
+	    return -1;
+	  }
 
 	// method to show current card to user
 	public String cardToString() {
