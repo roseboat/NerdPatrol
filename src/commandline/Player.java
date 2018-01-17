@@ -2,7 +2,7 @@ package commandline;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
 
 	private Deck playerDeck;
 	private String name;
@@ -31,14 +31,17 @@ public class Player {
 	}
 	
 	public int chooseCategory() {
-
 		int stat=0;
 		return stat;
 	}
 	
-	/*public void addToDeck(boolean win, Deck winnerPile) {
-		if (win=true) {
-			playerDeck.
+	public void addToDeck(boolean win, Deck winnerPile) {
+		if (win = true) {
+			
+			ArrayList<Card> winnerP = winnerPile.getCards();
+			playerDeck.addToDeck(winnerP);
+
 		}
-	}*/
-}
+	}
+	}
+

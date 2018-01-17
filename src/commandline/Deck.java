@@ -28,6 +28,11 @@ public class Deck {
 		deck = x;
 	}
 	
+	// RD and CH added this
+	public void addToDeck(ArrayList<Card> newCards) {
+		deck.addAll(newCards);
+	}
+	
 	// Calvin added this class
 	// required to access the arraylist in Player class
 	public ArrayList<Card> getCards ()	{
