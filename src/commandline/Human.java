@@ -17,6 +17,7 @@ public class Human extends Player {
 		chooseCategory();
 	}
 
+	// DANTE HANDLE THE EXCEPTIONS PLEASE
 	public int chooseCategory() {
 
 		// reads in user's input

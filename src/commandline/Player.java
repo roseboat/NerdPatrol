@@ -27,7 +27,7 @@ public abstract class Player {
 		// top card is removed from Deck
 	}
 
-	public abstract int chooseCategory();
+
 
 	public void addToDeck(boolean win, Deck winnerPile) {
 		if (win = true) {
@@ -38,4 +38,7 @@ public abstract class Player {
 		}
 
 	}
+	
+	public abstract int chooseCategory();
+	
 }
