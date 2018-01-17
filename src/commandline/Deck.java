@@ -107,11 +107,11 @@ public class Deck {
 		Collections.shuffle(deck);
 	}
 	
-	//deal out cards - parameter for number of players
-	public Card deal() {
+	//gets top card 
+	public Card drawCard() {
 		return deck.get(0);
 		
-	//so what happens with this - how do players get hands. new arrayLists? 
+
 	}
 	
 	// getter for deckSize
@@ -143,31 +143,83 @@ public class Deck {
 
 	public ArrayList<Card> split(int numberOfPlayers){
 		
-		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size()/numberOfPlayers), deck.size()));
+		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size()/numberOfPlayers), deck.size())); //makes new list 
 		deck.removeAll(spdeck);
 		return spdeck;
 		
 	}
 	
+	public Deck[] advancedSplit(int numberOfPlayers) {
+		Deck[] decks = new Deck[numberOfPlayers];
+		switch(numberOfPlayers) {
+		case(2):
+			Deck d1 = new Deck(this.split(2));
+			decks[0] = this;
+			decks[1] = d1;
+			break;
+		case(3):
+			Deck d2 = new Deck(this.split(3));
+			Deck d3 = new Deck (d2.split(2));
+			decks [0] = this;
+			decks [1] = d2;
+			decks [2] = d3;
+			break;
+		case (4): 
+			Deck d4 = new Deck (this.split(2));
+			Deck d5 = new Deck (this.split(2));
+			Deck d6 = new Deck (d4.split(2));
+			decks [0] = this;
+			decks [1] = d5;
+			decks [2] = d4;
+			decks [3] = d6;
+			break;
+		case (5):
+			Deck d7 = new Deck (this.split(5));
+			Deck d8 = new Deck (d7.split(2));
+			Deck d9 = new Deck (d7.split(2));
+			Deck d10 = new Deck (d8.split(2));
+			decks [0] = this;
+			decks [1] = d7;
+			decks [2] = d9;
+			decks [3] = d8;
+			decks [4] = d10;
+		}
+		
+		return decks;
+		
+	}
+	
 	public static void main(String args[]) {
 		Deck test = new Deck();
-		
-		System.out.println("-------------------------------------------------");
-		test.testPrint(test);
+//		System.out.println("-------------------------------------------------");
 		test.shuffle();
-		Deck splitDeck = new Deck(test.split(2));
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
 		test.testPrint(test);
+		
+//		Deck splitDeck = new Deck(test.split(2));
 		System.out.println("-------------------------------------------------");
-		test.testPrint(splitDeck);
 		System.out.println("-------------------------------------------------");
-		System.out.println(test.deal().cardToString());
-		System.out.println(splitDeck.deal().cardToString());
+//		test.testPrint(test);
+//		System.out.println("-------------------------------------------------");
+//		test.testPrint(splitDeck);
+//		System.out.println("-------------------------------------------------");
+//		System.out.println(test.drawCard().cardToString());
+//		System.out.println(splitDeck.drawCard().cardToString());
 		
-		
-		
-		
+		Deck[] dong = test.advancedSplit(5);
+		dong[0].testPrint(dong[0]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+//		test.testPrint(test);
+		dong[1].testPrint(dong[1]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[2].testPrint(dong[2]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[3].testPrint(dong[3]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[4].testPrint(dong[4]);
 }
 	
 }
