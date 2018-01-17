@@ -38,12 +38,15 @@ public class Card implements Comparable<Card> {
 
 	public int[] getAllValues() {
 		return this.cardValues;
-
 	}
 
 	public int getSelectedValue(int index) {
 		selectedValue = cardValues[index];
 		return selectedValue;
+	}
+	
+	public void setSelectedValue(int value) {
+		this.selectedValue = value;
 	}
 
 	// method to compare all cards of pickedCategory in descending order.

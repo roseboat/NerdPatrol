@@ -18,7 +18,6 @@ public class Computer extends Player {
 				if (values[i] < values[j]) {
 					index++;
 				}
-
 			}
 		}
 		return index;
