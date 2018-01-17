@@ -17,6 +17,8 @@ public class Deck {
 	//category titles
 	private String[] categories;
 	
+	// Rosa: should we have another ArrayList<Card> for 'hands' ?
+	
 	//constructor
 	public Deck() {
 		deck = new ArrayList<Card>();
@@ -79,6 +81,7 @@ public class Deck {
 		
 	//method that can add to ArrayList - parameter could be string from textFile
 	// think the game manager will use this method right? Or this class could read from file too
+	// Rosa: why not just include this in the above method?
 	public void buildDeck(String cardInfo) {
 		Card card = new Card(cardInfo);
 		deck.add(card);
@@ -89,6 +92,7 @@ public class Deck {
 		categories = new String[6];
 		Scanner in = new Scanner(deckInfo);
 		//split deckInfo into the 6 separate words
+		// Rosa : shouldn't we use a for loop to run through the split word and populate the array?
 		categories = deckInfo.split(" ");
 	}
 	
