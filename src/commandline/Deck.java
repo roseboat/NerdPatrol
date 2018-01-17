@@ -129,6 +129,20 @@ public class Deck {
 			
 	}
 	
+	
+	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+
+	public Deck split(int numberOfPlayers){
+		
+		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size()/numberOfPlayers), deck.size()));
+		deck.removeAll(spdeck);
+		return new Deck(spdeck);
+		
+	}
+	
 	public static void main(String args[]) {
 		Deck test = new Deck();
 		System.out.println("-------------------------------------------------");
