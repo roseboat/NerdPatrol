@@ -14,6 +14,7 @@ public class Card implements Comparable<Card> {
 	private int range;
 	private int firePower;
 	private int cargo;
+	private int selectedCategory;
 
 	public Card(String name, int size, int speed, int range, int firePower, int cargo) {
 		this.name = name;
@@ -34,6 +35,15 @@ public class Card implements Comparable<Card> {
 	    this.firePower = sc.nextInt();
 	    this.cargo = sc.nextInt();
 	    sc.close();
+	}
+
+	
+	public int getSelectedCategory() {
+		return selectedCategory;
+	}
+
+	public void setSelectedCategory(int selectedCategory) {
+		this.selectedCategory = selectedCategory;
 	}
 
 	public String getName() {
@@ -64,12 +74,11 @@ public class Card implements Comparable<Card> {
 	// pickedCategory will be method from PlayerClass.
 
 	public int compareTo(Card other) { 
-//	  if (this.pickedCategory() == other.pickedCategory()) { 
-//	  return 0; 
-//	  } if else(this.pickedCategory() < other.pickedCategory()) { 
-//	  return -1; 
-//	  } else return 1; 
-	    return -1;
+		 if (this.selectedCategory == other.selectedCategory) {
+		 return 0;
+		 } else if (selectedCategory < other.selectedCategory) {
+		 return -1;
+		 } else return 1;
 	  }
 
 	// method to show current card to user
