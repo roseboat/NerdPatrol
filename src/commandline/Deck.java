@@ -108,8 +108,10 @@ public class Deck {
 	}
 	
 	//deal out cards - parameter for number of players
-	public void deal(int x) {
-		//so what happens with this - how do players get hands. new arrayLists? 
+	public Card deal() {
+		return deck.get(0);
+		
+	//so what happens with this - how do players get hands. new arrayLists? 
 	}
 	
 	// getter for deckSize
@@ -122,39 +124,49 @@ public class Deck {
 			return categories;
 		}
 	
-	public void testPrint() {
+	public void testPrint(Deck x) {
 		int i =0;
-		for (Card each : deck) {
+		for (Card each : x.getDeck()) {
 			System.out.println(each.cardToString());
+			System.out.print("-----------------------  " + i);
 			i++;
-			if (i >3) {
-				break;
 			}
-		}
+		
 			
 	}
-	
+
 	
 	
 	public ArrayList<Card> getDeck() {
 		return deck;
 	}
 
-	public Deck split(int numberOfPlayers){
+	public ArrayList<Card> split(int numberOfPlayers){
 		
 		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size()/numberOfPlayers), deck.size()));
 		deck.removeAll(spdeck);
-		return new Deck(spdeck);
+		return spdeck;
 		
 	}
 	
 	public static void main(String args[]) {
 		Deck test = new Deck();
+		
 		System.out.println("-------------------------------------------------");
-		test.testPrint();
+		test.testPrint(test);
 		test.shuffle();
+		Deck splitDeck = new Deck(test.split(2));
 		System.out.println("-------------------------------------------------");
-		test.testPrint();
+		System.out.println("-------------------------------------------------");
+		test.testPrint(test);
+		System.out.println("-------------------------------------------------");
+		test.testPrint(splitDeck);
+		System.out.println("-------------------------------------------------");
+		System.out.println(test.deal().cardToString());
+		System.out.println(splitDeck.deal().cardToString());
+		
+		
+		
 		
 }
 	
