@@ -29,7 +29,7 @@ public class Deck {
 	}
 	
 	// RD and CH added this
-	public void addToDeck(ArrayList<Card> newCards) {
+	public void addCards(ArrayList<Card> newCards) {
 		deck.addAll(newCards);
 	}
 	
