@@ -39,7 +39,7 @@ public abstract class Player {
 //		// I'll try think of a better solution since dealing with null is just...
 //	}
 	
-	public abstract void chooseCategory();
+	public abstract int chooseCategory();
 	
 	public void addToDeck(boolean win, Deck winnerPile) {
 		if (win = true) {

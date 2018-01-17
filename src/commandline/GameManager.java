@@ -19,6 +19,33 @@ public class GameManager {
     public void divideCards(int numPlayers){
 	
     }
+    
+    public void decideWinner(int index) {
+    	
+		switch (index) {
+
+		case 1:
+			choiceInt = topCard.getCargo();
+			break;
+		case 2:
+			choiceInt = topCard.getfirePower();
+			break;
+		case 3:
+			choiceInt = topCard.getRange();
+			break;
+		case 4:
+			choiceInt = topCard.getSize();
+			break;
+		case 5:
+			choiceInt = topCard.getSpeed();
+			break;
+		}
+
+		topCard.setSelectedCategory(choiceInt);
+    }
+    
+    
+    
 
    // public static void main(String[] args) {
 	//Deck deck = new Deck();
