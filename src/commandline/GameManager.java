@@ -1,6 +1,7 @@
 package commandline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameManager {
     
@@ -8,12 +9,17 @@ public class GameManager {
     private Player p2;
     private int numPlayers;
     private Deck deck;
-    private int [] topCardValues;
+    private ArrayList<Player> players;
     
-    public GameManager(){
-	this.deck = new Deck();
-	this.numPlayers = 2;
-	//this.p1 = new Player("Hugh", new ArrayList<Card>(this.deck.getCards().subList(0, (this.deck.getDeckSize()/this.numPlayers)));
+    public GameManager(int numberOfPlayers){
+    	this.numPlayers = numberOfPlayers;
+    	this.deck = new Deck();
+    	Deck[] cards = deck.advancedSplit(this.numPlayers);
+    	players.add(new Human("bob", cards[0]));
+    	for (int i = 1; i < cards.length; i++) {
+    		players.add(new Computer("Computer " + i, cards[i]));
+    	}
+    	Collections.shuffle(players);
     }
     
     //Divide cards between players
