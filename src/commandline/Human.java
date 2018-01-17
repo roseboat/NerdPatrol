@@ -12,7 +12,8 @@ public class Human extends Player {
 	public void promptUser() {
 
 		System.out.println("Choose your category!");
-		playerDeck.testPrint();
+		String x = topCard.cardToString();
+		System.out.println(x);
 		chooseCategory();
 	}
 
@@ -22,10 +23,16 @@ public class Human extends Player {
 		// user selects the category from a list
 		InputStreamReader readInput = new InputStreamReader(System.in);
 		Scanner in = new Scanner(readInput);
-		int choice = in.nextInt();
+		choice = in.nextInt();
 
+//		int index = choice - 1;
+//		int [] test = topCard.getAllValues();
+//		int chosenValue = test[index];
+		
 		return choice;
+		
 	}
+	
 
 }
 	

@@ -8,6 +8,7 @@ public class GameManager {
     private Player p2;
     private int numPlayers;
     private Deck deck;
+    private int [] topCardValues;
     
     public GameManager(){
 	this.deck = new Deck();
