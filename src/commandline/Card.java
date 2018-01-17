@@ -7,13 +7,8 @@ import java.util.Scanner;
 
 public class Card implements Comparable<Card> {
 	private String name;
-	// private int value1;
-	// private int value2;
-	// private int value3;
-	// private int value4;
-	// private int value5;
 	private int[] cardValues = new int[5];
-	private int selectedCategory;
+	private int selectedValue;
 	private String[] categories;
 
 	public Card(String name, int a, int b, int c, int d, int e) {
@@ -36,13 +31,6 @@ public class Card implements Comparable<Card> {
 		sc.close();
 	}
 
-	public int getSelectedCategory() {
-		return selectedCategory;
-	}
-
-	public void setSelectedCategory(int selectedCategory) {
-		this.selectedCategory = selectedCategory;
-	}
 
 	public String getName() {
 		return name;
@@ -53,18 +41,18 @@ public class Card implements Comparable<Card> {
 
 	}
 
-	public int getValue(int index) {
-		int x = cardValues[index];
-		return x;
+	public int getSelectedValue(int index) {
+		selectedValue = cardValues[index];
+		return selectedValue;
 	}
 
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 
 	public int compareTo(Card other) {
-		if (this.selectedCategory == other.selectedCategory) {
+		if (this.selectedValue == other.selectedValue) {
 			return 0;
-		} else if (selectedCategory < other.selectedCategory) {
+		} else if (selectedValue < other.selectedValue) {
 			return -1;
 		} else
 			return 1;
@@ -72,8 +60,8 @@ public class Card implements Comparable<Card> {
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getValue(0) + "\t" + getValue(1) + "\t"
-				+ getValue(2) + "\t" + getValue(3) + "\t\t" + getValue(4); // stringformat for better alignment to be
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getSelectedValue(0) + "\t" + getSelectedValue(1) + "\t"
+				+ getSelectedValue(2) + "\t" + getSelectedValue(3) + "\t\t" + getSelectedValue(4); // stringformat for better alignment to be
 																			// added instead of tabs
 		return showCard;
 	}

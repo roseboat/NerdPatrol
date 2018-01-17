@@ -1,6 +1,8 @@
 package commandline;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class GameManager {
@@ -29,14 +31,14 @@ public class GameManager {
     
     public void decideWinner(int index) {
     	
-//		int w = p1.topCard.getValue(index);
-//		int x = p2.topCard.getValue(index);
-		
-		
-		p1.topCard.setSelectedCategory(p1.topCard.getValue(index));
-		p2.topCard.setSelectedCategory(p1.topCard.getValue(index));
 
-    
+		p1.topCard.getSelectedValue(index);
+		p2.topCard.getSelectedValue(index);
+		
+		Deck winnerPile= new Deck();
+
+		Card[] c= new Card[]{p1.topCard, p2.topCard};
+		Arrays.sort(c);
 
    // public static void main(String[] args) {
 	//Deck deck = new Deck();
