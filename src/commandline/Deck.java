@@ -117,17 +117,17 @@ public class Deck {
 			return categories;
 		}
 	
-	public void testPrint() {
+	public void testPrint(Deck x) {
 		int i =0;
-		for (Card each : deck) {
+		for (Card each : x.getDeck()) {
 			System.out.println(each.cardToString());
+			System.out.print("-----------------------  " + i);
 			i++;
-			if (i >3) {
-				break;
 			}
-		}
+		
 			
 	}
+
 	
 	
 	
@@ -135,21 +135,26 @@ public class Deck {
 		return deck;
 	}
 
-	public Deck split(int numberOfPlayers){
+	public ArrayList<Card> split(int numberOfPlayers){
 		
 		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size()/numberOfPlayers), deck.size()));
 		deck.removeAll(spdeck);
-		return new Deck(spdeck);
+		return spdeck;
 		
 	}
 	
 	public static void main(String args[]) {
 		Deck test = new Deck();
+		
 		System.out.println("-------------------------------------------------");
-		test.testPrint();
-		test.shuffle();
+		test.testPrint(test);
+		//test.shuffle();
+		Deck splitDeck = new Deck(test.split(2));
 		System.out.println("-------------------------------------------------");
-		test.testPrint();
+		System.out.println("-------------------------------------------------");
+		test.testPrint(test);
+		System.out.println("-------------------------------------------------");
+		test.testPrint(splitDeck);
 		
 }
 	
