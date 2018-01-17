@@ -1,57 +1,41 @@
 package commandline;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Card implements Comparable<Card> {
 	private String name;
-<<<<<<< HEAD
-	private int value1;
-	private int value2;
-	private int value3;
-	private int value4;
-	private int value5;
-	private final int [] cardValues = {value1, value2, value3, value4, value5};
-	private int selectedCategory;
-
-	public Card(String name, int a, int b, int c, int d, int e) {
-=======
-	private int size;
-	private int speed;
-	private int range;
-	private int firePower;
-	private int cargo;
+	// private int value1;
+	// private int value2;
+	// private int value3;
+	// private int value4;
+	// private int value5;
+	private int[] cardValues = new int[5];
 	private int selectedCategory;
 	private String[] categories;
 
-	public Card(String name, int size, int speed, int range, int firePower, int cargo) {
->>>>>>> 1f02f60cc645923a36723426f1c3d4c1c6925660
+	public Card(String name, int a, int b, int c, int d, int e) {
+
 		this.name = name;
-		this.size = size;
-		this.speed = speed;
-		this.range = range;
-		this.firePower = firePower;
-		this.cargo = cargo;
-	}
-	
-	//Additional constructor which can take an a single input line ~D
-	public Card(String line, String[] categories){
-	    Scanner sc = new Scanner(line);
-	    this.name = sc.next();
-	    this.size = sc.nextInt();
-	    this.speed = sc.nextInt();
-	    this.range = sc.nextInt();
-	    this.firePower = sc.nextInt();
-	    this.cargo = sc.nextInt();
-	    sc.close();
-	    this.categories = categories;
+		this.cardValues = new int[] { a, b, c, d, e };
+
 	}
 
-	
+	// Additional constructor which can take an a single input line ~D
+	public Card(String line, String[] categories) {
+		Scanner sc = new Scanner(line);
+		this.name = sc.next();
+		this.categories = categories;
+
+		for (int i = 0; i < 5; i++) {
+			cardValues[i] = sc.nextInt();
+		}
+
+		sc.close();
+	}
+
 	public int getSelectedCategory() {
 		return selectedCategory;
 	}
@@ -64,56 +48,33 @@ public class Card implements Comparable<Card> {
 		return name;
 	}
 
-	public int getSize() {
-		return size;
+	public int[] getAllValues() {
+		return this.cardValues;
+
 	}
 
-	public int getSpeed() {
-		return speed;
-	}
-
-	public int getRange() {
-		return range;
-	}
-
-	public int getfirePower() {
-		return firePower;
-	}
-
-	public int getCargo() {
-		return cargo;
-	}
-
-<<<<<<< HEAD
-	public int [] getAllValues() {
-		
-	 return this.cardValues;
-			
-	}
-	
 	public int getValue(int index) {
 		int x = cardValues[index];
 		return x;
 	}
-	
-	
-=======
->>>>>>> 1f02f60cc645923a36723426f1c3d4c1c6925660
+
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 
-	public int compareTo(Card other) { 
-		 if (this.selectedCategory == other.selectedCategory) {
-		 return 0;
-		 } else if (selectedCategory < other.selectedCategory) {
-		 return -1;
-		 } else return 1;
-	  }
+	public int compareTo(Card other) {
+		if (this.selectedCategory == other.selectedCategory) {
+			return 0;
+		} else if (selectedCategory < other.selectedCategory) {
+			return -1;
+		} else
+			return 1;
+	}
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getSize() + "\t" + getSpeed() + "\t"
-				+ getRange() + "\t" + getfirePower() + "\t\t" + getCargo(); //stringformat for better alignment to be added instead of tabs 
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getValue(0) + "\t" + getValue(1) + "\t"
+				+ getValue(2) + "\t" + getValue(3) + "\t\t" + getValue(4); // stringformat for better alignment to be
+																			// added instead of tabs
 		return showCard;
 	}
 
@@ -133,8 +94,9 @@ public class Card implements Comparable<Card> {
 		return line;
 	}
 
-	/*public static void main(String[] args) {
-		Card plz = new Card("dickfarts", 17, 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
-		System.out.println(plz.cardToString());
-	}*/
+	/*
+	 * public static void main(String[] args) { Card plz = new Card("dickfarts", 17,
+	 * 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
+	 * System.out.println(plz.cardToString()); }
+	 */
 }
