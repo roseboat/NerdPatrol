@@ -24,9 +24,11 @@ public class GameManager {
     	Collections.shuffle(players);
     }
     
-    //Divide cards between players
-    public void divideCards(int numPlayers){
-	
+    public void checkDecks() {
+    	for (Player each : players)
+    		if (each.playerDeck.getDeckSize() < 1) {
+    			players.remove(each);
+    		}
     }
     
     public void decideWinner(int index) {
