@@ -3,7 +3,9 @@ package commandline;
 import java.util.ArrayList;
 
 public abstract class Player {
-
+	
+	
+	// DANTE LOOK IN HERE MAKE SURE IT'S ALL GOOD
 	protected Deck playerDeck;
 	private String name;
 	protected Card topCard;

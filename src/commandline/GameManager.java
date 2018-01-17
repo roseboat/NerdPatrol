@@ -13,6 +13,8 @@ public class GameManager {
 	private Deck deck;
 	private ArrayList<Player> players;
 
+	
+	// DANTE SORT THIS OUT
 	public GameManager(int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
@@ -30,7 +32,7 @@ public class GameManager {
 				players.remove(each);
 			}
 	}
-
+	// CALVIN GOES HERE
 	public void decideWinner(int index) {
 
 		p1.topCard.setSelectedValue(5);
@@ -48,4 +50,8 @@ public class GameManager {
 		}
 
 	}
+	
+	// CALVIN WINNERWINSCARDS / LOSERLOSESCARDS
+	
+	
 }

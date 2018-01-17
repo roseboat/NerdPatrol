@@ -39,12 +39,14 @@ public class Card implements Comparable<Card> {
 	public int[] getAllValues() {
 		return this.cardValues;
 	}
-
+	
+	// CHAD & CALVIN - LOOK HERE
 	public int getSelectedValue(int index) {
 		selectedValue = cardValues[index];
 		return selectedValue;
 	}
 	
+	// CHAD & CALVIN - HAVE A LOOK
 	public void setSelectedValue(int value) {
 		this.selectedValue = value;
 	}

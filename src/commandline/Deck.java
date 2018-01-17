@@ -110,7 +110,7 @@ public class Deck {
 		Collections.shuffle(deck);
 	}
 
-	// gets top card
+	// gets top card - DO WE NEED THIS
 	public Card drawCard() {
 		return deck.get(0);
 	}
