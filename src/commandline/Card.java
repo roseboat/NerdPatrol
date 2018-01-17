@@ -9,34 +9,40 @@ import java.util.Scanner;
 
 public class Card implements Comparable<Card> {
 	private String name;
-	private int value1;
-	private int value2;
-	private int value3;
-	private int value4;
-	private int value5;
-	private final int [] allCardValues = {value1, value2, value3, value4, value5};
+	private int size;
+	private int speed;
+	private int range;
+	private int firePower;
+	private int cargo;
+	private int selectedCategory;
+	private String[] categories;
 
-	public Card(String name, int a, int b, int c, int d, int e) {
+	public Card(String name, int size, int speed, int range, int firePower, int cargo) {
 		this.name = name;
-		this.value1 = a;
-		this.value2 = b;
-		this.value3 = c;
-		this.value4 = d;
-		this.value5 = e;
+		this.size = size;
+		this.speed = speed;
+		this.range = range;
+		this.firePower = firePower;
+		this.cargo = cargo;
 	}
 	
 	//Additional constructor which can take an a single input line ~D
-	public Card(String line){
+	public Card(String line, String[] categories){
 	    Scanner sc = new Scanner(line);
 	    this.name = sc.next();
-	    this.value1 = sc.nextInt();
-	    this.value2 = sc.nextInt();
-	    this.value3 = sc.nextInt();
-	    this.value4 = sc.nextInt();
-	    this.value5 = sc.nextInt();
+	    this.size = sc.nextInt();
+	    this.speed = sc.nextInt();
+	    this.range = sc.nextInt();
+	    this.firePower = sc.nextInt();
+	    this.cargo = sc.nextInt();
 	    sc.close();
+	    this.categories = categories;
 	}
 
+	
+	public int getSelectedCategory() {
+		return selectedCategory;
+	}
 
 	public void setSelectedCategory(int selectedCategory) {
 		this.selectedCategory = selectedCategory;
@@ -46,32 +52,26 @@ public class Card implements Comparable<Card> {
 		return name;
 	}
 
-	public int getValue1() {
-		return value1;
+	public int getSize() {
+		return size;
 	}
 
-	public int getValue2() {
-		return value2;
+	public int getSpeed() {
+		return speed;
 	}
 
-	public int getValue3() {
-		return value3;
+	public int getRange() {
+		return range;
 	}
 
-	public int getValue4() {
-		return value4;
+	public int getfirePower() {
+		return firePower;
 	}
 
-	public int getValue5() {
-		return value5;
+	public int getCargo() {
+		return cargo;
 	}
 
-	public int [] getAllValues() {
-		
-	 return this.allCardValues;
-		
-		
-	}
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 
@@ -85,8 +85,8 @@ public class Card implements Comparable<Card> {
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getValue1() + "\t" + getValue2() + "\t"
-				+ getValue3() + "\t" + getValue4() + "\t\t" + getValue5(); //stringformat for better alignment to be added instead of tabs 
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getSize() + "\t" + getSpeed() + "\t"
+				+ getRange() + "\t" + getfirePower() + "\t\t" + getCargo(); //stringformat for better alignment to be added instead of tabs 
 		return showCard;
 	}
 

@@ -90,16 +90,17 @@ public class Deck {
 	//method that can add to ArrayList - parameter could be string from textFile
 	// think the game manager will use this method right? Or this class could read from file too
 	public void buildDeck(String cardInfo) {
-		Card card = new Card(cardInfo);
+		Card card = new Card(cardInfo, categories);
 		deck.add(card);
 	}
 	
 	//method to parse and store the 5 category titles and "description"
-	private void storeCategories(String deckInfo) {
+	private void storeCategories(String titleLine) {
 		categories = new String[6];
-		Scanner in = new Scanner(deckInfo);
+		titleLine = titleLine.substring(12);
+		Scanner in = new Scanner(titleLine);
 		//split deckInfo into the 6 separate words
-		categories = deckInfo.split(" ");
+		categories = titleLine.split(" ");
 	}
 	
 	//shuffles deck - got that method when from stack overflow - basically does it all
