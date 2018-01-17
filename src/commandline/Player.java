@@ -36,9 +36,9 @@ public class Player {
 		return stat;
 	}
 	
-	public void addToDeck(boolean win, Deck winnerPile) {
+	/*public void addToDeck(boolean win, Deck winnerPile) {
 		if (win=true) {
 			playerDeck.
 		}
-	}
+	}*/
 }
