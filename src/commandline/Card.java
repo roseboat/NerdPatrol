@@ -14,7 +14,8 @@ public class Card implements Comparable<Card> {
 	private int value3;
 	private int value4;
 	private int value5;
-	private final int [] allCardValues = {value1, value2, value3, value4, value5};
+	private final int [] cardValues = {value1, value2, value3, value4, value5};
+	private int selectedCategory;
 
 	public Card(String name, int a, int b, int c, int d, int e) {
 		this.name = name;
@@ -68,10 +69,16 @@ public class Card implements Comparable<Card> {
 
 	public int [] getAllValues() {
 		
-	 return this.allCardValues;
-		
-		
+	 return this.cardValues;
+			
 	}
+	
+	public int getValue(int index) {
+		int x = cardValues[index];
+		return x;
+	}
+	
+	
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 

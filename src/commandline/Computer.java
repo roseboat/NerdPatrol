@@ -1,8 +1,5 @@
 package commandline;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class Computer extends Player {
 
 	public Computer(String name, Deck playerDeck) {
@@ -10,23 +7,21 @@ public class Computer extends Player {
 
 	}
 
-
 	public int chooseCategory() {
-		
-		int a = topCard.getCargo();
-		int b = topCard.getfirePower();
-		int c = topCard.getRange();
-		int d = topCard.getSize();
-		int e = topCard.getSpeed();
-		
-		ArrayList<Integer> list = new ArrayList<Integer>(5);
-		list.add(a);
-		list.add(b);
-		list.add(c);
-		list.add(d);
-	
-	list.add(e);
-		
-		Collections.max(list);
-}
+
+		int[] values = topCard.getAllValues();
+
+		int index = 0;
+
+		for (int i = 0; i < values.length; i++) {
+			for (int j = 1; j < values.length; j++) {
+				if (values[i] < values[j]) {
+					index++;
+				}
+
+			}
+		}
+		return index;
+	}
+
 }

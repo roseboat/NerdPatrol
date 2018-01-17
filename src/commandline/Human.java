@@ -23,14 +23,14 @@ public class Human extends Player {
 		// user selects the category from a list
 		InputStreamReader readInput = new InputStreamReader(System.in);
 		Scanner in = new Scanner(readInput);
-		choice = in.nextInt();
+		int choice = in.nextInt();
 
-//		int index = choice - 1;
-//		int [] test = topCard.getAllValues();
-//		int chosenValue = test[index];
-		
-		return choice;
-		
+		int index = choice - 1;
+		// int [] test = topCard.getAllValues();
+		// int chosenValue = test[index];
+
+		return index;
+
 	}
 	
 

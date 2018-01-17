@@ -23,29 +23,13 @@ public class GameManager {
     
     public void decideWinner(int index) {
     	
-		switch (index) {
+//		int w = p1.topCard.getValue(index);
+//		int x = p2.topCard.getValue(index);
+		
+		
+		p1.topCard.setSelectedCategory(p1.topCard.getValue(index));
+		p2.topCard.setSelectedCategory(p1.topCard.getValue(index));
 
-		case 1:
-			choiceInt = topCard.getCargo();
-			break;
-		case 2:
-			choiceInt = topCard.getfirePower();
-			break;
-		case 3:
-			choiceInt = topCard.getRange();
-			break;
-		case 4:
-			choiceInt = topCard.getSize();
-			break;
-		case 5:
-			choiceInt = topCard.getSpeed();
-			break;
-		}
-
-		topCard.setSelectedCategory(choiceInt);
-    }
-    
-    
     
 
    // public static void main(String[] args) {

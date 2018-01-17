@@ -7,14 +7,12 @@ public abstract class Player {
 	protected Deck playerDeck;
 	private String name;
 	protected Card topCard;
-	protected int choice;
+
 	
 	// not sure how players are assigned decks
 	public Player(String name, Deck playerDeck) {
 		this.name = name;
 		this.playerDeck = playerDeck;
-
-	}
 
 	}
 	
