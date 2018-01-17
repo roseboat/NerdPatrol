@@ -95,8 +95,8 @@ public class Card implements Comparable<Card> {
 		return line;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Card plz = new Card("dickfarts", 17, 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
 		System.out.println(plz.cardToString());
-	}
+	}*/
 }

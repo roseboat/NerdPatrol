@@ -23,6 +23,11 @@ public class Deck {
 		loadDeck();
 	}
 	
+	//second constructor
+	public Deck(ArrayList<Card> x) {
+		deck = x;
+	}
+	
 	// Calvin added this class
 	// required to access the arraylist in Player class
 	public ArrayList<Card> getCards ()	{
@@ -113,14 +118,26 @@ public class Deck {
 		}
 	
 	public void testPrint() {
-		for (Card each : deck)
+		int i =0;
+		for (Card each : deck) {
 			System.out.println(each.cardToString());
+			i++;
+			if (i >3) {
+				break;
+			}
+		}
+			
 	}
 	
 	public static void main(String[] args) {
 		System.out.println("HEllo");
 		Deck test = new Deck();
+		System.out.println("-------------------------------------------------");
 		test.testPrint();
+		test.shuffle();
+		System.out.println("-------------------------------------------------");
+		test.testPrint();
+		
 }
 	
 }
