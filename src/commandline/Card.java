@@ -35,20 +35,25 @@ public class Card implements Comparable<Card> {
 	public String getName() {
 		return name;
 	}
-
+	
+	
 	public int[] getAllValues() {
 		return this.cardValues;
 	}
 	
-	// CHAD & CALVIN - LOOK HERE
-	public int getSelectedValue(int index) {
-		selectedValue = cardValues[index];
+	// retrieves the category name (of the category chose)
+	public String getSelectedCategory (int index)	{
+		return categories[index];
+	}
+	
+	// retrieves the selected value (of the category chose)
+	public int getSelectedValue()	{
 		return selectedValue;
 	}
 	
-	// CHAD & CALVIN - HAVE A LOOK
-	public void setSelectedValue(int value) {
-		this.selectedValue = value;
+	// sets the selected value (of the category chosen)
+	public void setSelectedValue(int index) {
+		this.selectedValue = cardValues[index];
 	}
 
 	// method to compare all cards of pickedCategory in descending order.
@@ -65,8 +70,8 @@ public class Card implements Comparable<Card> {
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getSelectedValue(0) + "\t" + getSelectedValue(1) + "\t"
-				+ getSelectedValue(2) + "\t" + getSelectedValue(3) + "\t\t" + getSelectedValue(4); // stringformat for better alignment to be
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + cardValues[0] + "\t" + cardValues[1] + "\t"
+				+ cardValues[2] + "\t" + cardValues[3] + "\t\t" + cardValues[4]; // stringformat for better alignment to be
 																			// added instead of tabs
 		return showCard;
 	}

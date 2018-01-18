@@ -19,20 +19,16 @@ public abstract class Player {
 
 		if (this.playerDeck.getDeckSize() > 0) {
 			// there should never be a situation where a player receives an empty deck
-			this.topCard = this.playerDeck.getCards().get(0);
-			this.playerDeck.getCards().remove(0);
-
+			this.topCard = this.playerDeck.topCard();
+			this.playerDeck.getDeck().remove(0);
+			
 		}
 		// top card represented by the index 0 in Deck arraylist
 		// top card is removed from Deck
 	}
 
-
-
-	public void addToDeck(boolean win, Deck winnerPile) {
-		if (win = true) {
-
-			ArrayList<Card> winnerP = winnerPile.getCards();
+	public void addToDeck(Deck winnerPile) {
+			ArrayList<Card> winnerP = winnerPile.getDeck();
 			playerDeck.addCards(winnerP);
 
 		}

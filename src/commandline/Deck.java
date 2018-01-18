@@ -28,17 +28,17 @@ public class Deck {
 	public Deck(ArrayList<Card> x) {
 		deck = x;
 	}
-
+	
+	// Calvin added this for Game Manager
+	public void addCard(Card c)	{
+		deck.add(c);
+	}
+	
 	// RD and CH added this
 	public void addCards(ArrayList<Card> newCards) {
 		deck.addAll(newCards);
 	}
 
-	// Calvin added this class
-	// required to access the arraylist in Player class
-	public ArrayList<Card> getCards() {
-		return deck;
-	}
 
 	// reads data in from text file, sends each line from text file into
 	public void loadDeck() {
@@ -111,7 +111,7 @@ public class Deck {
 	}
 
 	// gets top card - DO WE NEED THIS
-	public Card drawCard() {
+	public Card topCard() {
 		return deck.get(0);
 	}
 
