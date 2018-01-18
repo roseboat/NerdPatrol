@@ -1,100 +1,225 @@
 package commandline;
 
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class Card implements Comparable<Card> {
-	private String name;
-	private int[] cardValues = new int[5];
-	private int selectedValue;
+// so far, 	Deck reads in data from text file
+//			calls a Card constructor giving a line of data from the file eg 350r 1 9 2 3 0
+//			Instantiates an ArrayList of these Cards
+//			Also holds the category titles in a normal array
+
+public class Deck {
+	// ArrayList for Cards
+	private ArrayList<Card> deck;
+
+	// category titles
 	private String[] categories;
 
-	public Card(String name, int a, int b, int c, int d, int e) {
-
-		this.name = name;
-		this.cardValues = new int[] { a, b, c, d, e };
-
+	// constructor
+	public Deck() {
+		deck = new ArrayList<Card>();
+		loadDeck();
 	}
 
-	// Additional constructor which can take an a single input line ~D
-	public Card(String line, String[] categories) {
-		Scanner sc = new Scanner(line);
-		this.name = sc.next();
-		this.categories = categories;
-
-		for (int i = 0; i < 5; i++) {
-			cardValues[i] = sc.nextInt();
-		}
-
-		sc.close();
+	// second constructor
+	public Deck(ArrayList<Card> x) {
+		deck = x;
 	}
 
-
-	public String getName() {
-		return name;
-	}
-	
-	
-	public int[] getAllValues() {
-		return this.cardValues;
-	}
-	
-	// retrieves the category name (of the category chose)
-	public String getSelectedCategory (int index)	{
-		return categories[index];
-	}
-	
-	// retrieves the selected value (of the category chose)
-	public int getSelectedValue()	{
-		return selectedValue;
-	}
-	
-	// sets the selected value (of the category chosen)
-	public void setSelectedValue(int index) {
-		this.selectedValue = cardValues[index];
+	// RD and CH added this
+	public void addCards(ArrayList<Card> newCards) {
+		deck.addAll(newCards);
 	}
 
-	// method to compare all cards of pickedCategory in descending order.
-	// pickedCategory will be method from PlayerClass.
-
-	public int compareTo(Card other) {
-		if (this.selectedValue == other.selectedValue) {
-			return 0;
-		} else if (selectedValue < other.selectedValue) {
-			return -1;
-		} else
-			return 1;
+	// Calvin added this class
+	// required to access the arraylist in Player class
+	public ArrayList<Card> getCards() {
+		return deck;
 	}
 
-	// method to show current card to user
-	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + cardValues[0] + "\t" + cardValues[1] + "\t"
-				+ cardValues[2] + "\t" + cardValues[3] + "\t\t" + cardValues[4]; // stringformat for better alignment to be
-																			// added instead of tabs
-		return showCard;
-	}
+	// reads data in from text file, sends each line from text file into
+	public void loadDeck() {
 
-	// reads the description line from txt file to get titles
-	public String categoryDescTitles() {
-		String line = null;
-
+		FileReader fr = null;
+		Scanner in = null;
 		try {
-			line = Files.readAllLines(Paths.get("StarCitizenDeck.txt")).get(0);
-			line = line.substring(12);
-			String categoryTitleArray[] = line.split("\\s+");
-			line = categoryTitleArray[0] + "\t" + categoryTitleArray[1] + "\t" + categoryTitleArray[2] + "\t"
-					+ categoryTitleArray[3] + "\t" + categoryTitleArray[4];
-		} catch (IOException e) {
-			e.printStackTrace();
+			try {
+
+				// count to get the first line in text file (it is unique)
+				int count = 0;
+
+				// reads file, and puts scanner around the reader
+				fr = new FileReader("StarCitizenDeck.txt");
+				in = new Scanner(fr);
+
+				// gets data line by line
+				String titleLine = "";
+				String dataLine = "";
+				while (in.hasNextLine()) {
+					// if it's the first line
+					if (count < 1) {
+						titleLine = in.nextLine(); // gets category titles if first line - dunno what to do with this
+													// yet
+						storeCategories(titleLine);
+						// System.err.println(titleLine);
+					} else {
+						dataLine = in.nextLine(); // gets data from other lines
+						buildDeck(dataLine); // sends each line of info to deck building class
+						// System.err.println(dataLine);
+					}
+
+					count++;
+				}
+
+			} finally {
+				// close if necessary
+				if (fr != null) {
+					fr.close();
+					in.close();
+				}
+			}
+		} catch (IOException ioe) {
+			System.out.println("File i/o error");
+			System.exit(1);
 		}
-		return line;
 	}
 
-	/*
-	 * public static void main(String[] args) { Card plz = new Card("dickfarts", 17,
-	 * 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
-	 * System.out.println(plz.cardToString()); }
-	 */
+	// method that can add to ArrayList - parameter could be string from textFile
+	// think the game manager will use this method right? Or this class could read
+	// from file too
+	public void buildDeck(String cardInfo) {
+		Card card = new Card(cardInfo, categories);
+		deck.add(card);
+	}
+
+	// method to parse and store the 5 category titles and "description"
+	private void storeCategories(String titleLine) {
+		categories = new String[6];
+		titleLine = titleLine.substring(12);
+		Scanner in = new Scanner(titleLine);
+		// split deckInfo into the 6 separate words
+		categories = titleLine.split(" ");
+	}
+
+	// shuffles deck - got that method when from stack overflow - basically does it
+	// all
+	private void shuffle() {
+		Collections.shuffle(deck);
+	}
+
+	// gets top card - DO WE NEED THIS
+	public Card drawCard() {
+		return deck.get(0);
+	}
+
+	// getter for deckSize
+	public int getDeckSize() {
+		return deck.size();
+	}
+
+	// getter for array of categories
+	public String[] getCategories() {
+		return categories;
+	}
+
+	public void testPrint(Deck x) {
+		int i = 0;
+		for (Card each : x.getDeck()) {
+			System.out.println(i +" "+ each.cardToString());
+			System.out.print("-----------------------\n");
+			i++;
+		}
+
+	}
+
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+
+	public ArrayList<Card> split(int numberOfPlayers) {
+
+		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size() / numberOfPlayers), deck.size())); // makes
+																													// new
+																													// list
+		deck.removeAll(spdeck);
+		return spdeck;
+
+	}
+
+	public Deck[] advancedSplit(int numberOfPlayers) {
+		Deck[] decks = new Deck[numberOfPlayers];
+		switch (numberOfPlayers) {
+		case (2):
+			Deck d1 = new Deck(this.split(2));
+			decks[0] = this;
+			decks[1] = d1;
+			break;
+		case (3):
+			Deck d2 = new Deck(this.split(3));
+			Deck d3 = new Deck(d2.split(2));
+			decks[0] = this;
+			decks[1] = d2;
+			decks[2] = d3;
+			break;
+		case (4):
+			Deck d4 = new Deck(this.split(2));
+			Deck d5 = new Deck(this.split(2));
+			Deck d6 = new Deck(d4.split(2));
+			decks[0] = this;
+			decks[1] = d5;
+			decks[2] = d4;
+			decks[3] = d6;
+			break;
+		case (5):
+			Deck d7 = new Deck(this.split(5));
+			Deck d8 = new Deck(d7.split(2));
+			Deck d9 = new Deck(d7.split(2));
+			Deck d10 = new Deck(d8.split(2));
+			decks[0] = this;
+			decks[1] = d7;
+			decks[2] = d9;
+			decks[3] = d8;
+			decks[4] = d10;
+		}
+
+		return decks;
+
+	}
+
+	public static void main(String args[]) {
+		Deck test = new Deck();
+		// System.out.println("-------------------------------------------------");
+		test.shuffle();
+		test.testPrint(test);
+
+		// Deck splitDeck = new Deck(test.split(2));
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		// test.testPrint(test);
+		// System.out.println("-------------------------------------------------");
+		// test.testPrint(splitDeck);
+		// System.out.println("-------------------------------------------------");
+		// System.out.println(test.drawCard().cardToString());
+		// System.out.println(splitDeck.drawCard().cardToString());
+
+		Deck[] dong = test.advancedSplit(5);
+		dong[0].testPrint(dong[0]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		// test.testPrint(test);
+		dong[1].testPrint(dong[1]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[2].testPrint(dong[2]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[3].testPrint(dong[3]);
+		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------------");
+		dong[4].testPrint(dong[4]);
+	}
+
 }
