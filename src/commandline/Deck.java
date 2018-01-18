@@ -39,6 +39,11 @@ public class Deck {
 	public ArrayList<Card> getCards() {
 		return deck;
 	}
+	
+	// Calvin added this class
+	public void addCard (Card card)	{
+		deck.add(card);
+	}
 
 	// reads data in from text file, sends each line from text file into
 	public void loadDeck() {

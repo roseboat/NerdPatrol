@@ -19,7 +19,7 @@ public abstract class Player {
 
 		if (this.playerDeck.getDeckSize() > 0) {
 			// there should never be a situation where a player receives an empty deck
-			this.topCard = this.playerDeck.topCard();
+			this.topCard = this.playerDeck.drawCard();
 			this.playerDeck.getDeck().remove(0);
 			
 		}
