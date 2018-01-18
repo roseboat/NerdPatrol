@@ -46,19 +46,18 @@ public class Database {
 		}
 	}
 
-	// upload game statistics, with parameters for:
-	// how many times the player won, each other computer player won, and ultimate
+	// method to upload game statistics, with parameters for:
+	// how many times the player won and each other computer player won, and ultimate
 	// winner
-	// i know ultimate winner is pointless (you could get SQL to work it out from
-	// highest number of
-	// wins but specification says to write it to database... i want the game number
-	// to auto increment via SQL constraints.. any ideas???
-
+	
+	//winner is just a string that needs to be consistently be player, or computer1, computer2 etc. it should probably reference something as a foreign key,
+	//but it doesn't at the moment...
+	
 	// ALSO: variable number of players... don't really want to make 4 separate
-	// methods depending on how many computer players are playing>>?
+	// methods depending on how many computer players are playing>>.....?
 	
 	
-	// test for varying arguments
+	// test for varying arguments - doesn't work
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int... winsComputers) {
 		Statement stmt = null;
 		// manual auto-increment for game number
@@ -80,6 +79,7 @@ public class Database {
 
 	// overloaded methods for variable number of players, there is probably a better
 	// way to do this.....
+	
 	// for 1 AI player
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int winsComputer1) {
 		Statement stmt = null;
@@ -182,13 +182,14 @@ public class Database {
 
 		return gameNumber;
 	}
+	
+	
 
 	// for testing
 	public static void main(String args[]) {
 		Database x = new Database();
-		x.gameStats("player", 30, 5, 20, 1,1);
+		x.gameStats("player", 30, 5, 20, 1,1); // two AI player test
 		// x.closeConnection();
-
 	}
 
 }
