@@ -11,16 +11,15 @@ public class Computer extends Player {
 
 		int[] values = topCard.getAllValues();
 
+		int max = values[0];
 		int index = 0;
 
-		for (int i = 0; i < values.length; i++) {
-			for (int j = 1; j < values.length; j++) {
-				if (values[i] < values[j]) {
-					index++;
-				}
+		for (int i = 1; i < values.length; i++) {
+			if (max < values[i]) {
+				max = values[i];
+				index = i;
 			}
 		}
 		return index;
 	}
-
 }
