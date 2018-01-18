@@ -2,43 +2,37 @@ package commandline;
 
 import java.util.ArrayList;
 
-public class Player {
-
-	private Deck playerDeck;
+public abstract class Player {
+	
+	
+	// DANTE LOOK IN HERE MAKE SURE IT'S ALL GOOD
+	protected Deck playerDeck;
 	private String name;
-	
-	// not sure how players are assigned decks
-	public Player(String name, Deck playerDeck) {
-		this.name=name;
-		this.playerDeck=playerDeck;
-	}
-	
-	public Card drawCard() {
-		
-		ArrayList<Card> deckArray=playerDeck.getCards();
-		// player draws card whilst there are still cards in deck
-		while (playerDeck.getDeckSize()>0) {
-			// top card represented by the index 0 in Deck arraylist
-			// top card is removed from Deck
-			Card topCard= deckArray.get(0);
-			deckArray.remove(0);
-		
-			// returns the top card of player's deck
-			return topCard;
-		}
-		return null;
-		// I'll try think of a better solution since dealing with null is just...
-	}
-	
-	public int chooseCategory() {
+	protected Card topCard;
 
-		int stat=0;
-		return stat;
+	public Player(String name, Deck playerDeck) {
+		this.name = name;
+		this.playerDeck = playerDeck;
 	}
-	
-	public void addToDeck(boolean win, Deck winnerPile) {
-		if (win=true) {
-			playerDeck.
+
+	public void drawCard() {
+
+		if (this.playerDeck.getDeckSize() > 0) {
+			// there should never be a situation where a player receives an empty deck
+			this.topCard = this.playerDeck.topCard();
+			this.playerDeck.getDeck().remove(0);
+			
 		}
+		// top card represented by the index 0 in Deck arraylist
+		// top card is removed from Deck
 	}
+
+	public void addToDeck(Deck winnerPile) {
+			ArrayList<Card> winnerP = winnerPile.getDeck();
+			playerDeck.addCards(winnerP);
+
+		}
+	
+	public abstract int chooseCategory();
+	
 }
