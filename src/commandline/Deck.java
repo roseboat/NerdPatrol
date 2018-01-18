@@ -18,9 +18,7 @@ public class Deck {
 	// category titles
 	private String[] categories;
 
-	
-	//constructor
-
+	// constructor
 	public Deck() {
 		deck = new ArrayList<Card>();
 		loadDeck();
@@ -30,17 +28,17 @@ public class Deck {
 	public Deck(ArrayList<Card> x) {
 		deck = x;
 	}
-	
-	// Calvin added this for Game Manager
-	public void addCard(Card c)	{
-		deck.add(c);
-	}
-	
+
 	// RD and CH added this
 	public void addCards(ArrayList<Card> newCards) {
 		deck.addAll(newCards);
 	}
 
+	// Calvin added this class
+	// required to access the arraylist in Player class
+	public ArrayList<Card> getCards() {
+		return deck;
+	}
 
 	// reads data in from text file, sends each line from text file into
 	public void loadDeck() {
@@ -87,12 +85,11 @@ public class Deck {
 			System.out.println("File i/o error");
 			System.exit(1);
 		}
-	}	
-	//method that can add to ArrayList - parameter could be string from textFile
-	// think the game manager will use this method right? Or this class could read from file too
-	// Rosa: why not just include this in the above method?
+	}
 
-
+	// method that can add to ArrayList - parameter could be string from textFile
+	// think the game manager will use this method right? Or this class could read
+	// from file too
 	public void buildDeck(String cardInfo) {
 		Card card = new Card(cardInfo, categories);
 		deck.add(card);
@@ -101,10 +98,6 @@ public class Deck {
 	// method to parse and store the 5 category titles and "description"
 	private void storeCategories(String titleLine) {
 		categories = new String[6];
-		Scanner in = new Scanner(deckInfo);
-		//split deckInfo into the 6 separate words
-		// Rosa : shouldn't we use a for loop to run through the split word and populate the array?
-		categories = deckInfo.split(" ");
 		titleLine = titleLine.substring(12);
 		Scanner in = new Scanner(titleLine);
 		// split deckInfo into the 6 separate words
@@ -118,7 +111,7 @@ public class Deck {
 	}
 
 	// gets top card - DO WE NEED THIS
-	public Card topCard() {
+	public Card drawCard() {
 		return deck.get(0);
 	}
 
@@ -131,12 +124,12 @@ public class Deck {
 	public String[] getCategories() {
 		return categories;
 	}
-
+	//method to print out individual cards based on the decks they are in and card counter
 	public void testPrint(Deck x) {
 		int i = 0;
 		for (Card each : x.getDeck()) {
-			System.out.println(each.cardToString());
-			System.out.print("-----------------------  " + i);
+			System.out.println(i +" "+ each.cardToString());
+			System.out.print("-----------------------\n");
 			i++;
 		}
 
@@ -155,7 +148,7 @@ public class Deck {
 		return spdeck;
 
 	}
-
+	//this method allows the deck to be split based on the number of players in a game
 	public Deck[] advancedSplit(int numberOfPlayers) {
 		Deck[] decks = new Deck[numberOfPlayers];
 		switch (numberOfPlayers) {
