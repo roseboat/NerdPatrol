@@ -112,8 +112,10 @@ public class GameManager {
 	public static void main(String args[]){
 	    Deck dk = new Deck();
 	    Player p1 = new Human("Kappa", dk);
+	    Player p2 = new Human("Gremblo", dk);
 	    p1.promptUser();
-	    
+	    p2.promptUser();
+	    System.out.println(p1.compareTo(p2));
 	    
 	}
 	

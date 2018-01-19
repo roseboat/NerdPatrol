@@ -51,6 +51,10 @@ public abstract class Player implements Comparable<Player> {
 	public void setChosenCat(int chosenCat) {
 	    this.chosenCat = chosenCat;
 	}
+	
+	public String getName(){
+	    return this.name;
+	}
 
 	public abstract int chooseCategory();
 	public abstract void promptUser();
