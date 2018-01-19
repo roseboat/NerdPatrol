@@ -10,8 +10,8 @@ public class Human extends Player {
 	}
 
 	public void promptUser() {
-	    	drawCard(); // USER needs to draw a card before being prompted
-		System.out.println("Choose your category!");
+	    drawCard(); // USER needs to draw a card before being prompted
+		System.out.println(getName() + " , Please choose your category!");
 		String x = topCard.cardToString();
 		System.out.println(x);
 		//chooseCategory();
@@ -40,28 +40,39 @@ public class Human extends Player {
 	public void altChooseCategory() {
 	    Scanner sc = new Scanner(new InputStreamReader(System.in));
 	    int choice = sc.nextInt();
-	    do {
-		switch (choice){
-		case (1):
-		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-			break;
-		case (2):
-		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-			break;
-		case (3):
-		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-			break;
-		case (4):
-		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-			break;
-		case (5):
-		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-			break;
-		default:
-		    System.out.println("The number chosen is not an allowed value. Please repick the category");
-		    choice = sc.nextInt();
-		}
-	    } while (choice < 1 || choice > 5);
+	    
+	    while (choice < 1 || choice > 5) {
+		System.out.println("The number chosen is not an allowed value. Please repick the category");
+		choice = sc.nextInt();
+	    }
+	    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+	    setChosenCat(topCard.getAllValues()[choice - 1]);
+		
+	    
+//	    do {
+//		switch (choice){
+//		case (1):
+//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+//			setChosenCat(topCard.getAllValues()[choice - 1]);
+//			break;
+//		case (2):
+//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+//			setChosenCat(topCard.getAllValues()[choice - 1]);
+//			break;
+//		case (3):
+//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+//			break;
+//		case (4):
+//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+//			break;
+//		case (5):
+//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
+//			break;
+//		default:
+//		    System.out.println("The number chosen is not an allowed value. Please repick the category");
+//		    choice = sc.nextInt();
+//		}
+//	    } while (choice < 1 || choice > 5);
 	    
 	}
 
