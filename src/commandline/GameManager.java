@@ -14,7 +14,7 @@ public class GameManager {
 	private Player winner;
 	private int numPlayers;
 	private Deck deck;
-	private Deck winnerPile;
+	private Deck winnerPile= new Deck();;
 	private ArrayList<Player> players;
 
 	
@@ -43,7 +43,6 @@ public class GameManager {
 	
 	public void initiateRound() {
 
-		winnerPile= new Deck();
 		
 		// first player selects the category for all players	
 		// humans type in input, NPC always selects highest figure
