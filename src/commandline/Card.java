@@ -70,9 +70,9 @@ public class Card implements Comparable<Card> {
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + cardValues[0] + "\t" + cardValues[1] + "\t"
-				+ cardValues[2] + "\t" + cardValues[3] + "\t\t" + cardValues[4]; // stringformat for better alignment to be
-																			// added instead of tabs
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" +String.format("%3s%9s%8s%11s%11s", 
+				cardValues[0],cardValues[1],cardValues[2],
+				cardValues[3],cardValues[4]); 
 		return showCard;
 	}
 
@@ -84,8 +84,8 @@ public class Card implements Comparable<Card> {
 			line = Files.readAllLines(Paths.get("StarCitizenDeck.txt")).get(0);
 			line = line.substring(12);
 			String categoryTitleArray[] = line.split("\\s+");
-			line = categoryTitleArray[0] + "\t" + categoryTitleArray[1] + "\t" + categoryTitleArray[2] + "\t"
-					+ categoryTitleArray[3] + "\t" + categoryTitleArray[4];
+			line = String.format("%-8s%-9s%-9s%-13s%-8s", categoryTitleArray[0],categoryTitleArray[1],categoryTitleArray[2],
+					categoryTitleArray[3],categoryTitleArray[4]);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

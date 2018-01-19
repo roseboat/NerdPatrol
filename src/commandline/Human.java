@@ -11,9 +11,9 @@ public class Human extends Player {
 
 	public void promptUser() {
 	    drawCard(); // USER needs to draw a card before being prompted
-		System.out.println(getName() + " , Please choose your category!");
 		String x = topCard.cardToString();
 		System.out.println(x);
+		System.out.println(getName() + " , Please choose your category!\nEnter category Number: ");
 		//chooseCategory();
 		altChooseCategory();
 		

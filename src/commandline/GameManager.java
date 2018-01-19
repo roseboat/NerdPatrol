@@ -43,7 +43,7 @@ public class GameManager {
 	}
 	
 	public void initiateRound() {
-
+		p1.promptUser();
 		
 		// first player selects the category for all players	
 		// humans type in input, NPC always selects highest figure
