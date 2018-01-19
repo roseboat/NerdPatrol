@@ -32,6 +32,7 @@ public class GameManager {
 		}
 		Collections.shuffle(players);
 		
+		
 	}
 	
 	public void checkDecks() {
@@ -48,7 +49,7 @@ public class GameManager {
 		// humans type in input, NPC always selects highest figure
 		// using index
 		int index=p1.chooseCategory();
-		
+		 
 		for (int i=0; i<players.size(); i++)	{
 			
 			// sets the value of the chosen category to selectedValue
@@ -76,7 +77,7 @@ public class GameManager {
 			// when the current player is not p1
 			// compare stats of players
 			// stores result as 0, 1 or -1
-			if (players.get(i)!= p1)	{
+			if (players.get(i)!= p1 && players.get(i)!= players.get(4)){
 				int result= players.get(i).topCard.compareTo(players.get(i+1).topCard);
 					
 				if (result== 1)	{
@@ -91,14 +92,15 @@ public class GameManager {
 					// && if at the end of the loop
 				drawHandler();	
 				}
+				else winner=p1;
+				
 			}
-			
-			// cards in winner pile given to the winner of the round
-			// winner pile resets
-			winner.addToDeck(winnerPile);
-			winnerPile.getDeck().clear();
-			System.out.println("The winner of this round is Player: "+winner);
 		}
+		// cards in winner pile given to the winner of the round
+		// winner pile resets
+		winner.addToDeck(winnerPile);
+		winnerPile.getDeck().clear();
+		System.out.println("The winner of this round is Player: "+winner);
 			
 	}	
 	
@@ -109,9 +111,11 @@ public class GameManager {
 	}
 	
 	public static void main(String args[]){
-	    Deck dk = new Deck();
-	    Player p1 = new Human("Kappa", dk);
-	    p1.promptUser();
+//	    Deck dk = new Deck();
+//	    Player p1 = new Human("Kappa", dk);
+//	    p1.promptUser();
+	    GameManager gm= new GameManager(5);
+	    gm.initiateRound();
 	    
 	    
 	}

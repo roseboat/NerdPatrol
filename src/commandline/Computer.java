@@ -6,7 +6,14 @@ public class Computer extends Player {
 		super(name, playerDeck);
 
 	}
-
+	
+	public void promptUser() {
+    	drawCard(); // USER needs to draw a card before being prompted
+	System.out.println("Choose your category!");
+	String x = topCard.cardToString();
+	System.out.println(x);
+	
+}
 	public int chooseCategory() {
 
 		int[] values = topCard.getAllValues();
