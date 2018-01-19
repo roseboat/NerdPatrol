@@ -56,6 +56,7 @@ public class GameManager {
 			// of every player
 			players.get(i).drawCard();
 			players.get(i).topCard.setSelectedValue(index);
+			players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 			
 			// adds card to the winner's pile
 			winnerPile.addCard(players.get(i).topCard);
@@ -78,7 +79,7 @@ public class GameManager {
 			// compare stats of players
 			// stores result as 0, 1 or -1
 			if (players.get(i)!= players.get(4)){
-				int result= players.get(i).topCard.compareTo(players.get(i+1).topCard);
+				int result= players.get(i).compareTo(players.get(i+1));
 					
 				if (result== 1)	{
 					winner=players.get(i);
@@ -116,8 +117,6 @@ public class GameManager {
 //	    p1.promptUser();
 	    GameManager gm= new GameManager(5);
 	    gm.initiateRound();
-	    
-	    
 	}
 	
 }
