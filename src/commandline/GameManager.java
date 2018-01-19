@@ -72,12 +72,12 @@ public class GameManager {
 			String category=players.get(i).topCard.getSelectedCategory(index);
 			int value=players.get(i).topCard.getSelectedValue();
 			
-			System.out.println ("Player: "+category+":"+value);
+			System.out.println ("Player: "+players.get(i).getName()+" "+category+":"+value);
 				
 			// when the current player is not p1
 			// compare stats of players
 			// stores result as 0, 1 or -1
-			if (players.get(i)!= p1 && players.get(i)!= players.get(4)){
+			if (players.get(i)!= players.get(4)){
 				int result= players.get(i).topCard.compareTo(players.get(i+1).topCard);
 					
 				if (result== 1)	{
@@ -100,7 +100,7 @@ public class GameManager {
 		// winner pile resets
 		winner.addToDeck(winnerPile);
 		winnerPile.getDeck().clear();
-		System.out.println("The winner of this round is Player: "+winner);
+		System.out.println("The winner of this round is Player: "+winner.getName());
 			
 	}	
 	

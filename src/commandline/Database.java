@@ -244,11 +244,15 @@ public class Database {
 
 
 	// for testing
-	public static void main(String args[]) {
-		Database x = new Database();
+//	public static void main(String args[]) {
+//		Database x = new Database();
 		//x.gameStats("player", 30, 5, 20, 1, 1); // two AI player test
 		// x.closeConnection();
+<<<<<<< HEAD
 		System.out.println(x.getGameStatistics());
 	}
+=======
+//	}
+>>>>>>> e574d3e95e1db82d07ff469722d0bdf1a5849047
 
 }
