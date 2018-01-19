@@ -178,8 +178,6 @@ public class Database {
 	public static void main(String args[]) {
 		Database x = new Database();
 		//x.gameStats("player", 30, 5, 20, 1, 1); // two AI player test
-		System.out.println(x.getComputerWins());
-		System.out.println(x.getDraws());
 		// x.closeConnection();
 	}
 
