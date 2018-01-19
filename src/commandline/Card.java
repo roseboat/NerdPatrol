@@ -1,81 +1,78 @@
 package commandline;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Card implements Comparable<Card> {
 	private String name;
-	private int size;
-	private int speed;
-	private int range;
-	private int firePower;
-	private int cargo;
+	private int[] cardValues = new int[5];
+	private int selectedValue;
+	private String[] categories;
 
-	public Card(String name, int size, int speed, int range, int firePower, int cargo) {
+	public Card(String name, int a, int b, int c, int d, int e) {
+
 		this.name = name;
-		this.size = size;
-		this.speed = speed;
-		this.range = range;
-		this.firePower = firePower;
-		this.cargo = cargo;
+		this.cardValues = new int[] { a, b, c, d, e };
+
 	}
-	
-	//Additional constructor which can take an a single input line ~D
-	public Card(String line){
-	    Scanner sc = new Scanner(line);
-	    this.name = sc.next();
-	    this.size = sc.nextInt();
-	    this.speed = sc.nextInt();
-	    this.range = sc.nextInt();
-	    this.firePower = sc.nextInt();
-	    this.cargo = sc.nextInt();
-	    sc.close();
+
+	// Additional constructor which can take an a single input line ~D
+	public Card(String line, String[] categories) {
+		Scanner sc = new Scanner(line);
+		this.name = sc.next();
+		this.categories = categories;
+
+		for (int i = 0; i < 5; i++) {
+			cardValues[i] = sc.nextInt();
+		}
+
+		sc.close();
 	}
+
 
 	public String getName() {
 		return name;
 	}
-
-	public int getSize() {
-		return size;
+	
+	
+	public int[] getAllValues() {
+		return this.cardValues;
 	}
-
-	public int getSpeed() {
-		return speed;
+	
+	// retrieves the category name (of the category chose)
+	public String getSelectedCategory (int index)	{
+		return categories[index];
 	}
-
-	public int getRange() {
-		return range;
+	
+	// retrieves the selected value (of the category chose)
+	public int getSelectedValue()	{
+		return selectedValue;
 	}
-
-	public int getfirePower() {
-		return firePower;
-	}
-
-	public int getCargo() {
-		return cargo;
+	
+	// sets the selected value (of the category chosen)
+	public void setSelectedValue(int index) {
+		this.selectedValue = cardValues[index];
 	}
 
 	// method to compare all cards of pickedCategory in descending order.
 	// pickedCategory will be method from PlayerClass.
 
-	public int compareTo(Card other) { 
-//	  if (this.pickedCategory() == other.pickedCategory()) { 
-//	  return 0; 
-//	  } if else(this.pickedCategory() < other.pickedCategory()) { 
-//	  return -1; 
-//	  } else return 1; 
-	    return -1;
-	  }
+	public int compareTo(Card other) {
+		if (this.selectedValue == other.selectedValue) {
+			return 0;
+		} else if (selectedValue < other.selectedValue) {
+			return -1;
+		} else
+			return 1;
+	}
 
 	// method to show current card to user
 	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + getSize() + "\t" + getSpeed() + "\t"
-				+ getRange() + "\t" + getfirePower() + "\t\t" + getCargo(); //stringformat for better alignment to be added instead of tabs 
+		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" + cardValues[0] + "\t" + cardValues[1] + "\t"
+				+ cardValues[2] + "\t" + cardValues[3] + "\t\t" + cardValues[4]; // stringformat for better alignment to be
+																			// added instead of tabs
 		return showCard;
 	}
 
@@ -95,8 +92,9 @@ public class Card implements Comparable<Card> {
 		return line;
 	}
 
-	public static void main(String[] args) {
-		Card plz = new Card("dickfarts", 17, 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
-		System.out.println(plz.cardToString());
-	}
+	/*
+	 * public static void main(String[] args) { Card plz = new Card("dickfarts", 17,
+	 * 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
+	 * System.out.println(plz.cardToString()); }
+	 */
 }
