@@ -10,6 +10,7 @@ public abstract class Player implements Comparable<Player> {
 	private String name;
 	protected Card topCard;
 	private int chosenCat;
+	private int chosenCatIndex;
 
 	public Player(String name, Deck playerDeck) {
 		this.name = name;
@@ -51,9 +52,27 @@ public abstract class Player implements Comparable<Player> {
 	public void setChosenCat(int chosenCat) {
 	    this.chosenCat = chosenCat;
 	}
-	
+		
+	public int getChosenCatIndex() {
+	    return chosenCatIndex;
+	}
+
+	public void setChosenCatIndex(int chosenCatIndex) {
+	    this.chosenCatIndex = chosenCatIndex;
+	}
+
 	public String getName(){
 	    return this.name;
+	}
+	
+	//The other players lock in their categories based on who chose theirs
+	public void respondToCategory(int index) {
+	    chosenCat = topCard.getAllValues()[index];
+	    System.out.println(this.name + " has followed on the category " + topCard.getSelectedCategory(index) + " with a value of " + this.chosenCat);
+	}
+	
+	public void altChooseCategory(){
+	    System.out.println("I cant pick");
 	}
 
 	public abstract int chooseCategory();

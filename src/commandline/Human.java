@@ -37,7 +37,12 @@ public class Human extends Player {
 
 	}
 	
+	@Override
 	public void altChooseCategory() {
+	    
+	    System.out.println(getName() + " , Please choose your category!");
+	    String x = topCard.cardToString();
+	    System.out.println(x);
 	    Scanner sc = new Scanner(new InputStreamReader(System.in));
 	    int choice = sc.nextInt();
 	    
@@ -47,33 +52,8 @@ public class Human extends Player {
 	    }
 	    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
 	    setChosenCat(topCard.getAllValues()[choice - 1]);
-		
-	    
-//	    do {
-//		switch (choice){
-//		case (1):
-//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-//			setChosenCat(topCard.getAllValues()[choice - 1]);
-//			break;
-//		case (2):
-//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-//			setChosenCat(topCard.getAllValues()[choice - 1]);
-//			break;
-//		case (3):
-//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-//			break;
-//		case (4):
-//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-//			break;
-//		case (5):
-//		    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
-//			break;
-//		default:
-//		    System.out.println("The number chosen is not an allowed value. Please repick the category");
-//		    choice = sc.nextInt();
-//		}
-//	    } while (choice < 1 || choice > 5);
-	    
+	    setChosenCatIndex(choice-1);
+	    sc.close();
 	}
 
 	

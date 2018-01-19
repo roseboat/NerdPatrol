@@ -108,14 +108,43 @@ public class GameManager {
 		initiateRound();
 	}
 	
+	//Player selects a category, everyone loads up values corresponding to the chosen category
+	public void categoryPhase() {
+	    for (Player p : players){
+		p.drawCard();
+	    }
+	    players.get(0).altChooseCategory();
+	    int i = players.get(0).getChosenCatIndex();
+	    for (int j = 1; j < players.size(); j++) {
+		players.get(j).respondToCategory(i);
+		
+	    }
+	}
+	
+	//the first player is assumed to have the biggest card initially
+	//then compared against all other players, if there is a bigger one they get assigned as the player with the best card
+	//cannot work out draws
+	public void declareRoundWinner() {
+	    this.p1 = players.get(0);
+	    for (int i = 1; i < players.size(); i++){
+		if (p1.compareTo(players.get(i)) == -1) {
+		    p1 = players.get(i);
+		}
+	    }
+	    System.out.println("The winner of this round is " + p1.getName());
+	}
+	
+	public void takeTurn(){
+	    for (Player p : players){
+		p.drawCard();
+		p.altChooseCategory();
+	    }
+	}
+	
 	public static void main(String args[]){
-	    Deck dk = new Deck();
-	    Player p1 = new Human("Kappa", dk);
-	    Player p2 = new Human("Gremblo", dk);
-	    p1.promptUser();
-	    p2.promptUser();
-	    System.out.println(p1.compareTo(p2));
-	    
+	    GameManager gm = new GameManager(5);
+	    gm.categoryPhase();
+	    gm.declareRoundWinner();
 	}
 	
 }
