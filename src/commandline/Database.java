@@ -153,12 +153,13 @@ public class Database {
 
 		return gameNumber;
 	}
-
-	// method to get total computer wins
-	public int getDraws() {
+	
+	//method to get number of player wins
+	public int getPlayerWins() {
+		
 		Statement stmt = null;
 		int result = 0;
-		String query = "SELECT SUM (gamestats.numberdraws) AS target FROM toptrumps.gamestats";
+		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner = 'player'";
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -173,12 +174,81 @@ public class Database {
 		return result;
 	}
 	
+	//method to get number of computer wins
+	public int getComputerWins() {
+		
+		Statement stmt = null;
+		int result = 0;
+		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner = 'computer1' or winner = 'computer2' or winner = 'computer3' or winner = 'computer4'";
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				result = rs.getInt("target");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("error executing query " + query);
+		}
+		return result;
+	}
+	
+	//method to get highest number of rounds played in a game
+	public int getMaxRound() {
+		
+		Statement stmt = null;
+		int result = 0;
+		String query = "SELECT max(gamestats.totalrounds) AS target FROM toptrumps.gamestats";
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				result = rs.getInt("target");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("error executing query " + query);
+		}
+		return result;
+	}
+	
+	//method to get the number of draws overall - for working out average number of draws
+		public int getNumberDraws() {
+			
+			Statement stmt = null;
+			int result = 0;
+			String query = "SELECT sum(gamestats.numberdraws) AS target FROM toptrumps.gamestats";
+			try {
+				stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+
+				while (rs.next()) {
+					result = rs.getInt("target");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.err.println("error executing query " + query);
+			}
+			return result;
+		}
+	
+	//method to return a string of the data for command line 
+	public String getGameStatistics() {
+		String stats = gameNumber() + " games have been played. The player has won "+ getPlayerWins() + " times and "
+				+ "the computer has won "+getComputerWins()+" times. The highest number of rounds in a single game is "+ getMaxRound()+". The average number of draws per game is "+ getNumberDraws()/gameNumber() + ".";
+		
+		return stats;
+	}
+
 
 	// for testing
 	public static void main(String args[]) {
 		Database x = new Database();
 		//x.gameStats("player", 30, 5, 20, 1, 1); // two AI player test
 		// x.closeConnection();
+		System.out.println(x.getGameStatistics());
 	}
 
 }
