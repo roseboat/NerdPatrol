@@ -43,8 +43,8 @@ public class GameManager {
 	}
 	
 	public void initiateRound() {
+
 		p1.promptUser();
-		
 		// first player selects the category for all players	
 		// humans type in input, NPC always selects highest figure
 		// using index
@@ -74,31 +74,20 @@ public class GameManager {
 			int value=players.get(i).topCard.getSelectedValue();
 			
 			System.out.println ("Player: "+players.get(i).getName()+" "+category+":"+value);
-				
+			
 			// when the current player is not p1
 			// compare stats of players
-			// stores result as 0, 1 or -1
-			if (players.get(i)!= players.get(4)){
-				int result= players.get(i).compareTo(players.get(i+1));
-					
-				if (result== 1)	{
-					winner=players.get(i);
-				}	
-				if (result==-1)	{
-					winner=players.get(i+1);
-				}
-				if (result== 0 && i==players.size()) {
-					// result in a draw
-					// if two values are the same, returning 0
-					// && if at the end of the loop
-				drawHandler();	
-				}
-				else winner=p1;
-				
-			}
+			// stores result as 0, 1 or -1{
+			
 		}
 		// cards in winner pile given to the winner of the round
 		// winner pile resets
+		Collections.sort(players, Collections.reverseOrder());
+		winner=players.get(0);
+		
+		if (players.get(0).compareTo(players.get(1))==0)
+			drawHandler();
+
 		winner.addToDeck(winnerPile);
 		winnerPile.getDeck().clear();
 		System.out.println("The winner of this round is Player: "+winner.getName());
