@@ -1,10 +1,9 @@
 package commandline;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
+
 
 public class GameManager {
 
@@ -56,22 +55,23 @@ public class GameManager {
 
 	public void initiateRound() {
 
+		for (int i = 0; i < players.size(); i++) {
+			// checks to see if any players have run out of cards
+			if (players.get(i).playerDeck.getDeckSize() < 1) {
+				removeKebab(i);
+				i--;
+			}
+			// all players draw their first card
+			players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
+		}
+		
 		// how many cards each player remaining has
 		for (int i = 0; i < players.size(); i++) {
 			System.err.println(
 					players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize() + " cards left");
 		}
+		
 		if (players.size() > 1) {
-
-			// all players draw their first card
-			for (int i = 0; i < players.size(); i++) {
-				// checks to see if any players have run out of cards
-				if (players.get(i).playerDeck.getDeckSize() < 1) {
-					removeKebab(i);
-					i--;
-				}
-				players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
-			}
 
 			// displays starting player's card
 			if (p1 == humanPlayer)
@@ -97,9 +97,8 @@ public class GameManager {
 				players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
 
 			}
-
 			// check winnerPile size
-			System.out.println("There are " + winnerPile.size() + " cards to play for.");
+			System.err.println("There are " + winnerPile.size() + " cards to play for.");
 			decideWinner(index);
 		} else
 			endGame();
@@ -141,7 +140,6 @@ public class GameManager {
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
 				System.out.println("The winner of this round is Player: " + winner.getName());
-
 			}
 
 		} else
