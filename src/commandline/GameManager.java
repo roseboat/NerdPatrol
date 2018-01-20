@@ -90,12 +90,15 @@ public class GameManager {
 			
 			// adds card to the winner's pile
 			winnerPile.add(players.get(i).topCard);
-			System.out.println("There are "+winnerPile.size()+" cards to play for.");
+			
 			
 			//remove top cards from player's decks
 			players.get(i).playerDeck.getDeck().remove(0); //*****REMOVES TOP CARD HERE 
 			
 		}
+		//check winnerPile size
+		System.out.println("There are "+winnerPile.size()+" cards to play for.");
+		
 		decideWinner(index);
 		//prints out how many cards each person has, for debugging 
 		for (int i = 0; i <players.size(); i++) {
