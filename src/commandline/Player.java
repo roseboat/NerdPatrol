@@ -1,5 +1,6 @@
 package commandline;
 
+
 import java.util.ArrayList;
 
 public abstract class Player implements Comparable<Player> {
@@ -27,6 +28,10 @@ public abstract class Player implements Comparable<Player> {
 		}
 		// top card represented by the index 0 in Deck arraylist
 		// top card is removed from Deck
+	}
+	
+	public Card getTopCard() 	{
+		return topCard;
 	}
 
 	public void addToDeck(Deck winnerPile) {

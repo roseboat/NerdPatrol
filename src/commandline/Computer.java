@@ -8,8 +8,6 @@ public class Computer extends Player {
 	}
 	
 	public void promptUser() {
-    	drawCard(); // USER needs to draw a card before being prompted
-	System.out.println("Choose your category!");
 	String x = topCard.cardToString();
 	System.out.println(x);
 	
@@ -21,12 +19,17 @@ public class Computer extends Player {
 		int max = values[0];
 		int index = 0;
 
-		for (int i = 1; i < values.length; i++) {
+		for (int i = 0; i < values.length; i++) {
 			if (max < values[i]) {
 				max = values[i];
 				index = i;
 			}
 		}
+		System.out.println(getName()+" has chosen " + topCard.getSelectedCategory(index));
+		System.out.println();
+	    setChosenCat(topCard.getAllValues()[index]);
 		return index;
 	}
+	
+	
 }

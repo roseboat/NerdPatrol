@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 
 public class GameManager {
 
@@ -19,20 +20,21 @@ public class GameManager {
 
 	
 	// DANTE SORT THIS OUT
-	public GameManager(int numberOfPlayers) {
+	public GameManager(String playerName, int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
+		
+		// deck is shuffled
+		Collections.shuffle(deck.getDeck());
+		
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
-		humanPlayer= new Human("bob", cards[0]);
+		humanPlayer= new Human(playerName, cards[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
 		for (int i = 1; i < cards.length; i++) {
 			players.add(new Computer("Computer " + i, cards[i]));
-			p1=players.get(0);
 		}
-		Collections.shuffle(players);
-		
-		
+		randomiseOrder();
 	}
 	
 	public void checkDecks() {
@@ -42,26 +44,37 @@ public class GameManager {
 			}
 	}
 	
+	public void randomiseOrder()	{
+		Collections.shuffle(players);
+		p1=players.get(0);
+	}
+	
 	public void initiateRound() {
 
+		// all players draw their first card
+		for (int i=0; i<players.size(); i++)	{
+			players.get(i).drawCard();
+		}
+		
+		// displays starting player's card
 		p1.promptUser();
+		
 		// first player selects the category for all players	
 		// humans type in input, NPC always selects highest figure
 		// using index
 		int index=p1.chooseCategory();
-		 
+		
+		
 		for (int i=0; i<players.size(); i++)	{
 			
 			// sets the value of the chosen category to selectedValue
 			// of every player
-			players.get(i).drawCard();
 			players.get(i).topCard.setSelectedValue(index);
 			players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 			
 			// adds card to the winner's pile
 			winnerPile.addCard(players.get(i).topCard);
 		}
-		
 		decideWinner(index);
 	}
 	
@@ -85,27 +98,43 @@ public class GameManager {
 		Collections.sort(players, Collections.reverseOrder());
 		winner=players.get(0);
 		
+		// test for instances where winners are tied
+		// pass to drawHandler method
+		// otherwise, add cards to the winner's deck
+		// and display winner
 		if (players.get(0).compareTo(players.get(1))==0)
 			drawHandler();
-
+		else {
+		// starting player of next round is the winner
+		p1=winner;
 		winner.addToDeck(winnerPile);
 		winnerPile.getDeck().clear();
 		System.out.println("The winner of this round is Player: "+winner.getName());
-			
+		System.out.println();
+		}	
 	}	
 	
 	// method handles the situation when there is a draw
 	public void drawHandler () {
 		
+		System.out.println("Round ended in a draw. The next round will be started.");
+		System.out.println();
 		initiateRound();
 	}
+	
+	
+	// some considerations: 
+	// if a player runs out of cards & is removed from array, will that mess up for loops?
+	// every time it's the human player who starts, the deck is shuffled and divided in the exact same way
 	
 	public static void main(String args[]){
 //	    Deck dk = new Deck();
 //	    Player p1 = new Human("Kappa", dk);
 //	    p1.promptUser();
-	    GameManager gm= new GameManager(5);
-	    gm.initiateRound();
+	    GameManager gm= new GameManager("Bob",5);
+	    for (int i=0; i<3; i++)	{
+	    		gm.initiateRound();
+	    }
 	}
 	
 }
