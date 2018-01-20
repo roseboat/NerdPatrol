@@ -98,7 +98,8 @@ public class GameManager {
 
 			}
 			// check winnerPile size
-			System.err.println("There are " + winnerPile.size() + " cards to play for.");
+			int cardsToWin = winnerPile.size()-1;
+			System.err.println("There are " + cardsToWin + " cards to play for.");
 			decideWinner(index);
 		} else
 			endGame();
