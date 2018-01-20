@@ -16,7 +16,7 @@ public class GameManager {
 	private int numPlayers;
 	private Deck deck;
 	private Deck winnerPile= new Deck();;
-	private ArrayList<Player> players;
+	private static ArrayList<Player> players;
 
 	
 	// DANTE SORT THIS OUT
@@ -35,6 +35,9 @@ public class GameManager {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
 		randomiseOrder();
+		for (int i = 0; i <players.size(); i++) {
+			System.err.println(players.get(i).getName()+" has "+ players.get(i).playerDeck.getDeckSize()+" cards left");
+		}
 	}
 	
 	public void checkDecks() {
@@ -81,6 +84,9 @@ public class GameManager {
 			winnerPile.addCard(players.get(i).topCard);
 		}
 		decideWinner(index);
+		for (int i = 0; i <players.size(); i++) {
+			System.err.println(players.get(i).getName()+" has "+ players.get(i).playerDeck.getDeckSize()+" cards left");
+		}
 	}
 	
 	public void decideWinner(int index) {
@@ -133,9 +139,12 @@ public class GameManager {
 //	    Player p1 = new Human("Kappa", dk);
 //	    p1.promptUser();
 	    GameManager gm= new GameManager("Bob",5);
-	    for (int i=0; i<20; i++)	{
-	    		gm.initiateRound();
-	    }
+	    //for (int i=0; i<20; i++)	{
+	    //		gm.initiateRound();
+	   // }
+	    while (players.size()>2)
+	    	gm.initiateRound();
+	    	
 	}
 	
 }
