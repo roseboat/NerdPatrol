@@ -23,7 +23,7 @@ public abstract class Player implements Comparable<Player> {
 		if (this.playerDeck.getDeckSize() > 0) {
 			// there should never be a situation where a player receives an empty deck
 			this.topCard = this.playerDeck.drawCard();
-			this.playerDeck.getDeck().remove(0);
+			//this.playerDeck.getDeck().remove(0);
 			
 		}
 		// top card represented by the index 0 in Deck arraylist
@@ -63,5 +63,10 @@ public abstract class Player implements Comparable<Player> {
 
 	public abstract int chooseCategory();
 	public abstract void promptUser();
+
+	public void addToDeck(ArrayList<Card> winnerPile) {
+		playerDeck.addCards(winnerPile);
+		
+	}
 	
 }

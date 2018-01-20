@@ -15,7 +15,7 @@ public class GameManager {
 	private Player winner;
 	private int numPlayers;
 	private Deck deck;
-	private Deck winnerPile= new Deck();;
+	private ArrayList<Card> winnerPile = new ArrayList<Card>();
 	private static ArrayList<Player> players;
 
 	
@@ -35,6 +35,8 @@ public class GameManager {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
 		randomiseOrder();
+		
+		//prints out how many cards each person has, for debugging 
 		for (int i = 0; i <players.size(); i++) {
 			System.err.println(players.get(i).getName()+" has "+ players.get(i).playerDeck.getDeckSize()+" cards left");
 		}
@@ -52,16 +54,22 @@ public class GameManager {
 		p1=players.get(0);
 	}
 	
+	//removes a player from the list
+	public void removeKebab(int i){
+		   players.remove(i);
+	}
+		
 	public void initiateRound() {
-		
-		
+			
+			
 		// all players draw their first card
 		for (int i=0; i<players.size(); i++)	{
 			// checks to see if any players have run out of cards
 			if (players.get(i).playerDeck.getDeckSize() < 1) {
-				players.remove(players.get(i));
+				removeKebab(i);
+				i--;
 			}	
-			players.get(i).drawCard();
+			players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
 		}
 		
 		// displays starting player's card
@@ -81,9 +89,15 @@ public class GameManager {
 			players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 			
 			// adds card to the winner's pile
-			winnerPile.addCard(players.get(i).topCard);
+			winnerPile.add(players.get(i).topCard);
+			System.out.println("There are "+winnerPile.size()+" cards to play for.");
+			
+			//remove top cards from player's decks
+			players.get(i).playerDeck.getDeck().remove(0); //*****REMOVES TOP CARD HERE 
+			
 		}
 		decideWinner(index);
+		//prints out how many cards each person has, for debugging 
 		for (int i = 0; i <players.size(); i++) {
 			System.err.println(players.get(i).getName()+" has "+ players.get(i).playerDeck.getDeckSize()+" cards left");
 		}
@@ -115,7 +129,7 @@ public class GameManager {
 		// starting player of next round is the winner
 		p1=winner;
 		winner.addToDeck(winnerPile);
-		winnerPile.getDeck().clear();
+		winnerPile.clear();
 		System.out.println("The winner of this round is Player: "+winner.getName());
 		System.out.println();
 		}	
