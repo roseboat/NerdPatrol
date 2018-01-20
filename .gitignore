@@ -1,5 +1,6 @@
 /commandline/
 
+.classpath
 .metadata/
 target/classes/online/.DS_Store
 *.class

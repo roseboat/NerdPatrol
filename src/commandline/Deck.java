@@ -90,6 +90,7 @@ public class Deck {
 			System.out.println("File i/o error");
 			System.exit(1);
 		}
+		shuffle(); //Need to shuffle the ting before distributing
 	}
 
 	// method that can add to ArrayList - parameter could be string from textFile

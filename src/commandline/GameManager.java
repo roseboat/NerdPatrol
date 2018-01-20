@@ -3,6 +3,7 @@ package commandline;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 public class GameManager {
@@ -13,8 +14,9 @@ public class GameManager {
 	private Player p2;
 	private Player winner;
 	private int numPlayers;
+	private boolean gameOver = false;
 	private Deck deck;
-	private Deck winnerPile= new Deck();;
+	private Deck winnerPile= new Deck(new ArrayList<Card>());
 	private ArrayList<Player> players;
 
 	
@@ -23,14 +25,14 @@ public class GameManager {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
-		humanPlayer= new Human("bob", cards[0]);
+		humanPlayer= new Human("Ron", cards[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
 		for (int i = 1; i < cards.length; i++) {
 			players.add(new Computer("Computer " + i, cards[i]));
 			p1=players.get(0);
 		}
-		Collections.shuffle(players);
+		//Collections.shuffle(players);
 		
 	}
 	
@@ -108,15 +110,22 @@ public class GameManager {
 		initiateRound();
 	}
 	
+	public boolean getGameOver(){
+	    return gameOver;
+	}
+	
 	//Player selects a category, everyone loads up values corresponding to the chosen category
+	//Player that selects is always the first one in the array
 	public void categoryPhase() {
 	    for (Player p : players){
 		p.drawCard();
 	    }
 	    players.get(0).altChooseCategory();
 	    int i = players.get(0).getChosenCatIndex();
+	    winnerPile.addCard(players.get(0).getTopCard());
 	    for (int j = 1; j < players.size(); j++) {
 		players.get(j).respondToCategory(i);
+		winnerPile.addCard(players.get(j).getTopCard());
 		
 	    }
 	}
@@ -125,13 +134,52 @@ public class GameManager {
 	//then compared against all other players, if there is a bigger one they get assigned as the player with the best card
 	//cannot work out draws
 	public void declareRoundWinner() {
+	    boolean draw = false;
 	    this.p1 = players.get(0);
+	    
 	    for (int i = 1; i < players.size(); i++){
 		if (p1.compareTo(players.get(i)) == -1) {
 		    p1 = players.get(i);
 		}
 	    }
-	    System.out.println("The winner of this round is " + p1.getName());
+	    //move the winner to the front of the arraylist
+	    int index = players.indexOf(p1);
+	    players.remove(p1);
+	    
+	    
+	    //check for draws by taking the strongest player and comparing him
+	    for (int i = 0; i < players.size(); i++){
+		if (p1.compareTo(players.get(i)) == 0) {
+		    draw = true; //change draw tag if a player is equivalent
+		}
+	    }
+	    
+	    if (draw) {
+		System.out.println("It's a draw! " + p1.getName());
+		players.add(index, p1); //In the case of the draw the original players gets to choose
+	    } else {
+		System.out.println("The winner of this round is " + p1.getName());
+		players.add(0, p1);//New player placed at the start of the player list
+		p1.playerDeck.addCards(winnerPile.getDeck());
+		winnerPile.getDeck().clear();
+	    }
+	}
+	
+	
+	public void endPhase() {
+	    System.out.println("---------------------------------------");
+	    for (int i = 0; i < players.size(); i++){
+		if (players.get(i).playerDeck.getDeckSize() == 0) {
+		    System.err.println("Player " + players.get(i).getName() + " has been elimated!");
+		    players.remove(players.get(i));
+		    i--;
+		    
+		}
+		System.out.println(players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize() + " cards left.");
+	    }
+	    if (this.players.size() <= 1){
+		gameOver = true;
+	    }
 	}
 	
 	public void takeTurn(){
@@ -142,9 +190,12 @@ public class GameManager {
 	}
 	
 	public static void main(String args[]){
-	    GameManager gm = new GameManager(5);
-	    gm.categoryPhase();
-	    gm.declareRoundWinner();
+	    GameManager gm = new GameManager(3);
+	    while (!gm.getGameOver()){
+		gm.categoryPhase();
+		gm.declareRoundWinner();
+		gm.endPhase();
+	    }
 	}
 	
 }

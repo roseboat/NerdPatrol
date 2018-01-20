@@ -53,7 +53,7 @@ public class Human extends Player {
 	    System.out.println("You have chosen " + topCard.getSelectedCategory(choice - 1));
 	    setChosenCat(topCard.getAllValues()[choice - 1]);
 	    setChosenCatIndex(choice-1);
-	    sc.close();
+	    
 	}
 
 	

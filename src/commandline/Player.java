@@ -74,6 +74,12 @@ public abstract class Player implements Comparable<Player> {
 	public void altChooseCategory(){
 	    System.out.println("I cant pick");
 	}
+	
+	
+
+	public Card getTopCard() {
+	    return topCard;
+	}
 
 	public abstract int chooseCategory();
 	public abstract void promptUser();
