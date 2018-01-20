@@ -56,12 +56,12 @@ public class GameManager {
 	
 	//removes a player from the list
 	public void removeKebab(int i){
+
 		   players.remove(i);
 	}
-		
+
 	public void initiateRound() {
-			
-			
+				
 		// all players draw their first card
 		for (int i=0; i<players.size(); i++)	{
 			// checks to see if any players have run out of cards
@@ -77,7 +77,7 @@ public class GameManager {
 		
 		// first player selects the category for all players	
 		// humans type in input, NPC always selects highest figure
-		// using index
+		// using index, it corresponds to the index of the value held in the cardValues array in Card
 		int index=p1.chooseCategory();
 		
 		
@@ -126,6 +126,7 @@ public class GameManager {
 		// pass to drawHandler method
 		// otherwise, add cards to the winner's deck
 		// and display winner
+		
 		if (players.get(0).compareTo(players.get(1))==0)
 			drawHandler();
 		else {
@@ -156,11 +157,13 @@ public class GameManager {
 //	    Player p1 = new Human("Kappa", dk);
 //	    p1.promptUser();
 	    GameManager gm= new GameManager("Bob",5);
-	    //for (int i=0; i<20; i++)	{
-	    //		gm.initiateRound();
-	   // }
-	    while (players.size()>2)
-	    	gm.initiateRound();
+	    for (int i=0; i<20; i++)	{
+	    		gm.initiateRound();
+	    }
+//	    gm.initiateRound();
+//	    gm.removeKebab(2);
+//	    gm.initiateRound();
+	    
 	    	
 	}
 	
