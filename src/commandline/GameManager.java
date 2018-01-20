@@ -50,9 +50,14 @@ public class GameManager {
 	}
 	
 	public void initiateRound() {
-
+		
+		
 		// all players draw their first card
 		for (int i=0; i<players.size(); i++)	{
+			// checks to see if any players have run out of cards
+			if (players.get(i).playerDeck.getDeckSize() < 1) {
+				players.remove(players.get(i));
+			}	
 			players.get(i).drawCard();
 		}
 		
@@ -87,10 +92,6 @@ public class GameManager {
 			int value=players.get(i).topCard.getSelectedValue();
 			
 			System.out.println ("Player: "+players.get(i).getName()+" "+category+":"+value);
-			
-			// when the current player is not p1
-			// compare stats of players
-			// stores result as 0, 1 or -1{
 			
 		}
 		// cards in winner pile given to the winner of the round
@@ -132,7 +133,7 @@ public class GameManager {
 //	    Player p1 = new Human("Kappa", dk);
 //	    p1.promptUser();
 	    GameManager gm= new GameManager("Bob",5);
-	    for (int i=0; i<3; i++)	{
+	    for (int i=0; i<20; i++)	{
 	    		gm.initiateRound();
 	    }
 	}
@@ -151,7 +152,3 @@ public class GameManager {
 //		}
 	
 	// CALVIN WINNERWINSCARDS / LOSERLOSESCARDS
-
-
-
-	
