@@ -13,10 +13,10 @@ public class Human extends Player {
 	}
 
 	public void promptUser() {
-		System.out.println("\r" + getName() + " , Please choose your category!");
+		System.out.println("\r" + getName() + " , please choose your category!");
 		String x = topCard.cardToString();
 		System.out.println(x);
-		// chooseCategory();
+		chooseCategory();
 	}
 
 	// DANTE HANDLE THE EXCEPTIONS PLEASE

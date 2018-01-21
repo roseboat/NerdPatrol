@@ -22,10 +22,15 @@ public class GameManager {
 	public GameManager(String playerName, int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
-
+		
+		// Log myLog = new Log();
+		// myLog.logDeck(deck);
+		
 		// deck is shuffled
 		Collections.shuffle(deck.getDeck());
-
+		
+		//myLog.logShuffle(deck);
+		
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
 		humanPlayer = new Human(playerName, cards[0]);
 		players = new ArrayList<Player>();
@@ -33,6 +38,8 @@ public class GameManager {
 		for (int i = 1; i < cards.length; i++) {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
+		// myLog.playerDecks(players);
+		
 		randomiseOrder();
 	}
 
@@ -91,6 +98,9 @@ public class GameManager {
 				players.get(i).topCard.setSelectedValue(index);
 				players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 
+				// myLog.categoryChosen(players);
+				
+				
 				// adds card to the winner's pile
 				winnerPile.add(players.get(i).topCard);
 
@@ -98,11 +108,14 @@ public class GameManager {
 				players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
 
 			}
+			// myLog.cardsInPlay(winnerPile);
+			
 			// check winnerPile size
 			int cardsToWin = winnerPile.size()-1;
 			System.err.println("There are " + cardsToWin + " cards to play for.");
 			decideWinner(index);
 		} else
+			// myLog.close();
 			endGame();
 	}
 	public void roundStarter () {
@@ -141,6 +154,8 @@ public class GameManager {
 			// winner pile resets
 			Collections.sort(players, Collections.reverseOrder());
 			winner = players.get(0);
+			
+			
 
 			// test for instances where winners are tied
 			// pass to drawHandler method
@@ -151,6 +166,7 @@ public class GameManager {
 				drawHandler();
 			else {
 				// starting player of next round is the winner
+				// myLog.postRound(players);
 				p1 = winner;
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
@@ -158,11 +174,13 @@ public class GameManager {
 			}
 
 		} else
+			// myLog.logWinner(winner);
 			endGame();
 	}
 
 	// method handles the situation when there is a draw
 	public void drawHandler() {
+		// myLog.communalPile(winnerPile);
 		System.out.println("Round ended in a draw. The next round will be started.");
 		initiateRound();
 	}
