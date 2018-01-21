@@ -92,7 +92,7 @@ public class Log {
 	public void categoryChosen(Card c) {
 	
 		
-		
+	
 		
 	}
 	
