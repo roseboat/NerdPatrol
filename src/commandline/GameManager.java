@@ -3,6 +3,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class GameManager {
@@ -54,7 +55,7 @@ public class GameManager {
 	}
 
 	public void initiateRound() {
-
+		roundStarter ();
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
 			if (players.get(i).playerDeck.getDeckSize() < 1) {
@@ -104,7 +105,20 @@ public class GameManager {
 		} else
 			endGame();
 	}
-
+	public void roundStarter () {
+		System.out.println("type 'drawcard' to start round");
+		Scanner sc = new Scanner(System.in);
+		String startNextRound = sc.nextLine();
+		for(;;) {
+		if (startNextRound.matches("drawcard")) {
+			System.out.println("*******************\r\n");
+			break;
+		} else 
+			System.out.println("you didnt enter drawcard");
+			roundStarter();
+			break;
+		}
+	}
 	public void endGame() {
 		System.out.println(players.get(0).getName() + " has won the game!");
 		System.exit(1);
