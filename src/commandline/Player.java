@@ -33,6 +33,10 @@ public abstract class Player implements Comparable<Player> {
 	public Card getTopCard() 	{
 		return topCard;
 	}
+	
+	public int getDeckSize()	{
+		return playerDeck.getDeckSize();
+	}
 
 	public void addToDeck(Deck winnerPile) {
 			ArrayList<Card> winnerP = winnerPile.getDeck();
