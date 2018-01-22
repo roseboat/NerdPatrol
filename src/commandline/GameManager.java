@@ -32,11 +32,6 @@ public class GameManager {
 		Collections.shuffle(deck.getDeck());
 		
 		myLog.logShuffle(deck);
-		
-
-
-		// deck is shuffled
-		Collections.shuffle(deck.getDeck());
 
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
 		humanPlayer = new Human(playerName, cards[0]);
@@ -70,7 +65,7 @@ public class GameManager {
 	}
 
 	public void initiateRound() {
-//		roundStarter ();
+//		roundStarter();
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
 			if (players.get(i).getDeckSize() < 1) {
@@ -107,7 +102,7 @@ public class GameManager {
 				players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 
 
-				myLog.categoryChosen(players);
+				
 
 				// adds card to the winner's pile
 				winnerPile.add(players.get(i).topCard);
@@ -116,18 +111,17 @@ public class GameManager {
 				players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
 
 			}
-
-			 myLog.cardsInPlay(winnerPile);
+//			myLog.categoryChosen(players);
+			myLog.cardsInPlay(winnerPile);
 	
 			// check winnerPile size
 			int cardsToWin = winnerPile.size()-1;
 			System.err.println("There are " + cardsToWin + " cards to play for.");
 			decideWinner(index);
 		} else
-
-			 myLog.close();
 			endGame();
 	}
+	
 	public void roundStarter () {
 		for(;;) {
 		System.out.println("type 'drawcard' to start round");
@@ -141,8 +135,14 @@ public class GameManager {
 			System.out.println("you didnt enter 'drawcard'");
 		}
 	}
+	
+	
 	public void endGame() {
-		System.out.println(players.get(0).getName() + " has won the game!");
+
+		Player gameWinner = players.get(0);
+		myLog.logGameWinner(gameWinner);
+		System.out.println(gameWinner.getName() + " has won the game!");
+		myLog.close();
 		System.exit(1);
 	}
 
@@ -163,7 +163,9 @@ public class GameManager {
 			// winner pile resets
 			Collections.sort(players, Collections.reverseOrder());
 			winner = players.get(0);
-
+			myLog.logRoundWinner(winner);
+			
+			
 			// test for instances where winners are tied
 			// pass to drawHandler method
 			// otherwise, add cards to the winner's deck
@@ -183,9 +185,6 @@ public class GameManager {
 			}
 
 		} else
-
-			myLog.logWinner(winner);
-
 			endGame();
 	}
 
