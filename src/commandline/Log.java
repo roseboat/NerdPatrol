@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Log {
 
-	private final String logFileName = "toptrumps.log";
+	private final String logFileName = "toptrumps.txt";
 	private PrintWriter writeToLog;
 
 	public Log() {
@@ -71,7 +71,6 @@ public class Log {
 
 		writeToLog.write("The communal pile currently contains the following:\n");
 
-		
 		for (int i = 0; i < winnerPile.size(); i++) {
 
 			String communalCard = winnerPile.get(i).cardToString();
