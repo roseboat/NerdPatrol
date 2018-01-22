@@ -25,13 +25,13 @@ public class GameManager {
 		this.deck = new Deck();
 
 		
-//		 myLog = new Log();
-//		 myLog.logDeck(deck);
+		 myLog = new Log();
+		 myLog.logDeck(deck);
 		
 		// deck is shuffled
 		Collections.shuffle(deck.getDeck());
 		
-//		myLog.logShuffle(deck);
+		myLog.logShuffle(deck);
 		
 
 
@@ -46,7 +46,7 @@ public class GameManager {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
 
-//		 myLog.playerDecks(players);
+		 myLog.playerDecks(players);
 		
 	randomiseOrder();
 	}
@@ -107,7 +107,7 @@ public class GameManager {
 				players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 
 
-//				myLog.categoryChosen(players);
+				myLog.categoryChosen(players);
 
 				// adds card to the winner's pile
 				winnerPile.add(players.get(i).topCard);
@@ -117,7 +117,7 @@ public class GameManager {
 
 			}
 
-//			 myLog.cardsInPlay(winnerPile);
+			 myLog.cardsInPlay(winnerPile);
 	
 			// check winnerPile size
 			int cardsToWin = winnerPile.size()-1;
@@ -125,7 +125,7 @@ public class GameManager {
 			decideWinner(index);
 		} else
 
-//			 myLog.close();
+			 myLog.close();
 			endGame();
 	}
 	public void roundStarter () {
@@ -174,7 +174,7 @@ public class GameManager {
 			else {
 				// starting player of next round is the winner
 
-//				myLog.postRound(players);
+				myLog.postRound(players);
 
 				p1 = winner;
 				winner.addToDeck(winnerPile);
@@ -184,7 +184,7 @@ public class GameManager {
 
 		} else
 
-//			myLog.logWinner(winner);
+			myLog.logWinner(winner);
 
 			endGame();
 	}
@@ -192,7 +192,7 @@ public class GameManager {
 	// method handles the situation when there is a draw
 	public void drawHandler() {
 
-//		myLog.communalPile(winnerPile);
+		myLog.communalPile(winnerPile);
 
 		System.out.println("Round ended in a draw. The next round will be started.");
 		initiateRound();

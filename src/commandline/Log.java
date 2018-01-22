@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Log {
 
-	private final String logFileName = "toptrumps.txt";
+	private final String logFileName = "toptrumps.log";
 	private PrintWriter writeToLog;
 
 	public Log() {
