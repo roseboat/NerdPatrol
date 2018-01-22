@@ -24,13 +24,12 @@ public class GameManager {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
 
-		
-		 myLog = new Log();
-		 myLog.logDeck(deck);
-		
+		myLog = new Log();
+		myLog.logDeck(deck);
+
 		// deck is shuffled
 		Collections.shuffle(deck.getDeck());
-		
+
 		myLog.logShuffle(deck);
 
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
@@ -101,9 +100,6 @@ public class GameManager {
 				players.get(i).topCard.setSelectedValue(index);
 				players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 
-
-				
-
 				// adds card to the winner's pile
 				winnerPile.add(players.get(i).topCard);
 
@@ -111,7 +107,7 @@ public class GameManager {
 				players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
 
 			}
-//			myLog.categoryChosen(players);
+		
 			myLog.cardsInPlay(winnerPile);
 	
 			// check winnerPile size
@@ -150,15 +146,17 @@ public class GameManager {
 
 		if (players.size() > 1) {
 
+			String category ="";
 			for (int i = 0; i < players.size(); i++) {
 
 				// displays the category and value of each player's card
-				String category = players.get(i).topCard.getSelectedCategory(index);
+				category = players.get(i).topCard.getSelectedCategory(index);
 				int value = players.get(i).topCard.getSelectedValue();
 
 				System.out.println("Player: " + players.get(i).getName() + " " + category + ":" + value);
-
+				
 			}
+			myLog.categoryChosen(category, players);
 			// cards in winner pile given to the winner of the round
 			// winner pile resets
 			Collections.sort(players, Collections.reverseOrder());

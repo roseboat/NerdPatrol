@@ -98,17 +98,18 @@ public class Log {
 
 	// 6. The category selected and corresponding values when a user or computer
 	// selects a category
-	public void categoryChosen(ArrayList<Player> players) {
+	public void categoryChosen(String category, ArrayList<Player> players) {
 
-		int index = players.get(0).getChosenCat();
-		String category = players.get(0).topCard.getSelectedCategory(index);
+		
+		String c = category;
+		
 		writeToLog.write("The chosen category is: " + category + "\r\n");
 
 		for (int i = 0; i < players.size(); i++) {
-
+		
 			String name = players.get(i).getName();
 			int value = players.get(i).topCard.getSelectedValue();
-			writeToLog.write(name + "'s " + category + " =" + value + "\r\n");
+			writeToLog.write(name + "'s " + c + " =" + value + "\r\n");
 		}
 	}
 
