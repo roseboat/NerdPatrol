@@ -11,7 +11,7 @@ public class GameManager {
 	private Human humanPlayer;
 	private Player p1;
 	// p1 begins each "round" of top trumps
-	private Player p2;
+	private Player currentPlayer;
 	private Player winner;
 	private int numPlayers;
 	private Deck deck;
@@ -49,17 +49,17 @@ public class GameManager {
 	}
 
 	// removes a player from the list
-	public void removeKebab(int i) {
+	public void removePlayer(int i) {
 
 		players.remove(i);
 	}
 
 	public void initiateRound() {
-		roundStarter ();
+//		roundStarter ();
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
-			if (players.get(i).playerDeck.getDeckSize() < 1) {
-				removeKebab(i);
+			if (players.get(i).getDeckSize() < 1) {
+				removePlayer(i);
 				i--;
 			}
 			// all players draw their first card

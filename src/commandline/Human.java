@@ -16,7 +16,6 @@ public class Human extends Player {
 		System.out.println("\r" + getName() + " , please choose your category!");
 		String x = topCard.cardToString();
 		System.out.println(x);
-		chooseCategory();
 	}
 
 	// DANTE HANDLE THE EXCEPTIONS PLEASE
