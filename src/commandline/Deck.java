@@ -57,7 +57,7 @@ public class Deck {
 				int count = 0;
 
 				// reads file, and puts scanner around the reader
-				fr = new FileReader("StarCitizenDeck.txt");
+				fr = new FileReader("testDeck.txt");
 				in = new Scanner(fr);
 
 				// gets data line by line

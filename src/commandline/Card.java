@@ -81,7 +81,7 @@ public class Card implements Comparable<Card> {
 		String line = null;
 
 		try {
-			line = Files.readAllLines(Paths.get("StarCitizenDeck.txt")).get(0);
+			line = Files.readAllLines(Paths.get("testDeck.txt")).get(0);
 			line = line.substring(12);
 			String categoryTitleArray[] = line.split("\\s+");
 			line = categoryTitleArray[0] + "\t" + categoryTitleArray[1] + "\t" + categoryTitleArray[2] + "\t"
