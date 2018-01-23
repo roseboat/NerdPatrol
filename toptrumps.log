@@ -165,61 +165,21 @@ Size    Speed    Range    Firepower    Cargo
 The cards have been shuffled.
 The contents of the deck is as follows:
 
-Constellation
+Vanguard
 Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
+  3        4       5          5          2
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
 
-350r
+Hornet
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  2        5       3          4          1
 
 Sabre
 Size    Speed    Range    Firepower    Cargo   
@@ -229,65 +189,9 @@ m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
 Idris
 Size    Speed    Range    Firepower    Cargo   
   8        2       7         10          6
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
 
 Idris
 Size    Speed    Range    Firepower    Cargo   
@@ -297,6 +201,50 @@ Hurricane
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          5          0
 
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
@@ -304,6 +252,26 @@ Size    Speed    Range    Firepower    Cargo
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
@@ -313,173 +281,141 @@ Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
-Hawk
+Hurricane
 Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
+  2        5       3          5          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
 
 Vanguard
 Size    Speed    Range    Firepower    Cargo   
   3        4       5          5          2
 
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
 
 
 --------------------------------------------------
 User deck: Bob
 
-Constellation
+Vanguard
 Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
+  3        4       5          5          2
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
 
-350r
+Hornet
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  2        5       3          4          1
 
 Sabre
 Size    Speed    Range    Firepower    Cargo   
   2        7       2          5          0
 
-Merchantman
+m50
 Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
+  1       10       2          2          0
 
-Carrack
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
+  8        2       7         10          6
 
-Hurricane
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  8        2       7         10          6
 
 
 --------------------------------------------------
 User deck: Computer 1
 
-m50
+Hurricane
 Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
+  2        5       3          5          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
 Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-
---------------------------------------------------
-User deck: Computer 2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
 
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-
---------------------------------------------------
-User deck: Computer 3
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
 
-m50
+Constellation
 Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-User deck: Computer 4
+  4        5       7          3          4
 
 Hurricane
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          5          0
 
-Avenger
+
+--------------------------------------------------
+User deck: Computer 2
+
+Constellation
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
+  4        5       7          3          4
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
@@ -489,17 +425,9 @@ Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Hornet
+Carrack
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
+  6        2      10          4          6
 
 Hawk
 Size    Speed    Range    Firepower    Cargo   
@@ -507,15 +435,23 @@ Size    Speed    Range    Firepower    Cargo
 
 
 --------------------------------------------------
-The current cards in play are:
+User deck: Computer 3
 
 Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
-m50
+Vanguard
 Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
+  3        4       5          5          2
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
 
 Hornet
 Size    Speed    Range    Firepower    Cargo   
@@ -529,14 +465,78 @@ Constellation
 Size    Speed    Range    Firepower    Cargo   
   4        5       7          3          4
 
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
 
 --------------------------------------------------
-The chosen category is: Size
-Computer 2's Size =10
-Computer 1's Size =1
-Computer 3's Size =2
-Computer 4's Size =2
-Bob's Size =4
+User deck: Computer 4
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+
+--------------------------------------------------
+The chosen category is: Range
+Computer 2's Range =7
+Computer 3's Range =6
+Computer 4's Range =5
+Computer 1's Range =3
+Bob's Range =5
 
 The winner of the round is Computer 2 !
 
@@ -545,85 +545,165 @@ Post Round Decks:
 
 User deck: Computer 2
 
-Hawk
+m50
 Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
+  1       10       2          2          0
 
 350r
 Size    Speed    Range    Firepower    Cargo   
   1        9       2          3          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-
---------------------------------------------------
-User deck: Bob
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-
---------------------------------------------------
-User deck: Computer 3
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
 
 Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+
+--------------------------------------------------
+User deck: Computer 3
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Bob
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
 
 m50
 Size    Speed    Range    Firepower    Cargo   
@@ -633,41 +713,77 @@ Vanguard
 Size    Speed    Range    Firepower    Cargo   
   3        4       5          5          2
 
-Idris
+Sabre
 Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-User deck: Computer 4
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
+  2        7       2          5          0
 
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =10
+Computer 3's Speed =4
+Computer 4's Speed =7
+Bob's Speed =5
+Computer 1's Speed =9
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Vanguard
 Size    Speed    Range    Firepower    Cargo   
   3        4       5          5          2
 
-Hawk
+Hurricane
 Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
 
 
 --------------------------------------------------
@@ -677,33 +793,9 @@ Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
 Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-
---------------------------------------------------
-The current cards in play are:
 
 Hawk
 Size    Speed    Range    Firepower    Cargo   
@@ -713,6 +805,186 @@ Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
 
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Bob
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+
+--------------------------------------------------
+User deck: Computer 3
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =9
+Computer 1's Speed =5
+Computer 4's Speed =9
+Bob's Speed =3
+Computer 3's Speed =1
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+The communal pile currently contains the following:
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+--------------------------------------------------
+The current cards in play are:
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
@@ -721,18 +993,190 @@ Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
+
+--------------------------------------------------
+The chosen category is: Size
+Computer 2's Size =10
+Computer 4's Size =6
+Computer 1's Size =6
+Bob's Size =2
+Computer 3's Size =2
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
 
 --------------------------------------------------
-The chosen category is: Firepower
-Computer 2's Firepower =4
-Bob's Firepower =6
-Computer 3's Firepower =4
-Computer 4's Firepower =3
-Computer 1's Firepower =3
+User deck: Computer 4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+
+--------------------------------------------------
+User deck: Computer 3
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =5
+Computer 4's Speed =2
+Computer 1's Speed =3
+Bob's Speed =7
+Computer 3's Speed =5
 
 The winner of the round is Bob !
 
@@ -741,53 +1185,33 @@ Post Round Decks:
 
 User deck: Bob
 
-350r
+m50
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  1       10       2          2          0
 
-Hurricane
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  8        2       7         10          6
 
-Sabre
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  8        2       7         10          6
 
 
 --------------------------------------------------
 User deck: Computer 2
 
-Idris
+Avenger
 Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
+  2        5       4          3          2
 
 Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
 
-Sabre
+Hawk
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  1        3       2          4          0
 
 Constellation
 Size    Speed    Range    Firepower    Cargo   
@@ -797,13 +1221,81 @@ Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
 m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+
+--------------------------------------------------
+User deck: Computer 3
 
 Hurricane
 Size    Speed    Range    Firepower    Cargo   
@@ -813,17 +1305,57 @@ Constellation
 Size    Speed    Range    Firepower    Cargo   
   4        5       7          3          4
 
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
 
 --------------------------------------------------
-User deck: Computer 3
+User deck: Computer 1
 
-Idris
+Merchantman
 Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
+  7        3       5          6          8
 
-Orion
+Constellation
 Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
+  4        5       7          3          4
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The current cards in play are:
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
@@ -833,102 +1365,14 @@ m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
 
 --------------------------------------------------
-User deck: Computer 4
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-
---------------------------------------------------
-User deck: Computer 1
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-
---------------------------------------------------
-The current cards in play are:
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-
---------------------------------------------------
-The chosen category is: Cargo
-Bob's Cargo =0
-Computer 2's Cargo =6
-Computer 3's Cargo =6
-Computer 4's Cargo =2
-Computer 1's Cargo =9
+The chosen category is: Size
+Bob's Size =1
+Computer 2's Size =2
+Computer 3's Size =2
+Computer 1's Size =7
+Computer 4's Size =1
 
 The winner of the round is Computer 1 !
 
@@ -941,21 +1385,9 @@ Constellation
 Size    Speed    Range    Firepower    Cargo   
   4        5       7          3          4
 
-Carrack
+Hurricane
 Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
+  2        5       3          5          0
 
 
 --------------------------------------------------
@@ -965,121 +1397,81 @@ Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
 
-Sabre
+Hawk
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
+  1        3       2          4          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Vanguard
 Size    Speed    Range    Firepower    Cargo   
   3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
 
 350r
 Size    Speed    Range    Firepower    Cargo   
   1        9       2          3          0
 
-Constellation
+350r
 Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-
---------------------------------------------------
-User deck: Computer 3
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-User deck: Computer 4
+  1        9       2          3          0
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Hornet
+350r
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-
---------------------------------------------------
-User deck: Bob
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
+  1        9       2          3          0
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
 
-Hurricane
+Carrack
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
+  6        2      10          4          6
 
 Hornet
 Size    Speed    Range    Firepower    Cargo   
@@ -1089,9 +1481,61 @@ Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
+
+--------------------------------------------------
+User deck: Computer 3
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
 
 
 --------------------------------------------------
@@ -1105,618 +1549,1151 @@ Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
 
-Orion
+Constellation
 Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
+  4        5       7          3          4
 
-Avenger
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
+  8        2       7         10          6
 
-Hurricane
+Hawk
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  1        3       2          4          0
 
 
 --------------------------------------------------
 The chosen category is: Range
 Computer 1's Range =7
 Computer 2's Range =10
-Computer 3's Range =6
-Computer 4's Range =4
-Bob's Range =3
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-Post Round Decks:
-
-User deck: Computer 2
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-
---------------------------------------------------
-User deck: Computer 1
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-
---------------------------------------------------
-User deck: Computer 3
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-User deck: Computer 4
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-
---------------------------------------------------
-User deck: Bob
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-
---------------------------------------------------
-The current cards in play are:
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-
---------------------------------------------------
-The chosen category is: Speed
-Computer 2's Speed =7
-Computer 1's Speed =2
-Computer 3's Speed =3
-Computer 4's Speed =5
-Bob's Speed =7
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-The communal pile currently contains the following:
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
---------------------------------------------------
-The current cards in play are:
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-
---------------------------------------------------
-The chosen category is: Range
-Computer 2's Range =5
-Bob's Range =5
-Computer 4's Range =2
-Computer 3's Range =2
-Computer 1's Range =2
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-The communal pile currently contains the following:
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
---------------------------------------------------
-The current cards in play are:
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-
---------------------------------------------------
-The chosen category is: Speed
-Computer 2's Speed =9
-Bob's Speed =2
-Computer 4's Speed =4
-Computer 3's Speed =4
-Computer 1's Speed =7
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-Post Round Decks:
-
-User deck: Computer 2
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-
---------------------------------------------------
-User deck: Computer 1
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-
---------------------------------------------------
-User deck: Computer 4
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-
---------------------------------------------------
-User deck: Computer 3
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-User deck: Bob
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-
---------------------------------------------------
-The current cards in play are:
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-
---------------------------------------------------
-The chosen category is: Range
-Computer 2's Range =7
-Computer 1's Range =2
-Computer 4's Range =2
 Computer 3's Range =7
-Bob's Range =3
+Bob's Range =7
+Computer 4's Range =2
 
 The winner of the round is Computer 2 !
 
 --------------------------------------------------
-The communal pile currently contains the following:
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+Post Round Decks:
 
---------------------------------------------------
-The current cards in play are:
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
+User deck: Computer 2
 
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
 
-Idris
+Constellation
 Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  4        5       7          3          4
 
 Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
-Hawk
+Vanguard
 Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
 
 350r
 Size    Speed    Range    Firepower    Cargo   
   1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+User deck: Computer 3
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The chosen category is: Firepower
+Computer 2's Firepower =4
+Computer 1's Firepower =5
+Computer 3's Firepower =5
+Bob's Firepower =10
+Computer 4's Firepower =6
+
+The winner of the round is Bob !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Bob
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+
+--------------------------------------------------
+User deck: Computer 4
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+User deck: Computer 3
+
+
+--------------------------------------------------
+User deck: Computer 2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+
+--------------------------------------------------
+The chosen category is: Size
+Bob's Size =2
+Computer 1's Size =1
+Computer 2's Size =4
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
 
 
 --------------------------------------------------
 The chosen category is: Size
 Computer 2's Size =10
-Bob's Size =1
+Bob's Size =8
+Computer 1's Size =2
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+
+--------------------------------------------------
+User deck: Bob
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+The chosen category is: Range
+Computer 2's Range =5
+Bob's Range =2
+Computer 1's Range =3
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =5
+Computer 1's Speed =3
+Bob's Speed =7
+
+The winner of the round is Bob !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Bob
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Computer 2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Computer 1
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+
+--------------------------------------------------
+The chosen category is: Size
+Bob's Size =2
+Computer 2's Size =3
 Computer 1's Size =1
 
 The winner of the round is Computer 2 !
@@ -1730,93 +2707,149 @@ m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
-Hurricane
+350r
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  1        9       2          3          0
 
-Constellation
+350r
 Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
+  1        9       2          3          0
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Hurricane
+350r
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  1        9       2          3          0
 
-Sabre
+Merchantman
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
 
 Carrack
 Size    Speed    Range    Firepower    Cargo   
   6        2      10          4          6
 
-Merchantman
+Carrack
 Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
+  6        2      10          4          6
 
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
-Sabre
+Avenger
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
+  2        5       4          3          2
 
-Vanguard
+Constellation
 Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
+  4        5       7          3          4
 
-Merchantman
+Carrack
 Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
 
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
 
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
 m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
-350r
+Constellation
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  4        5       7          3          4
 
-350r
+Orion
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+ 10        1       6          2          9
 
-Carrack
+Idris
 Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
 
 Vanguard
 Size    Speed    Range    Firepower    Cargo   
   3        4       5          5          2
 
-Vanguard
+Hawk
 Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
 
 Sabre
 Size    Speed    Range    Firepower    Cargo   
@@ -1824,43 +2857,7 @@ Size    Speed    Range    Firepower    Cargo
 
 
 --------------------------------------------------
-User deck: Bob
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-
---------------------------------------------------
 User deck: Computer 1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
 
 
 --------------------------------------------------
@@ -1870,20 +2867,15 @@ m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
-Merchantman
+Hawk
 Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
+  1        3       2          4          0
 
 
 --------------------------------------------------
 The chosen category is: Speed
 Computer 2's Speed =10
 Bob's Speed =3
-Computer 1's Speed =2
 
 The winner of the round is Computer 2 !
 
@@ -1892,301 +2884,179 @@ Post Round Decks:
 
 User deck: Computer 2
 
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
-Hurricane
+350r
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  1        9       2          3          0
 
-Constellation
+350r
 Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
+  1        9       2          3          0
 
 Avenger
 Size    Speed    Range    Firepower    Cargo   
   2        5       4          3          2
 
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
 350r
 Size    Speed    Range    Firepower    Cargo   
   1        9       2          3          0
 
-350r
+Merchantman
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
+  7        3       5          6          8
 
 Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
 
-350r
+Avenger
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
 
 
 --------------------------------------------------
 User deck: Bob
 
-Hornet
+Hurricane
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
+  2        5       3          5          0
 
-Avenger
+Sabre
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-
---------------------------------------------------
-User deck: Computer 1
+  2        7       2          5          0
 
 Idris
 Size    Speed    Range    Firepower    Cargo   
   8        2       7         10          6
 
-Avenger
+Merchantman
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-
---------------------------------------------------
-The current cards in play are:
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-
---------------------------------------------------
-The chosen category is: Speed
-Computer 2's Speed =5
-Bob's Speed =5
-Computer 1's Speed =2
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-The communal pile currently contains the following:
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
---------------------------------------------------
-The current cards in play are:
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
+  7        3       5          6          8
 
 Hurricane
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          5          0
 
-Avenger
+Merchantman
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
+  7        3       5          6          8
 
-Avenger
+Sabre
 Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
+  2        7       2          5          0
 
-
---------------------------------------------------
-The chosen category is: Speed
-Computer 2's Speed =5
-Bob's Speed =5
-Computer 1's Speed =5
-
-The winner of the round is Computer 2 !
-
---------------------------------------------------
-The communal pile currently contains the following:
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
 
 --------------------------------------------------
 The current cards in play are:
 
-Hornet
+Vanguard
 Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Hornet
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          4          1
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
+  3        4       5          5          2
 
 Hurricane
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          5          0
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
 
 
 --------------------------------------------------
 The chosen category is: Range
-Computer 2's Range =7
-Bob's Range =4
-Computer 1's Range =6
+Computer 2's Range =5
+Bob's Range =3
 
 The winner of the round is Computer 2 !
 
@@ -2195,125 +3065,205 @@ Post Round Decks:
 
 User deck: Computer 2
 
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Orion
-Size    Speed    Range    Firepower    Cargo   
- 10        1       6          2          9
-
-Avenger
-Size    Speed    Range    Firepower    Cargo   
-  2        5       4          3          2
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
-
 Sabre
 Size    Speed    Range    Firepower    Cargo   
   2        7       2          5          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Merchantman
-Size    Speed    Range    Firepower    Cargo   
-  7        3       5          6          8
 
 Hornet
 Size    Speed    Range    Firepower    Cargo   
   2        5       3          4          1
 
-Sabre
+350r
 Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
+  1        9       2          3          0
 
-Vanguard
+350r
 Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
 
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-350r
-Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
-
-Carrack
-Size    Speed    Range    Firepower    Cargo   
-  6        2      10          4          6
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Vanguard
-Size    Speed    Range    Firepower    Cargo   
-  3        4       5          5          2
-
-Sabre
-Size    Speed    Range    Firepower    Cargo   
-  2        7       2          5          0
-
-Constellation
-Size    Speed    Range    Firepower    Cargo   
-  4        5       7          3          4
-
-m50
-Size    Speed    Range    Firepower    Cargo   
-  1       10       2          2          0
-
-Hawk
-Size    Speed    Range    Firepower    Cargo   
-  1        3       2          4          0
-
-Idris
-Size    Speed    Range    Firepower    Cargo   
-  8        2       7         10          6
-
-Hurricane
-Size    Speed    Range    Firepower    Cargo   
-  2        5       3          5          0
 
 Orion
 Size    Speed    Range    Firepower    Cargo   
  10        1       6          2          9
 
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
 Hawk
 Size    Speed    Range    Firepower    Cargo   
   1        3       2          4          0
 
-350r
+Avenger
 Size    Speed    Range    Firepower    Cargo   
-  1        9       2          3          0
+  2        5       4          3          2
 
 m50
 Size    Speed    Range    Firepower    Cargo   
   1       10       2          2          0
 
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
 Merchantman
 Size    Speed    Range    Firepower    Cargo   
   7        3       5          6          8
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =7
+Bob's Speed =7
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+The communal pile currently contains the following:
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+--------------------------------------------------
+The current cards in play are:
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
 
 Idris
 Size    Speed    Range    Firepower    Cargo   
@@ -2321,7 +3271,884 @@ Size    Speed    Range    Firepower    Cargo
 
 
 --------------------------------------------------
-User deck: Computer 1
+The chosen category is: Speed
+Computer 2's Speed =5
+Bob's Speed =2
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =9
+Bob's Speed =3
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+
+--------------------------------------------------
+User deck: Bob
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =9
+Bob's Speed =5
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+User deck: Bob
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =5
+Bob's Speed =3
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+
+--------------------------------------------------
+User deck: Bob
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The current cards in play are:
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+
+--------------------------------------------------
+The chosen category is: Speed
+Computer 2's Speed =9
+Bob's Speed =7
+
+The winner of the round is Computer 2 !
+
+--------------------------------------------------
+Post Round Decks:
+
+User deck: Computer 2
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Carrack
+Size    Speed    Range    Firepower    Cargo   
+  6        2      10          4          6
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Constellation
+Size    Speed    Range    Firepower    Cargo   
+  4        5       7          3          4
+
+Orion
+Size    Speed    Range    Firepower    Cargo   
+ 10        1       6          2          9
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+m50
+Size    Speed    Range    Firepower    Cargo   
+  1       10       2          2          0
+
+Hawk
+Size    Speed    Range    Firepower    Cargo   
+  1        3       2          4          0
+
+Vanguard
+Size    Speed    Range    Firepower    Cargo   
+  3        4       5          5          2
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Sabre
+Size    Speed    Range    Firepower    Cargo   
+  2        7       2          5          0
+
+Hornet
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          4          1
+
+Idris
+Size    Speed    Range    Firepower    Cargo   
+  8        2       7         10          6
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
+
+350r
+Size    Speed    Range    Firepower    Cargo   
+  1        9       2          3          0
+
+Hurricane
+Size    Speed    Range    Firepower    Cargo   
+  2        5       3          5          0
+
+Avenger
+Size    Speed    Range    Firepower    Cargo   
+  2        5       4          3          2
+
+Merchantman
+Size    Speed    Range    Firepower    Cargo   
+  7        3       5          6          8
 
 
 --------------------------------------------------
