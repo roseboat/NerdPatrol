@@ -93,12 +93,14 @@ public class GameManager {
 
 				// displays starting player's card
 				p1.promptUser();
+				
+			// first player selects the category for all players
+			// humans type in input, NPC always selects highest figure
+			// using index, it corresponds to the index of the value held in the cardValues
+			// array in Card
+			int index = p1.chooseCategory();
+			System.out.println("The chosen category is "+ deck.getCategories()[index] );
 
-				// first player selects the category for all players
-				// humans type in input, NPC always selects highest figure
-				// using index, it corresponds to the index of the value held in the cardValues
-				// array in Card
-				int index = p1.chooseCategory();
 
 				for (int i = 0; i < players.size(); i++) {
 
@@ -129,7 +131,7 @@ public class GameManager {
 				endGame();
 		}
 	}
-	
+	// DO WE NEED THIS?
 	public void roundStarter () {
 		for(;;) {
 		System.out.println("type 'drawcard' to start round");

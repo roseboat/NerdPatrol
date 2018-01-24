@@ -53,12 +53,18 @@ public class Deck {
 	}
 
 	
-	// Calvin added this class
+	/**
+	 * Adds a card to the end of the deck.
+	 * 
+	 * @param card, Card object to be appended
+	 * */
 	public void addCard (Card card)	{
 		deck.add(card);
 	}
 
-	// reads data in from text file, sends each line from text file into
+	/**
+	 * Loads information from the deck 
+	 * */
 	private void loadDeck() {
 
 		FileReader fr = null;
