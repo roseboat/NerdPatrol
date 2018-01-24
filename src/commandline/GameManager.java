@@ -133,13 +133,35 @@ public class GameManager {
 	}
 	
 	
-	public void endGame() {
+/*	public void endGame() {
 
 		Player gameWinner = players.get(0);
 		myLog.logGameWinner(gameWinner);
 		System.out.println(gameWinner.getName() + " has won the game!");
 		myLog.close();
 		System.exit(1);
+	}*/
+	//old Endgame method only commented out
+	//incase new one buggers myLog.
+	//new one below
+	public void endGame() {
+		Player gameWinner = players.get(0);
+		myLog.logGameWinner(gameWinner);
+		myLog.close();
+		System.out.println(players.get(0).getName() + " has won the game!");
+		for (;;) {
+			System.out.println("press 'y' to play again");
+			Scanner sc = new Scanner(System.in);
+			String userInput = sc.nextLine();
+			if (userInput.matches("y")) {
+
+				GameManager gm = new GameManager("bob", 5);
+				while (players.size() > 1)
+					gm.initiateRound();
+			} else
+				System.out.println("game ended");
+			System.exit(1);
+		}	
 	}
 
 	public void decideWinner(int index) {
