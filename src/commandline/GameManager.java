@@ -124,7 +124,7 @@ public class GameManager {
 			myLog.cardsInPlay(winnerPile);
 	
 			// check winnerPile size
-			int cardsToWin = winnerPile.size()-1;
+			int cardsToWin = winnerPile.size();
 			System.err.println("There are " + cardsToWin + " cards to play for.");
 			decideWinner(index);
 			
