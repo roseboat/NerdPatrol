@@ -49,6 +49,7 @@ public class GameManager {
 		 myLog.playerDecks(players);
 		
 	randomiseOrder();
+	initiateRound();
 	}
 
 	public void checkDecks() {
@@ -70,6 +71,7 @@ public class GameManager {
 	}
 
 	public void initiateRound() {
+		while (players.size() > 1) {
 //		roundStarter();
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
@@ -126,7 +128,7 @@ public class GameManager {
 			
 		} else
 			endGame();
-	}
+	}}
 	
 	public void roundStarter () {
 		for(;;) {

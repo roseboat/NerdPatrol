@@ -19,9 +19,9 @@ public class TopTrumpsCLIApplication {
 	 */
 	public static void main(String[] args) {
 
-		boolean writeGameLogsToFile = false; // Should we write game logs to file?
+		/*boolean writeGameLogsToFile = false; // Should we write game logs to file?
 		if (args[0].equalsIgnoreCase("true"))
-			writeGameLogsToFile = true; // Command line selection
+			writeGameLogsToFile = true; */// Command line selection
 
 		// State
 		boolean userWantsToQuit = false; // flag to check whether the user wants to quit the application
@@ -37,11 +37,13 @@ public class TopTrumpsCLIApplication {
 
 			if (userInput.matches("play")) {
 				GameManager gm = new GameManager("Human Player", 5);
-				while (players.size() > 1)
-					gm.initiateRound();
-			} else if (userInput.matches("stats")) {
 
-			} else if (userInput.matches("exit")) {
+			} else if (userInput.matches("stats")) {
+				Database db = new Database();
+				System.out.println(db.getGameStatistics());
+				db.closeConnection();
+				db = null;
+			} else if (userInput.matches("quit")) {
 				System.out.println("Exiting...");
 				userWantsToQuit = true;
 				System.exit(1);
