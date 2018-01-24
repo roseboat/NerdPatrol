@@ -43,7 +43,6 @@ public class Human extends Player {
 		Scanner sc = new Scanner(System.in);
 		int index =0;
 		int choice=0;
-		boolean allowedChoice = (choice > 0 && choice < 6);
 		
 		for (;;) {
 			
@@ -51,10 +50,9 @@ public class Human extends Player {
 				choice = sc.nextInt();
 				if (choice > 0 && choice < 6) {
 					System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
-					setChosenCat(topCard.getAllValues()[choice - 1]);
 					index = choice -1;
+					setChosenCat(topCard.getAllValues()[index]);
 					return index;
-					
 				}
 				else {
 				System.out.println("Please enter a number between 1 and 5");
@@ -69,13 +67,7 @@ public class Human extends Player {
 			}
 		}
 		
-		/*System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
-		setChosenCat(topCard.getAllValues()[choice - 1]);*/
 		
-		
-	//	return index;
-		
-//		
 //		do {
 //				choice = sc.nextInt();
 //				if (choice > 0 && choice < 6) {
