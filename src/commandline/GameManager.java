@@ -168,23 +168,7 @@ public class GameManager {
 		numDraws = 0;
 		for (int i = 0; i < playerWinCounts.length; i++)
 			playerWinCounts[i]=0;
-		
-		
-		
-		for (;;) {
-			System.out.println("press 'y' to play again");
-			Scanner sc = new Scanner(System.in);
-			String userInput = sc.nextLine();
-			if (userInput.matches("y")) {
-
-				GameManager gm = new GameManager("bob", 5);
-				while (players.size() > 1)
-					gm.initiateRound();
-			} else
-				System.out.println("game ended");
-			System.exit(1);
 			
-		}	
 	}
 
 	public void decideWinner(int index) {
