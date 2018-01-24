@@ -19,7 +19,7 @@ public class Database {
 		String databaseName = "m_17_2354535k";
 		String username = "m_17_2354535k";
 		String password = "2354535k";
-
+		
 		try {
 			connection = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/" + databaseName,
 					username, password);
