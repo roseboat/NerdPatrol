@@ -100,6 +100,7 @@ public class GameManager {
 			// using index, it corresponds to the index of the value held in the cardValues
 			// array in Card
 			int index = p1.chooseCategory();
+			System.out.println("The chosen category is "+ deck.getCategories()[index] );
 
 			for (int i = 0; i < players.size(); i++) {
 
