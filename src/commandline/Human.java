@@ -1,6 +1,7 @@
 package commandline;
 
 import java.io.InputStreamReader;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import java.io.InputStreamReader;
@@ -36,18 +37,79 @@ public class Human extends Player {
 	}
 
 	public int chooseCategory() {
-		Scanner sc = new Scanner(new InputStreamReader(System.in));
-		int choice = sc.nextInt();
-
-		while (choice < 1 || choice > 5) {
-			System.out.println("The number chosen is not an allowed value. Please repick the category");
-			choice = sc.nextInt();
+		Scanner sc = new Scanner(System.in);
+		int index =0;
+		int choice=0;
+		boolean allowedChoice = (choice > 0 && choice < 6);
+		
+		for (;;) {
+			
+			try{
+				choice = sc.nextInt();
+				if (choice > 0 && choice < 6) {
+					System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+					setChosenCat(topCard.getAllValues()[choice - 1]);
+					index = choice -1;
+					return index;
+					
+				}
+				else {
+				System.out.println("Please enter a number between 1 and 5");
+				chooseCategory();
+				return index;
+				}
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Please enter a number");
+				chooseCategory();
+				return index;
+			}
 		}
-		System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
-		setChosenCat(topCard.getAllValues()[choice - 1]);
-
-		int index = choice - 1;
-		return index;
+		
+		/*System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+		setChosenCat(topCard.getAllValues()[choice - 1]);*/
+		
+		
+	//	return index;
+		
+//		
+//		do {
+//				choice = sc.nextInt();
+//				if (choice > 0 && choice < 6) {
+//					System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+//				setChosenCat(topCard.getAllValues()[choice - 1]);
+//					allowedChoice = true;
+//				}
+//				else {
+//					System.out.println("Number not in allowed range");
+//					break;}
+//			catch (InputMismatchException e) {
+//				System.out.println("Enter a number not a string");
+//				break;
+//			}
+//		} while (!allowedChoice);
+//		index = choice -1;
+//		return index;
+//		
+//	
+//		try {
+//		choice = sc.nextInt();
+//		while (!sc.hasNextInt() || choice < 1 || choice > 5) {
+//			System.out.println("Please choose a number between 1 and 5 corresponding to your chosen category");
+//		}
+//		}
+//		catch (InputMismatchException e) {
+//			System.out.println("Please choose a number between 1 and 5 corresponding to your chosen category");
+//		}
+//		
+//		if (choice > 0 && choice < 6) 
+//		System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+//		setChosenCat(topCard.getAllValues()[choice - 1]);
+//
+//		index = choice - 1;
+//		return index;
+		
+	}
 
 		// do {
 		// switch (choice){
@@ -79,7 +141,5 @@ public class Human extends Player {
 		// choice = sc.nextInt();
 		// }
 		// } while (choice < 1 || choice > 5);
-
-	}
-
 }
+

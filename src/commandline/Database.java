@@ -159,7 +159,7 @@ public class Database {
 		
 		Statement stmt = null;
 		int result = 0;
-		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner = 'player'";
+		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner <> 'Computer 1' and winner <> 'Computer 2' and winner <> 'Computer 3' and winner <> 'Computer 4'";
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -179,7 +179,7 @@ public class Database {
 		
 		Statement stmt = null;
 		int result = 0;
-		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner = 'computer1' or winner = 'computer2' or winner = 'computer3' or winner = 'computer4'";
+		String query = "SELECT COUNT(gamestats.winner) AS target FROM toptrumps.gamestats WHERE winner = 'Computer 1' or winner = 'Computer 2' or winner = 'Computer 3' or winner = 'Computer 4'";
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
