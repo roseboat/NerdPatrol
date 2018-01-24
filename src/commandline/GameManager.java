@@ -168,23 +168,7 @@ public class GameManager {
 		numDraws = 0;
 		for (int i = 0; i < playerWinCounts.length; i++)
 			playerWinCounts[i]=0;
-		
-		
-		
-		for (;;) {
-			System.out.println("press 'y' to play again");
-			Scanner sc = new Scanner(System.in);
-			String userInput = sc.nextLine();
-			if (userInput.matches("y")) {
-
-				GameManager gm = new GameManager("bob", 5);
-				while (players.size() > 1)
-					gm.initiateRound();
-			} else
-				System.out.println("game ended");
-			System.exit(1);
 			
-		}	
 	}
 
 	public void decideWinner(int index) {
@@ -279,18 +263,6 @@ public class GameManager {
 			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
 					playerWinCounts[3], playerWinCounts[4]);
 		database.closeConnection();	
-	}
-	
-	
-	// every time it's the human player who starts, the deck is shuffled and divided
-	// in the exact same way
-
-	public static void main(String args[]) {
-
-		GameManager gm = new GameManager("Bob", 5);
-
-		while (players.size() > 1)
-			gm.initiateRound();
 	}
 
 }
