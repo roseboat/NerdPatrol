@@ -10,8 +10,7 @@ public class Computer extends Player {
 	public void promptUser() {
 		
 		StringBuilder computerTurn = new StringBuilder(name + "'s top card:\r\n");
-		String computerCard = topCard.cardToString();
-		computerTurn.append(computerCard);
+		computerTurn.append(topCard.cardToString());
 		System.out.println(computerTurn);
 	
 }
@@ -33,6 +32,4 @@ public class Computer extends Player {
 	    setChosenCat(topCard.getAllValues()[index]);
 		return index;
 	}
-	
-	
 }

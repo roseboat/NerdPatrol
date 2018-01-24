@@ -15,11 +15,11 @@ public class Human extends Player {
 
 	public void promptUser() {
 		
-		System.out.println("\r" + getName() + " , please choose your value!\r\n");
-		StringBuilder x = new StringBuilder(topCard.cardToString());
-		x.append(String.format("\r\n%5s%5s%5s%8s%5s\r\n", "(1)", "(2)", "(3)",
+		StringBuilder humanTurn = new StringBuilder(name + ", please choose your value!\r\n");
+		humanTurn.append(topCard.cardToString());
+		humanTurn.append(String.format("\r\n%5s%5s%5s%8s%5s\r\n", "(1)", "(2)", "(3)",
 				"(4)", "(5)"));
-		System.out.println(x);
+		System.out.println(humanTurn);
 	}
 
 	// DANTE HANDLE THE EXCEPTIONS PLEASE
