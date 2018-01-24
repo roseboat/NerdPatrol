@@ -53,6 +53,10 @@ public class Log {
 			writeToLog.write("User deck: " + name + "\r\n\r\n");
 			ArrayList<Card> deck = players.get(i).playerDeck.getDeck();
 
+			if (deck.size() == 0) {
+				writeToLog.write(name + " has no more cards!");
+			}
+			
 			for (int j = 0; j < deck.size(); j++) {
 
 				String userCard = deck.get(j).cardToString();

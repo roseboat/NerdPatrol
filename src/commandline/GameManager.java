@@ -92,8 +92,13 @@ public class GameManager {
 		if (players.size() > 1) {
 
 			// displays starting player's card
-			if (p1 == humanPlayer)
-				p1.promptUser();
+			if (p1 == humanPlayer) {
+				p1.promptUser();}
+			else {
+				String computerCard = p1.topCard.cardToString();
+				System.out.println(computerCard);
+			}
+			
 
 			// first player selects the category for all players
 			// humans type in input, NPC always selects highest figure

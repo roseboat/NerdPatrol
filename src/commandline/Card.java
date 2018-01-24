@@ -5,60 +5,61 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+/**
+ * Card class models a single card within the deck. It holds the information
+ * associated with each category in its instance variables.
+ * 
+ * @author Chad Gill
+ * */
+
 public class Card implements Comparable<Card> {
 	private String name;
-	private int[] cardValues = new int[5];
+	private int[] cardValues;
 	private int selectedValue;
 	private String[] categories;
+	
+	private final int NUMBER_OF_CATEGORIES = 5;
 
-	public Card(String name, int a, int b, int c, int d, int e) {
+//	//Is this constructor ever used?
+//	public Card(String name, int a, int b, int c, int d, int e) {
+//
+//		this.name = name;
+//		this.cardValues = new int[] { a, b, c, d, e };
+//
+//	}
 
-		this.name = name;
-		this.cardValues = new int[] { a, b, c, d, e };
-
-	}
-
-	// Additional constructor which can take an a single input line ~D
+	/**
+	 * Card constructor instantiates all the category values in an array and the category names.
+	 * 
+	 * @param line, String of numbers separated by whitespace representing categories 
+	 * @param categories, array of category names
+	 * @return nothing
+	 * */
 	public Card(String line, String[] categories) {
 		Scanner sc = new Scanner(line);
 		this.name = sc.next();
 		this.categories = categories;
+		this.cardValues = new int[NUMBER_OF_CATEGORIES];
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < NUMBER_OF_CATEGORIES; i++) {
 			cardValues[i] = sc.nextInt();
 		}
 
 		sc.close();
 	}
 
-
-	public String getName() {
-		return name;
-	}
 	
-	
-	public int[] getAllValues() {
-		return this.cardValues;
-	}
-	
-	// retrieves the category name (of the category chose)
-	public String getSelectedCategory (int index)	{
-		return categories[index];
-	}
-	
-	// retrieves the selected value (of the category chose)
-	public int getSelectedValue()	{
-		return selectedValue;
-	}
-	
-	// sets the selected value (of the category chosen)
-	public void setSelectedValue(int index) {
-		this.selectedValue = cardValues[index];
-	}
-
-	// method to compare all cards of pickedCategory in descending order.
-	// pickedCategory will be method from PlayerClass.
-
+	/**
+	 * CompareTo method from comparable interface. Players set their selected value
+	 * and compare cards via this method. It is configured this way to sort arrays of
+	 * Card objects in descending order.
+	 * 
+	 * @param other, Card object to be compared against
+	 * @return 0, Cards are equal
+	 * @return -1, Passed Card is larger
+	 * @return 1, This Card is larger
+	 * */
+	@Override
 	public int compareTo(Card other) {
 		if (this.selectedValue == other.selectedValue) {
 			return 0;
@@ -68,7 +69,11 @@ public class Card implements Comparable<Card> {
 			return 1;
 	}
 
-	// method to show current card to user
+	/**
+	 * Creates a string representation of the card.
+	 * 
+	 * @return showCard, String representation of the card
+	 * */
 	public String cardToString() {
 		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" +String.format("%3s%9s%8s%11s%11s", 
 				cardValues[0],cardValues[1],cardValues[2],
@@ -91,10 +96,51 @@ public class Card implements Comparable<Card> {
 		}
 		return line;
 	}
+	
+	/**
+	 * Returns the name of the card
+	 * 
+	 * @return name, String name of card
+	 * */
+	public String getName() {
+		return name;
+	}
+	
+	/**
+	 * Returns the array of category values
+	 * 
+	 * @return cardValues, array of values for categories
+	 * */
+	public int[] getAllValues() {
+		return this.cardValues;
+	}
+	
 
-	/*
-	 * public static void main(String[] args) { Card plz = new Card("dickfarts", 17,
-	 * 2, 13, 4, 23); // the parameters should read from the starcitizen.txt
-	 * System.out.println(plz.cardToString()); }
-	 */
+	/**
+	 *Returns the name of the category at selected index
+	 *
+	 *@param index, int corresponding to the index at the desired location
+	 *@return name of the category at selected index
+	 * */
+	public String getSelectedCategory (int index)	{
+		return categories[index];
+	}
+	
+	/**
+	 * Returns the selected value of the card
+	 * 
+	 * @return value of card selected by player
+	 * */
+	public int getSelectedValue()	{
+		return selectedValue;
+	}
+	
+	/**
+	 * Set the value selected by the player
+	 * 
+	 * @param index, integer corresponding to the index of the location
+	 * */
+	public void setSelectedValue(int index) {
+		this.selectedValue = cardValues[index];
+	}
 }
