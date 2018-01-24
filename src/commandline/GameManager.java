@@ -13,6 +13,7 @@ public class GameManager {
 	// p1 begins each "round" of top trumps
 	private Player currentPlayer;
 	private Player winner;
+	private Player gameWinner;
 	private int numPlayers;
 	private Deck deck;
 	private ArrayList<Card> winnerPile = new ArrayList<Card>();
@@ -154,21 +155,19 @@ public class GameManager {
 	//incase new one buggers myLog.
 	//new one below
 	public void endGame() {
-		Player gameWinner = players.get(0);
+		gameWinner = players.get(0);
 		myLog.logGameWinner(gameWinner);
 		myLog.close();
-		System.out.println(players.get(0).getName() + " has won the game!");
+		System.out.println(gameWinner.getName() + " has won the game!");
 		
 		//save game stats here
-		database = new Database();
-		
-		
-		
+		saveGameStats();
 		
 		//reset database statistics
 		numRounds = 0;
 		numDraws = 0;
-		//RESET INT ARRAY 
+		for (int i = 0; i < playerWinCounts.length; i++)
+			playerWinCounts[i]=0;
 		
 		
 		
@@ -261,6 +260,25 @@ public class GameManager {
 			playerWinCounts[3]++;
 		else if (winner.getName().equals("Computer 4")) 
 			playerWinCounts[4]++;
+	}
+	
+	//method to save game statistics
+	public void saveGameStats() {
+		database = new Database();
+		if (numPlayers == 2)
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1]);
+		else if (numPlayers == 3)
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2]);
+		else if (numPlayers == 4)
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
+					playerWinCounts[3]);
+		else if (numPlayers == 4)
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
+					playerWinCounts[3]);
+		else if (numPlayers == 5)
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
+					playerWinCounts[3], playerWinCounts[4]);
+		database.closeConnection();	
 	}
 	
 	
