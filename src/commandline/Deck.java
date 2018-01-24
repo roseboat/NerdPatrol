@@ -6,39 +6,52 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-// so far, 	Deck reads in data from text file
-//			calls a Card constructor giving a line of data from the file eg 350r 1 9 2 3 0
-//			Instantiates an ArrayList of these Cards
-//			Also holds the category titles in a normal array
+
+/**
+ * Maintains an ArrayList of card. Acts as a collection of Card objects and enables cards
+ * to be exchanged and tracked. At no point can there ever be more cards in the game than
+ * in the deck.
+ * 
+ * Deck can take two forms. The main deck which contains all cards but also the decks that
+ * are supplied to the players.
+ * */
 
 public class Deck {
-	// ArrayList for Cards
+	
 	private ArrayList<Card> deck;
-
-	// category titles
 	private String[] categories;
+	
+	private final String DECK_NAME = "StarCitizenDeck.txt";
 
-	// constructor
+	/**
+	 * Constructs deck from the supplied text file. Acts as a wrapper to 
+	 * an ArrayList.
+	 * 
+	 * @see loadDeck
+	 * */
 	public Deck() {
 		deck = new ArrayList<Card>();
 		loadDeck();
 	}
 
-	// second constructor
-	public Deck(ArrayList<Card> x) {
-		deck = x;
+	/**
+	 * Constructs a new Deck object based on a supplied array list of cards.
+	 * 
+	 * @param pileOfCards, arraylist of Card to act as a Deck
+	 * */
+	public Deck(ArrayList<Card> pileOfCards) {
+		deck = pileOfCards;
 	}
 
-	// RD and CH added this
+	/**
+	 * Appends an ArrayList of cards to the end of the deck.
+	 * 
+	 * @param newCards, Arraylist to be added at the bottom of the deck
+	 * */
 	public void addCards(ArrayList<Card> newCards) {
 		deck.addAll(newCards);
 	}
 
-	// Calvin added this class
-	// required to access the arraylist in Player class
-	public ArrayList<Card> getCards() {
-		return deck;
-	}
 	
 	// Calvin added this class
 	public void addCard (Card card)	{
@@ -46,7 +59,7 @@ public class Deck {
 	}
 
 	// reads data in from text file, sends each line from text file into
-	public void loadDeck() {
+	private void loadDeck() {
 
 		FileReader fr = null;
 		Scanner in = null;
@@ -193,38 +206,4 @@ public class Deck {
 		return decks;
 
 	}
-
-	public static void main(String args[]) {
-		Deck test = new Deck();
-		// System.out.println("-------------------------------------------------");
-		test.shuffle();
-		test.testPrint(test);
-
-		// Deck splitDeck = new Deck(test.split(2));
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
-		// test.testPrint(test);
-		// System.out.println("-------------------------------------------------");
-		// test.testPrint(splitDeck);
-		// System.out.println("-------------------------------------------------");
-		// System.out.println(test.drawCard().cardToString());
-		// System.out.println(splitDeck.drawCard().cardToString());
-
-		Deck[] dong = test.advancedSplit(5);
-		dong[0].testPrint(dong[0]);
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
-		// test.testPrint(test);
-		dong[1].testPrint(dong[1]);
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
-		dong[2].testPrint(dong[2]);
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
-		dong[3].testPrint(dong[3]);
-		System.out.println("-------------------------------------------------");
-		System.out.println("-------------------------------------------------");
-		dong[4].testPrint(dong[4]);
-	}
-
 }

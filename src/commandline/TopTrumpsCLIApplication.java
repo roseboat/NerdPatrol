@@ -19,15 +19,11 @@ public class TopTrumpsCLIApplication {
 	 */
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
+
 //		boolean writeGameLogsToFile = false; // Should we write game logs to file?
 //		if (args[0].equalsIgnoreCase("true"))
 //			writeGameLogsToFile = true; // Command line selection
-=======
-		/*boolean writeGameLogsToFile = false; // Should we write game logs to file?
-		if (args[0].equalsIgnoreCase("true"))
-			writeGameLogsToFile = true; */// Command line selection
->>>>>>> 6cb4c64cd19ab50e076ac4bcb7dc60410bb76439
+
 
 		// State
 		boolean userWantsToQuit = false; // flag to check whether the user wants to quit the application
