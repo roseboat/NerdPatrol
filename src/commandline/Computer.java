@@ -8,8 +8,11 @@ public class Computer extends Player {
 	}
 	
 	public void promptUser() {
-	String x = topCard.cardToString();
-	System.out.println(x);
+		
+		StringBuilder computerTurn = new StringBuilder(name + "'s top card:\r\n");
+		String computerCard = topCard.cardToString();
+		computerTurn.append(computerCard);
+		System.out.println(computerTurn);
 	
 }
 	public int chooseCategory() {

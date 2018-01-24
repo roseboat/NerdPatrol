@@ -72,68 +72,63 @@ public class GameManager {
 
 	public void initiateRound() {
 		while (players.size() > 1) {
-//		roundStarter();
-		for (int i = 0; i < players.size(); i++) {
-			// checks to see if any players have run out of cards
-			if (players.get(i).getDeckSize() < 1) {
-				removePlayer(i);
-				i--;
-			}
-			// all players draw their first card
-			players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
-		}
-		
-		// how many cards each player remaining has
-		for (int i = 0; i < players.size(); i++) {
-			System.err.println(
-					players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize() + " cards left");
-		}
-		
-		if (players.size() > 1) {
-
-			// displays starting player's card
-			if (p1 == humanPlayer) {
-				p1.promptUser();}
-			else {
-				String computerCard = p1.topCard.cardToString();
-				System.out.println(computerCard);
-			}
-			
-
-			// first player selects the category for all players
-			// humans type in input, NPC always selects highest figure
-			// using index, it corresponds to the index of the value held in the cardValues
-			// array in Card
-			int index = p1.chooseCategory();
-
+			// roundStarter();
 			for (int i = 0; i < players.size(); i++) {
-
-				// sets the value of the chosen category to selectedValue
-				// of every player
-				players.get(i).topCard.setSelectedValue(index);
-				players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
-
-				// adds card to the winner's pile
-				winnerPile.add(players.get(i).topCard);
-
-				// remove top cards from player's decks
-				players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
-
+				// checks to see if any players have run out of cards
+				if (players.get(i).getDeckSize() < 1) {
+					removePlayer(i);
+					i--;
+				}
+				// all players draw their first card
+				players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
 			}
-		
-			myLog.cardsInPlay(winnerPile);
-	
-			// check winnerPile size
-			int cardsToWin = winnerPile.size();
-			System.err.println("There are " + cardsToWin + " cards to play for.");
-			decideWinner(index);
-			
-			//increment numRounds here
-			numRounds++;
-			
-		} else
-			endGame();
-	}}
+
+			// how many cards each player remaining has
+			for (int i = 0; i < players.size(); i++) {
+				System.err.println(
+						players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize() + " cards left");
+			}
+
+			if (players.size() > 1) {
+
+				// displays starting player's card
+				p1.promptUser();
+
+				// first player selects the category for all players
+				// humans type in input, NPC always selects highest figure
+				// using index, it corresponds to the index of the value held in the cardValues
+				// array in Card
+				int index = p1.chooseCategory();
+
+				for (int i = 0; i < players.size(); i++) {
+
+					// sets the value of the chosen category to selectedValue
+					// of every player
+					players.get(i).topCard.setSelectedValue(index);
+					players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
+
+					// adds card to the winner's pile
+					winnerPile.add(players.get(i).topCard);
+
+					// remove top cards from player's decks
+					players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
+
+				}
+
+				myLog.cardsInPlay(winnerPile);
+
+				// check winnerPile size
+				int cardsToWin = winnerPile.size();
+				System.err.println("There are " + cardsToWin + " cards to play for.");
+				decideWinner(index);
+
+				// increment numRounds here
+				numRounds++;
+
+			} else
+				endGame();
+		}
+	}
 	
 	public void roundStarter () {
 		for(;;) {

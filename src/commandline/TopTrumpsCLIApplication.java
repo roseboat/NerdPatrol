@@ -48,8 +48,8 @@ public class TopTrumpsCLIApplication {
 			} else if (userInput.matches("quit")) {
 				System.out.println("Exiting...");
 				userWantsToQuit = true;
-				System.exit(1);
-			} // might not need this
+				System.exit(1);// do we need this?
+			} 
 			else {
 				System.out.println("Sorry, input not recognised, please try again...");
 			}

@@ -8,7 +8,7 @@ public abstract class Player implements Comparable<Player> {
 	
 	// DANTE LOOK IN HERE MAKE SURE IT'S ALL GOOD
 	protected Deck playerDeck;
-	private String name;
+	protected String name;
 	protected Card topCard;
 	private int chosenCat;
 	private int playerWins; 
