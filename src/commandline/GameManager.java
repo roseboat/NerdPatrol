@@ -264,17 +264,5 @@ public class GameManager {
 					playerWinCounts[3], playerWinCounts[4]);
 		database.closeConnection();	
 	}
-	
-	
-	// every time it's the human player who starts, the deck is shuffled and divided
-	// in the exact same way
-
-	public static void main(String args[]) {
-
-		GameManager gm = new GameManager("Bob", 5);
-
-		while (players.size() > 1)
-			gm.initiateRound();
-	}
 
 }
