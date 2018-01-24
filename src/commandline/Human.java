@@ -46,24 +46,31 @@ public class Human extends Player {
 			
 			try{
 				choice = sc.nextInt();
-				
 				if (choice > 0 && choice < 6) {
-					break;
+					System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+					setChosenCat(topCard.getAllValues()[choice - 1]);
+					index = choice -1;
+					return index;
+					
 				}
 				else {
 				System.out.println("Please enter a number between 1 and 5");
+				chooseCategory();
+				return index;
 				}
 			}
 			catch (InputMismatchException e) {
-				System.out.println("Please enter a number between 1 and 5");
+				System.out.println("Please enter a number");
+				chooseCategory();
+				return index;
 			}
 		}
 		
-		System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
-		setChosenCat(topCard.getAllValues()[choice - 1]);
+		/*System.out.println(getName() + " has chosen " + topCard.getSelectedCategory(choice - 1));
+		setChosenCat(topCard.getAllValues()[choice - 1]);*/
 		
-		index = choice -1;
-		return index;
+		
+	//	return index;
 		
 //		
 //		do {
