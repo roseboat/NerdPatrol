@@ -18,6 +18,11 @@ public class GameManager {
 	private ArrayList<Card> winnerPile = new ArrayList<Card>();
 	private static ArrayList<Player> players;
 	private static Log myLog;
+	private int numRounds;
+	private int numDraws;
+	private Database database;
+	private int[] playerWinCounts = new int[5];
+	
 
 	// DANTE SORT THIS OUT
 	public GameManager(String playerName, int numberOfPlayers) {
@@ -114,6 +119,10 @@ public class GameManager {
 			int cardsToWin = winnerPile.size()-1;
 			System.err.println("There are " + cardsToWin + " cards to play for.");
 			decideWinner(index);
+			
+			//increment numRounds here
+			numRounds++;
+			
 		} else
 			endGame();
 	}
@@ -149,6 +158,20 @@ public class GameManager {
 		myLog.logGameWinner(gameWinner);
 		myLog.close();
 		System.out.println(players.get(0).getName() + " has won the game!");
+		
+		//save game stats here
+		database = new Database();
+		
+		
+		
+		
+		//reset database statistics
+		numRounds = 0;
+		numDraws = 0;
+		//RESET INT ARRAY 
+		
+		
+		
 		for (;;) {
 			System.out.println("press 'y' to play again");
 			Scanner sc = new Scanner(System.in);
@@ -161,6 +184,7 @@ public class GameManager {
 			} else
 				System.out.println("game ended");
 			System.exit(1);
+			
 		}	
 	}
 
@@ -197,11 +221,15 @@ public class GameManager {
 				// starting player of next round is the winner
 
 				myLog.postRound(players);
+				
 
 				p1 = winner;
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
 				System.out.println("The winner of this round is Player: " + winner.getName());
+				
+				//increment player wins count
+				incrementPlayerWins();	
 			}
 
 		} else
@@ -214,9 +242,28 @@ public class GameManager {
 		myLog.communalPile(winnerPile);
 
 		System.out.println("Round ended in a draw. The next round will be started.");
+		
+		//increment drawCount
+		numDraws++;
+		
 		initiateRound();
 	}
-
+	
+	//method to increment the number of wins a player has
+	public void incrementPlayerWins() {
+		if (winner.getName().equals(humanPlayer.getName())) 
+			playerWinCounts[0]++;
+		else if (winner.getName().equals("Computer 1")) 
+			playerWinCounts[1]++;
+		else if (winner.getName().equals("Computer 2")) 
+			playerWinCounts[2]++;
+		else if (winner.getName().equals("Computer 3")) 
+			playerWinCounts[3]++;
+		else if (winner.getName().equals("Computer 4")) 
+			playerWinCounts[4]++;
+	}
+	
+	
 	// every time it's the human player who starts, the deck is shuffled and divided
 	// in the exact same way
 

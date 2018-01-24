@@ -11,11 +11,13 @@ public abstract class Player implements Comparable<Player> {
 	private String name;
 	protected Card topCard;
 	private int chosenCat;
+	private int playerWins; 
 
 	public Player(String name, Deck playerDeck) {
 		this.name = name;
 		this.playerDeck = playerDeck;
 		this.chosenCat = -1; //Just to give it an initial value 
+		playerWins = 0;
 	}
 
 	public void drawCard() {
@@ -71,6 +73,14 @@ public abstract class Player implements Comparable<Player> {
 	public void addToDeck(ArrayList<Card> winnerPile) {
 		playerDeck.addCards(winnerPile);
 		
+	}
+	
+	public void incrementPlayerWins() {
+		playerWins++;
+	}
+	
+	public int getPlayerWins() {
+		return playerWins;
 	}
 	
 }
