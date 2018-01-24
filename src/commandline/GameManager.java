@@ -106,6 +106,8 @@ public class GameManager {
 
 					// sets the value of the chosen category to selectedValue
 					// of every player
+					
+					// THERE HAS TO BE A BETTER WAY???
 					players.get(i).topCard.setSelectedValue(index);
 					players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
 
