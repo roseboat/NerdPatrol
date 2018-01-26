@@ -148,18 +148,6 @@ public class GameManager {
 		}
 	}
 	
-	
-/*	public void endGame() {
-
-		Player gameWinner = players.get(0);
-		myLog.logGameWinner(gameWinner);
-		System.out.println(gameWinner.getName() + " has won the game!");
-		myLog.close();
-		System.exit(1);
-	}*/
-	//old Endgame method only commented out
-	//incase new one buggers myLog.
-	//new one below
 	public void endGame() {
 		gameWinner = players.get(0);
 		myLog.logGameWinner(gameWinner);
@@ -197,12 +185,6 @@ public class GameManager {
 			Collections.sort(players, Collections.reverseOrder());
 			winner = players.get(0);
 			myLog.logRoundWinner(winner);
-			
-			
-			// test for instances where winners are tied
-			// pass to drawHandler method
-			// otherwise, add cards to the winner's deck
-			// and display winner
 
 			if (players.get(0).compareTo(players.get(1)) == 0)
 				drawHandler();
