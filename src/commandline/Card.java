@@ -74,13 +74,30 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @return showCard, String representation of the card
 	 * */
-	public String cardToString() {
-		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" +String.format("%3s%9s%8s%11s%11s", 
-				cardValues[0],cardValues[1],cardValues[2],
-				cardValues[3],cardValues[4]); 
-		return showCard;
-	}
+//	public String cardToString() {
+//		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" +String.format("%3s%9s%8s%11s%11s", 
+//				cardValues[0],cardValues[1],cardValues[2],
+//				cardValues[3],cardValues[4]); 
+//		return showCard;
+//	}
 
+	// This almost works but Firepower is so long it pushes outside of the box. 
+	// I've found ways of fixing this online but it will turn into a rather
+	// long method. Waiting to discuss whether we should do this or not.
+	
+	public String cardToString() {
+		StringBuilder showCard = new StringBuilder();
+		showCard.append("-------------------\r\n");
+		showCard.append(String.format("| %16s|\r\n", getName()));
+		for (int i = 0; i < cardValues.length; i++) {
+		showCard.append(String.format("| %s \t\t%d|\r\n", categories[i], cardValues[i]));
+		}
+		showCard.append("--------------------\r\n");
+		return showCard.toString();
+	}
+	
+	
+	
 	// reads the description line from txt file to get titles
 	public String categoryDescTitles() {
 		String line = null;
