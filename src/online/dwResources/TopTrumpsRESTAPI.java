@@ -4,6 +4,7 @@ import commandline.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -36,8 +37,8 @@ public class TopTrumpsRESTAPI {
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
-	String deckfile;
-	int numAIPlayers;
+	String deckFile;
+	int numPlayers;
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -47,37 +48,37 @@ public class TopTrumpsRESTAPI {
 	 */
 	public TopTrumpsRESTAPI(TopTrumpsJSONConfiguration conf) {
 		
-		deckfile=conf.getDeckFile();
-		numAIPlayers=conf.getNumAIPlayers();	
+		deckFile=conf.getDeckFile();
+		numPlayers=conf.getNumAIPlayers()+1;	
 	}
-/*	
-	public void select(boolean x) {
-		if (x==true) {
-			startGame();
-		}
-		else
-			
-	}*/
-	
-	
-	// ----------------------------------------------------
+
+	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
+	// cmd line ver game manager does not really work for the online ver
 	@GET
-	@Path("/playgame")
+	@Path("/startgame")
 	public void startGame() {
-		GameManager gm = new GameManager("Bob", numAIPlayers+1);
+		Deck gameDeck= new Deck(deckFile);
+		Collections.shuffle(gameDeck.getDeck());
 		
+		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
+		Human humanPlayer = new Human("Bob", cards[0]);
+		ArrayList<Player> players = new ArrayList<Player>();
+		players.add(humanPlayer);
+		for (int i = 1; i < cards.length; i++) {
+			players.add(new Computer("Computer " + i, cards[i]));
+		}
 	}
-	// ----------------------------------------------------
 	
-	@GET
-	@Path("/printCard")
-	public String printCard() throws IOException{
-		Deck d1= new Deck();
-		String test=d1.drawCard().cardToString();
-		
-		String firstCard = oWriter.writeValueAsString(test);
-		return firstCard;
-	}
+	
+//	@GET
+//	@Path("/printCard")
+//	public String printCard() throws IOException{
+//		Deck d1= new Deck();
+//		String test=d1.drawCard().cardToString();
+//		
+//		String firstCard = oWriter.writeValueAsString(test);
+//		return firstCard;
+//	}
 	
 	
 	@GET

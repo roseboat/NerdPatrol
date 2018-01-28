@@ -31,7 +31,12 @@ public final class Deck {
 	 * */
 	protected Deck() {
 		deck = new ArrayList<Card>();
-		loadDeck();
+		loadDeck(DECK_NAME);
+	}
+	
+	public Deck(String deckName)	{
+		deck = new ArrayList<Card>();
+		loadDeck(deckName);
 	}
 
 	/**
@@ -65,7 +70,7 @@ public final class Deck {
 	/**
 	 * Loads information from the deck 
 	 * */
-	private void loadDeck() {
+	private void loadDeck(String deckName) {
 
 		FileReader fr = null;
 		Scanner in = null;
@@ -76,7 +81,7 @@ public final class Deck {
 				int count = 0;
 
 				// reads file, and puts scanner around the reader
-				fr = new FileReader("StarCitizenDeck.txt");
+				fr = new FileReader("DECK_NAME");
 				in = new Scanner(fr);
 
 				// gets data line by line
