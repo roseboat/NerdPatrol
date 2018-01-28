@@ -111,11 +111,11 @@ public class GameManager {
 					// of every player
 
 					// THERE HAS TO BE A BETTER WAY???
-					players.get(i).topCard.setSelectedValue(index);
-					players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
+					players.get(i).heldCard.setSelectedValue(index);
+					players.get(i).setChosenCat(players.get(i).heldCard.getSelectedValue());
 
 					// adds card to the winner's pile
-					winnerPile.add(players.get(i).topCard);
+					winnerPile.add(players.get(i).heldCard);
 
 					// remove top cards from player's decks
 					players.get(i).playerDeck.getDeck().remove(0); 
@@ -156,8 +156,8 @@ public class GameManager {
 			String category = "";
 			for (int i = 0; i < players.size(); i++) {
 				// displays the category and value of each player's card
-				category = players.get(i).topCard.getSelectedCategory(index);
-				int value = players.get(i).topCard.getSelectedValue();
+				category = players.get(i).heldCard.getSelectedCategory(index);
+				int value = players.get(i).heldCard.getSelectedValue();
 				//System.out.println("Player: " + players.get(i).getName() + " " + category + ":" + value); FOR TESTING
 			}
 			myLog.categoryChosen(category, players);
@@ -175,7 +175,7 @@ public class GameManager {
 				p1 = winner;
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
-				System.out.println("The winner of this round is Player: " + winner.getName()+" who won with the "+ winner.topCard.getName()+"\r\n******************************************\r\n");
+				System.out.println("The winner of this round is Player: " + winner.getName()+" who won with the "+ winner.heldCard.getName()+"\r\n******************************************\r\n");
 
 				// increment player wins count
 				incrementPlayerWins();

@@ -16,7 +16,7 @@ import java.util.Scanner;
  * are supplied to the players.
  * */
 
-public class Deck {
+public final class Deck {
 	
 	private ArrayList<Card> deck;
 	private String[] categories;
@@ -29,7 +29,7 @@ public class Deck {
 	 * 
 	 * @see loadDeck
 	 * */
-	public Deck() {
+	protected Deck() {
 		deck = new ArrayList<Card>();
 		loadDeck();
 	}
@@ -39,7 +39,7 @@ public class Deck {
 	 * 
 	 * @param pileOfCards, arraylist of Card to act as a Deck
 	 * */
-	public Deck(ArrayList<Card> pileOfCards) {
+	protected Deck(ArrayList<Card> pileOfCards) {
 		deck = pileOfCards;
 	}
 
@@ -48,7 +48,7 @@ public class Deck {
 	 * 
 	 * @param newCards, Arraylist to be added at the bottom of the deck
 	 * */
-	public void addCards(ArrayList<Card> newCards) {
+	protected void addCards(ArrayList<Card> newCards) {
 		deck.addAll(newCards);
 	}
 
@@ -58,7 +58,7 @@ public class Deck {
 	 * 
 	 * @param card, Card object to be appended
 	 * */
-	public void addCard (Card card)	{
+	protected void addCard (Card card)	{
 		deck.add(card);
 	}
 
@@ -111,20 +111,24 @@ public class Deck {
 		}
 	}
 
-	// method that can add to ArrayList - parameter could be string from textFile
-	// think the game manager will use this method right? Or this class could read
-	// from file too
-	public void buildDeck(String cardInfo) {
+	/**
+	 * Add a new card to the end of the deck
+	 * 
+	 * @param cardInfo, String representation of the category values associated with the card
+	 * */
+	private void buildDeck(String cardInfo) {
 		Card card = new Card(cardInfo, categories);
 		deck.add(card);
 	}
 
-	// method to parse and store the 5 category titles and "description"
+	/**
+	 * Stores the names of the categories associated with the deck of cards
+	 * 
+	 * @param titleLine, String showing names of categories separated by whitespace
+	 * */
 	private void storeCategories(String titleLine) {
 		categories = new String[6];
 		titleLine = titleLine.substring(12);
-		Scanner in = new Scanner(titleLine);
-		// split deckInfo into the 6 separate words
 		categories = titleLine.split(" ");
 	}
 
@@ -139,15 +143,24 @@ public class Deck {
 		return deck.get(0);
 	}
 
-	// getter for deckSize
+	/**
+	 * Returns the size of the deck
+	 * 
+	 * @return int value representing the size of deck
+	 * */
 	public int getDeckSize() {
 		return deck.size();
 	}
 
-	// getter for array of categories
-	public String[] getCategories() {
+	/**
+	 * Returns the array holding the names of the categories of the deck
+	 * 
+	 * @return categories, String array of the names of categories
+	 * */
+	protected String[] getCategories() {
 		return categories;
 	}
+	
 	//method to print out individual cards based on the decks they are in and card counter
 	public void testPrint(Deck x) {
 		int i = 0;
@@ -158,22 +171,35 @@ public class Deck {
 		}
 
 	}
-
+	
+	//this method should not be used!!!!!
 	public ArrayList<Card> getDeck() {
 		return deck;
 	}
 
-	public ArrayList<Card> split(int numberOfPlayers) {
-
-		ArrayList<Card> spdeck = new ArrayList<Card>(deck.subList((deck.size() / numberOfPlayers), deck.size())); // makes
-																													// new
-																													// list
-		deck.removeAll(spdeck);
-		return spdeck;
+	/**
+	 * Split the current deck into two. The point of the split is determined by quotient of the size of the deck and divisor. 
+	 * The returned Deck object represents the latter part of the original deck result from the split
+	 * 
+	 * @param divisor, how the deck will be split, eg if 2 it be split in half, if 3 original deck is a third and returned deck 2 thirds
+	 * @return splitDeck, new Deck object resulting from the split of the original deck
+	 * */
+	private ArrayList<Card> split(int divisor) {
+		ArrayList<Card> splitDeck = new ArrayList<Card>(deck.subList((deck.size() / divisor), deck.size()));
+		deck.removeAll(splitDeck);
+		return splitDeck;
 
 	}
-	//this method allows the deck to be split based on the number of players in a game
-	public Deck[] advancedSplit(int numberOfPlayers) {
+
+
+	/**
+	 * Advanced split splits the decks corresponding to the number of players within the game. It returns an array of decks to be used to
+	 * distribute the cards among the players.
+	 * 
+	 * @param numberOfPlayers, number of players within the game includes computer opponents
+	 * @return decks, an array of decks one for each player
+	 * */
+	protected Deck[] advancedSplit(int numberOfPlayers) {
 		Deck[] decks = new Deck[numberOfPlayers];
 		switch (numberOfPlayers) {
 		case (2):
