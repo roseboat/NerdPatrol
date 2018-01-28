@@ -24,7 +24,7 @@
 
 	<div class="container">
 
-		<!-- Add your HTML Here -->
+	
 		<nav>
 			<a href="">Home Page</a>
 		</nav>
@@ -34,15 +34,40 @@
 			<p>Pick the characteristic you think will have the highest
 				score...</p>
 			<br>
-			
 		</div>
 		<div align="center">
-			<table border="1">
+			<table cellspacing="1" cellpadding="1" border="1">
+			<tbody>
 				<tr>
 					<td bgcolor="#00CCFF" valign="top" align="center" width="200"
-						height="300"><b>Player 1</b></td>
+						height="300"><b>Player 1</b>
+						<div>
+						<b>Firepower: </b> </th>
+							<input name="p1" value="firepower" id="firepower" type="radio" 
+							<label for firepower id="p1firepower">
+							213
+							</label>
+						</div>
+						<div>
+						<b>Speed: </b> </th>
+							<input name="p1" value="speed" id="speed" type="radio"
+						</div>
+						<div>
+						<b>Size: </b> </th>
+							<input name="p1" value="size" id="size" type="radio"
+						</div>
+						<div>
+						<b>Range: </b> </th>
+							<input name="p1" value="range" id="range" type="radio"
+						</div>
+						<div>
+						<b>Cargo: </b> </th>
+							<input name="p1" value="cargo" id="cargo" type="radio"
+						</div>
+
 					<td bgcolor="#CC00FF" valign="top" align="center" width="200"
 						height="300"><b>Player 2</b></td>
+	
 				</tr>
 				<tr>
 					<td bgcolor="#00FF00" valign="top" align="center" width="200"
@@ -50,6 +75,7 @@
 					<td bgcolor="#FFFF00" valign="top" align="center" width="200"
 						height="300"><b>Player 4</b></td>
 				</tr>
+				</tbody>
 			</table>
 
 		</div>
