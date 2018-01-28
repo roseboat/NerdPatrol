@@ -1,10 +1,10 @@
 package commandline;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
-
 
 public class GameManager {
 
@@ -23,9 +23,7 @@ public class GameManager {
 	private int numDraws;
 	private Database database;
 	private int[] playerWinCounts = new int[5];
-	
 
-	// DANTE SORT THIS OUT
 	public GameManager(String playerName, int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
@@ -46,10 +44,10 @@ public class GameManager {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
 
-		 myLog.playerDecks(players);
-		
-	randomiseOrder();
-	initiateRound();
+		myLog.playerDecks(players);
+
+		randomiseOrder();
+		initiateRound();
 	}
 
 	public void checkDecks() {
@@ -59,6 +57,8 @@ public class GameManager {
 			}
 	}
 
+	// method to shuffle player order, to be used for who goes first in
+	// beginning
 	public void randomiseOrder() {
 		Collections.shuffle(players);
 		p1 = players.get(0);
@@ -66,7 +66,6 @@ public class GameManager {
 
 	// removes a player from the list
 	public void removePlayer(int i) {
-
 		players.remove(i);
 	}
 
@@ -80,7 +79,8 @@ public class GameManager {
 					i--;
 				}
 				// all players draw their first card
-				players.get(i).drawCard(); // *****CHANGED this method so it doesnt remove the card
+				players.get(i).drawCard(); // *****CHANGED this method so it
+											// doesnt remove the card
 			}
 
 			// how many cards each player remaining has
@@ -93,20 +93,19 @@ public class GameManager {
 
 				// displays starting player's card
 				p1.promptUser();
-				
-			// first player selects the category for all players
-			// humans type in input, NPC always selects highest figure
-			// using index, it corresponds to the index of the value held in the cardValues
-			// array in Card
-			int index = p1.chooseCategory();
-			System.out.println("The chosen category is "+ deck.getCategories()[index] );
 
+				// first player selects the category for all players
+				// humans type in input, NPC always selects highest figure
+				// using index, it corresponds to the index of the value held in
+				// the cardValues array in Card
+				int index = p1.chooseCategory();
+				System.out.println("The chosen category is " + deck.getCategories()[index]);
 
 				for (int i = 0; i < players.size(); i++) {
 
 					// sets the value of the chosen category to selectedValue
 					// of every player
-					
+
 					// THERE HAS TO BE A BETTER WAY???
 					players.get(i).topCard.setSelectedValue(index);
 					players.get(i).setChosenCat(players.get(i).topCard.getSelectedValue());
@@ -115,8 +114,7 @@ public class GameManager {
 					winnerPile.add(players.get(i).topCard);
 
 					// remove top cards from player's decks
-					players.get(i).playerDeck.getDeck().remove(0); // *****REMOVES TOP CARD HERE
-
+					players.get(i).playerDeck.getDeck().remove(0); 
 				}
 
 				myLog.cardsInPlay(winnerPile);
@@ -133,51 +131,46 @@ public class GameManager {
 				endGame();
 		}
 	}
+
 	// DO WE NEED THIS?
-	public void roundStarter () {
-		for(;;) {
-		System.out.println("type 'drawcard' to start round");
-		Scanner sc = new Scanner(System.in);
-		String startNextRound = sc.nextLine();
-		
-		if (startNextRound.matches("drawcard")) {
-			System.out.println("*******************\r\n");
-			break;
-		} else 
-			System.out.println("you didnt enter 'drawcard'");
+	public void roundStarter() {
+		for (;;) {
+			System.out.println("type 'drawcard' to start round");
+			Scanner sc = new Scanner(System.in);
+			String startNextRound = sc.nextLine();
+
+			if (startNextRound.matches("drawcard")) {
+				System.out.println("*******************\r\n");
+				break;
+			} else
+				System.out.println("you didnt enter 'drawcard'");
 		}
 	}
-	
+
 	public void endGame() {
 		gameWinner = players.get(0);
 		myLog.logGameWinner(gameWinner);
 		myLog.close();
 		System.out.println(gameWinner.getName() + " has won the game!");
-		
-		//save game stats here
+
+		// save game stats here
 		saveGameStats();
-		
-		//reset database statistics
+
+		// reset database statistics
 		numRounds = 0;
 		numDraws = 0;
 		for (int i = 0; i < playerWinCounts.length; i++)
-			playerWinCounts[i]=0;
-			
+			playerWinCounts[i] = 0;
 	}
 
 	public void decideWinner(int index) {
-
 		if (players.size() > 1) {
-
-			String category ="";
+			String category = "";
 			for (int i = 0; i < players.size(); i++) {
-
 				// displays the category and value of each player's card
 				category = players.get(i).topCard.getSelectedCategory(index);
 				int value = players.get(i).topCard.getSelectedValue();
-
 				System.out.println("Player: " + players.get(i).getName() + " " + category + ":" + value);
-				
 			}
 			myLog.categoryChosen(category, players);
 			// cards in winner pile given to the winner of the round
@@ -190,19 +183,15 @@ public class GameManager {
 				drawHandler();
 			else {
 				// starting player of next round is the winner
-
 				myLog.postRound(players);
-				
-
 				p1 = winner;
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
 				System.out.println("The winner of this round is Player: " + winner.getName());
-				
-				//increment player wins count
-				incrementPlayerWins();	
-			}
 
+				// increment player wins count
+				incrementPlayerWins();
+			}
 		} else
 			endGame();
 	}
@@ -213,44 +202,44 @@ public class GameManager {
 		myLog.communalPile(winnerPile);
 
 		System.out.println("Round ended in a draw. The next round will be started.");
-		
-		//increment drawCount
+
+		// increment drawCount
 		numDraws++;
-		
+
 		initiateRound();
 	}
-	
-	//method to increment the number of wins a player has
+
+	// method to increment the number of wins a player has
 	public void incrementPlayerWins() {
-		if (winner.getName().equals(humanPlayer.getName())) 
+		if (winner.getName().equals(humanPlayer.getName()))
 			playerWinCounts[0]++;
-		else if (winner.getName().equals("Computer 1")) 
+		else if (winner.getName().equals("Computer 1"))
 			playerWinCounts[1]++;
-		else if (winner.getName().equals("Computer 2")) 
+		else if (winner.getName().equals("Computer 2"))
 			playerWinCounts[2]++;
-		else if (winner.getName().equals("Computer 3")) 
+		else if (winner.getName().equals("Computer 3"))
 			playerWinCounts[3]++;
-		else if (winner.getName().equals("Computer 4")) 
+		else if (winner.getName().equals("Computer 4"))
 			playerWinCounts[4]++;
 	}
-	
-	//method to save game statistics
+
+	// method to save game statistics
 	public void saveGameStats() {
 		database = new Database();
 		if (numPlayers == 2)
 			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1]);
 		else if (numPlayers == 3)
-			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2]);
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2]);
 		else if (numPlayers == 4)
-			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
-					playerWinCounts[3]);
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3]);
 		else if (numPlayers == 4)
-			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
-					playerWinCounts[3]);
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3]);
 		else if (numPlayers == 5)
-			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1], playerWinCounts[2],
-					playerWinCounts[3], playerWinCounts[4]);
-		database.closeConnection();	
+			database.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3], playerWinCounts[4]);
+		database.closeConnection();
 	}
-
 }
