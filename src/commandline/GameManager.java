@@ -175,7 +175,7 @@ public class GameManager {
 				p1 = winner;
 				winner.addToDeck(winnerPile);
 				winnerPile.clear();
-				System.out.println("The winner of this round is Player: " + winner.getName()+"\r\n******************************************\r\n");
+				System.out.println("The winner of this round is Player: " + winner.getName()+" who won with the "+ winner.topCard.getName()+"\r\n******************************************\r\n");
 
 				// increment player wins count
 				incrementPlayerWins();
