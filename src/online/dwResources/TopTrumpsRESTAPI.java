@@ -1,5 +1,7 @@
 package online.dwResources;
 
+import commandline.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ public class TopTrumpsRESTAPI {
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+	String deckfile;
+	int numAIPlayers;
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -42,14 +46,39 @@ public class TopTrumpsRESTAPI {
 	 * @param conf
 	 */
 	public TopTrumpsRESTAPI(TopTrumpsJSONConfiguration conf) {
-		// ----------------------------------------------------
-		// Add relevant initalization here
-		// ----------------------------------------------------
+		
+		deckfile=conf.getDeckFile();
+		numAIPlayers=conf.getNumAIPlayers();	
 	}
+/*	
+	public void select(boolean x) {
+		if (x==true) {
+			startGame();
+		}
+		else
+			
+	}*/
+	
 	
 	// ----------------------------------------------------
-	// Add relevant API methods here
+	@GET
+	@Path("/playgame")
+	public void startGame() {
+		GameManager gm = new GameManager("Bob", numAIPlayers+1);
+		
+	}
 	// ----------------------------------------------------
+	
+	@GET
+	@Path("/printCard")
+	public String printCard() throws IOException{
+		Deck d1= new Deck();
+		String test=d1.drawCard().cardToString();
+		
+		String firstCard = oWriter.writeValueAsString(test);
+		return firstCard;
+	}
+	
 	
 	@GET
 	@Path("/helloJSONList")

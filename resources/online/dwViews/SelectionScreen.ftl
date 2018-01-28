@@ -24,9 +24,22 @@
     	
     	<div class="container">
 
-			<!-- Add your HTML Here -->
-		
+			<nav>
+			<a href="">Home Page</a>
+		</nav>
+
+		<div>
+			<h1>Top Trumps!</h1>
+			<p>Choose whether you want to play a game or view statistics</p>
+			<br>
+			
+			
+			<button onclick="playGame();">Play a Game</button>
+			&nbsp;
+			<button onclick="viewStatistics();">View Game Statistics</button>
+			
 		</div>
+	
 		
 		<script type="text/javascript">
 		
@@ -40,13 +53,16 @@
 				// For example, lets call our sample methods
 				helloJSONList();
 				helloWord("Student");
+				printCard();
 				
 			}
 			
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
-		
+			
+			
+			
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
   				var xhr = new XMLHttpRequest();
@@ -77,6 +93,14 @@
 		<!-- Here are examples of how to call REST API Methods -->
 		<script type="text/javascript">
 		
+			function playGame(){
+        		window.location='http://localhost:7777/toptrumps/game';
+    		}
+    		
+    		function viewStatistics(){
+    			window.location='http://localhost:7777/toptrumps/stats';
+    		}
+			
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloJSONList() {
 			
@@ -120,6 +144,8 @@
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
+			
+		
 
 		</script>
 		

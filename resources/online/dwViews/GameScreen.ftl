@@ -34,6 +34,7 @@
 			<p>Pick the characteristic you think will have the highest
 				score...</p>
 			<br>
+			
 		</div>
 		<div align="center">
 			<table border="1">
