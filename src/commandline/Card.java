@@ -87,10 +87,10 @@ public class Card implements Comparable<Card> {
 	
 	public String cardToString() {
 		StringBuilder showCard = new StringBuilder();
-		showCard.append("-------------------\r\n");
-		showCard.append(String.format("| %16s|\r\n", getName()));
+		showCard.append("--------------------\r\n");
+		showCard.append(String.format("\t%10s\r\n", getName()));
 		for (int i = 0; i < cardValues.length; i++) {
-		showCard.append(String.format("| %s \t\t%d|\r\n", categories[i], cardValues[i]));
+		showCard.append(String.format("%-10s \t%-10d\r\n", categories[i], cardValues[i]));
 		}
 		showCard.append("--------------------\r\n");
 		return showCard.toString();

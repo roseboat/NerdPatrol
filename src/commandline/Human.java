@@ -17,8 +17,7 @@ public class Human extends Player {
 		
 		StringBuilder humanTurn = new StringBuilder(name + ", please choose your value!\r\n");
 		humanTurn.append(topCard.cardToString());
-		humanTurn.append(String.format("\r\n%5s%5s%5s%8s%5s\r\n", "(1)", "(2)", "(3)",
-				"(4)", "(5)"));
+		humanTurn.append("(Press 1, 2, 3, 4 or 5)");
 		System.out.println(humanTurn);
 	}
 

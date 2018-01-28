@@ -83,14 +83,19 @@ public class GameManager {
 											// doesnt remove the card
 			}
 
-			// how many cards each player remaining has
-			for (int i = 0; i < players.size(); i++) {
+			// how many cards each player remaining has FOR TESTING
+		/*	for (int i = 0; i < players.size(); i++) {
 				System.err.println(
 						players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize() + " cards left");
-			}
+			}*/
 
 			if (players.size() > 1) {
-
+				
+				// increment numRounds here
+				numRounds++;
+				//Displays round number
+				System.out.println("Round number "+numRounds);
+				
 				// displays starting player's card
 				p1.promptUser();
 
@@ -124,8 +129,7 @@ public class GameManager {
 				System.err.println("There are " + cardsToWin + " cards to play for.");
 				decideWinner(index);
 
-				// increment numRounds here
-				numRounds++;
+				
 
 			} else
 				endGame();
@@ -170,7 +174,7 @@ public class GameManager {
 				// displays the category and value of each player's card
 				category = players.get(i).topCard.getSelectedCategory(index);
 				int value = players.get(i).topCard.getSelectedValue();
-				System.out.println("Player: " + players.get(i).getName() + " " + category + ":" + value);
+				//System.out.println("Player: " + players.get(i).getName() + " " + category + ":" + value); FOR TESTING
 			}
 			myLog.categoryChosen(category, players);
 			// cards in winner pile given to the winner of the round
