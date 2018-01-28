@@ -34,6 +34,7 @@ public final class Deck {
 		loadDeck(DECK_NAME);
 	}
 	
+	// made a constructor for the online version
 	public Deck(String deckName)	{
 		deck = new ArrayList<Card>();
 		loadDeck(deckName);
