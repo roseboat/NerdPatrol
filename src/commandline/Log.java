@@ -112,7 +112,7 @@ public class Log {
 		for (int i = 0; i < players.size(); i++) {
 		
 			String name = players.get(i).getName();
-			int value = players.get(i).topCard.getSelectedValue();
+			int value = players.get(i).heldCard.getSelectedValue();
 			writeToLog.write(name + "'s " + c + " =" + value + "\r\n");
 		}
 	}

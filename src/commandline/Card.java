@@ -58,7 +58,7 @@ public final class Card implements Comparable<Card> {
 	 * @return 1, This Card is larger
 	 * */
 	@Override
-	protected int compareTo(Card other) {
+	public int compareTo(Card other) {
 		if (this.selectedValue == other.selectedValue) {
 			return 0;
 		} else if (selectedValue < other.selectedValue) {
