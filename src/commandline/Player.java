@@ -1,9 +1,10 @@
 package commandline;
-
-
 import java.util.ArrayList;
 
-public abstract class Player implements Comparable<Player> {
+/**
+ * 
+ * */
+public abstract class Player {
 	
 	
 	// DANTE LOOK IN HERE MAKE SURE IT'S ALL GOOD
@@ -45,15 +46,6 @@ public abstract class Player implements Comparable<Player> {
 			playerDeck.addCards(winnerP);
 
 		}
-	
-	public int compareTo(Player other){
-	    if (this.chosenCat > other.chosenCat)
-		return 1;
-	    else if (this.chosenCat < other.chosenCat)
-		return -1;
-	    else
-		return 0;
-	}
 	
 	public int getChosenCat() {
 	    return chosenCat;

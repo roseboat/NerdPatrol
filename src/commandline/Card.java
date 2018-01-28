@@ -8,11 +8,9 @@ import java.util.Scanner;
 /**
  * Card class models a single card within the deck. It holds the information
  * associated with each category in its instance variables.
- * 
- * @author Chad Gill
  * */
 
-public class Card implements Comparable<Card> {
+public final class Card implements Comparable<Card> {
 	private String name;
 	private int[] cardValues;
 	private int selectedValue;
@@ -35,7 +33,7 @@ public class Card implements Comparable<Card> {
 	 * @param categories, array of category names
 	 * @return nothing
 	 * */
-	public Card(String line, String[] categories) {
+	protected Card(String line, String[] categories) {
 		Scanner sc = new Scanner(line);
 		this.name = sc.next();
 		this.categories = categories;
@@ -60,7 +58,7 @@ public class Card implements Comparable<Card> {
 	 * @return 1, This Card is larger
 	 * */
 	@Override
-	public int compareTo(Card other) {
+	protected int compareTo(Card other) {
 		if (this.selectedValue == other.selectedValue) {
 			return 0;
 		} else if (selectedValue < other.selectedValue) {
@@ -85,7 +83,7 @@ public class Card implements Comparable<Card> {
 	// I've found ways of fixing this online but it will turn into a rather
 	// long method. Waiting to discuss whether we should do this or not.
 	
-	public String cardToString() {
+	protected String cardToString() {
 		StringBuilder showCard = new StringBuilder();
 		showCard.append("-------------------\r\n");
 		showCard.append(String.format("| %16s|\r\n", getName()));
@@ -99,7 +97,7 @@ public class Card implements Comparable<Card> {
 	
 	
 	// reads the description line from txt file to get titles
-	public String categoryDescTitles() {
+	protected String categoryDescTitles() {
 		String line = null;
 
 		try {
@@ -119,7 +117,7 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @return name, String name of card
 	 * */
-	public String getName() {
+	protected String getName() {
 		return name;
 	}
 	
@@ -128,7 +126,7 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @return cardValues, array of values for categories
 	 * */
-	public int[] getAllValues() {
+	protected int[] getAllValues() {
 		return this.cardValues;
 	}
 	
@@ -139,7 +137,7 @@ public class Card implements Comparable<Card> {
 	 *@param index, int corresponding to the index at the desired location
 	 *@return name of the category at selected index
 	 * */
-	public String getSelectedCategory (int index)	{
+	protected String getSelectedCategory (int index)	{
 		return categories[index];
 	}
 	
@@ -148,7 +146,7 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @return value of card selected by player
 	 * */
-	public int getSelectedValue()	{
+	protected int getSelectedValue()	{
 		return selectedValue;
 	}
 	
@@ -157,7 +155,7 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @param index, integer corresponding to the index of the location
 	 * */
-	public void setSelectedValue(int index) {
+	protected void setSelectedValue(int index) {
 		this.selectedValue = cardValues[index];
 	}
 }
