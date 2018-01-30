@@ -126,10 +126,13 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @return cardValues, array of values for categories
 	 * */
-	protected int[] getAllValues() {
+	public int[] getAllValues() {
 		return this.cardValues;
 	}
 	
+	public String[] getCategories () {
+		return categories;
+	}
 
 	/**
 	 *Returns the name of the category at selected index
@@ -137,7 +140,7 @@ public final class Card implements Comparable<Card> {
 	 *@param index, int corresponding to the index at the desired location
 	 *@return name of the category at selected index
 	 * */
-	protected String getSelectedCategory (int index)	{
+	public String getSelectedCategory (int index)	{
 		return categories[index];
 	}
 	
