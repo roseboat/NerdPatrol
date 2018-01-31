@@ -1,10 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 	<head>
 		<!-- Web page title -->
     	<title>Top Trumps</title>
-    	
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     	<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
     	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
@@ -21,7 +26,7 @@
 	</head>
 
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
+
     	<div class="container">
 
 			<nav>
@@ -32,37 +37,40 @@
 			<h1>Top Trumps!</h1>
 			<p>Choose whether you want to play a game or view statistics</p>
 			<br>
-			
-			
+
+
 			<button onclick="playGame();">Play a Game</button>
 			&nbsp;
 			<button onclick="viewStatistics();">View Game Statistics</button>
-			
+
 		</div>
-	
-		
+
+
 		<script type="text/javascript">
-		
+			$ (document).ready(function(){
+
+			});
+
 			// Method that is called on page load
 			function initalize() {
-			
+
 				// --------------------------------------------------------------------------
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
-				
+
 				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
+				//helloJSONList();
+				//helloWord("Student");
 				printCard();
-				
+
 			}
-			
+
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
-			
-			
-			
+
+
+
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
   				var xhr = new XMLHttpRequest();
@@ -87,67 +95,71 @@
   				 }
   				 return xhr;
 			}
-		
+
 		</script>
-		
+
 		<!-- Here are examples of how to call REST API Methods -->
 		<script type="text/javascript">
-		
+
 			function playGame(){
         		window.location='http://localhost:7777/toptrumps/game';
     		}
-    		
+
     		function viewStatistics(){
     			window.location='http://localhost:7777/toptrumps/stats';
     		}
-			
+
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloJSONList() {
-			
+
 				// First create a CORS request, this is the message we are going to send (a get request in this case)
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-				
+
 				// Message is not sent yet, but we can check that the browser supports CORS
 				if (!xhr) {
   					alert("CORS not supported");
 				}
 
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
+				// to do when the response arrives
 				xhr.onload = function(e) {
  					var responseText = xhr.response; // the text of the response
 					alert(responseText); // lets produce an alert
 				};
-				
+
 				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
+				xhr.send();
 			}
-			
+
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloWord(word) {
-			
+
 				// First create a CORS request, this is the message we are going to send (a get request in this case)
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
-				
+
 				// Message is not sent yet, but we can check that the browser supports CORS
 				if (!xhr) {
   					alert("CORS not supported");
 				}
 
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
+				// to do when the response arrives
 				xhr.onload = function(e) {
  					var responseText = xhr.response; // the text of the response
 					alert(responseText); // lets produce an alert
 				};
-				
+
 				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
+				xhr.send();
 			}
-			
-		
+
+
 
 		</script>
-		
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 		</body>
 </html>
