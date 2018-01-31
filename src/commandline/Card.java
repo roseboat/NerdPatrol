@@ -115,14 +115,7 @@ public final class Card implements Comparable<Card> {
 		this.name = name;
 	}
 	
-	/**
-	 * Returns the array of category values
-	 * 
-	 * @return cardValues, array of values for categories
-	 * */
-	public int[] getCardValues() {
-		return this.cardValues;
-	}
+
 	
 
 	/**
@@ -152,9 +145,14 @@ public final class Card implements Comparable<Card> {
 	protected void setSelectedValue(int index) {
 		this.selectedValue = cardValues[index];
 	}
-
+	
+	/**
+	 * Returns the array of category values
+	 * 
+	 * @return cardValues, array of values for categories
+	 * */
 	public int[] getCardValues() {
-		return cardValues;
+		return this.cardValues;
 	}
 
 	public void setCardValues(int[] cardValues) {

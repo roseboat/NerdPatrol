@@ -168,8 +168,21 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	
-	
-	
+	@GET
+	@Path("/showStats")
+	/**
+	 * Method to display the game statistics on the webpage
+	 */
+	public String gameStats() throws IOException {
+		Database db = new Database();
+		String x = db.getGameStatistics();
+		db.closeConnection();
+		db = null;
+
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+
+	}
 	
 	
 	
