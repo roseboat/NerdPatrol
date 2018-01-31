@@ -11,94 +11,126 @@
     	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
 
 		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
 		<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-		<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/TREC_IS/bootstrap.min.css">
-    	<script src="http://dcs.gla.ac.uk/~richardm/vex.combined.min.js"></script>
-    	<script>vex.defaultOptions.className = 'vex-theme-os';</script>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	</head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
 
-	<div class="container">
+	<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
 
-	
-		<nav>
-			<a href="">Home Page</a>
-		</nav>
-
-		<div>
-			<h1>Top Trumps!</h1>
-			<p>Pick the characteristic you think will have the highest
-				score...</p>
-			<br>
-			
-			<input type="number" id="input1" min="1" max="5"/>
-			<button onclick="chooseNumberPlayers()">Submit</button>
-			
-		</div>
-		
-		<div align="left">
-			<table style="border-collapse:collapse,width:100%">
-			<tr>
-			<th id="name"></th>
-			<th>Value</th>
-			</tr>
-			<tr>
-			<th id="cat1"></th>
-			<th id="val1"></th>
-			</tr>
-			<tr>
-			<th id="cat2"></th>
-			<th id="val2"></th>
-			</tr>
-			<tr>
-			<th id="cat3"></th>
-			<th id="val3"></th>
-			</tr>
-			<tr>
-			<th id="cat4"></th>
-			<th id="val4"></th>
-			</tr>
-			<tr>
-			<th id="cat5"></th>
-			<th id="val5"></th>
-			</tr>
-			</table>
-		</div>
-		
-		
-		
-		<div align="center">
-			<table cellspacing="1" cellpadding="1" border="1">
-			<tbody>
-				<tr>
-				
-					<button onclick="displayCard()">MakeTable</button>
-					
-					<td bgcolor="#00CCFF" valign="top" align="center" width="200"
-						height="300"><b>Player 1</b></td>
-					<td bgcolor="#CC00FF" valign="top" align="center" width="200"
-						height="300"><b>Player 2</b></td>
-				</tr>
-				<tr>
-					<td bgcolor="#00FF00" valign="top" align="center" width="200"
-						height="300"><b>Player 3</b></td>
-					<td bgcolor="#FFFF00" valign="top" align="center" width="200"
-						height="300"><b>Player 4</b></td>
-				</tr>
-				</tbody>
-			</table>
-
-		</div>
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Top Trumps</a>
+    </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/game/">Game</a></li>
+        <li><a href="/toptrumps/">Home</a></li>
+        <li><a href="/stats/">Stats</a></li>
+      </ul>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+  <div class="col-sm-2 sidenav">
+  </div>
+ 
+  
+    <div class="col-sm-8 text-center"> 
+      <h1>Top Trumps!</h1>
+      <p>Choose the amount of players you'd like to play against:</p>
+     <input type="number" id="input1" min="1" max="5"/>
+			<button onclick="chooseNumberPlayers()" width="25">Submit</button>
+      <hr>
+      <h3>Let's Play!</h3>
+      <p>Choose your top category...</p>
+      
+      <div class="panel-group" style="height: 500px; width:250px">
+  		    <div class="panel panel-default">
+      			<div class="panel-heading">Human Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
+  		<div class="panel panel-default">
+      			<div class="panel-heading">AI Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
+    		<div class="panel panel-default">
+      			<div class="panel-heading">AI Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
+    		<div class="panel panel-default">
+      			<div class="panel-heading">AI Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
+    		<div class="panel panel-default">
+      			<div class="panel-heading">AI Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
+    		<div class="panel panel-default">
+      			<div class="panel-heading">AI Player</div>
+      			<div class="panel-body">CARD INFO</div>
+    		</div>
 	</div>
+ 
+    </div>
+    
+    
+    
+    
+    
+    
+     <div class="col-sm-2 sidenav">
+  	</div>
+</div>
+</div>
+
+	<footer class="container-fluid text-center">
+  		<p>Created by the Nerd Patrol</p>
+	</footer>
+		</body>
+	
 
 	<script type="text/javascript">
 		
