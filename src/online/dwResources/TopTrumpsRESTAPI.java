@@ -57,13 +57,14 @@ public class TopTrumpsRESTAPI {
 		numPlayers=conf.getNumAIPlayers()+1;	
 	}
 	
-//	@GET
-//	@Path("/getPlayers")
-//	@Consumes (MediaType.APPLICATION_JSON)
-//	public void setPlayers (int x) {
-//		numPlayers=x+1;
-//	}
-//
+	@GET
+	@Path("/setPlayers")
+	@Consumes (MediaType.APPLICATION_JSON)
+	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
+		numPlayers=Number;
+		System.out.println(numPlayers);
+	}
+
 //	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
 //	// cmd line ver game manager does not really work for the online ver
 //	public void startGame() {

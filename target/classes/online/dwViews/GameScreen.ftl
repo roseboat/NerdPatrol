@@ -38,40 +38,22 @@
 			<p>Pick the characteristic you think will have the highest
 				score...</p>
 			<br>
+			
+			<input type="number" id="input1" min="1" max="5"/>
+			<button onclick="chooseNumberPlayers()">Submit</button>
+			
 		</div>
 		<div align="center">
 			<table cellspacing="1" cellpadding="1" border="1">
 			<tbody>
 				<tr>
+				
+					<button onclick="displayCard()">MakeTable</button>
+					
 					<td bgcolor="#00CCFF" valign="top" align="center" width="200"
-						height="300"><b>Player 1</b>
-						<div>
-						<b>Firepower: </b> </th>
-							<input name="p1" value="firepower" id="firepower" type="radio" 
-							<label for firepower id="p1firepower">
-							213
-							</label>
-						</div>
-						<div>
-						<b>Speed: </b> </th>
-							<input name="p1" value="speed" id="speed" type="radio"
-						</div>
-						<div>
-						<b>Size: </b> </th>
-							<input name="p1" value="size" id="size" type="radio"
-						</div>
-						<div>
-						<b>Range: </b> </th>
-							<input name="p1" value="range" id="range" type="radio"
-						</div>
-						<div>
-						<b>Cargo: </b> </th>
-							<input name="p1" value="cargo" id="cargo" type="radio"
-						</div>
-
+						height="300"><b>Player 1</b></td>
 					<td bgcolor="#CC00FF" valign="top" align="center" width="200"
 						height="300"><b>Player 2</b></td>
-	
 				</tr>
 				<tr>
 					<td bgcolor="#00FF00" valign="top" align="center" width="200"
@@ -98,6 +80,8 @@
 				// For example, lets call our sample methods
 				helloJSONList();
 				helloWord("Student");
+				chooseNumberPlayers();
+				displayCard();
 				
 			}
 			
@@ -134,6 +118,25 @@
 		
 		<!-- Here are examples of how to call REST API Methods -->
 		<script type="text/javascript">
+		
+			function displayCard(){
+				for (var i=0; i<5; i++)	{
+					document.write( <td bgcolor="#00CCFF" valign="top" align="center" width="200"
+						height="300"><b>Player 1</b></td> )
+				}
+			
+			}
+		
+			function chooseNumberPlayers(){
+    			var number=document.getElementById('input1').value;
+    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setPlayers?Number="+number); // Request type and URL+parameters
+    			if (!xhr) {
+  					alert("CORS not supported");
+				}
+		
+				xhr.send();	
+				
+ 			}
 		
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloJSONList() {
