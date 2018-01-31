@@ -82,7 +82,8 @@
       <h1>Top Trumps!</h1>
       <p>Choose the amount of players you'd like to play against:</p>
      <input type="number" id="input1" min="1" max="5"/>
-			<button onclick="chooseNumberPlayers()" width="25">Submit</button>
+			<button onclick="chooseNumberPlayers()" width="25">Submit</button><br>
+			<br> Cards to be Won: <input type="number" readonly="readonly" id="pile" style="width: 30px;"/>
       <hr>
       <h3>Let's Play!</h3>
       <p>Choose your top category...</p>
