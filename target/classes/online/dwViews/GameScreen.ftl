@@ -43,6 +43,14 @@
 			<button onclick="chooseNumberPlayers()">Submit</button>
 			
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
 		<div align="center">
 			<table cellspacing="1" cellpadding="1" border="1">
 			<tbody>
@@ -80,9 +88,13 @@
 				// For example, lets call our sample methods
 				helloJSONList();
 				helloWord("Student");
+
 				chooseNumberPlayers();
 				displayCard();
 				
+
+				cardTest();
+
 			}
 			
 			// -----------------------------------------
@@ -181,6 +193,27 @@
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
+			
+			function cardTest() {
+			
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/cardTest");
+				
+				if (!xhr) {
+  					alert("Fucked it");
+				}
+				xhr.onload = function(e) {
+ 					var responseText = xhr.response; // the text of the response
+					alert(responseText); // lets produce an alert
+				};
+				
+				xhr.send();
+				
+			
+			}
+			
+			
+			
+			
 
 		</script>
 		

@@ -37,6 +37,10 @@
 			<button onclick="playGame();">Play a Game</button>
 			&nbsp;
 			<button onclick="viewStatistics();">View Game Statistics</button>
+			<input type="text" id="testText" value="">
+			<button onclick="printer()">Printer</button>
+			
+			<p id="testArea">Hello</p>
 			
 		</div>
 	
@@ -52,7 +56,7 @@
 				
 				// For example, lets call our sample methods
 				helloJSONList();
-				helloWord("Student");
+				//helloWord("Student");
 				printCard();
 				
 			}
@@ -99,6 +103,20 @@
     		
     		function viewStatistics(){
     			window.location='http://localhost:7777/toptrumps/stats';
+    		}
+    		
+    		function printer(){
+    			var word = document.getElementById("testText").value;
+    			document.getElementById("testArea").innerHTML = word;
+    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/printer?Word="+word);
+    			if(!xhr){
+    				alert("CORS not supported");
+    			}
+    			//xhr.onload = function(e) {
+    				//var responseText = xhr.response;
+    				//alert(responseText);
+    			//};
+    			xhr.send();
     		}
 			
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI

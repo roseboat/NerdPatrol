@@ -57,7 +57,7 @@ public final class Human extends Player {
 				if (choice > 0 && choice < 6) {
 					System.out.println(getName() + " has chosen " + heldCard.getSelectedCategory(choice - 1));
 					index = choice -1;
-					setChosenCat(heldCard.getAllValues()[index]);
+					setChosenCat(heldCard.getCardValues()[index]);
 					return index;
 				}
 				else {
