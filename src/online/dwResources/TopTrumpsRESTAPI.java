@@ -135,7 +135,7 @@ public class TopTrumpsRESTAPI {
 		// We can turn arbatory Java objects directly into JSON strings using
 		// Jackson seralization, assuming that the Java objects are not too complex.
 		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
-		
+		System.out.println(listAsJSONString);
 		return listAsJSONString;
 	}
 	
@@ -156,5 +156,35 @@ public class TopTrumpsRESTAPI {
 	public void printer(@QueryParam("Word") String Word) throws IOException {
 		System.out.println(Word);
 	}
+	
+	@GET
+	@Path("/cardTest")
+	public String cardTest() throws IOException{
+		
+//		Card x = players.get(0).getTopCard();
+		Card x = new Card("DantsBants", 6,2,8,1,7);
+		String s1 = oWriter.writeValueAsString(x);
+		return s1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
