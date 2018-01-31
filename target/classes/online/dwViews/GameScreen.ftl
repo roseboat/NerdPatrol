@@ -19,7 +19,7 @@
     	<script>vex.defaultOptions.className = 'vex-theme-os';</script>
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	</head>
@@ -40,10 +40,34 @@
 			<br>
 		</div>
 		
-		
-		
-		
-		
+		<div align="left">
+			<table style="border-collapse:collapse,width:100%">
+			<tr>
+			<th id="name"></th>
+			<th>Value</th>
+			</tr>
+			<tr>
+			<th id="cat1"></th>
+			<th id="val1"></th>
+			</tr>
+			<tr>
+			<th id="cat2"></th>
+			<th id="val2"></th>
+			</tr>
+			<tr>
+			<th id="cat3"></th>
+			<th id="val3"></th>
+			</tr>
+			<tr>
+			<th id="cat4"></th>
+			<th id="val4"></th>
+			</tr>
+			<tr>
+			<th id="cat5"></th>
+			<th id="val5"></th>
+			</tr>
+			</table>
+		</div>
 		
 		
 		
@@ -196,7 +220,14 @@
 				}
 				xhr.onload = function(e) {
  					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
+ 					var rT = JSON.parse(responseText);
+					document.getElementById("name").innerHTML = rT["name"];
+					for (i = 0; i < rT.number_OF_CATEGORIES; i++){
+						document.getElementById(("cat" + (i+1))).innerHTML = rT["categories"][i];
+						document.getElementById(("val" + (i+1))).innerHTML = rT["cardValues"][i];
+					}
+					
+					alert(rT.name);
 				};
 				
 				xhr.send();

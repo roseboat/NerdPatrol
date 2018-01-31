@@ -19,11 +19,11 @@ public final class Card implements Comparable<Card> {
 	private final int NUMBER_OF_CATEGORIES = 5;
 
 //	//Is this constructor ever used?
-	public Card(String name, int a, int b, int c, int d, int e) {
+	public Card(String name, int a, int b, int c, int d, int e, String cat1, String cat2, String cat3, String cat4, String cat5) {
 
 		this.name = name;
 		this.cardValues = new int[] { a, b, c, d, e };
-
+		this.categories = new String[] {cat1, cat2, cat3, cat4, cat5};
 	}
 
 	/**

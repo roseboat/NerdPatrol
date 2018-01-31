@@ -162,8 +162,9 @@ public class TopTrumpsRESTAPI {
 	public String cardTest() throws IOException{
 		
 //		Card x = players.get(0).getTopCard();
-		Card x = new Card("DantsBants", 6,2,8,1,7);
+		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
 		String s1 = oWriter.writeValueAsString(x);
+		System.out.println(s1);
 		return s1;
 	}
 	
