@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import online.configuration.TopTrumpsJSONConfiguration;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
@@ -37,8 +39,11 @@ public class TopTrumpsRESTAPI {
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
-	String deckFile;
-	int numPlayers;
+	private String deckFile;
+	private int numPlayers;
+	private Deck gameDeck;
+	private Player activePlayer;
+	private static ArrayList<Player> players;
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -51,35 +56,68 @@ public class TopTrumpsRESTAPI {
 		deckFile=conf.getDeckFile();
 		numPlayers=conf.getNumAIPlayers()+1;	
 	}
-
-	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
-	// cmd line ver game manager does not really work for the online ver
+	
 	@GET
-	@Path("/startgame")
-	public void startGame() {
-		Deck gameDeck= new Deck(deckFile);
-		Collections.shuffle(gameDeck.getDeck());
-		
-		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
-		Human humanPlayer = new Human("Bob", cards[0]);
-		ArrayList<Player> players = new ArrayList<Player>();
-		players.add(humanPlayer);
-		for (int i = 1; i < cards.length; i++) {
-			players.add(new Computer("Computer " + i, cards[i]));
-		}
+	@Path("/setPlayers")
+	@Consumes (MediaType.APPLICATION_JSON)
+	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
+		numPlayers=Number;
+		System.out.println(numPlayers);
 	}
-	
-	
-//	@GET
-//	@Path("/printCard")
-//	public String printCard() throws IOException{
-//		Deck d1= new Deck();
-//		String test=d1.drawCard().cardToString();
+
+//	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
+//	// cmd line ver game manager does not really work for the online ver
+//	public void startGame() {
+//		gameDeck= new Deck(deckFile);
+//		Collections.shuffle(gameDeck.getDeck());
 //		
-//		String firstCard = oWriter.writeValueAsString(test);
-//		return firstCard;
+//		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
+//		Human humanPlayer = new Human("Bob", cards[0]);
+//		players = new ArrayList<Player>();
+//		players.add(humanPlayer);
+//		for (int i = 1; i < cards.length; i++) {
+//			players.add(new Computer("Computer " + i, cards[i]));
+//		}
 //	}
-	
+//	
+//	@GET //or post?
+//	@Consumes (MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public String setCategoryChosen (int index)	{
+//		Card c=activePlayer.getTopCard();
+//		String category=c.getSelectedCategory(index);
+//		return category;
+//	}
+//	
+//	// API method to display the category names of each card
+//	@POST
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public String displayCardCategories () throws JsonProcessingException	{
+//		
+//		Card c=activePlayer.getTopCard();
+//		String [] categories=c.getCategories();
+//		
+//		String listAsJSONString = oWriter.writeValueAsString(categories);
+//		return listAsJSONString;
+//	}
+//	
+//	// API method to display the individual values of each player's active card
+//	@POST
+//	public String displayCategoryValues () throws JsonProcessingException {
+//		
+//		Card[] topCard= new Card[players.size()]; 
+//		int[] values= new int[players.size()];
+//		
+//		for (int i=0; i<players.size(); i++)	{
+//			topCard[i]=players.get(i).getTopCard();
+//			values=topCard[i].getAllValues();
+//		}
+//		
+//		String listAsJSONString = oWriter.writeValueAsString(values);
+//		return listAsJSONString;
+//			
+//	}
+//	
 	
 	@GET
 	@Path("/helloJSONList")
@@ -98,7 +136,7 @@ public class TopTrumpsRESTAPI {
 		// We can turn arbatory Java objects directly into JSON strings using
 		// Jackson seralization, assuming that the Java objects are not too complex.
 		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
-		
+		System.out.println(listAsJSONString);
 		return listAsJSONString;
 	}
 	
@@ -113,5 +151,55 @@ public class TopTrumpsRESTAPI {
 	public String helloWord(@QueryParam("Word") String Word) throws IOException {
 		return "Hello "+Word;
 	}
+	
+	@GET
+	@Path("/printer")
+	public void printer(@QueryParam("Word") String Word) throws IOException {
+		System.out.println(Word);
+	}
+	
+	@GET
+	@Path("/cardTest")
+	public String cardTest() throws IOException{
+		
+//		Card x = players.get(0).getTopCard();
+		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
+		String s1 = oWriter.writeValueAsString(x);
+		System.out.println(s1);
+		return s1;
+	}
+	
+	
+	@GET
+	@Path("/showStats")
+	/**
+	 * Method to display the game statistics on the webpage
+	 */
+	public String gameStats() throws IOException {
+		Database db = new Database();
+		String x = db.getGameStatistics();
+		db.closeConnection();
+		db = null;
+
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

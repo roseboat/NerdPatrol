@@ -22,7 +22,7 @@ public final class Computer extends Player {
 }
 	public int chooseCategory() {
 
-		int[] values = heldCard.getAllValues();
+		int[] values = heldCard.getCardValues();
 
 		int max = values[0];
 		int index = 0;
@@ -35,7 +35,7 @@ public final class Computer extends Player {
 		}
 		System.out.println(getName()+" has chosen " + heldCard.getSelectedCategory(index));
 		System.out.println();
-	    setChosenCat(heldCard.getAllValues()[index]);
+	    setChosenCat(heldCard.getCardValues()[index]);
 		return index;
 	}
 }

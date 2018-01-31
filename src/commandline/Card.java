@@ -19,12 +19,12 @@ public final class Card implements Comparable<Card> {
 	private final int NUMBER_OF_CATEGORIES = 5;
 
 //	//Is this constructor ever used?
-//	public Card(String name, int a, int b, int c, int d, int e) {
-//
-//		this.name = name;
-//		this.cardValues = new int[] { a, b, c, d, e };
-//
-//	}
+	public Card(String name, int a, int b, int c, int d, int e, String cat1, String cat2, String cat3, String cat4, String cat5) {
+
+		this.name = name;
+		this.cardValues = new int[] { a, b, c, d, e };
+		this.categories = new String[] {cat1, cat2, cat3, cat4, cat5};
+	}
 
 	/**
 	 * Card constructor instantiates all the category values in an array and the category names.
@@ -72,16 +72,6 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @return showCard, String representation of the card
 	 * */
-//	public String cardToString() {
-//		String showCard = getName() + "\r\n" + categoryDescTitles() + "\r\n" +String.format("%3s%9s%8s%11s%11s", 
-//				cardValues[0],cardValues[1],cardValues[2],
-//				cardValues[3],cardValues[4]); 
-//		return showCard;
-//	}
-
-	// This almost works but Firepower is so long it pushes outside of the box. 
-	// I've found ways of fixing this online but it will turn into a rather
-	// long method. Waiting to discuss whether we should do this or not.
 	
 	protected String cardToString() {
 		StringBuilder showCard = new StringBuilder();
@@ -117,18 +107,15 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @return name, String name of card
 	 * */
-	protected String getName() {
+	public String getName() {
 		return name;
 	}
 	
-	/**
-	 * Returns the array of category values
-	 * 
-	 * @return cardValues, array of values for categories
-	 * */
-	protected int[] getAllValues() {
-		return this.cardValues;
+	public void setName(String name) {
+		this.name = name;
 	}
+	
+
 	
 
 	/**
@@ -137,7 +124,7 @@ public final class Card implements Comparable<Card> {
 	 *@param index, int corresponding to the index at the desired location
 	 *@return name of the category at selected index
 	 * */
-	protected String getSelectedCategory (int index)	{
+	public String getSelectedCategory (int index)	{
 		return categories[index];
 	}
 	
@@ -158,4 +145,31 @@ public final class Card implements Comparable<Card> {
 	protected void setSelectedValue(int index) {
 		this.selectedValue = cardValues[index];
 	}
+	
+	/**
+	 * Returns the array of category values
+	 * 
+	 * @return cardValues, array of values for categories
+	 * */
+	public int[] getCardValues() {
+		return this.cardValues;
+	}
+
+	public void setCardValues(int[] cardValues) {
+		this.cardValues = cardValues;
+	}
+
+	public int getNUMBER_OF_CATEGORIES() {
+		return NUMBER_OF_CATEGORIES;
+	}
+
+	public String[] getCategories () {
+		return categories;
+	}
+	
+	public void setCategories(String[] categories) {
+		this.categories = categories;
+	}
+	
+	
 }

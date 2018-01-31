@@ -205,7 +205,7 @@ public final class Deck {
 	 * @param numberOfPlayers, number of players within the game includes computer opponents
 	 * @return decks, an array of decks one for each player
 	 * */
-	protected Deck[] advancedSplit(int numberOfPlayers) {
+	public Deck[] advancedSplit(int numberOfPlayers) {
 		Deck[] decks = new Deck[numberOfPlayers];
 		switch (numberOfPlayers) {
 		case (2):

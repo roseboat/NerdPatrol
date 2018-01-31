@@ -5,3 +5,4 @@ target/classes/online/.DS_Store
 target/classes/.gitignore
 *.class
 toptrumps.log
+/target/

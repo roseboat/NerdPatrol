@@ -1,88 +1,134 @@
 <html>
 
-	<head>
-		<!-- Web page title -->
-    	<title>Top Trumps</title>
-    	
-    	<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
-    	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-    	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-    	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
+<head>
+<!-- Web page title -->
+<title>Top Trumps - Game</title>
 
-		<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-		<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/TREC_IS/bootstrap.min.css">
-    	<script src="http://dcs.gla.ac.uk/~richardm/vex.combined.min.js"></script>
-    	<script>vex.defaultOptions.className = 'vex-theme-os';</script>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	</head>
+<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
 
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<div class="container">
+<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
 
-	
-		<nav>
-			<a href="">Home Page</a>
-		</nav>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body onload="initalize()">
+	<!-- Call the initalize method when the page loads -->
 
-		<div>
-			<h1>Top Trumps!</h1>
-			<p>Pick the characteristic you think will have the highest
-				score...</p>
-			<br>
+	<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 100%
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/toptrumps/">Top Trumps</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/toptrumps/">Home</a></li>
+				<li class="active"><a href="/game/">Game</a></li>
+				<li><a href="/toptrumps/stats/">Statistics</a></li>
+			</ul>
 		</div>
-		<div align="center">
-			<table cellspacing="1" cellpadding="1" border="1">
-			<tbody>
-				<tr>
-					<td bgcolor="#00CCFF" valign="top" align="center" width="200"
-						height="300"><b>Player 1</b>
-						<div>
-						<b>Firepower: </b> </th>
-							<input name="p1" value="firepower" id="firepower" type="radio" 
-							<label for firepower id="p1firepower">
-							213
-							</label>
-						</div>
-						<div>
-						<b>Speed: </b> </th>
-							<input name="p1" value="speed" id="speed" type="radio"
-						</div>
-						<div>
-						<b>Size: </b> </th>
-							<input name="p1" value="size" id="size" type="radio"
-						</div>
-						<div>
-						<b>Range: </b> </th>
-							<input name="p1" value="range" id="range" type="radio"
-						</div>
-						<div>
-						<b>Cargo: </b> </th>
-							<input name="p1" value="cargo" id="cargo" type="radio"
-						</div>
+	</nav>
 
-					<td bgcolor="#CC00FF" valign="top" align="center" width="200"
-						height="300"><b>Player 2</b></td>
-	
-				</tr>
-				<tr>
-					<td bgcolor="#00FF00" valign="top" align="center" width="200"
-						height="300"><b>Player 3</b></td>
-					<td bgcolor="#FFFF00" valign="top" align="center" width="200"
-						height="300"><b>Player 4</b></td>
-				</tr>
-				</tbody>
-			</table>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-2 sidenav"></div>
 
+
+			<div class="col-sm-8 text-center">
+				<h1>Top Trumps!</h1>
+				<p>Choose the amount of players you'd like to play against:</p>
+				<input type="number" id="input1" min="1" max="5" />
+				<button onclick="chooseNumberPlayers()" width="25">Submit</button>
+				<br> <br> Cards to be Won: <input type="number"
+					readonly="readonly" id="pile" style="width: 30px;" />
+				<hr>
+				<h3>Let's Play!</h3>
+				<p>Choose your top category...</p>
+
+				<div class="panel-group" style="height: 500px; width: 250px">
+					<div class="panel panel-success">
+						<div class="panel-heading">Human Player</div>
+						<div class="panel-body">CARD INFO</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">AI Player</div>
+						<div class="panel-body">CARD INFO</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">AI Player</div>
+						<div class="panel-body">CARD INFO</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">AI Player</div>
+						<div class="panel-body">CARD INFO</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">AI Player</div>
+						<div class="panel-body">CARD INFO</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2 sidenav"></div>
 		</div>
-
 	</div>
 
-	<script type="text/javascript">
+	<footer class="container-fluid text-center">
+		<p>Created by the Nerd Patrol</p>
+	</footer>
+</body>
+
+
+<script type="text/javascript">
 		
 			// Method that is called on page load
 			function initalize() {
@@ -94,7 +140,13 @@
 				// For example, lets call our sample methods
 				helloJSONList();
 				helloWord("Student");
+
+				chooseNumberPlayers();
+				displayCard();
 				
+
+				cardTest();
+
 			}
 			
 			// -----------------------------------------
@@ -127,9 +179,28 @@
 			}
 		
 		</script>
+
+<!-- Here are examples of how to call REST API Methods -->
+<script type="text/javascript">
 		
-		<!-- Here are examples of how to call REST API Methods -->
-		<script type="text/javascript">
+			function displayCard(){
+				for (var i=0; i<5; i++)	{
+					document.write( <td bgcolor="#00CCFF" valign="top" align="center" width="200"
+						height="300"><b>Player 1</b></td> )
+				}
+			
+			}
+		
+			function chooseNumberPlayers(){
+    			var number=document.getElementById('input1').value;
+    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setPlayers?Number="+number); // Request type and URL+parameters
+    			if (!xhr) {
+  					alert("CORS not supported");
+				}
+		
+				xhr.send();	
+				
+ 			}
 		
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloJSONList() {
@@ -174,8 +245,50 @@
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
+			
+			function cardTest() {
+			
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/cardTest");
+				
+				if (!xhr) {
+  					alert("Fucked it");
+				}
+				xhr.onload = function(e) {
+ 					var responseText = xhr.response; // the text of the response
+ 					var rT = JSON.parse(responseText);
+					document.getElementById("name").innerHTML = rT["name"];
+					for (i = 0; i < rT.number_OF_CATEGORIES; i++){
+						document.getElementById(("cat" + (i+1))).innerHTML = rT["categories"][i];
+						document.getElementById(("val" + (i+1))).innerHTML = rT["cardValues"][i];
+					}
+					
+					alert(rT.name);
+				};
+				
+				xhr.send();
+				
+			
+			}
+			
+			
+			
+			
 
 		</script>
-		
-		</body>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+
+
+</body>
 </html>

@@ -1,45 +1,113 @@
 <html>
+<head>
+<!-- Web page title -->
+<title>Top Trumps - Home</title>
 
-	<head>
-		<!-- Web page title -->
-    	<title>Top Trumps</title>
-    	
-    	<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
-    	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-    	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-    	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
+<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
 
-		<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-		<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/TREC_IS/bootstrap.min.css">
-    	<script src="http://dcs.gla.ac.uk/~richardm/vex.combined.min.js"></script>
-    	<script>vex.defaultOptions.className = 'vex-theme-os';</script>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	</head>
+<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
 
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
-    	<div class="container">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-			<nav>
-			<a href="">Home Page</a>
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 100%
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+</style>
+</head>
+<body>
+
+	<!-- Call the initalize method when the page loads -->
+<body onload="initalize()">
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/toptrumps/">Top Trumps</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/toptrumps/">Home</a></li>
+					<li><a href="/toptrumps/game/">Game</a></li>
+					<li><a href="/toptrumps/stats/">Statistics</a></li>
+				</ul>
+			</div>
 		</nav>
+	</div>
+	<div class="container-fluid text-center">
+		<div class="row content">
 
-		<div>
-			<h1>Top Trumps!</h1>
-			<p>Choose whether you want to play a game or view statistics</p>
-			<br>
-			
-			
-			<button onclick="playGame();">Play a Game</button>
-			&nbsp;
-			<button onclick="viewStatistics();">View Game Statistics</button>
-			
+
+			<div class="col-sm-12 text-center">
+				<h1>Top Trumps Home!</h1>
+				<p>Choose whether you want to play a game or view statistics</p>
+				<br>
+
+				<button onclick="playGame();">Play a Game</button>
+				&nbsp;
+				<button onclick="viewStatistics();">View Game Statistics</button>
+			</div>
+
+
+			<br> <br>
 		</div>
-	
+	</div>
+
+
+	<footer class="container-fluid text-center">
+		<p>Created by the Nerd Patrol</p>
+	</footer>
+</body>
+
+
+<script type="text/javascript">
+  		
+  			// Method that is called on page load
 		
 		<script type="text/javascript">
 		
@@ -52,7 +120,7 @@
 				
 				// For example, lets call our sample methods
 				helloJSONList();
-				helloWord("Student");
+				//helloWord("Student");
 				printCard();
 				
 			}
@@ -89,9 +157,9 @@
 			}
 		
 		</script>
-		
-		<!-- Here are examples of how to call REST API Methods -->
-		<script type="text/javascript">
+
+<!-- Here are examples of how to call REST API Methods -->
+<script type="text/javascript">
 		
 			function playGame(){
         		window.location='http://localhost:7777/toptrumps/game';
@@ -99,6 +167,20 @@
     		
     		function viewStatistics(){
     			window.location='http://localhost:7777/toptrumps/stats';
+    		}
+    		
+    		function printer(){
+    			var word = document.getElementById("testText").value;
+    			document.getElementById("testArea").innerHTML = word;
+    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/printer?Word="+word);
+    			if(!xhr){
+    				alert("CORS not supported");
+    			}
+    			//xhr.onload = function(e) {
+    				//var responseText = xhr.response;
+    				//alert(responseText);
+    			//};
+    			xhr.send();
     		}
 			
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
@@ -148,6 +230,5 @@
 		
 
 		</script>
-		
-		</body>
+</body>
 </html>
