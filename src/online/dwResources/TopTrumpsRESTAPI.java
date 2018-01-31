@@ -151,4 +151,10 @@ public class TopTrumpsRESTAPI {
 		return "Hello "+Word;
 	}
 	
+	@GET
+	@Path("/printer")
+	public void printer(@QueryParam("Word") String Word) throws IOException {
+		System.out.println(Word);
+	}
+	
 }
