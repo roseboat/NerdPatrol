@@ -88,7 +88,7 @@
       <p>Choose your top category...</p>
       
       <div class="panel-group" style="height: 500px; width:250px">
-  		    <div class="panel panel-default">
+  		    <div class="panel panel-success">
       			<div class="panel-heading">Human Player</div>
       			<div class="panel-body">CARD INFO</div>
     		</div>
@@ -108,10 +108,7 @@
       			<div class="panel-heading">AI Player</div>
       			<div class="panel-body">CARD INFO</div>
     		</div>
-    		<div class="panel panel-default">
-      			<div class="panel-heading">AI Player</div>
-      			<div class="panel-body">CARD INFO</div>
-    		</div>
+    	
 	</div>
  
     </div>
