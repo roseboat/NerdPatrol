@@ -99,10 +99,21 @@ footer {
 					<div class="panel panel-success">
 						<div class="panel-heading">Human Player</div>
 						<div class="panel-body">CARD INFO</div>
+						<p>
+						<button onclick="selectCategory(1)" width="15" height ="20" >Cat1</button>
+						<p>
+						<button onclick="selectCategory(2)" width="15" height ="20" >Cat2</button>
+						<p>
+						<button onclick="selectCategory(3)" width="15" height ="20" >Cat3</button>
+						<p>
+						<button onclick="selectCategory(4)" width="15" height ="20" >Cat4</button>
+						<p>
+						<button onclick="selectCategory(5)" width="15" height ="20" >Cat5</button>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
+						<div class="panel-body">CARD INFO
+						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">AI Player</div>
@@ -141,9 +152,6 @@ footer {
 				helloJSONList();
 				helloWord("Student");
 
-				chooseNumberPlayers();
-				displayCard();
-				
 
 				cardTest();
 
@@ -183,12 +191,15 @@ footer {
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
 		
-			function displayCard(){
-				for (var i=0; i<5; i++)	{
-					document.write( <td bgcolor="#00CCFF" valign="top" align="center" width="200"
-						height="300"><b>Player 1</b></td> )
-				}
+			function selectCategory(x){
 			
+				var number=x
+    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/selectCategory?Number="+number); // Request type and URL+parameters
+    			if (!xhr) {
+  					alert("CORS not supported");
+				}
+		
+				xhr.send();	
 			}
 		
 			function chooseNumberPlayers(){

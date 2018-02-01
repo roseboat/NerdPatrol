@@ -116,7 +116,7 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @return value of card selected by player
 	 * */
-	protected int getSelectedValue()	{
+	public int getSelectedValue()	{
 		return selectedValue;
 	}
 	
@@ -125,7 +125,7 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @param index, integer corresponding to the index of the location
 	 * */
-	protected void setSelectedValue(int index) {
+	public void setSelectedValue(int index) {
 		this.selectedValue = cardValues[index];
 	}
 	
