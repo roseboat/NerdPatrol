@@ -80,21 +80,33 @@ public class TopTrumpsRESTAPI {
 		System.err.println("The chosen category is: "+ c.getSelectedCategory(catIndex)+" with a value of "+c.getSelectedValue());
 	}
 
-//	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
-//	// cmd line ver game manager does not really work for the online ver
-//	public void startGame() {
-//		gameDeck= new Deck(deckFile);
-//		Collections.shuffle(gameDeck.getDeck());
-//		
-//		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
-//		Human humanPlayer = new Human("Bob", cards[0]);
-//		players = new ArrayList<Player>();
-//		players.add(humanPlayer);
-//		for (int i = 1; i < cards.length; i++) {
-//			players.add(new Computer("Computer " + i, cards[i]));
-//		}
-//	}
+	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
+	// cmd line ver game manager does not really work for the online ver
+	@GET
+	@Path("/startGame")
+	public void startGame() {
+		gameDeck= new Deck(deckFile);
+		Collections.shuffle(gameDeck.getDeck());
+		
+		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
+		Human humanPlayer = new Human("Human Player", cards[0]);
+		players = new ArrayList<Player>();
+		players.add(humanPlayer);
+		for (int i = 1; i < cards.length; i++) {
+			players.add(new Computer("Computer " + i, cards[i]));
+		}
+	}
 
+	@GET
+	@Path("/whosTurn")
+	public String whosTurn() throws JsonProcessingException {
+		
+		Player yourTurn = players.get(0);
+		String yourName = yourTurn.getName();
+		return yourName;
+		
+	}
+	
 	
 	@GET
 	@Path("/helloJSONList")
@@ -162,6 +174,8 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 
 	}
+	
+	
 	
 	
 	
