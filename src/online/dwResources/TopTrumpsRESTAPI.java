@@ -74,7 +74,7 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/selectCategory")
 	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
-		catIndex=Number;
+		catIndex=Number-1;
 		Card c= new Card ("Calvin", 0,0,0,0,0,"style", "manners", "bants", "hygene", "dabs");
 		c.setSelectedValue(catIndex);
 		System.err.println("The chosen category is: "+ c.getSelectedCategory(catIndex)+" with a value of "+c.getSelectedValue());
