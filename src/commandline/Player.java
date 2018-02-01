@@ -97,6 +97,8 @@ public abstract class Player implements Comparable<Player>{
 	    this.chosenCat = chosenCat;
 	}
 	
+	
+	
 	/**
 	 * Returns the name of the player.
 	 * 

@@ -85,23 +85,6 @@ public final class Card implements Comparable<Card> {
 	}
 	
 	
-	
-	// reads the description line from txt file to get titles
-	protected String categoryDescTitles() {
-		String line = null;
-
-		try {
-			line = Files.readAllLines(Paths.get("StarCitizenDeck.txt")).get(0);
-			line = line.substring(12);
-			String categoryTitleArray[] = line.split("\\s+");
-			line = String.format("%-8s%-9s%-9s%-13s%-8s", categoryTitleArray[0],categoryTitleArray[1],categoryTitleArray[2],
-					categoryTitleArray[3],categoryTitleArray[4]); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return line;
-	}
-	
 	/**
 	 * Returns the name of the card
 	 * 
