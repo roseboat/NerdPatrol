@@ -43,6 +43,7 @@ public class TopTrumpsRESTAPI {
 	private int numPlayers;
 	private Deck gameDeck;
 	private Player activePlayer;
+	private int catIndex;
 	private static ArrayList<Player> players;
 	
 	/**
@@ -64,60 +65,48 @@ public class TopTrumpsRESTAPI {
 		numPlayers=Number;
 		System.out.println(numPlayers);
 	}
+	
+	
+	// returns an index
+	// depending on the button pressed
+	// index is used to set the chosen category
+	// prints the chosen category & value on console (for testing)
+	@GET
+	@Path("/selectCategory")
+	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
+		catIndex=Number-1;
+		Card c= new Card ("Calvin", 0,0,0,0,0,"style", "manners", "bants", "hygene", "dabs");
+		c.setSelectedValue(catIndex);
+		System.err.println("The chosen category is: "+ c.getSelectedCategory(catIndex)+" with a value of "+c.getSelectedValue());
+	}
 
-//	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
-//	// cmd line ver game manager does not really work for the online ver
-//	public void startGame() {
-//		gameDeck= new Deck(deckFile);
-//		Collections.shuffle(gameDeck.getDeck());
-//		
-//		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
-//		Human humanPlayer = new Human("Bob", cards[0]);
-//		players = new ArrayList<Player>();
-//		players.add(humanPlayer);
-//		for (int i = 1; i < cards.length; i++) {
-//			players.add(new Computer("Computer " + i, cards[i]));
-//		}
-//	}
-//	
-//	@GET //or post?
-//	@Consumes (MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public String setCategoryChosen (int index)	{
-//		Card c=activePlayer.getTopCard();
-//		String category=c.getSelectedCategory(index);
-//		return category;
-//	}
-//	
-//	// API method to display the category names of each card
-//	@POST
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public String displayCardCategories () throws JsonProcessingException	{
-//		
-//		Card c=activePlayer.getTopCard();
-//		String [] categories=c.getCategories();
-//		
-//		String listAsJSONString = oWriter.writeValueAsString(categories);
-//		return listAsJSONString;
-//	}
-//	
-//	// API method to display the individual values of each player's active card
-//	@POST
-//	public String displayCategoryValues () throws JsonProcessingException {
-//		
-//		Card[] topCard= new Card[players.size()]; 
-//		int[] values= new int[players.size()];
-//		
-//		for (int i=0; i<players.size(); i++)	{
-//			topCard[i]=players.get(i).getTopCard();
-//			values=topCard[i].getAllValues();
-//		}
-//		
-//		String listAsJSONString = oWriter.writeValueAsString(values);
-//		return listAsJSONString;
-//			
-//	}
-//	
+	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
+	// cmd line ver game manager does not really work for the online ver
+	@GET
+	@Path("/startGame")
+	public void startGame() {
+		gameDeck= new Deck(deckFile);
+		Collections.shuffle(gameDeck.getDeck());
+		
+		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
+		Human humanPlayer = new Human("Human Player", cards[0]);
+		players = new ArrayList<Player>();
+		players.add(humanPlayer);
+		for (int i = 1; i < cards.length; i++) {
+			players.add(new Computer("Computer " + i, cards[i]));
+		}
+	}
+
+	@GET
+	@Path("/whosTurn")
+	public String whosTurn() throws JsonProcessingException {
+		
+		Player yourTurn = players.get(0);
+		String yourName = yourTurn.getName();
+		return yourName;
+		
+	}
+	
 	
 	@GET
 	@Path("/helloJSONList")
@@ -185,6 +174,8 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 
 	}
+	
+	
 	
 	
 	

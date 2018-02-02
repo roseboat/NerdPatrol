@@ -82,7 +82,7 @@ public final class Deck {
 				int count = 0;
 
 				// reads file, and puts scanner around the reader
-				fr = new FileReader("DECK_NAME");
+				fr = new FileReader(DECK_NAME);
 				in = new Scanner(fr);
 
 				// gets data line by line
@@ -91,8 +91,8 @@ public final class Deck {
 				while (in.hasNextLine()) {
 					// if it's the first line
 					if (count < 1) {
-						titleLine = in.nextLine(); // gets category titles if first line - dunno what to do with this
-													// yet
+						titleLine = in.nextLine(); // gets category titles if first line 
+													
 						storeCategories(titleLine);
 						// System.err.println(titleLine);
 					} else {

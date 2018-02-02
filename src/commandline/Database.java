@@ -30,7 +30,7 @@ public class Database {
 			return;
 		}
 		if (connection != null) {
-			System.out.println("Connection successful");
+			//System.out.println("Connection successful");
 		} else {
 			System.err.println("Failed to make connection");
 		}
@@ -40,7 +40,7 @@ public class Database {
 	public void closeConnection() {
 		try {
 			connection.close();
-			System.out.println("Connection closed");
+			//System.out.println("Connection closed");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Connection could not be closed - SQL exception");
@@ -62,7 +62,7 @@ public class Database {
 		try {
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate(query);
-			System.out.println(rs);
+			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
 
@@ -83,7 +83,7 @@ public class Database {
 		try {
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate(query);
-			System.out.println(rs);
+			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
 
@@ -104,7 +104,7 @@ public class Database {
 		try {
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate(query);
-			System.out.println(rs);
+			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
 
@@ -125,7 +125,7 @@ public class Database {
 		try {
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate(query);
-			System.out.println(rs);
+			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
 
@@ -241,16 +241,5 @@ public class Database {
 		
 		return stats;
 	}
-
-
-	//for testing
-	public static void main(String args[]) {
-		Database x = new Database();
-	//x.gameStats("player", 30, 5, 20, 1, 1); // two AI player test
-	// x.closeConnection();
-
-	System.out.println(x.getGameStatistics());
-	}
-
 
 }

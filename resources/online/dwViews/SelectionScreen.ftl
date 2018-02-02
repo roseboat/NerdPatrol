@@ -85,6 +85,8 @@ footer {
 
 			<div class="col-sm-12 text-center">
 				<h1>Top Trumps Home!</h1>
+				<img src="http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/presidential_reading_level/img/trump.png">
+				
 				<p>Choose whether you want to play a game or view statistics</p>
 				<br>
 
