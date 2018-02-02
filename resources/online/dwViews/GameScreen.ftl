@@ -103,7 +103,8 @@ footer {
 						<div class="panel-heading">Human Player</div>
 						<div class="panel-body">CARD INFO</div>
 						<p>
-						<button onclick="selectCategory(1)" width="15" height ="20" >Cat1</button>
+		
+						<button onclick="selectCategory(1)" width="15" height ="20" ><label id='Cat1'/></button>
 						<p>
 						<button onclick="selectCategory(2)" width="15" height ="20" >Cat2</button>
 						<p>
@@ -155,7 +156,7 @@ footer {
 		// For example, lets call our sample methods
 		helloJSONList();
 		helloWord("Student");
-
+		setCategories();
 		cardTest();
 		cardPile();
 	}
@@ -307,7 +308,21 @@ footer {
 	}
 	xhr.send();
 	}
-	
+		function setCategories() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/setCategories");
+		if (!xhr) {
+			alert("tester");
+			}
+		xhr.onload = function(e) {
+		
+		var responseText = xhr.response; // the text of the response
+			responseText = responseText.replace(/^"(.*)"$/, '$1');
+			document.getElementById('Cat1').innerHTML = responseText;
+	}
+	xhr.send();
+	}
 
 	function whosTurn() {
 

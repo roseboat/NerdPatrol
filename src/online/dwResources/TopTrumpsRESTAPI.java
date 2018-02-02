@@ -179,12 +179,18 @@ public class TopTrumpsRESTAPI {
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
 		int test = 3;
-		
-
+	
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
 	}
+	@GET
+	@Path("/setCategories")
+	public String setCategories() throws IOException {
+		String ab = "firepower";
 	
+		String xAsJsonString = oWriter.writeValueAsString(ab);
+		return xAsJsonString;
+	}
 	
 	
 	
