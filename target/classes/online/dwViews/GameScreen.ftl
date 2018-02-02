@@ -65,7 +65,7 @@ footer {
 </style>
 </head>
 <body>
-
+	
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -89,8 +89,8 @@ footer {
 				<p>Choose the amount of players you'd like to play against:</p>
 				<input type="number" id="input1" min="1" max="5" />
 				<button onclick="chooseNumberPlayers()" width="25">Submit</button>
-				<br> <br> Cards to be Won: <input type="number"
-					readonly="readonly" id="pile" style="width: 30px;" />
+				<br> <br> <div>Cards to be Won: <label
+					readonly="readonly" id="pile" style="width: 30px;"/></div>
 				<hr>
 				<h3>Let's Play!</h3>
 				<div id="playerTurn"></div>
@@ -157,7 +157,7 @@ footer {
 		helloWord("Student");
 
 		cardTest();
-
+		cardPile();
 	}
 
 	function buildCards(){
@@ -293,6 +293,21 @@ footer {
 		}
 		xhr.send();
 	}
+	
+	function cardPile() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/cardPile");
+		if (!xhr) {
+			alert("dickfarts");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('pile').innerHTML = responseText;
+	}
+	xhr.send();
+	}
+	
 
 	function whosTurn() {
 
@@ -310,6 +325,7 @@ footer {
 		xhr.send;
 
 	}
+	
 </script>
 
 

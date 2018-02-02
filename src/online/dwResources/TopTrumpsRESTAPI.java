@@ -175,8 +175,15 @@ public class TopTrumpsRESTAPI {
 
 	}
 	
-	
-	
+	@GET
+	@Path("/cardPile")
+	public String cardPile() throws IOException {
+		int test = 3;
+		
+
+		String xAsJsonString = oWriter.writeValueAsString(test);
+		return xAsJsonString;
+	}
 	
 	
 	
