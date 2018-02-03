@@ -62,8 +62,8 @@ public class TopTrumpsRESTAPI {
 	@Path("/setPlayers")
 	@Consumes (MediaType.APPLICATION_JSON)
 	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
-		numPlayers=Number;
-		System.out.println(numPlayers);
+		numPlayers=Number+1;
+		System.err.println("the number of players: "+numPlayers);
 	}
 	
 	
@@ -82,29 +82,39 @@ public class TopTrumpsRESTAPI {
 
 	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
 	// cmd line ver game manager does not really work for the online ver
-	@GET
-	@Path("/startGame")
+
 	public void startGame() {
 		gameDeck= new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
 		
-		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
-		Human humanPlayer = new Human("Human Player", cards[0]);
+		Deck[] deck = gameDeck.advancedSplit(this.numPlayers);
+		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-		for (int i = 1; i < cards.length; i++) {
-			players.add(new Computer("Computer " + i, cards[i]));
+		for (int i = 1; i < deck.length; i++) {
+			players.add(new Computer("Computer " + i, deck[i]));
 		}
+		randomiseOrder();
 	}
+	
+	public void randomiseOrder() {
+		Collections.shuffle(players);
+		activePlayer = players.get(0);
+	}
+	
+	public void removePlayer(int i) {
+		players.remove(i);
+	}
+	
+	
 
 	@GET
-	@Path("/whosTurn")
-	public String whosTurn() throws JsonProcessingException {
+	@Path("/activePlayer")
+	public String activePlayer() throws IOException {
 		
-		Player yourTurn = players.get(0);
-		String yourName = yourTurn.getName();
-		return yourName;
-		
+		startGame();
+		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
+		return nameAsJSONString;
 	}
 	
 	

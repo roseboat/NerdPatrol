@@ -62,7 +62,16 @@ footer {
 		height: auto;
 	}
 }
+
+#statusBar {
+background-color: lightblue;
+padding: 10px 0;
+text-align: center;
+display: none;
+}
+
 </style>
+
 </head>
 <body>
 	
@@ -86,10 +95,27 @@ footer {
 
 			<div class="col-sm-8 text-center">
 				<h1>Top Trumps!</h1>
+			
+
+				<div id="myDIV">
 				<p>Choose the amount of players you'd like to play against:</p>
-				<input type="number" id="input1" min="1" max="5" />
-				<button onclick="chooseNumberPlayers()" width="25">Submit</button>
-				<br> <br> <div>Cards to be Won: <label
+				
+				<select id="input1"style="font-size:17px;">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+				<button onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
+				</div>
+				<br>
+				
+				<div id= "statusBar">
+				<p> Active Player is  <label id='activePlayer'></label>
+				<p>
+				</div>
+				
+				<br> <div>Cards to be Won: <label
 					readonly="readonly" id="pile" style="width: 30px;"/></div>
 				<hr>
 				<h3>Let's Play!</h3>
@@ -145,6 +171,8 @@ footer {
 </body>
 
 
+
+
 <script type="text/javascript">
 	// Method that is called on page load
 	function initalize() {
@@ -159,11 +187,6 @@ footer {
 		setCategories();
 		cardTest();
 		cardPile();
-	}
-
-	function buildCards(){
-		
-		
 		
 	}
 	
@@ -197,10 +220,28 @@ footer {
 		}
 		return xhr;
 	}
+	
+	function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+    } else {
+        x.style.display = "none";
+    }
+    
+    
+    
+}
+function revealBar() {
+
+document.getElementById("statusBar").style.display= "block";
+
+}
 </script>
 
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
+
+	
 
 	function selectCategory(x) {
 
@@ -214,7 +255,22 @@ footer {
 
 		xhr.send();
 	}
-
+	
+		function activePlayer() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/activePlayer");
+		if (!xhr) {
+			alert("tester");
+			}
+		xhr.onload = function(e) {
+		
+		var responseText = xhr.response; // the text of the response
+			responseText = responseText.replace(/^"(.*)"$/, '$1');
+			document.getElementById('activePlayer').innerHTML = responseText;
+	}
+	xhr.send();
+	}
 	function chooseNumberPlayers() {
 		var number = document.getElementById('input1').value;
 		var xhr = createCORSRequest('GET',
@@ -222,8 +278,13 @@ footer {
 		if (!xhr) {
 			alert("CORS not supported");
 		}
-
+		if (number<1 || number>4)	{
+			alert("Player number out of bounds");
+		}
+		else	{	
 		xhr.send();
+		
+		}
 
 	}
 
@@ -243,7 +304,7 @@ footer {
 		// to do when the response arrives 
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
+			//alert(responseText); // lets produce an alert
 		};
 
 		// We have done everything we need to prepare the CORS request, so send it
@@ -266,7 +327,7 @@ footer {
 		// to do when the response arrives 
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
+			//alert(responseText); // lets produce an alert
 		};
 
 		// We have done everything we need to prepare the CORS request, so send it
@@ -291,7 +352,7 @@ footer {
   				$( ".playerCard" ).append(text1);
   			}
 
-			alert(rT.name);
+			//alert(rT.name);
 		}
 		xhr.send();
 	}
