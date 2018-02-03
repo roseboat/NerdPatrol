@@ -105,15 +105,15 @@ footer {
   <h5 class="card-title">Avenger</h5>
     
    
-    					<button onclick="selectCategory(1)" class="btn btn-default btn-block" id="Cat1">Cat1<span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block Cat1" id="Cat1">Cat1<span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block" id="Cat2">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block Cat2" id="Cat2">Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block" id="Cat3">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block Cat3" id="Cat3">Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block" id="Cat4">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block Cat4" id="Cat4">Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block" id="Cat5">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block Cat5" id="Cat5">Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
@@ -125,15 +125,15 @@ footer {
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
    
-    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cangjhytt1'></label><span class="badge">7</span></button>
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block Cat1"><label id='Cangjhytt1'></label><span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block Cat2">Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block Cat3">Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block Cat4">Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block Cat5">Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
@@ -226,8 +226,8 @@ footer {
 		helloJSONList();
 		helloWord("Student");
 		//setCategories();
-		cardTest();
-
+		//cardTest();
+		moreCardTest();
 		//cardPile();
 	}
 	function buildCards(){
@@ -350,6 +350,32 @@ footer {
   				var catName = "#Cat" + (i+1);
     			$( catName ).html(rT.categories[i] + "<span class=\"badge\">"+ rT.cardValues[i] +"</span>");
   			}
+			alert(rT.name);
+		}
+		xhr.send();
+	}
+	
+	function moreCardTest() {
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/moreCardTest");
+		if (!xhr) {
+			alert("Fucked it");
+		}
+		xhr.onload = function(e) {
+			var responseText = xhr.response; // the text of the response
+			var list = JSON.parse(responseText);
+			
+			for(i = 0; i < 5; i++){
+				var cardName = "#card" + (i + 1);
+				$( cardName ).find( ".card-title" ).text(list[i].name);
+				var rT = list[i];
+				for(i = 0; i < rT.number_OF_CATEGORIES; i++){
+  					var catName = ".Cat" + (i+1);
+    				$( cardname ).find( catName ).html(rT.categories[i] + "<span class=\"badge\">"+ rT.cardValues[i] +"</span>");
+  				}
+			}
+			
+  			
 			alert(rT.name);
 		}
 		xhr.send();
