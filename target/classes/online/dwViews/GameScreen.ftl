@@ -241,18 +241,19 @@ footer {
 	function buildCards(){
 		
 		var playerNum = $( '#input1' ).val();
-		playerNum += 1;
 		
-		if (playerNum == 2){
-			var x = document.getElementById('card3');
-			$('#card3').remove();
+		if (playerNum == 1) {
+			$( "#card3" ).remove();
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
 		}
-		if (playerNum == 3){
-			var x = document.getElementById('card3');
-			var y = document.getElementById('card4');
-			$('#card3').remove();
-			$('#card4').remove();
+		 else if (playerNum == 2){
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
 		}
+		 else if (playerNum == 3){
+		 	$( "#card5" ).remove();
+		 }
 
 	}
 	
