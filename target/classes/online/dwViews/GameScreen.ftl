@@ -59,7 +59,22 @@ footer {
 		height: auto;
 	}
 }
+
+#statusBar {
+background-color: lightblue;
+padding: 10px 0;
+text-align: center;
+display: none;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 5vw;
+    object-fit: cover;
+}
+
 </style>
+
 </head>
 <body>
 	
@@ -81,12 +96,29 @@ footer {
 			<div class="col-sm-2 sidenav"></div>
 
 <div class="container-fluid text-center">
-			<div class="col-sm-8 text-center">
+			<div class="col-lg-8 text-center">
 				<h1>Top Trumps!</h1>
+			
+
+				<div id="myDIV">
 				<p>Choose the amount of players you'd like to play against:</p>
-				<input type="number" id="input1" min="1" max="5" />
-				<button onclick="chooseNumberPlayers()" width="25">Submit</button>
-				<br> <br> <div>Cards to be Won: <label
+				
+				<select id="input1"style="font-size:17px;">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+				<button class="btn btn-default" onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
+				</div>
+				<br>
+				
+				<div id= "statusBar">
+				<p> Active Player is  <label id='activePlayer'></label>
+				<p>
+				</div>
+				
+				<br> <div>Cards to be Won: <label
 					readonly="readonly" id="pile" style="width: 30px;"/></div>
 				<hr>
 				<h3>Let's Play!</h3>
@@ -97,10 +129,10 @@ footer {
 				
 				 <div class="col-sm-1"></div>
 				
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card1" style="display">
     <h4 class="card-header">Human Player</h4>
-  <img class="card-img-top" src="..." alt="Card image cap">
+  <img class="card-img-top" src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg" alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
     
@@ -118,7 +150,7 @@ footer {
   </div>
   </div>
   
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card2">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -138,7 +170,7 @@ footer {
   </div>
   </div>
   
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card3">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -159,7 +191,7 @@ footer {
   </div>
   </div>
   
-   <div class="col-sm-2">
+   <div class="col-lg-2">
     <div class="card" id="card4">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -180,7 +212,7 @@ footer {
   </div>
   </div>
   
-   <div class="col-sm-2">
+   <div class="col-lg-2">
     <div class="card" id="card5">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -216,6 +248,8 @@ footer {
 </body>
 
 
+
+
 <script type="text/javascript">
 	// Method that is called on page load
 	function initalize() {
@@ -225,26 +259,29 @@ footer {
 		// For example, lets call our sample methods
 		helloJSONList();
 		helloWord("Student");
+
 		//setCategories();
 		//cardTest();
 		moreCardTest();
 		//cardPile();
+
 	}
 	function buildCards(){
 		
 		var playerNum = $( '#input1' ).val();
-		playerNum += 1;
 		
-		if (playerNum == 2){
-			var x = document.getElementById('card3');
-			$('#card3').remove();
+		if (playerNum == 1) {
+			$( "#card3" ).remove();
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
 		}
-		if (playerNum == 3){
-			var x = document.getElementById('card3');
-			var y = document.getElementById('card4');
-			$('#card3').remove();
-			$('#card4').remove();
+		 else if (playerNum == 2){
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
 		}
+		 else if (playerNum == 3){
+		 	$( "#card5" ).remove();
+		 }
 
 	}
 	
@@ -271,10 +308,27 @@ footer {
 		}
 		return xhr;
 	}
+	
+	function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+    } else {
+        x.style.display = "none";
+    }
+    
+	}
+	
+	function revealBar() {
+
+	document.getElementById("statusBar").style.display= "block";
+
+	}
+	
 </script>
 
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
+
 	function selectCategory(x) {
 		var number = x
 		var xhr = createCORSRequest('GET',
@@ -285,6 +339,24 @@ footer {
 		}
 		xhr.send();
 	}
+
+	
+		function activePlayer() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/activePlayer");
+		if (!xhr) {
+			alert("tester");
+			}
+		xhr.onload = function(e) {
+		
+		var responseText = xhr.response; // the text of the response
+			responseText = responseText.replace(/^"(.*)"$/, '$1');
+			document.getElementById('activePlayer').innerHTML = responseText;
+	}
+	xhr.send();
+	}
+
 	function chooseNumberPlayers() {
 		var number = document.getElementById('input1').value;
 		var xhr = createCORSRequest('GET',
@@ -292,7 +364,19 @@ footer {
 		if (!xhr) {
 			alert("CORS not supported");
 		}
+
+		if (number<1 || number>4)	{
+			alert("Player number out of bounds");
+		}
+		else	{	
+
 		buildCards();	
+
+
+		xhr.send();
+		
+		}
+
 
 		xhr.send();
 	}
@@ -310,7 +394,7 @@ footer {
 		// to do when the response arrives 
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
+			//alert(responseText); // lets produce an alert
 		};
 		// We have done everything we need to prepare the CORS request, so send it
 		xhr.send();
@@ -328,7 +412,7 @@ footer {
 		// to do when the response arrives 
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
+			//alert(responseText); // lets produce an alert
 		};
 		// We have done everything we need to prepare the CORS request, so send it
 		xhr.send();
@@ -350,6 +434,7 @@ footer {
   				var catName = "#Cat" + (i+1);
     			$( catName ).html(rT.categories[i] + "<span class=\"badge\">"+ rT.cardValues[i] +"</span>");
   			}
+
 			alert(rT.name);
 		}
 		xhr.send();
@@ -409,6 +494,7 @@ footer {
 	}
 	xhr.send();
 	}
+
 	function whosTurn() {
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/whosTurn");
@@ -423,6 +509,7 @@ footer {
 		xhr.send;
 	}
 	
+
 	
 	
 	

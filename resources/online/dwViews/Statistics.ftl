@@ -88,8 +88,8 @@ footer {
 
 
 			<div class="col-sm-8 text-center">
-				<h1>Game Statistics</h1>
-				<p></p>
+				<h1>Game Statistics</h1><br>
+				<p id="testArea"></p>
 			</div>
 
 			<div class="col-sm-2 sidenav"></div>
