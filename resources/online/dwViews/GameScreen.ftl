@@ -104,15 +104,15 @@ footer {
 						<div class="panel-body">CARD INFO</div>
 						<p>
 		
-						<button onclick="selectCategory(1)" width="15" height ="20" ><label id='Cat1'/></button>
+						<button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cat1'></label><span class="badge">7</span></button>
 						<p>
-						<button onclick="selectCategory(2)" width="15" height ="20" >Cat2</button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
 						<p>
-						<button onclick="selectCategory(3)" width="15" height ="20" >Cat3</button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
 						<p>
-						<button onclick="selectCategory(4)" width="15" height ="20" >Cat4</button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
 						<p>
-						<button onclick="selectCategory(5)" width="15" height ="20" >Cat5</button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
 					</div>
 
 					<div class="panel panel-default">
