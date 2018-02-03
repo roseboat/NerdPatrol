@@ -17,6 +17,7 @@
 
 <!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -92,7 +93,7 @@ display: none;
 		<div class="row content">
 			<div class="col-sm-2 sidenav"></div>
 
-
+<div class="container-fluid text-center">
 			<div class="col-sm-8 text-center">
 				<h1>Top Trumps!</h1>
 			
@@ -120,47 +121,122 @@ display: none;
 				<hr>
 				<h3>Let's Play!</h3>
 				<div id="playerTurn"></div>
-				<br>
+				<br><br>
 				
 				
-
-				<div class="panel-group" style="height: 500px; width: 250px">
-					<div class="panel panel-success">
-						<div class="panel-heading">Human Player</div>
-						<div class="panel-body playerCard">CARD INFO</div>
-						<p>
-		
-						<button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cat1'></label><span class="badge">7</span></button>
-						<p>
+				<div class="row text-center">
+				
+				 <div class="col-sm-1"></div>
+				
+  <div class="col-sm-2">
+    <div class="card" id="card1" style="display">
+    <h4 class="card-header">Human Player</h4>
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+  <h5 class="card-title">Avenger</h5>
+    
+   
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cdsat1'></label><span class="badge">7</span></button>
+					
 						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
-						<p>
+			
 						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
-						<p>
+	
 						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
-						<p>
+			
 						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
-					</div>
+  </div>
+  </div>
+  </div>
+  
+  <div class="col-sm-2">
+    <div class="card" id="card2">
+    <h4 class="card-header">Human Player</h4>
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+  <h5 class="card-title">Avenger</h5>
+   
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cangjhytt1'></label><span class="badge">7</span></button>
+					
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+			
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+	
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+			
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+  </div>
+  </div>
+  </div>
+  
+  <div class="col-sm-2">
+    <div class="card" id="card3">
+    <h4 class="card-header">Human Player</h4>
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+  <h5 class="card-title">Avenger</h5>
+    
+   
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cagraergegt1'></label><span class="badge">7</span></button>
+					
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+			
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+	
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+			
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+  </div>
+  </div>
+  </div>
+  
+   <div class="col-sm-2">
+    <div class="card" id="card4">
+    <h4 class="card-header">Human Player</h4>
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+  <h5 class="card-title">Avenger</h5>
+    
+   
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Casget1'></label><span class="badge">7</span></button>
+					
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+			
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+	
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+			
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+  </div>
+  </div>
+  </div>
+  
+   <div class="col-sm-2">
+    <div class="card" id="card5">
+    <h4 class="card-header">Human Player</h4>
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+  <h5 class="card-title">Avenger</h5>
+    
+   
+    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='C345at1'></label><span class="badge">7</span></button>
+					
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">C2345at2<span class="badge">4</span></button>
+			
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">C23454at3<span class="badge">9</span></button>
+	
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Caagret4<span class="badge">3</span></button>
+			
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Caasfgt5<span class="badge">2</span></button>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  <div class="col-sm-1"></div>
+  </div>
 
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO
-						</div>
-		
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-				</div>
-			</div>
+	
 			<div class="col-sm-2 sidenav"></div>
 		</div>
 	</div>
@@ -188,6 +264,27 @@ display: none;
 		cardTest();
 		cardPile();
 		
+<<<<<<< HEAD
+=======
+	}
+
+	function buildCards(){
+		
+		var playerNum = $( '#input1' ).val();
+		
+		if (playerNum == 1) {
+			$( "#card3" ).remove();
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
+		}
+		 else if (playerNum == 2){
+			$( "#card4" ).remove();
+			$( "#card5" ).remove();
+		}
+		 else if (playerNum == 3){
+		 	$( "#card5" ).remove();
+		 }
+>>>>>>> b3edbb7de062a3a1ec301e3447dcd1f4e308df96
 	}
 	
 	
@@ -278,10 +375,14 @@ document.getElementById("statusBar").style.display= "block";
 		if (!xhr) {
 			alert("CORS not supported");
 		}
+<<<<<<< HEAD
 		if (number<1 || number>4)	{
 			alert("Player number out of bounds");
 		}
 		else	{	
+=======
+		buildCards();	
+>>>>>>> b3edbb7de062a3a1ec301e3447dcd1f4e308df96
 		xhr.send();
 		
 		}
@@ -402,6 +503,10 @@ document.getElementById("statusBar").style.display= "block";
 		xhr.send;
 
 	}
+	
+	
+	
+	
 	
 </script>
 
