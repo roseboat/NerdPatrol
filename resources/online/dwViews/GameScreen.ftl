@@ -254,7 +254,6 @@ footer {
 		 else if (playerNum == 3){
 		 	$( "#card5" ).remove();
 		 }
-
 	}
 	
 	
