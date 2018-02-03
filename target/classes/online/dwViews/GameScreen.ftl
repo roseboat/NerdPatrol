@@ -94,8 +94,11 @@ footer {
 				<br><br>
 				
 				<div class="row text-center">
+				
+				 <div class="col-sm-1"></div>
+				
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card" id="card1" style="display">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -116,7 +119,7 @@ footer {
   </div>
   
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card" id="card2">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -136,7 +139,7 @@ footer {
   </div>
   
   <div class="col-sm-2">
-    <div class="card">
+    <div class="card" id="card3">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -157,7 +160,7 @@ footer {
   </div>
   
    <div class="col-sm-2">
-    <div class="card">
+    <div class="card" id="card4">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -178,7 +181,7 @@ footer {
   </div>
   
    <div class="col-sm-2">
-    <div class="card">
+    <div class="card" id="card5">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -198,6 +201,8 @@ footer {
   </div>
   </div>
   </div>
+  
+  <div class="col-sm-1"></div>
   </div>
 
 	
@@ -227,8 +232,20 @@ footer {
 	}
 	function buildCards(){
 		
+		var playerNum = $( '#input1' ).val();
+		playerNum += 1;
 		
-		
+		if (playerNum == 2){
+			var x = document.getElementById('card3');
+			$('#card3').remove();
+		}
+		if (playerNum == 3){
+			var x = document.getElementById('card3');
+			var y = document.getElementById('card4');
+			$('#card3').remove();
+			$('#card4').remove();
+		}
+
 	}
 	
 	
@@ -275,6 +292,8 @@ footer {
 		if (!xhr) {
 			alert("CORS not supported");
 		}
+		buildCards();	
+
 		xhr.send();
 	}
 	
@@ -377,6 +396,10 @@ footer {
 		}
 		xhr.send;
 	}
+	
+	
+	
+	
 	
 </script>
 
