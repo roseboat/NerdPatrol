@@ -264,8 +264,7 @@ display: none;
 		cardTest();
 		cardPile();
 		
-<<<<<<< HEAD
-=======
+
 	}
 
 	function buildCards(){
@@ -284,7 +283,7 @@ display: none;
 		 else if (playerNum == 3){
 		 	$( "#card5" ).remove();
 		 }
->>>>>>> b3edbb7de062a3a1ec301e3447dcd1f4e308df96
+
 	}
 	
 	
@@ -325,14 +324,14 @@ display: none;
         x.style.display = "none";
     }
     
-    
-    
-}
-function revealBar() {
+	}
+	
+	function revealBar() {
 
-document.getElementById("statusBar").style.display= "block";
+	document.getElementById("statusBar").style.display= "block";
 
-}
+	}
+	
 </script>
 
 <!-- Here are examples of how to call REST API Methods -->
@@ -375,14 +374,14 @@ document.getElementById("statusBar").style.display= "block";
 		if (!xhr) {
 			alert("CORS not supported");
 		}
-<<<<<<< HEAD
+
 		if (number<1 || number>4)	{
 			alert("Player number out of bounds");
 		}
 		else	{	
-=======
+
 		buildCards();	
->>>>>>> b3edbb7de062a3a1ec301e3447dcd1f4e308df96
+
 		xhr.send();
 		
 		}
@@ -487,23 +486,6 @@ document.getElementById("statusBar").style.display= "block";
 	xhr.send();
 	}
 
-	function whosTurn() {
-
-		var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/whosTurn");
-
-		if (!xhr) {
-			alert("No players!");
-		}
-		xhr.onload = function(e) {
-			var responseText = xhr.response;
-			document.getElementById('playerTurn').innerHTML = "It is "
-					+ responseText + "'s turn!";
-		}
-		xhr.send;
-
-	}
-	
 	
 	
 	
