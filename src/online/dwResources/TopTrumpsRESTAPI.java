@@ -153,7 +153,9 @@ public class TopTrumpsRESTAPI {
 		
 //		Card x = players.get(0).getTopCard();
 		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
-		String s1 = oWriter.writeValueAsString(x);
+		Card y = new Card("Chaddy", 1,2,3,4,5,"style", "manners", "bants", "hygene", "dabs");
+		Card[] array = {x,y};
+		String s1 = oWriter.writeValueAsString(array);
 		System.out.println(s1);
 		return s1;
 	}
