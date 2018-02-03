@@ -101,7 +101,7 @@ footer {
 				<div class="panel-group" style="height: 500px; width: 250px">
 					<div class="panel panel-success">
 						<div class="panel-heading">Human Player</div>
-						<div class="panel-body">CARD INFO</div>
+						<div class="panel-body playerCard">CARD INFO</div>
 						<p>
 		
 						<button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cat1'></label><span class="badge">7</span></button>
@@ -284,11 +284,12 @@ footer {
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
 			var rT = JSON.parse(responseText);
-			document.getElementById("name").innerHTML = rT["name"];
-			for (i = 0; i < rT.number_OF_CATEGORIES; i++) {
-				document.getElementById(("cat" + (i + 1))).innerHTML = rT["categories"][i];
-				document.getElementById(("val" + (i + 1))).innerHTML = rT["cardValues"][i];
-			}
+			
+			$( ".panel-heading" ).append("Deez Nuts");
+  			for(i = 0; i < rT.number_OF_CATEGORIES; i++){
+  				var text1 = $("<p></p>").text(rT.categories[i] + " " + rT.cardValues[i]);
+  				$( ".playerCard" ).append(text1);
+  			}
 
 			alert(rT.name);
 		}
