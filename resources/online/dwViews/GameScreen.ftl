@@ -71,6 +71,12 @@ text-align: center;
 display: none;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 5vw;
+    object-fit: cover;
+}
+
 </style>
 
 </head>
@@ -94,7 +100,7 @@ display: none;
 			<div class="col-sm-2 sidenav"></div>
 
 <div class="container-fluid text-center">
-			<div class="col-sm-8 text-center">
+			<div class="col-lg-8 text-center">
 				<h1>Top Trumps!</h1>
 			
 
@@ -107,7 +113,7 @@ display: none;
 					<option value="3">3</option>
 					<option value="4">4</option>
 				</select>
-				<button onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
+				<button class="btn btn-default" onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
 				</div>
 				<br>
 				
@@ -128,10 +134,10 @@ display: none;
 				
 				 <div class="col-sm-1"></div>
 				
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card1" style="display">
     <h4 class="card-header">Human Player</h4>
-  <img class="card-img-top" src="..." alt="Card image cap">
+  <img class="card-img-top" src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg" alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
     
@@ -149,7 +155,7 @@ display: none;
   </div>
   </div>
   
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card2">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -169,7 +175,7 @@ display: none;
   </div>
   </div>
   
-  <div class="col-sm-2">
+  <div class="col-lg-2">
     <div class="card" id="card3">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -190,7 +196,7 @@ display: none;
   </div>
   </div>
   
-   <div class="col-sm-2">
+   <div class="col-lg-2">
     <div class="card" id="card4">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
@@ -211,7 +217,7 @@ display: none;
   </div>
   </div>
   
-   <div class="col-sm-2">
+   <div class="col-lg-2">
     <div class="card" id="card5">
     <h4 class="card-header">Human Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">

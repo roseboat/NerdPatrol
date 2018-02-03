@@ -236,9 +236,10 @@ public class Database {
 	
 	//method to return a string of the data for command line 
 	public String getGameStatistics() {
-		String stats = gameNumber() + " games have been played. The player has won "+ getPlayerWins() + " times and "
-				+ "the computer has won "+getComputerWins()+" times. The highest number of rounds in a single game is "+ getMaxRound()+". The average number of draws per game is "+ getNumberDraws()/gameNumber() + ".";
-		
+		String stats = gameNumber() + " games have been played.\r\n The player has won " + getPlayerWins()
+				+ " times.\r\n The computer has won " + getComputerWins()
+				+ " times.\r\n The highest number of rounds in a single game is " + getMaxRound()
+				+ ".\r\n The average number of draws per game is " + getNumberDraws() / gameNumber() + ".";
 		return stats;
 	}
 
