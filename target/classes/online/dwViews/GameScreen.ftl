@@ -99,6 +99,9 @@ footer {
 				
 				
 				<div class="row text-center">
+				
+				 <div class="col-sm-1"></div>
+				
   <div class="col-sm-2">
     <div class="card">
     <h4 class="card-header">Human Player</h4>
@@ -203,6 +206,8 @@ footer {
   </div>
   </div>
   </div>
+  
+  <div class="col-sm-1"></div>
   </div>
 
 	
