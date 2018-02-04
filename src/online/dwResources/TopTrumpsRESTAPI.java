@@ -44,6 +44,7 @@ public class TopTrumpsRESTAPI {
 	private Deck gameDeck;
 	private Player activePlayer;
 	private int catIndex;
+	private Player winner;
 	private static ArrayList<Player> players;
 	
 	/**
@@ -75,10 +76,16 @@ public class TopTrumpsRESTAPI {
 	@Path("/selectCategory")
 	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-		Card c= new Card ("Calvin", 0,0,0,0,0,"style", "manners", "bants", "hygene", "dabs");
-		c.setSelectedValue(catIndex);
-		System.err.println("The chosen category is: "+ c.getSelectedCategory(catIndex)+" with a value of "+c.getSelectedValue());
+		Card x = activePlayer.getTopCard();
+		x.setSelectedValue(catIndex);
+		
+		System.err.println("The chosen category is: "+ x.getSelectedCategory(catIndex)+" with a value of "+x.getSelectedValue());
+		
 	}
+	
+	
+
+	
 
 	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
 	// cmd line ver game manager does not really work for the online ver
@@ -109,7 +116,7 @@ public class TopTrumpsRESTAPI {
 		players.remove(i);
 	}
 	
-
+	
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
@@ -223,6 +230,23 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	@GET
+	@Path("/printWinner")
+	/**
+	 * Method to display the winner of the round
+	 */
+	public String printWinner() throws IOException {
+		
+		winner = players.get(2);
+		String x = winner.getName() + " has won the round!";
+	
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+	}
+	
+	
+	
+	
+	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
 		int test = 3;
@@ -238,6 +262,9 @@ public class TopTrumpsRESTAPI {
 		String xAsJsonString = oWriter.writeValueAsString(ab);
 		return xAsJsonString;
 	}
+	
+
+	
 
 	
 	

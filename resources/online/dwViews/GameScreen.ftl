@@ -115,12 +115,16 @@ display: none;
 				
 				<div id= "statusBar">
 				<p> Active Player is  <label id='activePlayer'></label>
+				<p> <label id='roundWinner'></label> 
 				<p>
 				</div>
 				
+	
 				
-				<br> <div>Cards to be Won: <label
-					readonly="readonly" id="pile" style="width: 30px;"/></div>
+		
+				
+				
+				<br> <div>Cards to be Won: <label id='pile'></label> </div>
 				<hr>
 				<h3>Let's Play!</h3> 
 				<br>
@@ -266,7 +270,7 @@ display: none;
 		//setCategories();
 		//cardTest();
 		
-		//cardPile();
+		//
 
 	}
 	function buildCards(){
@@ -341,6 +345,9 @@ display: none;
 			alert("CORS not supported");
 		}
 		xhr.send();
+		
+		printWinner();
+		cardPile();
 	}
 
 	
@@ -359,6 +366,39 @@ display: none;
 	}
 	xhr.send();
 	}
+
+	function printWinner() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/printWinner");
+		if (!xhr) {
+			alert("tester");
+			}
+		xhr.onload = function(e) {
+		
+		var responseText = xhr.response; // the text of the response
+			responseText = responseText.replace(/^"(.*)"$/, '$1');
+			document.getElementById('roundWinner').innerHTML = responseText;
+	}
+	xhr.send();
+	}
+
+	function cardPile() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/cardPile");
+		if (!xhr) {
+			alert("dickfarts");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('pile').innerHTML = responseText;
+	}
+	xhr.send();
+	}
+
+
+
 
 	function chooseNumberPlayers() {
 		var number = document.getElementById('input1').value;
@@ -471,19 +511,7 @@ display: none;
 		xhr.send();
 	}
 	
-	function cardPile() {
-		
-		var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/cardPile");
-		if (!xhr) {
-			alert("dickfarts");
-			}
-		xhr.onload = function(e) {
-		var responseText = xhr.response; // the text of the response
-			document.getElementById('pile').innerHTML = responseText;
-	}
-	xhr.send();
-	}
+	
 		function setCategories() {
 		
 		var xhr = createCORSRequest('GET',
