@@ -87,7 +87,7 @@ public class TopTrumpsRESTAPI {
 			p.getDeck().remove(0);
 			
 		}
-		Collections.sort(players);
+		Collections.sort(players, Collections.reverseOrder());
 		winner=players.get(0);
 		Card activeCard=activePlayer.getTopCard();
 		activeCard.setSelectedValue(catIndex);
@@ -102,11 +102,6 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	
-
-	
-
-	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
-	// cmd line ver game manager does not really work for the online ver
 
 	public void startGame() {
 		gameDeck= new Deck(deckFile);
@@ -126,7 +121,7 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	public void randomiseOrder() {
-		Collections.shuffle(players);
+		
 		activePlayer = players.get(0);
 	}
 	
