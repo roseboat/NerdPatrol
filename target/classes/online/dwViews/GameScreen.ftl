@@ -460,6 +460,7 @@ display: none;
 			
 			for (i = 0; i < 5; i++) {
     			var cardTitle = "#card" + (i + 1);
+    			$( cardTitle ).find( ".card-img-top" ).attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/"+ list[i].name +".jpg");
     			$( cardTitle ).find( ".card-title" ).text(list[i].name);
     			$( cardTitle ).find( ".btn" ).each(function(j){
   					$(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
