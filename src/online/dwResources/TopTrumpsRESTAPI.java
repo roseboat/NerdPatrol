@@ -76,11 +76,11 @@ public class TopTrumpsRESTAPI {
 	@Path("/selectCategory")
 	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-		Card x = activePlayer.getTopCard();
-		x.setSelectedValue(catIndex);
-		
-		System.err.println("The chosen category is: "+ x.getSelectedCategory(catIndex)+" with a value of "+x.getSelectedValue());
-		
+
+		Card activeCard=activePlayer.getTopCard();
+		activeCard.setSelectedValue(catIndex);
+		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
+
 	}
 	
 	
@@ -102,9 +102,7 @@ public class TopTrumpsRESTAPI {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
 		randomiseOrder();
-		for (int i=0; i<numPlayers; i++) {
-			players.get(i).drawCard();
-		}
+
 	}
 	
 	public void randomiseOrder() {
@@ -199,8 +197,9 @@ public class TopTrumpsRESTAPI {
 	@Path("/sendCardArray")
 	public String sendCardArray() throws IOException{
 		Card[] cards= new Card[numPlayers];
-		
+	
 		for (int i=0; i<numPlayers; i++) {
+			players.get(i).drawCard();
 			cards[i]=players.get(i).getTopCard();
 			
 		}
