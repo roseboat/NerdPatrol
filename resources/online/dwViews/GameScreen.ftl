@@ -119,8 +119,8 @@
               <p> Active Player is
                 <label id='activePlayer'></label>
                 <p> The Category selected is:
-                <strong><lable id='printCategory'><label></strong>
-                <p> The winner is
+                <strong><label id='printCategory'></label></strong>
+                <p> The winner of this round is
                 <label id='roundWinner'></label> 
  				<p>
             </div>
@@ -342,11 +342,19 @@
       if (!xhr) {
         alert("CORS not supported");
       }
+      
+      xhr.onload = function(e) {
+      
+      var responseText = xhr.response; // the text of the response
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('roundWinner').innerHTML = responseText;
+      }
+      
       xhr.send();
       
-      
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-      printWinner();
+      
+      
     }
 
 
