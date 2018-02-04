@@ -371,10 +371,12 @@ display: none;
 		}
 		else	{	
 
-		buildCards();
-		 myFunction(); 
-		 activePlayer(); 
-		 revealBar();	
+
+		buildCards();	
+		myFunction(); 
+		activePlayer(); 
+		revealBar();
+
 
 
 		xhr.send();
