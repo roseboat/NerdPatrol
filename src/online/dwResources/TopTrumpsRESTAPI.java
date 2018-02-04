@@ -184,6 +184,13 @@ public class TopTrumpsRESTAPI {
 		return s1;
 	}
 	
+	@GET
+	@Path("/sendCardArray")
+	public String sendCardArray(Card[] cards) throws IOException{
+		String cardArray = oWriter.writeValueAsString(cards);
+		return cardArray;
+	}
+	
 	
 	@GET
 	@Path("/showStats")

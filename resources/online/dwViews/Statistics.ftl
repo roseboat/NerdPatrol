@@ -90,6 +90,10 @@ footer {
 			<div class="col-sm-8 text-center">
 				<h1>Game Statistics</h1><br>
 				<p id="testArea"></p>
+				<br />
+				<button class="btn btn-default" onclick="playGame();">Play a Game</button>
+				&nbsp;
+				<button class="btn btn-default" onclick="backHome();">Go back</button>
 			</div>
 
 			<div class="col-sm-2 sidenav"></div>
@@ -120,6 +124,15 @@ footer {
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
+			
+			function playGame() {
+				window.location="http://localhost:7777/toptrumps/game";
+			}
+			
+			function backHome() {
+				window.location="http://localhost:7777/toptrumps";
+			}
+			
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {

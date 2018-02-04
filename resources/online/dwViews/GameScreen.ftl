@@ -450,17 +450,13 @@ display: none;
 			var responseText = xhr.response; // the text of the response
 			var list = JSON.parse(responseText);
 			
-			for(i = 0; i < 5; i++){
-				var cardName = "#card" + (i + 1);
-				$( cardName ).find( ".card-title" ).text(list[i].name);
-				var rT = list[i];
-				for(i = 0; i < rT.number_OF_CATEGORIES; i++){
-  					var catName = ".Cat" + (i+1);
-    				$( cardname ).find( catName ).html(rT.categories[i] + "<span class=\"badge\">"+ rT.cardValues[i] +"</span>");
-  				}
-			}
-			
-  			
+			for (i = 0; i < 5; i++) {
+    			var cardTitle = "#card" + (i + 1);
+    			$( cardTitle ).find( ".card-title" ).text(list[i].name);
+    			$( cardTitle ).find( ".btn" ).each(function(j){
+  					$(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+ 				}); 
+  			}	
 			alert(rT.name);
 		}
 		xhr.send();
