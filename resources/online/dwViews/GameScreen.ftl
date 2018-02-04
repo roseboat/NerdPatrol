@@ -109,7 +109,7 @@ display: none;
 					<option value="3">3</option>
 					<option value="4">4</option>
 				</select>
-				<button class="btn btn-default" onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
+				<button class="btn btn-default" onclick="chooseNumberPlayers();" width="25">Submit</button>
 				</div>
 				<br>
 				
@@ -137,98 +137,98 @@ display: none;
   <h5 class="card-title">Avenger</h5>
     
    
-    					<button onclick="selectCategory(1)" class="btn btn-default btn-block Cat1" id="Cat1">Cat1<span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block">Cat1<span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block Cat2" id="Cat2">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block Cat3" id="Cat3">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block Cat4" id="Cat4">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block Cat5" id="Cat5">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
   
   <div class="col-lg-2">
     <div class="card" id="card2">
-    <h4 class="card-header">Human Player</h4>
+    <h4 class="card-header">Computer Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
    
-    <button onclick="selectCategory(1)" class="btn btn-default btn-block Cat1"><label id='Cangjhytt1'></label><span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block Cat2">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block Cat3">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block Cat4">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block Cat5">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
   
   <div class="col-lg-2">
     <div class="card" id="card3">
-    <h4 class="card-header">Human Player</h4>
+    <h4 class="card-header">Computer Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
     
    
-    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Cagraergegt1'></label><span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
   
    <div class="col-lg-2">
     <div class="card" id="card4">
-    <h4 class="card-header">Human Player</h4>
+    <h4 class="card-header">Computer Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
     
    
-    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='Casget1'></label><span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
   
    <div class="col-lg-2">
     <div class="card" id="card5">
-    <h4 class="card-header">Human Player</h4>
+    <h4 class="card-header">Computer Player</h4>
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
   <h5 class="card-title">Avenger</h5>
     
    
-    <button onclick="selectCategory(1)" class="btn btn-default btn-block"><label id='C345at1'></label><span class="badge">7</span></button>
+    					<button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 					
-						<button onclick="selectCategory(2)" class="btn btn-default btn-block">C2345at2<span class="badge">4</span></button>
+						<button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>C2345at2<span class="badge">4</span></button>
 			
-						<button onclick="selectCategory(3)" class="btn btn-default btn-block">C23454at3<span class="badge">9</span></button>
+						<button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>C23454at3<span class="badge">9</span></button>
 	
-						<button onclick="selectCategory(4)" class="btn btn-default btn-block">Caagret4<span class="badge">3</span></button>
+						<button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Caagret4<span class="badge">3</span></button>
 			
-						<button onclick="selectCategory(5)" class="btn btn-default btn-block">Caasfgt5<span class="badge">2</span></button>
+						<button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Caasfgt5<span class="badge">2</span></button>
   </div>
   </div>
   </div>
@@ -257,8 +257,8 @@ display: none;
 		// You can call other methods you want to run when the page first loads here
 		// --------------------------------------------------------------------------
 		// For example, lets call our sample methods
-		helloJSONList();
-		helloWord("Student");
+		//helloJSONList();
+		//helloWord("Student");
 
 		//setCategories();
 		//cardTest();
@@ -311,6 +311,7 @@ display: none;
 	
 	function myFunction() {
     var x = document.getElementById("myDIV");
+    alert(x);
     if (x.style.display === "none") {
     } else {
         x.style.display = "none";
@@ -370,7 +371,10 @@ display: none;
 		}
 		else	{	
 
-		buildCards();	
+		buildCards();
+		 myFunction(); 
+		 activePlayer(); 
+		 revealBar();	
 
 
 		xhr.send();
