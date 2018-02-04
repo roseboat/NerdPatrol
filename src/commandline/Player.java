@@ -97,6 +97,10 @@ public abstract class Player implements Comparable<Player>{
 	    this.chosenCat = chosenCat;
 	}
 	
+	public ArrayList<Card> getDeck() {
+		return playerDeck.getDeck();
+	}
+	
 	
 	
 	/**
