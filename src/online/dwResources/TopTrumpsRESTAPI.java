@@ -44,8 +44,11 @@ public class TopTrumpsRESTAPI {
 	private Deck gameDeck;
 	private Player activePlayer;
 	private int catIndex;
+	private Player winner;
 	private static ArrayList<Player> players;
 	private ArrayList<Card> winnerPile;
+	private String chosenCategory;
+
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -76,6 +79,7 @@ public class TopTrumpsRESTAPI {
 	@Path("/selectCategory")
 	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
+
 		for (Player p : players) {
 			p.getTopCard().setSelectedValue(catIndex);
 			//assigns the above value to each player 
@@ -89,7 +93,12 @@ public class TopTrumpsRESTAPI {
 		return winner.getName();
 		
 		//System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
+
 	}
+	
+	
+
+	
 
 	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
 	// cmd line ver game manager does not really work for the online ver
@@ -119,7 +128,7 @@ public class TopTrumpsRESTAPI {
 		players.remove(i);
 	}
 	
-
+	
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
@@ -127,6 +136,14 @@ public class TopTrumpsRESTAPI {
 		startGame();
 		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
 		return nameAsJSONString;
+	}
+	
+	@GET
+	@Path("/printCategory")
+	public String printCategory() throws IOException	{
+		
+		String catAsJSONString = oWriter.writeValueAsString(chosenCategory);
+		return catAsJSONString;
 	}
 	
 	
@@ -234,6 +251,22 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	@GET
+	@Path("/printWinner")
+	/**
+	 * Method to display the winner of the round
+	 */
+	public String printWinner() throws IOException {
+		
+		winner = players.get(2);
+		String x = winner.getName();
+	
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+	}
+	
+	
+	
+	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
 		int test = 3;
@@ -249,6 +282,9 @@ public class TopTrumpsRESTAPI {
 		String xAsJsonString = oWriter.writeValueAsString(ab);
 		return xAsJsonString;
 	}
+	
+
+	
 
 	
 	
