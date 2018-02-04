@@ -311,7 +311,6 @@ display: none;
 	
 	function myFunction() {
     var x = document.getElementById("myDIV");
-    alert(x);
     if (x.style.display === "none") {
     } else {
         x.style.display = "none";
