@@ -45,6 +45,7 @@ public class TopTrumpsRESTAPI {
 	private Player activePlayer;
 	private int catIndex;
 	private static ArrayList<Player> players;
+	private String chosenCategory;
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -77,7 +78,8 @@ public class TopTrumpsRESTAPI {
 		catIndex=Number-1;
 		Card activeCard=activePlayer.getTopCard();
 		activeCard.setSelectedValue(catIndex);
-		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
+		chosenCategory= activeCard.getSelectedCategory(catIndex);
+		System.err.println("The chosen category is: "+ chosenCategory +" with a value of "+activeCard.getSelectedValue());
 	}
 
 	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
@@ -115,6 +117,14 @@ public class TopTrumpsRESTAPI {
 		startGame();
 		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
 		return nameAsJSONString;
+	}
+	
+	@GET
+	@Path("/printCategory")
+	public String printCategory() throws IOException	{
+		
+		String catAsJSONString = oWriter.writeValueAsString(chosenCategory);
+		return catAsJSONString;
 	}
 	
 	
