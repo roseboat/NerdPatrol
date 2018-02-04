@@ -201,16 +201,6 @@ public class TopTrumpsRESTAPI {
 		String xAsJsonString = oWriter.writeValueAsString(ab);
 		return xAsJsonString;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
