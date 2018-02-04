@@ -118,10 +118,13 @@ display: none;
 				<p>
 				</div>
 				
+				
 				<br> <div>Cards to be Won: <label
 					readonly="readonly" id="pile" style="width: 30px;"/></div>
 				<hr>
-				<h3>Let's Play!</h3>
+				<h3>Let's Play!</h3> 
+				<br>
+				<button onclick="sendCardArray();">Draw Card</button>
 				<div id="playerTurn"></div>
 				<br><br>
 				
@@ -262,7 +265,7 @@ display: none;
 
 		//setCategories();
 		//cardTest();
-		moreCardTest();
+		
 		//cardPile();
 
 	}
@@ -375,7 +378,7 @@ display: none;
 		myFunction(); 
 		activePlayer(); 
 		revealBar();
-
+		
 
 
 		xhr.send();
@@ -445,9 +448,9 @@ display: none;
 		xhr.send();
 	}
 	
-	function moreCardTest() {
+	function sendCardArray() {
 		var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/moreCardTest");
+				"http://localhost:7777/toptrumps/sendCardArray");
 		if (!xhr) {
 			alert("Fucked it");
 		}

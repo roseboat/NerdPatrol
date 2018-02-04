@@ -95,6 +95,9 @@ public class TopTrumpsRESTAPI {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
 		randomiseOrder();
+		for (int i=0; i<numPlayers; i++) {
+			players.get(i).drawCard();
+		}
 	}
 	
 	public void randomiseOrder() {
@@ -105,7 +108,6 @@ public class TopTrumpsRESTAPI {
 	public void removePlayer(int i) {
 		players.remove(i);
 	}
-	
 	
 
 	@GET
@@ -184,11 +186,23 @@ public class TopTrumpsRESTAPI {
 		return s1;
 	}
 	
+
+	
 	@GET
 	@Path("/sendCardArray")
-	public String sendCardArray(Card[] cards) throws IOException{
+	public String sendCardArray() throws IOException{
+		Card[] cards= new Card[numPlayers];
+		
+		for (int i=0; i<numPlayers; i++) {
+			cards[i]=players.get(i).getTopCard();
+			
+		}
+		
+		
 		String cardArray = oWriter.writeValueAsString(cards);
+		System.err.println(cardArray);
 		return cardArray;
+		
 	}
 	
 	
