@@ -109,7 +109,7 @@ display: none;
 					<option value="3">3</option>
 					<option value="4">4</option>
 				</select>
-				<button class="btn btn-default" onclick="chooseNumberPlayers(); myFunction(); activePlayer(); revealBar();" width="25">Submit</button>
+				<button class="btn btn-default" onclick="chooseNumberPlayers();" width="25">Submit</button>
 				</div>
 				<br>
 				
@@ -371,6 +371,9 @@ display: none;
 		else	{	
 
 		buildCards();	
+		myFunction(); 
+		activePlayer(); 
+		revealBar();
 
 
 		xhr.send();
