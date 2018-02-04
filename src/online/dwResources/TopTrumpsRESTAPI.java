@@ -47,8 +47,8 @@ public class TopTrumpsRESTAPI {
 	private int catIndex;
 	private Player winner;
 	private static ArrayList<Player> players;
-	private String chosenCategory;
 	private ArrayList<Card> winnerPile;
+
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -79,25 +79,28 @@ public class TopTrumpsRESTAPI {
 	@Path("/selectCategory")
 	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-		
-		for (Player p: players) {
+
+
+		for (Player p : players) {
 			p.getTopCard().setSelectedValue(catIndex);
+			//assigns the above value to each player 
 			p.setChosenCat(p.getTopCard().getSelectedValue());
 			winnerPile.add(p.getTopCard());
 			p.getDeck().remove(0);
-			
 		}
 		Collections.sort(players, Collections.reverseOrder());
+		
 		winner=players.get(0);
 		Card activeCard=activePlayer.getTopCard();
 		activeCard.setSelectedValue(catIndex);
+		System.err.println(players.toString());
+		System.err.println(winner.getName());
 
-		chosenCategory= activeCard.getSelectedCategory(catIndex);
+//		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
 	
-
-		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
 		
 		return winner.getName();
+
 
 	}
 	
@@ -111,7 +114,8 @@ public class TopTrumpsRESTAPI {
 		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-		winnerPile= new ArrayList<Card>();
+
+		winnerPile = new ArrayList<Card>();
 		for (int i = 1; i < deck.length; i++) {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
@@ -121,7 +125,8 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	public void randomiseOrder() {
-		
+		//Collections.shuffle(players);
+
 		activePlayer = players.get(0);
 	}
 	
@@ -137,14 +142,6 @@ public class TopTrumpsRESTAPI {
 		startGame();
 		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
 		return nameAsJSONString;
-	}
-	
-	@GET
-	@Path("/printCategory")
-	public String printCategory() throws IOException	{
-		
-		String catAsJSONString = oWriter.writeValueAsString(chosenCategory);
-		return catAsJSONString;
 	}
 	
 	

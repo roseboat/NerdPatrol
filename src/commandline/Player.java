@@ -97,10 +97,6 @@ public abstract class Player implements Comparable<Player>{
 	    this.chosenCat = chosenCat;
 	}
 	
-	public ArrayList<Card> getDeck() {
-		return playerDeck.getDeck();
-	}
-	
 	
 	
 	/**
@@ -118,6 +114,15 @@ public abstract class Player implements Comparable<Player>{
 	public void addToDeck(ArrayList<Card> winnerPile) {
 		playerDeck.addCards(winnerPile);
 		
+	}
+	
+	public ArrayList<Card> getDeck() {
+		return playerDeck.getDeck();
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 	
 //	public void incrementPlayerWins() {

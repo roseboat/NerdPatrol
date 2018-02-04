@@ -486,7 +486,7 @@
             $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
           });
         }
-        alert(rT.name);
+      
       }
       xhr.send();
     }
