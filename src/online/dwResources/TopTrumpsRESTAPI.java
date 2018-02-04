@@ -168,6 +168,29 @@ public class TopTrumpsRESTAPI {
 		return s1;
 	}
 	
+	@GET
+	@Path("/moreCardTest")
+	public String moreCardTest() throws IOException{
+		
+//		Card x = players.get(0).getTopCard();
+		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
+		Card y = new Card("Chaddy", 1,2,3,4,1,"style", "manners", "bants", "hygene", "dabs");
+		Card z = new Card("Roseboat", 9,4,6,3,2,"style", "manners", "bants", "hygene", "dabs");
+		Card a = new Card("KilliamWirrage", 5,2,6,8,8,"style", "manners", "bants", "hygene", "dabs");
+		Card b = new Card("Cowlvin", 9,8,7,6,5,"style", "manners", "bants", "hygene", "dabs");
+		Card[] array = {x,y,z,a,b};
+		String s1 = oWriter.writeValueAsString(array);
+		System.out.println(s1);
+		return s1;
+	}
+	
+	@GET
+	@Path("/sendCardArray")
+	public String sendCardArray(Card[] cards) throws IOException{
+		String cardArray = oWriter.writeValueAsString(cards);
+		return cardArray;
+	}
+	
 	
 	@GET
 	@Path("/showStats")
@@ -201,6 +224,8 @@ public class TopTrumpsRESTAPI {
 		String xAsJsonString = oWriter.writeValueAsString(ab);
 		return xAsJsonString;
 	}
+
+	
 	
 	
 	
