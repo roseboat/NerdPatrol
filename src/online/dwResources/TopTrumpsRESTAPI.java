@@ -49,11 +49,7 @@ public class TopTrumpsRESTAPI {
 	private static ArrayList<Player> players;
 	private ArrayList<Card> winnerPile;
 	private String chosenCategory;
-<<<<<<< HEAD
 
-=======
-	private ArrayList<Card> winnerPile;
->>>>>>> 0cb6d2f036a6dfed4ce03ff4f7a0a551968fd869
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -84,7 +80,7 @@ public class TopTrumpsRESTAPI {
 	@Path("/selectCategory")
 	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-<<<<<<< HEAD
+
 
 		for (Player p : players) {
 			p.getTopCard().setSelectedValue(catIndex);
@@ -93,34 +89,19 @@ public class TopTrumpsRESTAPI {
 			winnerPile.add(p.getTopCard());
 			p.getDeck().remove(0);
 		}
-		Collections.sort(players);
+		Collections.sort(players, Collections.reverseOrder());
+		
+		for (Player p: players) {
+			System.out.println(p.getChosenCat());
+		}
+		
 		Player winner = players.get(0);
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 		return winner.getName();
 		
 		//System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
-=======
-		
-		for (Player p: players) {
-			p.getTopCard().setSelectedValue(catIndex);
-			p.setChosenCat(p.getTopCard().getSelectedValue());
-			winnerPile.add(p.getTopCard());
-			p.getDeck().remove(0);
-			
-		}
-		Collections.sort(players);
-		winner=players.get(0);
-		Card activeCard=activePlayer.getTopCard();
-		activeCard.setSelectedValue(catIndex);
 
-		chosenCategory= activeCard.getSelectedCategory(catIndex);
-	
-
-		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
-		
-		return winner.getName();
->>>>>>> 0cb6d2f036a6dfed4ce03ff4f7a0a551968fd869
 
 	}
 	
@@ -139,11 +120,8 @@ public class TopTrumpsRESTAPI {
 		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-<<<<<<< HEAD
+
 		winnerPile = new ArrayList<Card>();
-=======
-		winnerPile= new ArrayList<Card>();
->>>>>>> 0cb6d2f036a6dfed4ce03ff4f7a0a551968fd869
 		for (int i = 1; i < deck.length; i++) {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
@@ -153,7 +131,7 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	public void randomiseOrder() {
-		Collections.shuffle(players);
+		//Collections.shuffle(players);
 		activePlayer = players.get(0);
 	}
 	
