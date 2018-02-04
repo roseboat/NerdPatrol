@@ -376,22 +376,7 @@
       if (!xhr) {
         alert("CORS not supported");
       }
-
-
-	function selectCategory(x) {
-		var number = x
-		var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/selectCategory?Number="
-						+ number); // Request type and URL+parameters
-		if (!xhr) {
-			alert("CORS not supported");
-		}
-		xhr.onload = function(e) {
-			var rT = xhr.response;
-			alert(rT);
-		}
-
-      if (number < 1 || number > 4) {
+       if (number < 1 || number > 4) {
         alert("Player number out of bounds");
       } else {
 
@@ -407,7 +392,23 @@
         xhr.send();
 
       }
+      }
 
+
+	function selectCategory(x) {
+		var number = x
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/selectCategory?Number="
+						+ number); // Request type and URL+parameters
+		if (!xhr) {
+			alert("CORS not supported");
+		}
+		xhr.onload = function(e) {
+			var rT = xhr.response;
+			alert(rT);
+		}
+
+     
 
       xhr.send();
     }

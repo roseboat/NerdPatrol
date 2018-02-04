@@ -120,6 +120,11 @@ public abstract class Player implements Comparable<Player>{
 		return playerDeck.getDeck();
 	}
 	
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 //	public void incrementPlayerWins() {
 //		playerWins++;
 //	}

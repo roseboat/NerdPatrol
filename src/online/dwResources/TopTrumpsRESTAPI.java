@@ -87,8 +87,9 @@ public class TopTrumpsRESTAPI {
 			winnerPile.add(p.getTopCard());
 			p.getDeck().remove(0);
 		}
-		Collections.sort(players, Collections.reverseOrder());
+		Collections.sort(players);
 		Player winner = players.get(0);
+		System.err.println(players.toString());
 		System.err.println(winner.getName());
 		return winner.getName();
 		
