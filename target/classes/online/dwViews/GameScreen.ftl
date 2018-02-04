@@ -120,13 +120,13 @@
                 <label id='activePlayer'></label>
                 <p> The Category selected is:
                 <strong><lable id='printCategory'><label></strong>
+                <p> The winner is
+                <label id='roundWinner'></label> 
+ 				<p>
             </div>
 
 
-            <br>
-            <div>Cards to be Won:
-              <label readonly="readonly" id="pile" style="width: 30px;" />
-            </div>
+           	<br> <div>Cards to be Won: <label id='pile'></label> </div>
             <hr>
             <h3>Let's Play!</h3>
             <br>
@@ -346,7 +346,7 @@
       
       
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-    
+      printWinner();
     }
 
 
@@ -525,6 +525,36 @@
       }
       xhr.send;
     }
+    
+    function printWinner() {
+	
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/printWinner");
+		if (!xhr) {
+			alert("tester");
+			}
+		xhr.onload = function(e) {
+		
+		var responseText = xhr.response; // the text of the response
+			responseText = responseText.replace(/^"(.*)"$/, '$1');
+			document.getElementById('roundWinner').innerHTML = responseText;
+	}
+	xhr.send();
+	}
+
+	function cardPile() {
+		
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/cardPile");
+		if (!xhr) {
+			alert("dickfarts");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('pile').innerHTML = responseText;
+	}
+	xhr.send();
+	}
 
   </script>
 
