@@ -340,6 +340,10 @@ display: none;
 		if (!xhr) {
 			alert("CORS not supported");
 		}
+		xhr.onload = function(e) {
+			var rT = xhr.response;
+			alert(rT);
+		}
 		xhr.send();
 	}
 

@@ -45,6 +45,7 @@ public class TopTrumpsRESTAPI {
 	private Player activePlayer;
 	private int catIndex;
 	private static ArrayList<Player> players;
+	private ArrayList<Card> winnerPile;
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -73,11 +74,21 @@ public class TopTrumpsRESTAPI {
 	// prints the chosen category & value on console (for testing)
 	@GET
 	@Path("/selectCategory")
-	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
+	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-		Card activeCard=activePlayer.getTopCard();
-		activeCard.setSelectedValue(catIndex);
-		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
+		for (Player p : players) {
+			p.getTopCard().setSelectedValue(catIndex);
+			//assigns the above value to each player 
+			p.setChosenCat(p.getTopCard().getSelectedValue());
+			winnerPile.add(p.getTopCard());
+			p.getDeck().remove(0);
+		}
+		Collections.sort(players, Collections.reverseOrder());
+		Player winner = players.get(0);
+		System.err.println(winner.getName());
+		return winner.getName();
+		
+		//System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
 	}
 
 	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
@@ -91,6 +102,7 @@ public class TopTrumpsRESTAPI {
 		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
+		winnerPile = new ArrayList<Card>();
 		for (int i = 1; i < deck.length; i++) {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
