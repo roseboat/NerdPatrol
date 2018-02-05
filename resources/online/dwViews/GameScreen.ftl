@@ -270,10 +270,10 @@
       //helloJSONList();
       //helloWord("Student");
 
-      //setCategories();
-      //cardTest();
+    //  setCategories();
+     // cardTest();
 
-      //cardPile();
+      
 
     }
 
@@ -291,7 +291,7 @@
       } else if (playerNum == 3) {
         $("#card5").remove();
       }
-
+	
     }
 
 
@@ -394,14 +394,14 @@
         hideSelection();
         activePlayer();
         revealBar();
-
+		cardPile();
 
 
         xhr.send();
 
       }
-
-
+		
+	
       xhr.send();
     }
 
@@ -487,20 +487,6 @@
           });
         }
       
-      }
-      xhr.send();
-    }
-
-    function cardPile() {
-
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/cardPile");
-      if (!xhr) {
-        alert("dickfarts");
-      }
-      xhr.onload = function(e) {
-        var responseText = xhr.response; // the text of the response
-        document.getElementById('pile').innerHTML = responseText;
       }
       xhr.send();
     }

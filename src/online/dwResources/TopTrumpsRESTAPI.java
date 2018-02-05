@@ -264,8 +264,16 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
-		int test = 3;
-	
+		int test = players.size()-1;
+		
+		for (int i = 0; i < players.size(); i++) {
+			winnerPile.add(players.get(i).getTopCard());
+			if (players.get(0).compareTo(players.get(1)) == 0)
+			test++;
+			else
+			test = players.size()-1;
+		}
+		
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
 	}
