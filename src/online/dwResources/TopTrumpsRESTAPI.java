@@ -45,7 +45,12 @@ public class TopTrumpsRESTAPI {
 	private Deck gameDeck;
 	private Player activePlayer;
 	private int catIndex;
+	private int numRounds;
+	private int numDraws;
+	private Human humanPlayer;
 	private Player winner;
+	private Player gameWinner;
+	private int[] playerWinCounts = new int[5];
 	private static ArrayList<Player> players;
 	private ArrayList<Card> winnerPile;
 
@@ -77,41 +82,40 @@ public class TopTrumpsRESTAPI {
 	// prints the chosen category & value on console (for testing)
 	@GET
 	@Path("/selectCategory")
-	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
-		catIndex=Number-1;
-
+	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
+		catIndex = Number - 1;
 
 		for (Player p : players) {
-			p.getTopCard().setSelectedValue(catIndex);
-			//assigns the above value to each player 
-			p.setChosenCat(p.getTopCard().getSelectedValue());
-			winnerPile.add(p.getTopCard());
+			p.getHeldCard().setSelectedValue(catIndex);
+			// assigns the above value to each player
+			p.setChosenCat(p.getHeldCard().getSelectedValue());
+			winnerPile.add(p.getHeldCard());
 			p.getDeck().remove(0);
 		}
 		Collections.sort(players, Collections.reverseOrder());
-		
-		winner=players.get(0);
-		Card activeCard=activePlayer.getTopCard();
+
+		winner = players.get(0);
+		Card activeCard = activePlayer.getHeldCard();
 		activeCard.setSelectedValue(catIndex);
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 
-//		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
-	
-		
-		return winner.getName();
+		// System.err.println("The chosen category is: "+
+		// activeCard.getSelectedCategory(catIndex)+" with a value of
+		// "+activeCard.getSelectedValue());
 
+		return winner.getName();
 
 	}
 	
 	
 
 	public void startGame() {
-		gameDeck= new Deck(deckFile);
+		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
-		
+
 		Deck[] deck = gameDeck.advancedSplit(this.numPlayers);
-		Human humanPlayer = new Human("Human Player", deck[0]);
+		this.humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
 
@@ -120,8 +124,7 @@ public class TopTrumpsRESTAPI {
 			players.add(new Computer("Computer " + i, deck[i]));
 		}
 		randomiseOrder();
-		
-	
+
 	}
 	
 	public void randomiseOrder() {
@@ -135,11 +138,127 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	
+	public void initiateRound() throws JsonProcessingException {
+		// check that two players are still in the game
+		while (players.size() > 1) {
+
+			for (int i = 0; i < players.size(); i++) {
+				// checks to see if any players have run out of cards
+				if (players.get(i).getDeckSize() < 1) {
+					removePlayer(i);
+					i--;
+				}
+				// all players draw their first card
+				players.get(i).drawCard();
+			}
+
+			if (players.size() > 1) {
+
+				// increment numRounds here
+				numRounds++;
+
+				// displays starting player's card
+				activePlayer.promptUser();
+
+				// first player selects the category for all players
+				// index corresponds to the index of the value held in the cardValues array in Card
+				int index = activePlayer.chooseCategory();
+
+				for (int i = 0; i < players.size(); i++) {
+
+				
+					//sets the value that each player has for the chosen category on their top card
+					players.get(i).getHeldCard().setSelectedValue(index);
+					//assigns the above value to each player 
+					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
+
+					// adds card to the winner's pile
+					winnerPile.add(players.get(i).getHeldCard());
+
+					// remove top cards from player's decks
+					players.get(i).getDeck().remove(0);
+				}
+
+				decideWinner(index);
+
+			} else
+				endGame();
+		}
+	}
+	
+	public void decideWinner(int index) throws JsonProcessingException {
+
+		// log bit - could be put in log class
+		String category = "";
+		for (int i = 0; i < players.size(); i++) {
+			// gets the category
+			category = players.get(i).getHeldCard().getSelectedCategory(index);
+		}
+
+		// cards in winner pile given to the winner of the round
+		// winner pile resets
+		Collections.sort(players, Collections.reverseOrder());
+		winner = players.get(0);
+
+		if (winner.compareTo(players.get(1)) == 0)
+			drawHandler();
+		else {
+			// starting player of next round is the winner
+
+			activePlayer = winner;
+			winner.addToDeck(winnerPile);
+			winnerPile.clear();
+
+			// increment player wins count
+			incrementPlayerWins();
+		}
+	}
+
+	public void drawHandler() throws JsonProcessingException {
+
+		// increment drawCount
+		numDraws++;
+
+		// return to round loop
+		initiateRound();
+	}
+	
+	
+	
+	@GET
+	@Path("/endGame")
+	public String endGame() throws JsonProcessingException {
+		gameWinner = players.get(0);
+		numRounds = 0;
+		numDraws = 0;
+		for (int i = 0; i < playerWinCounts.length; i++) {
+			playerWinCounts[i] = 0;
+		}
+
+		String gameWinnerString = oWriter.writeValueAsString(gameWinner.getName());
+		return gameWinnerString;
+	}
+
+	public void incrementPlayerWins() {
+		if (winner.getName().equals(humanPlayer.getName()))
+			playerWinCounts[0]++;
+		else if (winner.getName().equals("Computer 1"))
+			playerWinCounts[1]++;
+		else if (winner.getName().equals("Computer 2"))
+			playerWinCounts[2]++;
+		else if (winner.getName().equals("Computer 3"))
+			playerWinCounts[3]++;
+		else if (winner.getName().equals("Computer 4"))
+			playerWinCounts[4]++;
+	}
+	
+	
+	
+	
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
 		
-		startGame();
 		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
 		return nameAsJSONString;
 	}
@@ -159,7 +278,7 @@ public class TopTrumpsRESTAPI {
 		listOfWords.add("Hello");
 		listOfWords.add("World!");
 		
-		// We can turn arbatory Java objects directly into JSON strings using
+		// We can turn arbitary Java objects directly into JSON strings using
 		// Jackson seralization, assuming that the Java objects are not too complex.
 		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
 		System.out.println(listAsJSONString);
@@ -215,20 +334,19 @@ public class TopTrumpsRESTAPI {
 	
 	@GET
 	@Path("/sendCardArray")
-	public String sendCardArray() throws IOException{
-		Card[] cards= new Card[numPlayers];
-	
-		for (int i=0; i<numPlayers; i++) {
+	public String sendCardArray() throws IOException {
+		Card[] cards = new Card[numPlayers];
+
+		for (int i = 0; i < numPlayers; i++) {
 			players.get(i).drawCard();
-			cards[i]=players.get(i).getTopCard();
-			
+			cards[i] = players.get(i).getHeldCard();
+
 		}
-		
-		
+
 		String cardArray = oWriter.writeValueAsString(cards);
 		System.err.println(cardArray);
 		return cardArray;
-		
+
 	}
 	
 	
@@ -277,20 +395,6 @@ public class TopTrumpsRESTAPI {
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
 	}
-	@GET
-	@Path("/setCategories")
-	public String setCategories() throws IOException {
-		String ab = "firepower";
-	
-		String xAsJsonString = oWriter.writeValueAsString(ab);
-		return xAsJsonString;
-	}
-	
 
-	
-
-	
-	
-	
 	
 }
