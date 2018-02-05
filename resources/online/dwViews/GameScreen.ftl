@@ -73,7 +73,13 @@
           height: 5vw;
           object-fit: cover;
         }
-
+		 #cardSection {
+          display: none;
+        }
+		 #drawCard {
+		  margin:auto;
+          display: none;
+        }
       </style>
 
   </head>
@@ -116,26 +122,27 @@
             <br>
 
             <div id="statusBar">
-              <p> Active Player is
+              <p> Active Player:
                 <label id='activePlayer'></label>
-                <p> The Category selected is:
+                <p> Category Selected:
                 <strong><label id='printCategory'></label></strong>
-                <p> The winner of this round is
+                <p> Round Winner:
                 <label id='roundWinner'></label> 
+ 				<p>
+ 				Cards to be Won: <label id='pile'></label>
  				<p>
             </div>
 
-
-           	<br> <div>Cards to be Won: <label id='pile'></label> </div>
+           	<br> 
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();">Draw Card</button>
+            <button onclick="sendCardArray();" id ='drawCard'>Draw Card</button>
             <div id="playerTurn"></div>
             <br>
             <br>
 
-            <div class="row text-center">
+            <div class="row text-center" id ='cardSection'>
 
               <div class="col-sm-1"></div>
 
@@ -329,7 +336,15 @@
 
       document.getElementById("statusBar").style.display = "block";
     }
+ 
+  	function revealcardSection() {
 
+      document.getElementById("cardSection").style.display = "block";
+    }
+    function revealDrawCardButton() {
+
+      document.getElementById("drawCard").style.display = "block";
+    }
   </script>
 
   <!-- Here are examples of how to call REST API Methods -->
@@ -394,7 +409,7 @@
         hideSelection();
         activePlayer();
         revealBar();
-		cardPile();
+		revealDrawCardButton();
 
 
         xhr.send();
@@ -403,6 +418,7 @@
 		
 	
       xhr.send();
+     
     }
 
     // This calls the helloJSONList REST method from TopTrumpsRESTAPI
@@ -488,6 +504,8 @@
         }
       
       }
+      cardPile();
+      revealcardSection();
       xhr.send();
     }
 
@@ -507,19 +525,7 @@
       xhr.send();
     }
 
-    function whosTurn() {
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/whosTurn");
-      if (!xhr) {
-        alert("No players!");
-      }
-      xhr.onload = function(e) {
-        var responseText = xhr.response;
-        document.getElementById('playerTurn').innerHTML = "It is " + responseText + "'s turn!";
-      }
-      xhr.send;
-    }
-    
+ 
     function printWinner() {
 	
 		var xhr = createCORSRequest('GET',
