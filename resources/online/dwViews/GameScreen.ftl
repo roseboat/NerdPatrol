@@ -95,13 +95,13 @@ footer {
 				<h3>Let's Play!</h3>
 				<div id="playerTurn"></div>
 				<br>
-				
-				
+
+
 
 				<div class="panel-group" style="height: 500px; width: 250px">
 					<div class="panel panel-success">
 						<div class="panel-heading">Human Player</div>
-						<div class="panel-body">CARD INFO</div>
+						<div class="panel-body"  id="card1">CARD</div>
 						<p>
 						<button onclick="selectCategory(1)" width="15" height ="20" >Cat1</button>
 						<p>
@@ -118,7 +118,7 @@ footer {
 						<div class="panel-heading">AI Player</div>
 						<div class="panel-body">CARD INFO
 						</div>
-		
+
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">AI Player</div>
@@ -153,21 +153,21 @@ footer {
 		// --------------------------------------------------------------------------
 
 		// For example, lets call our sample methods
-		helloJSONList();
-		helloWord("Student");
+		//helloJSONList();
+		//helloWord("Student");
 
 		cardTest();
 
 	}
 
 	function buildCards(){
-		
-		
-		
+
+
+
 	}
-	
-	
-	
+
+
+
 	// -----------------------------------------
 	// Add your other Javascript methods Here
 	// -----------------------------------------
@@ -239,7 +239,7 @@ footer {
 		}
 
 		// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-		// to do when the response arrives 
+		// to do when the response arrives
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
 			alert(responseText); // lets produce an alert
@@ -262,7 +262,7 @@ footer {
 		}
 
 		// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-		// to do when the response arrives 
+		// to do when the response arrives
 		xhr.onload = function(e) {
 			var responseText = xhr.response; // the text of the response
 			alert(responseText); // lets produce an alert
@@ -284,9 +284,18 @@ footer {
 			var responseText = xhr.response; // the text of the response
 			var rT = JSON.parse(responseText);
 			document.getElementById("name").innerHTML = rT["name"];
+			$(document).ready(function ()){
+				$("#card1").click(function ()){
+					$("p").text("Dongers");
+				};
+			
+			};
+
+
 			for (i = 0; i < rT.number_OF_CATEGORIES; i++) {
 				document.getElementById(("cat" + (i + 1))).innerHTML = rT["categories"][i];
 				document.getElementById(("val" + (i + 1))).innerHTML = rT["cardValues"][i];
+
 			}
 
 			alert(rT.name);
