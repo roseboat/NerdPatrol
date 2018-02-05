@@ -90,9 +90,9 @@ footer {
 				<p>Choose whether you want to play a game or view statistics</p>
 				<br>
 
-				<button onclick="playGame();">Play a Game</button>
+				<button class="btn btn-default" onclick="playGame();">Play a Game</button>
 				&nbsp;
-				<button onclick="viewStatistics();">View Game Statistics</button>
+				<button class="btn btn-default" onclick="viewStatistics();">View Game Statistics</button>
 			</div>
 
 
@@ -121,9 +121,9 @@ footer {
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				helloJSONList();
+				//helloJSONList();
 				//helloWord("Student");
-				printCard();
+				//printCard();
 				
 			}
 			

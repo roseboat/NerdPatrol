@@ -4,6 +4,7 @@ import commandline.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +45,10 @@ public class TopTrumpsRESTAPI {
 	private Deck gameDeck;
 	private Player activePlayer;
 	private int catIndex;
+	private Player winner;
 	private static ArrayList<Player> players;
+	private ArrayList<Card> winnerPile;
+
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -62,8 +66,8 @@ public class TopTrumpsRESTAPI {
 	@Path("/setPlayers")
 	@Consumes (MediaType.APPLICATION_JSON)
 	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
-		numPlayers=Number;
-		System.out.println(numPlayers);
+		numPlayers=Number+1;
+		System.err.println("the number of players: "+numPlayers);
 	}
 	
 	
@@ -73,38 +77,71 @@ public class TopTrumpsRESTAPI {
 	// prints the chosen category & value on console (for testing)
 	@GET
 	@Path("/selectCategory")
-	public void selectCategory (@QueryParam("Number") int Number) throws IOException {
+	public String selectCategory (@QueryParam("Number") int Number) throws IOException {
 		catIndex=Number-1;
-		Card c= new Card ("Calvin", 0,0,0,0,0,"style", "manners", "bants", "hygene", "dabs");
-		c.setSelectedValue(catIndex);
-		System.err.println("The chosen category is: "+ c.getSelectedCategory(catIndex)+" with a value of "+c.getSelectedValue());
-	}
 
-	// should we emulate game manager's functions here? or make a separate game manager class for online ver?
-	// cmd line ver game manager does not really work for the online ver
-	@GET
-	@Path("/startGame")
+
+		for (Player p : players) {
+			p.getTopCard().setSelectedValue(catIndex);
+			//assigns the above value to each player 
+			p.setChosenCat(p.getTopCard().getSelectedValue());
+			winnerPile.add(p.getTopCard());
+			p.getDeck().remove(0);
+		}
+		Collections.sort(players, Collections.reverseOrder());
+		
+		winner=players.get(0);
+		Card activeCard=activePlayer.getTopCard();
+		activeCard.setSelectedValue(catIndex);
+		System.err.println(players.toString());
+		System.err.println(winner.getName());
+
+//		System.err.println("The chosen category is: "+ activeCard.getSelectedCategory(catIndex)+" with a value of "+activeCard.getSelectedValue());
+	
+		
+		return winner.getName();
+
+
+	}
+	
+	
+
 	public void startGame() {
 		gameDeck= new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
 		
-		Deck[] cards = gameDeck.advancedSplit(this.numPlayers);
-		Human humanPlayer = new Human("Human Player", cards[0]);
+		Deck[] deck = gameDeck.advancedSplit(this.numPlayers);
+		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-		for (int i = 1; i < cards.length; i++) {
-			players.add(new Computer("Computer " + i, cards[i]));
-		}
-	}
 
+		winnerPile = new ArrayList<Card>();
+		for (int i = 1; i < deck.length; i++) {
+			players.add(new Computer("Computer " + i, deck[i]));
+		}
+		randomiseOrder();
+		
+	
+	}
+	
+	public void randomiseOrder() {
+		//Collections.shuffle(players);
+
+		activePlayer = players.get(0);
+	}
+	
+	public void removePlayer(int i) {
+		players.remove(i);
+	}
+	
+	
 	@GET
-	@Path("/whosTurn")
-	public String whosTurn() throws JsonProcessingException {
+	@Path("/activePlayer")
+	public String activePlayer() throws IOException {
 		
-		Player yourTurn = players.get(0);
-		String yourName = yourTurn.getName();
-		return yourName;
-		
+		startGame();
+		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
+		return nameAsJSONString;
 	}
 	
 	
@@ -158,6 +195,42 @@ public class TopTrumpsRESTAPI {
 		return s1;
 	}
 	
+	@GET
+	@Path("/moreCardTest")
+	public String moreCardTest() throws IOException{
+		
+//		Card x = players.get(0).getTopCard();
+		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
+		Card y = new Card("Chaddy", 1,2,3,4,1,"style", "manners", "bants", "hygene", "dabs");
+		Card z = new Card("Roseboat", 9,4,6,3,2,"style", "manners", "bants", "hygene", "dabs");
+		Card a = new Card("KilliamWirrage", 5,2,6,8,8,"style", "manners", "bants", "hygene", "dabs");
+		Card b = new Card("Cowlvin", 9,8,7,6,5,"style", "manners", "bants", "hygene", "dabs");
+		Card[] array = {x,y,z,a,b};
+		String s1 = oWriter.writeValueAsString(array);
+		System.out.println(s1);
+		return s1;
+	}
+	
+
+	
+	@GET
+	@Path("/sendCardArray")
+	public String sendCardArray() throws IOException{
+		Card[] cards= new Card[numPlayers];
+	
+		for (int i=0; i<numPlayers; i++) {
+			players.get(i).drawCard();
+			cards[i]=players.get(i).getTopCard();
+			
+		}
+		
+		
+		String cardArray = oWriter.writeValueAsString(cards);
+		System.err.println(cardArray);
+		return cardArray;
+		
+	}
+	
 	
 	@GET
 	@Path("/showStats")
@@ -175,20 +248,47 @@ public class TopTrumpsRESTAPI {
 
 	}
 	
+	@GET
+	@Path("/printWinner")
+	/**
+	 * Method to display the winner of the round
+	 */
+	public String printWinner() throws IOException {
+		
+		String x = winner.getName();
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+	}
 	
 	
+	@GET
+	@Path("/cardPile")
+	public String cardPile() throws IOException {
+		int test = players.size();
+		
+//		for (int i = 0; i < players.size(); i++) {
+//			winnerPile.add(players.get(i).getTopCard());
+//			if (players.get(0).compareTo(players.get(1)) == 0)
+//			test++;
+//			else
+//			test = players.size();
+//		}
+		
+		String xAsJsonString = oWriter.writeValueAsString(test);
+		return xAsJsonString;
+	}
+	@GET
+	@Path("/setCategories")
+	public String setCategories() throws IOException {
+		String ab = "firepower";
 	
+		String xAsJsonString = oWriter.writeValueAsString(ab);
+		return xAsJsonString;
+	}
 	
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
