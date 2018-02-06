@@ -404,7 +404,7 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
-		int test = players.size();
+		int test = winnerPile.size();
 		
 //		for (int i = 0; i < players.size(); i++) {
 //			winnerPile.add(players.get(i).getTopCard());
@@ -416,6 +416,45 @@ public class TopTrumpsRESTAPI {
 		
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
+	}
+	
+	@GET
+	@Path("/cardsLeft")
+	public String cardsLeft() throws IOException {
+		int[] hands = new int[players.size()];
+		
+		
+		/*for (int i = 0; i < players.size(); i++) {
+			hands[i] = players.get(i).getDeckSize();			
+		}*/
+		
+		//copied dante's method to match ordering...	
+		for (int i = 0; i < numPlayers; i++) {
+			players.get(i).drawCard();
+			switch(players.get(i).getName()){
+			case("Human Player"):
+			    hands[0] = players.get(i).getDeckSize();
+			    continue;
+			case("Computer 1"):
+				hands[1] = players.get(i).getDeckSize();
+			    continue;
+			case("Computer 2"):
+				hands[2] = players.get(i).getDeckSize();
+			    continue;
+			case("Computer 3"):
+				hands[3] = players.get(i).getDeckSize();
+			    continue;
+			case("Computer 4"):
+				hands[4] = players.get(i).getDeckSize();
+			    continue;
+			default:
+			    System.err.println("NO");			
+			}
+		}
+		
+		String handArray = oWriter.writeValueAsString(hands);
+		System.err.println(handArray);
+		return handArray;
 	}
 
 	

@@ -137,7 +137,7 @@
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();" id ='drawCard'>Draw Card</button>
+            <button onclick="sendCardArray();cardsLeft()" id ='drawCard'>Draw Card</button>
             <div id="playerTurn"></div>
             <br>
             <br>
@@ -164,6 +164,9 @@
 
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
                   </div>
+                  <div class="card-footer text-muted">
+    				
+  					</div>
                 </div>
               </div>
 
@@ -184,6 +187,10 @@
 
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
+                  <div class="card-footer text-muted">
+    				
+  					</div>
+                  
                 </div>
               </div>
 
@@ -205,6 +212,9 @@
 
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
+                  <div class="card-footer text-muted">
+    				
+  					</div>
                 </div>
               </div>
 
@@ -226,6 +236,9 @@
 
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
+                  <div class="card-footer text-muted">
+    				
+  					</div>
                 </div>
               </div>
 
@@ -247,6 +260,9 @@
 
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Caasfgt5<span class="badge">2</span></button>
                   </div>
+                  <div class="card-footer text-muted">
+    				
+  					</div>
                 </div>
               </div>
             </div>
@@ -463,6 +479,29 @@
       revealcardSection();
       xhr.send();
     }
+
+	function cardsLeft() {
+    var xhr = createCORSRequest('GET',
+      "http://localhost:7777/toptrumps/cardsLeft");
+    if (!xhr) {
+      alert("Fucked it");
+    }
+    xhr.onload = function(e) {
+      var responseText = xhr.response; // the text of the response
+      var list = JSON.parse(responseText);
+
+		cardExample = list[0];
+
+      for (i = 0; i < 5; i++) {
+        var cardTitle = "#card" + (i + 1);
+        $(cardTitle).find(".card-footer").text(list[i]+" cards remaining...");
+    
+       
+      }
+
+    }
+    xhr.send();
+  }
 
     function setCategories() {
 
