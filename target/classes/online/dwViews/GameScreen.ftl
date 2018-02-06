@@ -279,29 +279,7 @@
 
     //  setCategories();
      // cardTest();
-
-
-
     }
-
-    function buildCards() {
-
-      var playerNum = $('#input1').val();
-
-      if (playerNum == 1) {
-        $("#card3").remove();
-        $("#card4").remove();
-        $("#card5").remove();
-      } else if (playerNum == 2) {
-        $("#card4").remove();
-        $("#card5").remove();
-      } else if (playerNum == 3) {
-        $("#card5").remove();
-      }
-
-    }
-
-
 
     // -----------------------------------------
     // Add your other Javascript methods Here
@@ -325,30 +303,91 @@
       return xhr;
     }
 
-    function hideSelection() {
-      var x = document.getElementById("myDIV");
-      if (x.style.display === "none") {} else {
-        x.style.display = "none";
-      }
-    }
 
-    function revealBar() {
 
-      document.getElementById("statusBar").style.display = "block";
-    }
 
   	function revealcardSection() {
 
       document.getElementById("cardSection").style.display = "block";
     }
-    function revealDrawCardButton() {
 
-      document.getElementById("drawCard").style.display = "block";
-    }
   </script>
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
+
+  function chooseNumberPlayers() {
+    var number = document.getElementById('input1').value;
+    var xhr = createCORSRequest('GET',
+      "http://localhost:7777/toptrumps/setPlayers?Number=" + number); // Request type and URL+parameters
+    if (!xhr) {
+      alert("CORS not supported");
+    }
+    xhr.onload = function(e){
+        if (number < 1 || number > 4) {
+          alert("Player number out of bounds");
+        } else {
+          buildCards();
+          hideSelection();
+
+          revealBar();
+          revealDrawCardButton();
+        }
+    };
+
+    xhr.send();
+
+  }
+
+  function buildCards() {
+
+    var playerNum = $('#input1').val();
+
+    if (playerNum == 1) {
+      $("#card3").remove();
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 2) {
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 3) {
+      $("#card5").remove();
+    }
+
+  }
+
+  function hideSelection() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {} else {
+      x.style.display = "none";
+    }
+  }
+
+  function activePlayer() {
+
+    var xhr = createCORSRequest('GET',
+      "http://localhost:7777/toptrumps/activePlayer");
+    if (!xhr) {
+      alert("tester");
+    }
+    xhr.onload = function(e) {
+
+      var responseText = xhr.response; // the text of the response
+      //responseText = responseText.replace(/^"(.*)"$/, '$1');
+
+      document.getElementById('activePlayer').innerHTML = responseText;
+  };
+    xhr.send();
+  }
+
+  function revealBar() {
+
+    document.getElementById("statusBar").style.display = "block";
+  }
+  function revealDrawCardButton() {
+
+    document.getElementById("drawCard").style.display = "block";
+  }
 
     function selectCategory(x) {
       var number = x
@@ -370,92 +409,6 @@
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
 
 
-    }
-
-
-    function activePlayer() {
-
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/activePlayer");
-      if (!xhr) {
-        alert("tester");
-      }
-      xhr.onload = function(e) {
-
-        var responseText = xhr.response; // the text of the response
-        responseText = responseText.replace(/^"(.*)"$/, '$1');
-        document.getElementById('activePlayer').innerHTML = responseText;
-      }
-      xhr.send();
-    }
-
-
-
-
-    function chooseNumberPlayers() {
-      var number = document.getElementById('input1').value;
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/setPlayers?Number=" + number); // Request type and URL+parameters
-      if (!xhr) {
-        alert("CORS not supported");
-      }
-
-      if (number < 1 || number > 4) {
-        alert("Player number out of bounds");
-      } else {
-
-
-        buildCards();
-        hideSelection();
-        activePlayer();
-        revealBar();
-		revealDrawCardButton();
-
-
-        xhr.send();
-
-      }
-
-
-      xhr.send();
-
-    }
-
-    // This calls the helloJSONList REST method from TopTrumpsRESTAPI
-    function helloJSONList() {
-      // First create a CORS request, this is the message we are going to send (a get request in this case)
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-      // Message is not sent yet, but we can check that the browser supports CORS
-      if (!xhr) {
-        alert("CORS not supported");
-      }
-      // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-      // to do when the response arrives
-      xhr.onload = function(e) {
-        var responseText = xhr.response; // the text of the response
-        //alert(responseText); // lets produce an alert
-      };
-      // We have done everything we need to prepare the CORS request, so send it
-      xhr.send();
-    }
-    // This calls the helloJSONList REST method from TopTrumpsRESTAPI
-    function helloWord(word) {
-      // First create a CORS request, this is the message we are going to send (a get request in this case)
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/helloWord?Word=" + word); // Request type and URL+parameters
-      // Message is not sent yet, but we can check that the browser supports CORS
-      if (!xhr) {
-        alert("CORS not supported");
-      }
-      // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-      // to do when the response arrives
-      xhr.onload = function(e) {
-        var responseText = xhr.response; // the text of the response
-        //alert(responseText); // lets produce an alert
-      };
-      // We have done everything we need to prepare the CORS request, so send it
-      xhr.send();
     }
 
     function cardTest() {
@@ -483,12 +436,14 @@
 	var cardExample = undefined;
 
     function sendCardArray() {
+
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/sendCardArray");
       if (!xhr) {
         alert("Fucked it");
       }
       xhr.onload = function(e) {
+          activePlayer();
         var responseText = xhr.response; // the text of the response
         var list = JSON.parse(responseText);
 
@@ -555,6 +510,43 @@
 	}
 	xhr.send();
 	}
+
+    // This calls the helloJSONList REST method from TopTrumpsRESTAPI
+    function helloJSONList() {
+      // First create a CORS request, this is the message we are going to send (a get request in this case)
+      var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
+      // Message is not sent yet, but we can check that the browser supports CORS
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+      // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
+      // to do when the response arrives
+      xhr.onload = function(e) {
+        var responseText = xhr.response; // the text of the response
+        //alert(responseText); // lets produce an alert
+      };
+      // We have done everything we need to prepare the CORS request, so send it
+      xhr.send();
+    }
+    // This calls the helloJSONList REST method from TopTrumpsRESTAPI
+    function helloWord(word) {
+      // First create a CORS request, this is the message we are going to send (a get request in this case)
+      var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/helloWord?Word=" + word); // Request type and URL+parameters
+      // Message is not sent yet, but we can check that the browser supports CORS
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+      // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
+      // to do when the response arrives
+      xhr.onload = function(e) {
+        var responseText = xhr.response; // the text of the response
+        //alert(responseText); // lets produce an alert
+      };
+      // We have done everything we need to prepare the CORS request, so send it
+      xhr.send();
+    }
 
   </script>
 

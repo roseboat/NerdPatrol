@@ -74,6 +74,7 @@ public class TopTrumpsRESTAPI {
 	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
 		numPlayers=Number+1;
 		System.err.println("the number of players: "+numPlayers);
+		startGame();
 	}
 	
 	
@@ -127,8 +128,6 @@ public class TopTrumpsRESTAPI {
 		    players.add(p);
 		    
 		}
-		
-		
 		randomiseOrder();
 
 	}
@@ -137,6 +136,7 @@ public class TopTrumpsRESTAPI {
 		//Collections.shuffle(players);
 
 		activePlayer = players.get(0);
+		
 	}
 	
 	public void removePlayer(int i) {
@@ -264,9 +264,8 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
-		
-		String nameAsJSONString = oWriter.writeValueAsString(activePlayer.getName());
-		return nameAsJSONString;
+	    System.err.println("Active player is " + activePlayer.getName());
+		return activePlayer.getName();
 	}
 	
 	
@@ -347,19 +346,19 @@ public class TopTrumpsRESTAPI {
 			players.get(i).drawCard();
 			switch(players.get(i).getName()){
 			case("Human Player"):
-			    cards[0] = players.get(i).getTopCard();
+			    cards[0] = players.get(i).getHeldCard();
 			    continue;
 			case("Computer 1"):
-			    cards[1] = players.get(i).getTopCard();
+			    cards[1] = players.get(i).getHeldCard();
 			    continue;
 			case("Computer 2"):
-			    cards[2] = players.get(i).getTopCard();
+			    cards[2] = players.get(i).getHeldCard();
 			    continue;
 			case("Computer 3"):
-			    cards[3] = players.get(i).getTopCard();
+			    cards[3] = players.get(i).getHeldCard();
 			    continue;
 			case("Computer 4"):
-			    cards[4] = players.get(i).getTopCard();
+			    cards[4] = players.get(i).getHeldCard();
 			    continue;
 			default:
 			    System.err.println("There is no player");			
