@@ -1,164 +1,5 @@
 <html>
 
-<<<<<<< HEAD
-<head>
-<!-- Web page title -->
-<title>Top Trumps - Game</title>
-
-
-<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
-<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
-
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<body onload="initalize()">
-	<!-- Call the initalize method when the page loads -->
-
-	<style>
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-	height: 100%
-}
-
-/* Set gray background color and 100% height */
-.sidenav {
-	padding-top: 20px;
-	background-color: #f1f1f1;
-	height: 100%;
-}
-
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #555;
-	color: white;
-	padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-	.sidenav {
-		height: auto;
-		padding: 15px;
-	}
-	.row.content {
-		height: auto;
-	}
-}
-</style>
-</head>
-<body>
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/toptrumps/">Top Trumps</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li><a href="/toptrumps/">Home</a></li>
-				<li class="active"><a href="/game/">Game</a></li>
-				<li><a href="/toptrumps/stats/">Statistics</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav"></div>
-
-
-			<div class="col-sm-8 text-center">
-				<h1>Top Trumps!</h1>
-				<p>Choose the amount of players you'd like to play against:</p>
-				<input type="number" id="input1" min="1" max="5" />
-				<button onclick="chooseNumberPlayers()" width="25">Submit</button>
-				<br> <br> Cards to be Won: <input type="number"
-					readonly="readonly" id="pile" style="width: 30px;" />
-				<hr>
-				<h3>Let's Play!</h3>
-				<div id="playerTurn"></div>
-				<br>
-
-
-
-				<div class="panel-group" style="height: 500px; width: 250px">
-					<div class="panel panel-success">
-						<div class="panel-heading">Human Player</div>
-						<div class="panel-body"  id="card1">CARD</div>
-						<p>
-						<button onclick="selectCategory(1)" width="15" height ="20" >Cat1</button>
-						<p>
-						<button onclick="selectCategory(2)" width="15" height ="20" >Cat2</button>
-						<p>
-						<button onclick="selectCategory(3)" width="15" height ="20" >Cat3</button>
-						<p>
-						<button onclick="selectCategory(4)" width="15" height ="20" >Cat4</button>
-						<p>
-						<button onclick="selectCategory(5)" width="15" height ="20" >Cat5</button>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO
-						</div>
-
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">AI Player</div>
-						<div class="panel-body">CARD INFO</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 sidenav"></div>
-		</div>
-	</div>
-
-	<footer class="container-fluid text-center">
-		<p>Created by the Nerd Patrol</p>
-	</footer>
-</body>
-
-
-<script type="text/javascript">
-	// Method that is called on page load
-	function initalize() {
-
-		// --------------------------------------------------------------------------
-		// You can call other methods you want to run when the page first loads here
-		// --------------------------------------------------------------------------
-
-		// For example, lets call our sample methods
-		//helloJSONList();
-		//helloWord("Student");
-
-		cardTest();
-=======
   <head>
     <!-- Web page title -->
     <title>Top Trumps - Game</title>
@@ -184,32 +25,32 @@ footer {
 
       <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
-        
+
         .navbar {
           margin-bottom: 0;
           border-radius: 0;
         }
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        
+
         .row.content {
           height: 100%
         }
         /* Set gray background color and 100% height */
-        
+
         .sidenav {
           padding-top: 20px;
           background-color: #f1f1f1;
           height: 100%;
         }
         /* Set black background color, white text and some padding */
-        
+
         footer {
           background-color: #555;
           color: white;
           padding: 15px;
         }
         /* On small screens, set height to 'auto' for sidenav and grid */
-        
+
         @media screen and (max-width: 767px) {
           .sidenav {
             height: auto;
@@ -219,14 +60,14 @@ footer {
             height: auto;
           }
         }
-        
+
         #statusBar {
           background-color: lightblue;
           padding: 5px 0;
           text-align: center;
           display: none;
         }
-        
+
         .card-img-top {
           width: 100%;
           height: 5vw;
@@ -286,13 +127,13 @@ footer {
                 <p> Category Selected:
                 <strong><label id='printCategory'></label></strong>
                 <p> Round Winner:
-                <label id='roundWinner'></label> 
+                <label id='roundWinner'></label>
  				<p>
  				Cards to be Won: <label id='pile'></label>
  				<p>
             </div>
 
-           	<br> 
+           	<br>
             <hr>
             <h3>Let's Play!</h3>
             <br>
@@ -318,28 +159,13 @@ footer {
                     <button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
 
                     <button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 
                     <button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
 
-<<<<<<< HEAD
-	function buildCards(){
-
-
-
-	}
-
-
-
-	// -----------------------------------------
-	// Add your other Javascript methods Here
-	// -----------------------------------------
-=======
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
                   </div>
                 </div>
               </div>
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 
               <div class="col-lg-2">
                 <div class="card" id="card2">
@@ -394,16 +220,7 @@ footer {
 
                     <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 
-<<<<<<< HEAD
-		// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-		// to do when the response arrives
-		xhr.onload = function(e) {
-			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
-		};
-=======
                     <button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 
                     <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 
@@ -420,16 +237,7 @@ footer {
                     <h5 class="card-title">Avenger</h5>
 
 
-<<<<<<< HEAD
-		// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-		// to do when the response arrives
-		xhr.onload = function(e) {
-			var responseText = xhr.response; // the text of the response
-			alert(responseText); // lets produce an alert
-		};
-=======
                     <button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 
                     <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>C2345at2<span class="badge">4</span></button>
 
@@ -437,34 +245,11 @@ footer {
 
                     <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Caagret4<span class="badge">3</span></button>
 
-<<<<<<< HEAD
-		if (!xhr) {
-			alert("Fucked it");
-		}
-		xhr.onload = function(e) {
-			var responseText = xhr.response; // the text of the response
-			var rT = JSON.parse(responseText);
-			document.getElementById("name").innerHTML = rT["name"];
-			$(document).ready(function ()){
-				$("#card1").click(function ()){
-					$("p").text("Dongers");
-				};
-			
-			};
-
-
-			for (i = 0; i < rT.number_OF_CATEGORIES; i++) {
-				document.getElementById(("cat" + (i + 1))).innerHTML = rT["categories"][i];
-				document.getElementById(("val" + (i + 1))).innerHTML = rT["cardValues"][i];
-
-			}
-=======
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Caasfgt5<span class="badge">2</span></button>
                   </div>
                 </div>
               </div>
             </div>
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 
             <div class="col-sm-1"></div>
           </div>
@@ -495,7 +280,7 @@ footer {
     //  setCategories();
      // cardTest();
 
-      
+
 
     }
 
@@ -513,7 +298,7 @@ footer {
       } else if (playerNum == 3) {
         $("#card5").remove();
       }
-	
+
     }
 
 
@@ -551,7 +336,7 @@ footer {
 
       document.getElementById("statusBar").style.display = "block";
     }
- 
+
   	function revealcardSection() {
 
       document.getElementById("cardSection").style.display = "block";
@@ -564,7 +349,7 @@ footer {
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
-  
+
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -572,19 +357,19 @@ footer {
       if (!xhr) {
         alert("CORS not supported");
       }
-      
+
       xhr.onload = function(e) {
-      
+
       var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
       }
-      
+
       xhr.send();
-      
+
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-      
-      
+
+
     }
 
 
@@ -603,7 +388,7 @@ footer {
       }
       xhr.send();
     }
-    
+
 
 
 
@@ -630,10 +415,10 @@ footer {
         xhr.send();
 
       }
-		
-	
+
+
       xhr.send();
-     
+
     }
 
     // This calls the helloJSONList REST method from TopTrumpsRESTAPI
@@ -646,7 +431,7 @@ footer {
         alert("CORS not supported");
       }
       // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-      // to do when the response arrives 
+      // to do when the response arrives
       xhr.onload = function(e) {
         var responseText = xhr.response; // the text of the response
         //alert(responseText); // lets produce an alert
@@ -664,7 +449,7 @@ footer {
         alert("CORS not supported");
       }
       // CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-      // to do when the response arrives 
+      // to do when the response arrives
       xhr.onload = function(e) {
         var responseText = xhr.response; // the text of the response
         //alert(responseText); // lets produce an alert
@@ -694,9 +479,9 @@ footer {
       }
       xhr.send();
     }
-	
+
 	var cardExample = undefined;
-	
+
     function sendCardArray() {
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/sendCardArray");
@@ -706,9 +491,9 @@ footer {
       xhr.onload = function(e) {
         var responseText = xhr.response; // the text of the response
         var list = JSON.parse(responseText);
-		
+
 		cardExample = list[0];
-		
+
         for (i = 0; i < 5; i++) {
           var cardTitle = "#card" + (i + 1);
           $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
@@ -717,7 +502,7 @@ footer {
             $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
           });
         }
-      
+
       }
       cardPile();
       revealcardSection();
@@ -740,16 +525,16 @@ footer {
       xhr.send();
     }
 
- 
+
     function printWinner() {
-	
+
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/printWinner");
 		if (!xhr) {
 			alert("tester");
 			}
 		xhr.onload = function(e) {
-		
+
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('roundWinner').innerHTML = responseText;
@@ -758,7 +543,7 @@ footer {
 	}
 
 	function cardPile() {
-		
+
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/cardPile");
 		if (!xhr) {
@@ -780,9 +565,4 @@ footer {
 
 
   </body>
-
-<<<<<<< HEAD
-</body>
-=======
->>>>>>> 5d948d64f4d9886f7a7d1e3121188ad280f15e51
 </html>

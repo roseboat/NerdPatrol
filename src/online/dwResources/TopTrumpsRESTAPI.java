@@ -48,6 +48,7 @@ public class TopTrumpsRESTAPI {
 	private Player winner;
 	private static ArrayList<Player> players;
 	private ArrayList<Card> winnerPile;
+	
 
 	
 	/**
@@ -114,11 +115,16 @@ public class TopTrumpsRESTAPI {
 		Human humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-
+		
+		
 		winnerPile = new ArrayList<Card>();
 		for (int i = 1; i < deck.length; i++) {
-			players.add(new Computer("Computer " + i, deck[i]));
+		    Player p = new Computer("Computer " + i, deck[i]);
+		    players.add(p);
+		    
 		}
+		
+		
 		randomiseOrder();
 		
 	
@@ -220,8 +226,25 @@ public class TopTrumpsRESTAPI {
 	
 		for (int i=0; i<numPlayers; i++) {
 			players.get(i).drawCard();
-			cards[i]=players.get(i).getTopCard();
-			
+			switch(players.get(i).getName()){
+			case("Human Player"):
+			    cards[0] = players.get(i).getTopCard();
+			    continue;
+			case("Computer 1"):
+			    cards[1] = players.get(i).getTopCard();
+			    continue;
+			case("Computer 2"):
+			    cards[2] = players.get(i).getTopCard();
+			    continue;
+			case("Computer 3"):
+			    cards[3] = players.get(i).getTopCard();
+			    continue;
+			case("Computer 4"):
+			    cards[4] = players.get(i).getTopCard();
+			    continue;
+			default:
+			    System.err.println("There is no player");			
+			}
 		}
 		
 		
