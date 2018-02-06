@@ -56,7 +56,7 @@ public abstract class Player implements Comparable<Player>{
 	 * 
 	 * @return heldCard, Card object held by the player
 	 * */
-	public Card getTopCard() 	{
+	public Card getHeldCard() 	{
 		return heldCard;
 	}
 	

@@ -11,7 +11,6 @@ public class GameManager {
 	private Human humanPlayer;
 	private Player p1;
 	// p1 begins each "round" of top trumps
-	private Player currentPlayer;
 	private Player winner;
 	private Player gameWinner;
 	private int numPlayers;
@@ -97,12 +96,12 @@ public class GameManager {
 
 				
 					//sets the value that each player has for the chosen category on their top card
-					players.get(i).getTopCard().setSelectedValue(index);
+					players.get(i).getHeldCard().setSelectedValue(index);
 					//assigns the above value to each player 
-					players.get(i).setChosenCat(players.get(i).getTopCard().getSelectedValue());
+					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
 
 					// adds card to the winner's pile
-					winnerPile.add(players.get(i).getTopCard());
+					winnerPile.add(players.get(i).getHeldCard());
 
 					// remove top cards from player's decks
 					players.get(i).playerDeck.getDeck().remove(0);
