@@ -5,16 +5,27 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Class responsible for establishing a connection to PostgreSQL database
+ * providing save game and retrieving statistics functionality
+ * @author NerdPatrol
+ *
+ */
 public class Database {
 
+	/**Connection session instance variable **/
 	private Connection connection = null;
 
-	// constructor
+	/**
+	 * Constructor with method to establish connection upon instantiation
+	 */
 	public Database() {
 		establishConnection();
 	}
 
-	// connect to database
+	/**
+	 * Connects to postresql jdbc student database
+	 */
 	public void establishConnection() {
 		String databaseName = "m_17_2354535k";
 		String username = "m_17_2354535k";
@@ -36,7 +47,10 @@ public class Database {
 		}
 	}
 
-	// disconnect from database
+	
+	/**
+	 * Closes connection to database
+	 */
 	public void closeConnection() {
 		try {
 			connection.close();
@@ -48,10 +62,14 @@ public class Database {
 	}
 
 	
-	// overloaded methods for variable number of players, there is probably a better
-	// way to do this.....
-
-	// for 1 AI player
+	/**
+	 * saves game statistics to database (for 1 AI player)
+	 * @param winner - game winner
+	 * @param numberRounds - total number of rounds played during game
+	 * @param numberDraws - number of draws
+	 * @param winsPlayer - number of rounds won by player
+	 * @param winsComputer1 - number of rounds won by computer
+	 */
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int winsComputer1) {
 		Statement stmt = null;
 		// manual auto-increment for game number
@@ -70,7 +88,14 @@ public class Database {
 		}
 	}
 
-	// for 2 AI players
+	/**
+	 * saves game statistics to database (for 2 AI players)
+	 * @param winner - game winner
+	 * @param numberRounds - total number of rounds played during game
+	 * @param numberDraws - number of draws
+	 * @param winsPlayer - number of rounds won by player
+	 * @param winsComputer1 - number of rounds won by computer
+	 */
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int winsComputer1,
 			int winsComputer2) {
 		Statement stmt = null;
@@ -91,7 +116,14 @@ public class Database {
 		}
 	}
 
-	// for 3 AI players
+	/**
+	 * saves game statistics to database (for 3 AI players)
+	 * @param winner - game winner
+	 * @param numberRounds - total number of rounds played during game
+	 * @param numberDraws - number of draws
+	 * @param winsPlayer - number of rounds won by player
+	 * @param winsComputer1 - number of rounds won by computer
+	 */
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int winsComputer1,
 			int winsComputer2, int winsComputer3) {
 		Statement stmt = null;
@@ -112,7 +144,14 @@ public class Database {
 		}
 	}
 
-	// for 4 AI players
+	/**
+	 * saves game statistics to database (for 4 AI players)
+	 * @param winner - game winner
+	 * @param numberRounds - total number of rounds played during game
+	 * @param numberDraws - number of draws
+	 * @param winsPlayer - number of rounds won by player
+	 * @param winsComputer1 - number of rounds won by computer
+	 */
 	public void gameStats(String winner, int numberRounds, int numberDraws, int winsPlayer, int winsComputer1,
 			int winsComputer2, int winsComputer3, int winsComputer4) {
 		Statement stmt = null;
@@ -133,7 +172,12 @@ public class Database {
 		}
 	}
 
-	// get last game number for auto increment
+	
+	/**
+	 * Helper method that retrieves latest game number from database
+	 * useful for auto-increment feature.
+	 * @return - int highest (current) game number
+	 */
 	public int gameNumber() {
 		Statement stmt = null;
 		int gameNumber = 0;
@@ -154,7 +198,11 @@ public class Database {
 		return gameNumber;
 	}
 	
-	//method to get number of player wins
+	
+	/**
+	 * Returns the number of games won by the human user
+	 * @return - int number of player won games 
+	 */
 	public int getPlayerWins() {
 		
 		Statement stmt = null;
@@ -174,7 +222,11 @@ public class Database {
 		return result;
 	}
 	
-	//method to get number of computer wins
+	
+	/**
+	 * Returns the number of games won by a computer player
+	 * @return - int number of computer won games
+	 */
 	public int getComputerWins() {
 		
 		Statement stmt = null;
@@ -194,7 +246,11 @@ public class Database {
 		return result;
 	}
 	
-	//method to get highest number of rounds played in a game
+	
+	/**
+	 * Gets the highest recorded number of rounds played in a single game so far
+	 * @return int maximum round count
+	 */
 	public int getMaxRound() {
 		
 		Statement stmt = null;
@@ -214,7 +270,12 @@ public class Database {
 		return result;
 	}
 	
-	//method to get the number of draws overall - for working out average number of draws
+	
+	/**
+	 * Helper function that gets the total number of draws from all games
+	 * useful for working out average number of draws per game.
+	 * @return - int sum of recorded draws in all games
+	 */
 		public int getNumberDraws() {
 			
 			Statement stmt = null;
@@ -234,7 +295,11 @@ public class Database {
 			return result;
 		}
 	
-	//method to return a string of the data for command line 
+	
+	/**
+	 * Returns the required game statistics for display in the command line version. 
+	 * @return a String describing game stats
+	 */
 	public String getGameStatistics() {
 		String stats = gameNumber() + " games have been played.\r\n The player has won " + getPlayerWins()
 				+ " times.\r\n The computer has won " + getComputerWins()
