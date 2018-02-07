@@ -211,8 +211,8 @@ public class TopTrumpsRESTAPI {
 
 				return winner.getName();
 			}
-		} else
-			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
+		} 
+		System.err.println(winner.getName() + " HAS WON THE GAME#################################");
 		return endGame();
 	}
 

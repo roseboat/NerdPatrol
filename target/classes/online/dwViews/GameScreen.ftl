@@ -467,11 +467,9 @@ function activePlayer() {
 	document.getElementById('humanCat5').disabled = false;
 	}
 	function humanFunctionOrder () {
-		
 		enableHumanButtons();
 		hideCards();
 		hideComputerButton();
-		
 		}
 		
   function revealBar() {
