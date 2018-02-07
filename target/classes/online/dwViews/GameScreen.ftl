@@ -89,6 +89,7 @@
           padding: 5px 0;
           text-align: center;
 		  margin:auto;
+		  display: none;
           }
       </style>
 
@@ -118,16 +119,16 @@
             <h1>Top Trumps!</h1>
 
 
-            <div id="myDIV">
+            <div id="setPlayers">
               <p>Choose the amount of players you'd like to play against:</p>
 
-              <select id="input1" style="font-size:17px;">
+              <select id="playerCount" style="font-size:17px;">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select><br><br>
-              <button class="btn btn-default" onclick="chooseNumberPlayers();" width="25">Start Game!</button>
+              <button class="btn btn-default" onclick="setPlayers();" width="25">Start Game!</button>
             </div>
             <br>
 
@@ -142,7 +143,7 @@
                 <p> Round Winner:
                 <strong><label id='roundWinner'></label></strong></p>
  				<p>
- 				Cards to be Won: <strong><label id='pile'></label></strong></p>
+ 				Cards to be Won: <strong><label id='cardPile'></label></strong></p>
  			
             </div>
 			<div id="winBar">
@@ -306,14 +307,13 @@
       // --------------------------------------------------------------------------
      
 
-    //  setCategories();
-     // cardTest();
     }
 
     // -----------------------------------------
     // Add your other Javascript methods Here
     // -----------------------------------------
     // This is a reusable method for creating a CORS request. Do not edit this.
+    
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
       if ("withCredentials" in xhr) {
@@ -332,24 +332,122 @@
       return xhr;
     }
 
-
+		function disableHumanButtons() {
+		
+		document.getElementById('humanCat1').disabled = true;
+		document.getElementById('humanCat2').disabled = true;
+		document.getElementById('humanCat3').disabled = true;
+		document.getElementById('humanCat4').disabled = true;
+		document.getElementById('humanCat5').disabled = true;
+		}
+		
+		function enableHumanButtons() {
+		
+		document.getElementById('humanCat1').disabled = false;
+		document.getElementById('humanCat2').disabled = false;
+		document.getElementById('humanCat3').disabled = false;
+		document.getElementById('humanCat4').disabled = false;
+		document.getElementById('humanCat5').disabled = false;
+		}
+		
+		function humanFunctionOrder() {
+		
+		enableHumanButtons();
+		hideComputerButton();
+		hideCards();
+		}
+		
+  		function revealBar() {
+    	document.getElementById("statusBar").style.display = "block";
+  		}
+  		
+  		function revealDrawCardButton() {
+    	document.getElementById("drawCard").style.display = "block";
+  		}
+  		
+   		function revealComputerSelectButton() {
+		document.getElementById("computerSelect").style.display = "block";
+  		}
+  		
+  	function revealCards() {
+    	document.getElementById("card2").style.display = "block";
+    	document.getElementById("card3").style.display = "block";
+    	document.getElementById("card4").style.display = "block";
+    	document.getElementById("card5").style.display = "block";
+  	}
+  	
+   	function revealWinBar() {
+		document.getElementById("winBar").style.display = "block";
+  	}
 
   	function revealcardSection() {
-
-      document.getElementById("cardSection").style.display = "block";
+  		document.getElementById("cardSection").style.display = "block";
     }
+    
     function hideComputerButton() {
-
-      document.getElementById("computerSelect").style.display = "none";
+		document.getElementById("computerSelect").style.display = "none";
     }
+    
+    
+	function hideSelection() {
+	    var x = document.getElementById("setPlayers");
+	    if (x.style.display === "none") {} else {
+	      x.style.display = "none";
+	    }
+	 }
+	  
+	 function hideStatusBar() {
+	    var x = document.getElementById("statusBar");
+	    if (x.style.display === "none") {} else {
+	      x.style.display = "none";
+	    }
+	 }
+	  
+	 function hideCards() {
+	    var opp1 = document.getElementById("card2");
+	    if (opp1.style.display === "none") {} else {
+	      opp1.style.display = "none";
+	   	}
+		var opp2 = document.getElementById("card3");
+	    if (opp2.style.display === "none") {} else {
+	    opp2.style.display = "none";
+	    }
+	    var opp3 = document.getElementById("card4");
+	    if (opp3.style.display === "none") {} else {
+	    opp3.style.display = "none";
+	    }
+	    var opp4 = document.getElementById("card5");
+	    if (opp4.style.display === "none") {} else {
+	    opp4.style.display = "none";
+	    }
+	    
+	 }
+	 
+	function buildCards() {
+
+    var playerNum = $('#playerCount').val();
+
+    if (playerNum == 1) {
+      $("#card3").remove();
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 2) {
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 3) {
+      $("#card5").remove();
+    }
+
+  }
 
   </script>
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
+  
 
-  function chooseNumberPlayers() {
-    var number = document.getElementById('input1').value;
+  function setPlayers() {
+    var number = document.getElementById('playerCount').value;
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/setPlayers?Number=" + number); // Request type and URL+parameters
     if (!xhr) {
@@ -368,150 +466,57 @@
     };
 
     xhr.send();
-
   }
 
-  function buildCards() {
 
-    var playerNum = $('#input1').val();
 
-    if (playerNum == 1) {
-      $("#card3").remove();
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 2) {
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 3) {
-      $("#card5").remove();
-    }
+	function activePlayer() {
 
-  }
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/activePlayer");
+		if (!xhr) {
+			alert("tester");
+		}
+		xhr.onload = function(e) {
 
-  function hideSelection() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {} else {
-      x.style.display = "none";
-    }
-  }
-  function hideStatusBar() {
-    var x = document.getElementById("statusBar");
-    if (x.style.display === "none") {} else {
-      x.style.display = "none";
-    }
-  }
-  
-    function hideCards() {
-    var opp1 = document.getElementById("card2");
-    if (opp1.style.display === "none") {} else {
-      opp1.style.display = "none";
-    }
-	var opp2 = document.getElementById("card3");
-    if (opp2.style.display === "none") {} else {
-    opp2.style.display = "none";
-    }
-    var opp3 = document.getElementById("card4");
-    if (opp3.style.display === "none") {} else {
-    opp3.style.display = "none";
-    }
-    var opp4 = document.getElementById("card5");
-    if (opp4.style.display === "none") {} else {
-    opp4.style.display = "none";
-    }
-    
-  }
-  
+		var responseText = xhr.response; // the text of the response
+		responseText = responseText.replace(/^"(.*)"$/, '$1');
+		document.getElementById('activePlayer').innerHTML = responseText;
 
-function activePlayer() {
-
-				var xhr = createCORSRequest('GET',
-						"http://localhost:7777/toptrumps/activePlayer");
-				if (!xhr) {
-					alert("tester");
-				}
-				xhr.onload = function(e) {
-
-					var responseText = xhr.response; // the text of the response
-					responseText = responseText.replace(/^"(.*)"$/, '$1');
-					document.getElementById('activePlayer').innerHTML = responseText;
-
-					switch (responseText) {
-					case ("Human Player"):
-						humanFunctionOrder();
-						break;
+		switch (responseText) {
+			case ("Human Player"):
+				humanFunctionOrder();
+				break;
 						
-					case ("Computer 1"):
-						revealComputerSelectButton();
-						disableHumanButtons();
-						revealCards();	
-						break;
+			case ("Computer 1"):		
+				disableHumanButtons();
+				revealCards();	
+				revealComputerSelectButton();
+				break;
 					
-					case ("Computer 2"):
-						disableHumanButtons();
-						revealCards();
-						revealComputerSelectButton();
-						break;
+			case ("Computer 2"):
+				disableHumanButtons();
+				revealCards();
+				revealComputerSelectButton();
+				break;
 						
-					case ("Computer 3"):
-						disableHumanButtons();
-						revealCards();
-						revealComputerSelectButton();
+			case ("Computer 3"):
+				disableHumanButtons();
+				revealCards();
+				revealComputerSelectButton();
 						
-						break;
-					case ("Computer 4"):
-						disableHumanButtons();
-						revealCards();
-						revealComputerSelectButton();
-						break;
-					}
+				break;
+				case ("Computer 4"):
+				disableHumanButtons();
+				revealCards();
+				revealComputerSelectButton();
+				break;
 				}
+		}
 				xhr.send();
 			}
-	function disableHumanButtons() {
-	document.getElementById('humanCat1').disabled = true;
-	document.getElementById('humanCat2').disabled = true;
-	document.getElementById('humanCat3').disabled = true;
-	document.getElementById('humanCat4').disabled = true;
-	document.getElementById('humanCat5').disabled = true;
-	}
-	function enableHumanButtons() {
-	document.getElementById('humanCat1').disabled = false;
-	document.getElementById('humanCat2').disabled = false;
-	document.getElementById('humanCat3').disabled = false;
-	document.getElementById('humanCat4').disabled = false;
-	document.getElementById('humanCat5').disabled = false;
-	}
-	function humanFunctionOrder() {
-		
-		enableHumanButtons();
-		hideComputerButton();
-		hideCards();
-		}
-		
-  function revealBar() {
-
-    document.getElementById("statusBar").style.display = "block";
-  }
-  function revealDrawCardButton() {
-
-    document.getElementById("drawCard").style.display = "block";
-  }
-   function revealComputerSelectButton() {
-
-    document.getElementById("computerSelect").style.display = "block";
-  }
-  
-    function revealCards() {
-    document.getElementById("card2").style.display = "block";
-    document.getElementById("card3").style.display = "block";
-    document.getElementById("card4").style.display = "block";
-    document.getElementById("card5").style.display = "block";
-  }
-   function revealWinBar() {
-
-    document.getElementById("winBar").style.display = "block";
-  }
-
+			
+			
 
 	function computerSelect(){
 	     var xhr = createCORSRequest('GET',
@@ -531,8 +536,6 @@ function activePlayer() {
       xhr.send();
       revealCards();
 	}
-
-
 
 
     function selectCategory(x) {
@@ -567,11 +570,19 @@ function activePlayer() {
 var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
+      
+  if (responseText== "EndGame"){
+  		hideStatusBar();
+		revealWinBar();
+  		endGame();
+  }
 }
  xhr.send();
 	
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
+     
+     
 
 }
 
@@ -624,10 +635,10 @@ var responseText = xhr.response; // the text of the response
 
       }
       
-		cardPile();
+      cardPile();
       revealcardSection();
-       document.getElementById('printCategory').innerHTML = "";
-       document.getElementById('roundWinner').innerHTML = "";
+      document.getElementById('printCategory').innerHTML = "";
+      document.getElementById('roundWinner').innerHTML = "";
     
       xhr.send();
     }
@@ -646,8 +657,14 @@ var responseText = xhr.response; // the text of the response
 
       for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
+        
+        if (list[i] ==0){
+        $("#card"+ (i+1)).remove();
+        }
+        else{
+        
         $(cardTitle).find(".card-footer").text(list[i]+" cards remaining...");
-    
+    	}
        
       }
 
@@ -685,8 +702,7 @@ var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('endGame').innerHTML = responseText;
 	}
-	hideStatusBar();
-	revealWinBar();
+	
 	xhr.send();
 	}
 
@@ -699,7 +715,7 @@ var responseText = xhr.response; // the text of the response
 			}
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
-			document.getElementById('pile').innerHTML = responseText;
+			document.getElementById('cardPile').innerHTML = responseText;
 	};
 	xhr.send();
 	}

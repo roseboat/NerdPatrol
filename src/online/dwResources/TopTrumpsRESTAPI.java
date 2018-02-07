@@ -211,9 +211,11 @@ public class TopTrumpsRESTAPI {
 
 				return winner.getName();
 			}
-		} else
+		} 
+		else	{
 			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
-		return endGame();
+			return "EndGame";
+		}
 	}
 
 	
@@ -221,13 +223,16 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/endGame")
 	public String endGame() throws JsonProcessingException {
+
+		if (checkDecks() ==1)	{
 		gameWinner = players.get(0);
 		numRounds = 0;
 		numDraws = 0;
+		
 		for (int i = 0; i < playerWinCounts.length; i++) {
 			playerWinCounts[i] = 0;
 		}
-
+		}
 		String gameWinnerString = oWriter.writeValueAsString(gameWinner.getName());
 		return gameWinnerString;
 	}
