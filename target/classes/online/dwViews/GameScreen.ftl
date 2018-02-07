@@ -116,20 +116,20 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-              </select>
-              <button class="btn btn-default" onclick="chooseNumberPlayers();" width="25">Submit</button>
+              </select><br><br>
+              <button class="btn btn-default" onclick="chooseNumberPlayers();" width="25">Start Game!</button>
             </div>
             <br>
 
             <div id="statusBar">
               <p> Active Player:
-                <label id='activePlayer'></label>
+                <strong><label id='activePlayer'></label></strong>
                 <p> Category Selected:
                 <strong><label id='printCategory'></label></strong>
                 <p> Round Winner:
-                <label id='roundWinner'></label>
+                <strong><label id='roundWinner'></label></strong>
  				<p>
- 				Cards to be Won: <label id='pile'></label>
+ 				Cards to be Won: <strong><label id='pile'></label></strong>
  				<p>
             </div>
 

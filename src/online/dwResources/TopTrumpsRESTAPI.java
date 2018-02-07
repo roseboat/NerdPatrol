@@ -77,41 +77,6 @@ public class TopTrumpsRESTAPI {
 		startGame();
 	}
 	
-	
-	// returns an index
-	// depending on the button pressed
-	// index is used to set the chosen category
-	// prints the chosen category & value on console (for testing)
-	@GET
-	@Path("/selectCategory")
-	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
-		catIndex = Number - 1;
-
-		for (Player p : players) {
-			p.getHeldCard().setSelectedValue(catIndex);
-			// assigns the above value to each player
-			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			winnerPile.add(p.getHeldCard());
-			p.getDeck().remove(0);
-		}
-		Collections.sort(players, Collections.reverseOrder());
-
-		winner = players.get(0);
-		Card activeCard = activePlayer.getHeldCard();
-		activeCard.setSelectedValue(catIndex);
-		System.err.println(players.toString());
-		System.err.println(winner.getName());
-
-		// System.err.println("The chosen category is: "+
-		// activeCard.getSelectedCategory(catIndex)+" with a value of
-		// "+activeCard.getSelectedValue());
-
-		return winner.getName();
-
-	}
-	
-	
-
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -143,6 +108,40 @@ public class TopTrumpsRESTAPI {
 		players.remove(i);
 	}
 	
+	
+	// returns an index
+	// depending on the button pressed
+	// index is used to set the chosen category
+	// prints the chosen category & value on console (for testing)
+	@GET
+	@Path("/selectCategory")
+	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
+		catIndex = Number - 1;
+
+		for (Player p : players) {
+			p.getHeldCard().setSelectedValue(catIndex);
+			// assigns the above value to each player
+			p.setChosenCat(p.getHeldCard().getSelectedValue());
+			winnerPile.add(p.getHeldCard());
+			p.getDeck().remove(0);
+		}
+		Collections.sort(players, Collections.reverseOrder());
+
+		winner = players.get(0);
+		Card activeCard = activePlayer.getHeldCard();
+		activeCard.setSelectedValue(catIndex);
+		System.err.println(players.toString());
+		System.err.println(winner.getName());
+
+		initiateRound();
+
+		return winner.getName();
+
+	}
+	
+	
+
+
 	
 	public void initiateRound() throws JsonProcessingException {
 		// check that two players are still in the game
