@@ -379,22 +379,44 @@
     }
   }
 
-  function activePlayer() {
+function activePlayer() {
 
-    var xhr = createCORSRequest('GET',
-      "http://localhost:7777/toptrumps/activePlayer");
-    if (!xhr) {
-      alert("tester");
-    }
-    xhr.onload = function(e) {
+				var xhr = createCORSRequest('GET',
+						"http://localhost:7777/toptrumps/activePlayer");
+				if (!xhr) {
+					alert("tester");
+				}
+				xhr.onload = function(e) {
 
-      var responseText = xhr.response; // the text of the response
-      //responseText = responseText.replace(/^"(.*)"$/, '$1');
+					var responseText = xhr.response; // the text of the response
+					responseText = responseText.replace(/^"(.*)"$/, '$1');
+					document.getElementById('activePlayer').innerHTML = responseText;
 
-      document.getElementById('activePlayer').innerHTML = responseText;
-  };
-    xhr.send();
-  }
+					switch (responseText) {
+					case ("Human Player"):
+						document.getElementById('card1').style.border = "thick solid #66FF33";
+						break;
+					case ("Computer 1"):
+						document.getElementById('card2').style.border = "thick solid #66FF33";
+						document.getElementById('card1').disabled = true;
+						break;
+					case ("Computer 2"):
+						document.getElementById('card3').style.border = "thick solid #66FF33";
+						document.getElementById('card1').disabled = true;
+						break;
+					case ("Computer 3"):
+						document.getElementById('card4').style.border = "thick solid #66FF33";
+						document.getElementById('card1').disabled = true;
+						break;
+					case ("Computer 4"):
+						document.getElementById('card5').style.border = "thick solid #66FF33";
+						document.getElementById('card1').disabled = true;
+						break;
+					}
+				}
+				xhr.send();
+			}
+
 
   function revealBar() {
 
