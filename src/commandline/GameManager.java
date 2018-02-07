@@ -74,7 +74,7 @@ public class GameManager {
 				// checks to see if any players have run out of cards
 				if (players.get(i).getDeckSize() < 1) {
 					removePlayer(i);
-					i--;
+					i--; // decrement i if a player is removed
 				}
 				// all players draw their first card
 				players.get(i).drawCard();
@@ -109,10 +109,11 @@ public class GameManager {
 				}
 
 				myLog.cardsInPlay(winnerPile);
-
+				// move on to computing a result
 				decideWinner(index);
 
 			} else
+				// if only one player left, code goes to endGame method
 				endGame();
 		}
 	}
@@ -140,14 +141,18 @@ public class GameManager {
 		winner = players.get(0);
 		myLog.logRoundWinner(winner);
 
+		//are the top two players drawing?
 		if (players.get(0).compareTo(players.get(1)) == 0)
 			drawHandler();
 		else {
-			// starting player of next round is the winner
 			myLog.postRound(players);
+			// starting player of next round is the winner			
 			activePlayer = winner;
+			//winner gets cards in the pile
 			winner.addToDeck(winnerPile);
+			// this pile resets 
 			winnerPile.clear();
+			// display to command line
 			System.out.println("The winner of this round is Player: " + winner.getName() + " who won with the "
 					+ winner.heldCard.getName() + divider);
 
@@ -163,12 +168,13 @@ public class GameManager {
 
 		myLog.communalPile(winnerPile);
 
+		// print to command line
 		System.out.println("Round ended in a draw. The next round will be started." + divider);
 
 		// increment drawCount
 		numDraws++;
 
-		// return to round loop
+		// restart the core round loop
 		initiateRound();
 	}
 
