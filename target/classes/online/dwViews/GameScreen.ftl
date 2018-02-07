@@ -322,7 +322,6 @@
 
 
 
-
   	function revealcardSection() {
 
       document.getElementById("cardSection").style.display = "block";
@@ -379,6 +378,27 @@
       x.style.display = "none";
     }
   }
+  
+    function hideCards() {
+    var opp1 = document.getElementById("card2");
+    if (opp1.style.display === "none") {} else {
+      opp1.style.display = "none";
+    }
+    var opp2 = document.getElementById("card3");
+    if (opp2.style.display === "none") {} else {
+    opp2.style.display = "none";
+    }
+    var opp3 = document.getElementById("card4");
+    if (opp3.style.display === "none") {} else {
+    opp3.style.display = "none";
+    }
+    var opp4 = document.getElementById("card5");
+    if (opp4.style.display === "none") {} else {
+    opp4.style.display = "none";
+    }
+    
+  }
+  
 
 function activePlayer() {
 
@@ -395,23 +415,44 @@ function activePlayer() {
 
 					switch (responseText) {
 					case ("Human Player"):
+						hideCards();
 						document.getElementById('card1').style.border = "thick solid #66FF33";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
 						break;
 					case ("Computer 1"):
 						document.getElementById('card2').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 2"):
 						document.getElementById('card3').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 3"):
 						document.getElementById('card4').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 4"):
 						document.getElementById('card5').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						revealCards();
 						break;
 					}
 				}
@@ -427,6 +468,16 @@ function activePlayer() {
 
     document.getElementById("drawCard").style.display = "block";
   }
+  
+    function revealCards() {
+    
+	document.getElementById('card1').disabled = true;
+    document.getElementById("card2").style.display = "block";
+    document.getElementById("card3").style.display = "block";
+    document.getElementById("card4").style.display = "block";
+    document.getElementById("card5").style.display = "block";
+  }
+  
 
     function selectCategory(x) {
       var number = x
@@ -444,8 +495,9 @@ function activePlayer() {
       }
 
       xhr.send();
-
+	
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+      revealCards();
 
 
     }
