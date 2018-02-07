@@ -84,6 +84,12 @@
 		  margin:auto;
           display: none;
           }
+          #winBar{
+          background-color: lightgreen;
+          padding: 5px 0;
+          text-align: center;
+		  margin:auto;
+          }
       </style>
 
   </head>
@@ -139,7 +145,10 @@
  				Cards to be Won: <strong><label id='pile'></label></strong></p>
  			
             </div>
-
+			<div id="winBar">
+			<p>Winner: 
+			 <strong><label id='endGame'></label></strong></p></p>
+			</div>
            	<br>
             <hr>
             <h3>Let's Play!</h3>
@@ -385,6 +394,12 @@
       x.style.display = "none";
     }
   }
+  function hideStatusBar() {
+    var x = document.getElementById("statusBar");
+    if (x.style.display === "none") {} else {
+      x.style.display = "none";
+    }
+  }
   
     function hideCards() {
     var opp1 = document.getElementById("card2");
@@ -492,7 +507,10 @@ function activePlayer() {
     document.getElementById("card4").style.display = "block";
     document.getElementById("card5").style.display = "block";
   }
-  
+   function revealWinBar() {
+
+    document.getElementById("winBar").style.display = "block";
+  }
 
 
 	function computerSelect(){
@@ -610,6 +628,7 @@ var responseText = xhr.response; // the text of the response
       revealcardSection();
        document.getElementById('printCategory').innerHTML = "";
        document.getElementById('roundWinner').innerHTML = "";
+    
       xhr.send();
     }
 
@@ -653,10 +672,10 @@ var responseText = xhr.response; // the text of the response
     }
 
 
-    function printWinner() {
+    function endGame() {
 
 		var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/printWinner");
+				"http://localhost:7777/toptrumps/endGame");
 		if (!xhr) {
 			alert("tester");
 			}
@@ -664,8 +683,10 @@ var responseText = xhr.response; // the text of the response
 
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
-			document.getElementById('roundWinner').innerHTML = responseText;
-	};
+			document.getElementById('endGame').innerHTML = responseText;
+	}
+	hideStatusBar();
+	revealWinBar();
 	xhr.send();
 	}
 
