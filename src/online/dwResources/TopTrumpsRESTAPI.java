@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -82,11 +83,11 @@ public class TopTrumpsRESTAPI {
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
 		System.err.println("Active player is " + activePlayer.getName());
-		
+
 		if (activePlayer != humanPlayer) {
 			computerSelect();
 		}
-		
+
 		return activePlayer.getName();
 	}
 
@@ -115,8 +116,7 @@ public class TopTrumpsRESTAPI {
 		activePlayer = players.get(0);
 	}
 
-	@GET
-	@Path("/removePlayer")
+	
 	public void removePlayer(int i) {
 		players.remove(i);
 	}
@@ -125,52 +125,87 @@ public class TopTrumpsRESTAPI {
 	// depending on the button pressed
 	// index is used to set the chosen category
 	// prints the chosen category & value on console (for testing)
-	
-	
+
 	@GET
 	@Path("/computerSelect")
 	public String computerSelect() {
-		
+
 		catIndex = activePlayer.chooseCategory();
 		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
 		return catString;
-		
+
 	}
-	
-	
+
 	@GET
 	@Path("/selectCategory")
 	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
-		
 		catIndex = Number - 1;
 	}
-	
+
+
 	@GET
 	@Path("/processRound")
-	public String processRound() {
-		numRounds++;
-		
-		for (Player p : players) {
-			p.getHeldCard().setSelectedValue(catIndex);
-			// assigns the above value to each player
-			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			p.getDeck().remove(0);
+	public String processRound() throws JsonProcessingException {
+
+		for (int i = 0; i < players.size(); i++) {
+			// checks to see if any players have run out of cards
+			if (players.get(i).getDeckSize() < 1) {
+				players.set(i, null);
+			}
 		}
-				
-		Collections.sort(players, Collections.reverseOrder());
 
-		winner = players.get(0);
-		/*Card activeCard = activePlayer.getHeldCard();
-		activeCard.setSelectedValue(catIndex);*/
-		System.err.println(players.toString());
-		System.err.println(winner.getName());
+		if (players.size() > 1) {
 
-		//winner gets winner pile - cards are added to pile in sendCardArray().....
-		activePlayer = winner;
-		winner.addToDeck(winnerPile);
-		winnerPile.clear();
+			numRounds++;
 
-		return winner.getName();
+			for (Player p : players) {
+				if (p != null) {
+					p.getHeldCard().setSelectedValue(catIndex);
+					// assigns the above value to each player
+					p.setChosenCat(p.getHeldCard().getSelectedValue());
+					
+					p.getDeck().remove(0);
+				}	
+			}
+
+			Collections.sort(players, new Comparator<Player>() {
+				public int compare(Player p1, Player p2) {
+					if (p1 == null) {
+						return 1;
+					} else if (p2 == null) {
+						return -1;
+					} else {
+						return (p1.compareTo(p2) * -1);
+					}
+				}
+			});
+
+			if (players.get(0).compareTo(players.get(1)) == 0) {
+				String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
+				System.err.println("DRAW~~~~~~~~~~~~~");
+				return draw;
+			} else {
+
+				winner = players.get(0);
+				/*
+				 * Card activeCard = activePlayer.getHeldCard();
+				 * activeCard.setSelectedValue(catIndex);
+				 */
+				System.err.println(players.toString());
+				System.err.println(winner.getName());
+
+				// winner gets winner pile - cards are added to pile in sendCardArray().....
+				activePlayer = winner;
+				winner.addToDeck(winnerPile);
+
+				incrementPlayerWins();
+				winnerPile.clear();
+
+				return winner.getName();
+			}
+		} else
+			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
+		return endGame();
 	}
 
 	public void initiateRound() throws JsonProcessingException {
@@ -200,7 +235,8 @@ public class TopTrumpsRESTAPI {
 				// Card
 				int index = activePlayer.chooseCategory();
 
-				for (int i = 0; i < players.size(); i++) {;
+				for (int i = 0; i < players.size(); i++) {
+					;
 
 					// sets the value that each player has for the chosen category on their top card
 					players.get(i).getHeldCard().setSelectedValue(index);
@@ -291,33 +327,38 @@ public class TopTrumpsRESTAPI {
 		Card[] cards = new Card[numPlayers];
 
 		for (int i = 0; i < numPlayers; i++) {
-			players.get(i).drawCard();
-			switch (players.get(i).getName()) {
-			case ("Human Player"):
-				cards[0] = players.get(i).getHeldCard();
-				continue;
-			case ("Computer 1"):
-				cards[1] = players.get(i).getHeldCard();
-				continue;
-			case ("Computer 2"):
-				cards[2] = players.get(i).getHeldCard();
-				continue;
-			case ("Computer 3"):
-				cards[3] = players.get(i).getHeldCard();
-				continue;
-			case ("Computer 4"):
-				cards[4] = players.get(i).getHeldCard();
-				continue;
-			default:
-				System.err.println("There is no player");
+			if (players.get(i) != null) {
+				players.get(i).drawCard();
+				switch (players.get(i).getName()) {
+				case ("Human Player"):
+					cards[0] = players.get(i).getHeldCard();
+					continue;
+				case ("Computer 1"):
+					cards[1] = players.get(i).getHeldCard();
+					continue;
+				case ("Computer 2"):
+					cards[2] = players.get(i).getHeldCard();
+					continue;
+				case ("Computer 3"):
+					cards[3] = players.get(i).getHeldCard();
+					continue;
+				case ("Computer 4"):
+					cards[4] = players.get(i).getHeldCard();
+					continue;
+				default:
+					System.err.println("There is no player");
+				}
 			}
 		}
-		
-		//add cards to winner pile here
-		for (Player p : players) {
-			winnerPile.add(p.getHeldCard());
-		}
 
+		// add cards to winner pile here
+		for (Player p : players) {
+			if (p != null) {
+				winnerPile.add(p.getHeldCard());
+			}		
+		}
+		
+		
 		String cardArray = oWriter.writeValueAsString(cards);
 		System.err.println(cardArray);
 		return cardArray;
@@ -348,7 +389,7 @@ public class TopTrumpsRESTAPI {
 		return numRoundsString;
 
 	}
-	
+
 	@GET
 	@Path("/printWinner")
 	/**
@@ -381,7 +422,7 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/cardsLeft")
 	public String cardsLeft() throws IOException {
-		int[] hands = new int[players.size()];
+		int[] hands = new int[numPlayers];
 
 		/*
 		 * for (int i = 0; i < players.size(); i++) { hands[i] =
@@ -390,25 +431,27 @@ public class TopTrumpsRESTAPI {
 
 		// copied dante's method to match ordering...
 		for (int i = 0; i < numPlayers; i++) {
-			players.get(i).drawCard();
-			switch (players.get(i).getName()) {
-			case ("Human Player"):
-				hands[0] = players.get(i).getDeckSize();
-				continue;
-			case ("Computer 1"):
-				hands[1] = players.get(i).getDeckSize();
-				continue;
-			case ("Computer 2"):
-				hands[2] = players.get(i).getDeckSize();
-				continue;
-			case ("Computer 3"):
-				hands[3] = players.get(i).getDeckSize();
-				continue;
-			case ("Computer 4"):
-				hands[4] = players.get(i).getDeckSize();
-				continue;
-			default:
-				System.err.println("NO");
+			if (players.get(i) != null) {	
+				players.get(i).drawCard();
+				switch (players.get(i).getName()) {
+				case ("Human Player"):
+					hands[0] = players.get(i).getDeckSize();
+					continue;
+				case ("Computer 1"):
+					hands[1] = players.get(i).getDeckSize();
+					continue;
+				case ("Computer 2"):
+					hands[2] = players.get(i).getDeckSize();
+					continue;
+				case ("Computer 3"):
+					hands[3] = players.get(i).getDeckSize();
+					continue;
+				case ("Computer 4"):
+					hands[4] = players.get(i).getDeckSize();
+					continue;
+				default:
+					System.err.println("NO");
+				}
 			}
 		}
 
@@ -417,6 +460,15 @@ public class TopTrumpsRESTAPI {
 		return handArray;
 	}
 
+	
+	@GET
+	@Path("/removePlayerTest")
+	public String removePlayerTest() throws IOException {
+		String name = players.get(1).getName();
+		players.set(1, null);
+		
+		return name;
+	}
 
 
 }

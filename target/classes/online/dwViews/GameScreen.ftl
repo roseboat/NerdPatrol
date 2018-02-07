@@ -67,6 +67,13 @@
           text-align: center;
           display: none;
         }
+        
+        #winBar {
+         background-color: lightgreen;
+         padding: 5px 0;
+         text-align: center;
+         display: none;
+        }
 
         .card-img-top {
           width: 100%;
@@ -138,13 +145,23 @@
  				Cards to be Won: <strong><label id='pile'></label></strong></p>
  			
             </div>
+            
+            <div id="winBar">
+            	<h2><label id='gameWinner'></label> has won the game</h2>
+            </div>
 
            	<br>
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button><br><br>
+
+            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>NewStartInitiate Round</button>
+            <button onclick="removePlayerTest();">Remove computer 1</button>
+            <div id="playerTurn"></div>
+
+          
             <button onclick="computerSelect()" id ='computerSelect'>COMPUTER CHOICE</button>
+
             <br>
             <br>
 
@@ -303,6 +320,9 @@
     // -----------------------------------------
     // Add your other Javascript methods Here
     // -----------------------------------------
+    
+    
+    
     // This is a reusable method for creating a CORS request. Do not edit this.
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
@@ -337,6 +357,8 @@
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
+  
+  
 
   function chooseNumberPlayers() {
     var number = document.getElementById('input1').value;
@@ -384,6 +406,14 @@
       x.style.display = "none";
     }
   }
+  
+  function hideStatusBar() {
+   var x = document.getElementById("statusBar");
+    if (x.style.display === "none") {} else {
+      x.style.display = "none";
+    }
+  }
+ 
   
     function hideCards() {
     var opp1 = document.getElementById("card2");
@@ -476,6 +506,14 @@ function activePlayer() {
 
     document.getElementById("statusBar").style.display = "block";
   }
+  
+  
+  function revealBar2() {
+
+    document.getElementById("winBar").style.display = "block";
+  }
+  
+  
   function revealDrawCardButton() {
 
     document.getElementById("drawCard").style.display = "block";
@@ -595,14 +633,16 @@ var responseText = xhr.response; // the text of the response
 		cardExample = list[0];
 
         for (i = 0; i < 5; i++) {
-          var cardTitle = "#card" + (i + 1);
-          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-          $(cardTitle).find(".card-title").text(list[i].name);
-          $(cardTitle).find(".btn").each(function(j) {
-            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-          });
+        	
+        	if (list[i] != null){
+        		var cardTitle = "#card" + (i + 1);
+          		$(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+          		$(cardTitle).find(".card-title").text(list[i].name);
+         		$(cardTitle).find(".btn").each(function(j) {
+            		$(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+         		 });
+        	}
         }
-
       }
       
 		cardPile();
@@ -611,6 +651,8 @@ var responseText = xhr.response; // the text of the response
        document.getElementById('roundWinner').innerHTML = "";
       xhr.send();
     }
+
+
 
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
@@ -668,6 +710,23 @@ var responseText = xhr.response; // the text of the response
 	xhr.send();
 	}
 
+	function endGame() {
+
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/endGame");
+		if (!xhr) {
+			alert("alert");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('gameWinner').innerHTML = responseText;
+	};
+	xhr.send();
+	
+	hideStatusBar();
+	revealBar2();
+	}
+
 	function cardPile() {
 
 		var xhr = createCORSRequest('GET',
@@ -694,6 +753,20 @@ var responseText = xhr.response; // the text of the response
 	}
 	xhr.send();
    }
+   
+   function removePlayerTest() {
+	var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/removePlayerTest");
+	if (!xhr) {
+		alert("dickfarts");
+	}
+	xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+		alert(responseText + " has been removed");
+	};
+	xhr.send();
+	}
+   
 
   </script>
 
