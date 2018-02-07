@@ -156,16 +156,15 @@
                   <div class="card-body">
                     <h5 class="card-title">Avenger</h5>
 
+                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" id = "humanCat1">Cat1<span class="badge">7</span></button>
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block">Cat1<span class="badge">7</span></button>
+                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" id = "humanCat2">Cat2<span class="badge">4</span></button>
 
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block">Cat2<span class="badge">4</span></button>
+                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" id = "humanCat3">Cat3<span class="badge">9</span></button>
 
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block">Cat3<span class="badge">9</span></button>
+                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" id = "humanCat4">Cat4<span class="badge">3</span></button>
 
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block">Cat4<span class="badge">3</span></button>
-
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block">Cat5<span class="badge">2</span></button>
+                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" id = "humanCat5">Cat5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
     				
@@ -399,25 +398,31 @@ function activePlayer() {
 						break;
 					case ("Computer 1"):
 						document.getElementById('card2').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						disableHumanButtons();
 						break;
 					case ("Computer 2"):
 						document.getElementById('card3').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						disableHumanButtons();
 						break;
 					case ("Computer 3"):
 						document.getElementById('card4').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						disableHumanButtons();
 						break;
 					case ("Computer 4"):
 						document.getElementById('card5').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						disableHumanButtons();
 						break;
 					}
 				}
 				xhr.send();
 			}
-
+	function disableHumanButtons() {
+	document.getElementById('humanCat1').disabled = true;
+	document.getElementById('humanCat2').disabled = true;
+	document.getElementById('humanCat3').disabled = true;
+	document.getElementById('humanCat4').disabled = true;
+	document.getElementById('humanCat5').disabled = true;
+	}
 
   function revealBar() {
 
