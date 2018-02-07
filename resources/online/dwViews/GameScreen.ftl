@@ -67,6 +67,13 @@
           text-align: center;
           display: none;
         }
+        
+        #winBar {
+         background-color: lightgreen;
+         padding: 5px 0;
+         text-align: center;
+         display: none;
+        }
 
         .card-img-top {
           width: 100%;
@@ -122,8 +129,8 @@
             <br>
 
             <div id="statusBar">
-             <h4><p> Round Number:
-                <strong><label id='roundNumber'></label></strong></h4></p>
+             <h3><p> Round Number:
+                <strong><label id='roundNumber'></label></strong></h3></p>
         
               <p> Active Player:
                 <strong><label id='activePlayer'></label></strong></p>
@@ -135,14 +142,23 @@
  				Cards to be Won: <strong><label id='pile'></label></strong></p>
  			
             </div>
+            
+            <div id="winBar">
+            	<h2><label id='gameWinner'></label> has won the game</h2>
+            </div>
 
            	<br>
             <hr>
             <h3>Let's Play!</h3>
             <br>
+
             <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>NewStartInitiate Round</button>
             <button onclick="removePlayerTest();">Remove computer 1</button>
             <div id="playerTurn"></div>
+
+          
+            <button onclick="computerSelect()" id ='computerSelect'>COMPUTER CHOICE</button>
+
             <br>
             <br>
 
@@ -326,7 +342,6 @@
 
 
 
-
   	function revealcardSection() {
 
       document.getElementById("cardSection").style.display = "block";
@@ -351,8 +366,8 @@
           alert("Player number out of bounds");
         } else {
           buildCards();
+    
           hideSelection();
-
           revealBar();
           revealDrawCardButton();
         }
@@ -385,6 +400,35 @@
       x.style.display = "none";
     }
   }
+  
+  function hideStatusBar() {
+   var x = document.getElementById("statusBar");
+    if (x.style.display === "none") {} else {
+      x.style.display = "none";
+    }
+  }
+ 
+  
+    function hideCards() {
+    var opp1 = document.getElementById("card2");
+    if (opp1.style.display === "none") {} else {
+      opp1.style.display = "none";
+    }
+    var opp2 = document.getElementById("card3");
+    if (opp2.style.display === "none") {} else {
+    opp2.style.display = "none";
+    }
+    var opp3 = document.getElementById("card4");
+    if (opp3.style.display === "none") {} else {
+    opp3.style.display = "none";
+    }
+    var opp4 = document.getElementById("card5");
+    if (opp4.style.display === "none") {} else {
+    opp4.style.display = "none";
+    }
+    
+  }
+  
 
 function activePlayer() {
 
@@ -401,23 +445,44 @@ function activePlayer() {
 
 					switch (responseText) {
 					case ("Human Player"):
+						hideCards();
 						document.getElementById('card1').style.border = "thick solid #66FF33";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
 						break;
 					case ("Computer 1"):
 						document.getElementById('card2').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 2"):
 						document.getElementById('card3').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 3"):
 						document.getElementById('card4').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card5').style.border = "none";
+						revealCards();
 						break;
 					case ("Computer 4"):
 						document.getElementById('card5').style.border = "thick solid #66FF33";
-						document.getElementById('card1').disabled = true;
+						document.getElementById('card1').style.border = "none";
+						document.getElementById('card2').style.border = "none";
+						document.getElementById('card3').style.border = "none";
+						document.getElementById('card4').style.border = "none";
+						revealCards();
 						break;
 					}
 				}
@@ -429,10 +494,51 @@ function activePlayer() {
 
     document.getElementById("statusBar").style.display = "block";
   }
+  
+  
+  function revealBar2() {
+
+    document.getElementById("winBar").style.display = "block";
+  }
+  
+  
   function revealDrawCardButton() {
 
     document.getElementById("drawCard").style.display = "block";
   }
+  
+    function revealCards() {
+    
+	document.getElementById('card1').disabled = true;
+    document.getElementById("card2").style.display = "block";
+    document.getElementById("card3").style.display = "block";
+    document.getElementById("card4").style.display = "block";
+    document.getElementById("card5").style.display = "block";
+  }
+  
+
+
+	function computerSelect(){
+	     var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/computerSelect"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+       xhr.onload = function(e) {
+	var responseText = xhr.response; 
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('printCategory').innerHTML = responseText;
+		processRound();
+      
+      }
+
+      xhr.send();
+      revealCards();
+	}
+
+
+
 
     function selectCategory(x) {
       var number = x
@@ -444,17 +550,35 @@ function activePlayer() {
 
       xhr.onload = function(e) {
 
-      var responseText = xhr.response; // the text of the response
-      responseText = responseText.replace(/^"(.*)"$/, '$1');
-      document.getElementById('roundWinner').innerHTML = responseText;
+		processRound();
+      
       }
 
       xhr.send();
-
+	
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-
-
+      revealCards();
     }
+
+	function processRound(){
+	
+	var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/processRound"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+      xhr.onload = function(e) {
+var responseText = xhr.response; // the text of the response
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('roundWinner').innerHTML = responseText;
+}
+ xhr.send();
+	
+      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+      revealCards();
+
+}
 
     function cardTest() {
       var xhr = createCORSRequest('GET',
@@ -512,6 +636,8 @@ function activePlayer() {
       xhr.send();
     }
 
+
+
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/cardsLeft");
@@ -566,6 +692,23 @@ function activePlayer() {
 			document.getElementById('roundWinner').innerHTML = responseText;
 	};
 	xhr.send();
+	}
+
+	function endGame() {
+
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/endGame");
+		if (!xhr) {
+			alert("alert");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('gameWinner').innerHTML = responseText;
+	};
+	xhr.send();
+	
+	hideStatusBar();
+	revealBar2();
 	}
 
 	function cardPile() {
