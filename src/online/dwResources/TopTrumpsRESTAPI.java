@@ -28,17 +28,19 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 /**
  * This is a Dropwizard Resource that specifies what to provide when a user
  * requests a particular URL. In this case, the URLs are associated to the
- * different REST API methods that you will need to expose the game commands
- * to the Web page.
+ * different REST API methods that you will need to expose the game commands to
+ * the Web page.
  * 
- * Below are provided some sample methods that illustrate how to create
- * REST API methods in Dropwizard. You will need to replace these with
- * methods that allow a TopTrumps game to be controled from a Web page.
+ * Below are provided some sample methods that illustrate how to create REST API
+ * methods in Dropwizard. You will need to replace these with methods that allow
+ * a TopTrumps game to be controled from a Web page.
  */
 public class TopTrumpsRESTAPI {
 
-	/** A Jackson Object writer. It allows us to turn Java objects
-	 * into JSON strings easily. */
+	/**
+	 * A Jackson Object writer. It allows us to turn Java objects into JSON strings
+	 * easily.
+	 */
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
 	private String deckFile;
 	private int numPlayers;
@@ -53,30 +55,36 @@ public class TopTrumpsRESTAPI {
 	private int[] playerWinCounts = new int[5];
 	private static ArrayList<Player> players;
 	private ArrayList<Card> winnerPile;
-	
 
-	
 	/**
-	 * Contructor method for the REST API. This is called first. It provides
-	 * a TopTrumpsJSONConfiguration from which you can get the location of
-	 * the deck file and the number of AI players.
+	 * Contructor method for the REST API. This is called first. It provides a
+	 * TopTrumpsJSONConfiguration from which you can get the location of the deck
+	 * file and the number of AI players.
+	 * 
 	 * @param conf
 	 */
 	public TopTrumpsRESTAPI(TopTrumpsJSONConfiguration conf) {
-		
-		deckFile=conf.getDeckFile();
-		numPlayers=conf.getNumAIPlayers()+1;	
+
+		deckFile = conf.getDeckFile();
+		numPlayers = conf.getNumAIPlayers() + 1;
 	}
-	
+
 	@GET
 	@Path("/setPlayers")
-	@Consumes (MediaType.APPLICATION_JSON)
-	public void setPlayers (@QueryParam("Number") int Number) throws IOException {
-		numPlayers=Number+1;
-		System.err.println("the number of players: "+numPlayers);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void setPlayers(@QueryParam("Number") int Number) throws IOException {
+		numPlayers = Number + 1;
+		System.err.println("the number of players: " + numPlayers);
 		startGame();
 	}
-	
+
+	@GET
+	@Path("/activePlayer")
+	public String activePlayer() throws IOException {
+		System.err.println("Active player is " + activePlayer.getName());
+		return activePlayer.getName();
+	}
+
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -85,30 +93,30 @@ public class TopTrumpsRESTAPI {
 		this.humanPlayer = new Human("Human Player", deck[0]);
 		players = new ArrayList<Player>();
 		players.add(humanPlayer);
-		
-		
+
 		winnerPile = new ArrayList<Card>();
 		for (int i = 1; i < deck.length; i++) {
-		    Player p = new Computer("Computer " + i, deck[i]);
-		    players.add(p);
-		    
+			Player p = new Computer("Computer " + i, deck[i]);
+			players.add(p);
+
 		}
 		randomiseOrder();
 
 	}
-	
+
 	public void randomiseOrder() {
-		//Collections.shuffle(players);
+		// Collections.shuffle(players);
 
 		activePlayer = players.get(0);
-		
+
 	}
-	
+
+	@GET
+	@Path("/removePlayer")
 	public void removePlayer(int i) {
 		players.remove(i);
 	}
-	
-	
+
 	// returns an index
 	// depending on the button pressed
 	// index is used to set the chosen category
@@ -133,16 +141,12 @@ public class TopTrumpsRESTAPI {
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 
-		initiateRound();
+	
 
 		return winner.getName();
 
 	}
-	
-	
 
-
-	
 	public void initiateRound() throws JsonProcessingException {
 		// check that two players are still in the game
 		while (players.size() > 1) {
@@ -166,15 +170,15 @@ public class TopTrumpsRESTAPI {
 				activePlayer.promptUser();
 
 				// first player selects the category for all players
-				// index corresponds to the index of the value held in the cardValues array in Card
+				// index corresponds to the index of the value held in the cardValues array in
+				// Card
 				int index = activePlayer.chooseCategory();
 
-				for (int i = 0; i < players.size(); i++) {
+				for (int i = 0; i < players.size(); i++) {;
 
-				
-					//sets the value that each player has for the chosen category on their top card
+					// sets the value that each player has for the chosen category on their top card
 					players.get(i).getHeldCard().setSelectedValue(index);
-					//assigns the above value to each player 
+					// assigns the above value to each player
 					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
 
 					// adds card to the winner's pile
@@ -190,7 +194,7 @@ public class TopTrumpsRESTAPI {
 				endGame();
 		}
 	}
-	
+
 	public void decideWinner(int index) throws JsonProcessingException {
 
 		// log bit - could be put in log class
@@ -227,9 +231,7 @@ public class TopTrumpsRESTAPI {
 		// return to round loop
 		initiateRound();
 	}
-	
-	
-	
+
 	@GET
 	@Path("/endGame")
 	public String endGame() throws JsonProcessingException {
@@ -256,86 +258,7 @@ public class TopTrumpsRESTAPI {
 		else if (winner.getName().equals("Computer 4"))
 			playerWinCounts[4]++;
 	}
-	
-	
-	
-	
-	@GET
-	@Path("/activePlayer")
-	public String activePlayer() throws IOException {
-	    System.err.println("Active player is " + activePlayer.getName());
-		return activePlayer.getName();
-	}
-	
-	
-	@GET
-	@Path("/helloJSONList")
-	/**
-	 * Here is an example of a simple REST get request that returns a String.
-	 * We also illustrate here how we can convert Java objects to JSON strings.
-	 * @return - List of words as JSON
-	 * @throws IOException
-	 */
-	public String helloJSONList() throws IOException {
-		
-		List<String> listOfWords = new ArrayList<String>();
-		listOfWords.add("Hello");
-		listOfWords.add("World!");
-		
-		// We can turn arbitary Java objects directly into JSON strings using
-		// Jackson seralization, assuming that the Java objects are not too complex.
-		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
-		System.out.println(listAsJSONString);
-		return listAsJSONString;
-	}
-	
-	@GET
-	@Path("/helloWord")
-	/**
-	 * Here is an example of how to read parameters provided in an HTML Get request.
-	 * @param Word - A word
-	 * @return - A String
-	 * @throws IOException
-	 */
-	public String helloWord(@QueryParam("Word") String Word) throws IOException {
-		return "Hello "+Word;
-	}
-	
-	@GET
-	@Path("/printer")
-	public void printer(@QueryParam("Word") String Word) throws IOException {
-		System.out.println(Word);
-	}
-	
-	@GET
-	@Path("/cardTest")
-	public String cardTest() throws IOException{
-		
-//		Card x = players.get(0).getTopCard();
-		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
-		String s1 = oWriter.writeValueAsString(x);
-		System.out.println(s1);
-		return s1;
-	}
-	
-	@GET
-	@Path("/moreCardTest")
-	public String moreCardTest() throws IOException{
-		
-//		Card x = players.get(0).getTopCard();
-		Card x = new Card("DantsBants", 6,2,8,1,7,"style", "manners", "bants", "hygene", "dabs");
-		Card y = new Card("Chaddy", 1,2,3,4,1,"style", "manners", "bants", "hygene", "dabs");
-		Card z = new Card("Roseboat", 9,4,6,3,2,"style", "manners", "bants", "hygene", "dabs");
-		Card a = new Card("KilliamWirrage", 5,2,6,8,8,"style", "manners", "bants", "hygene", "dabs");
-		Card b = new Card("Cowlvin", 9,8,7,6,5,"style", "manners", "bants", "hygene", "dabs");
-		Card[] array = {x,y,z,a,b};
-		String s1 = oWriter.writeValueAsString(array);
-		System.out.println(s1);
-		return s1;
-	}
-	
 
-	
 	@GET
 	@Path("/sendCardArray")
 	public String sendCardArray() throws IOException {
@@ -343,24 +266,24 @@ public class TopTrumpsRESTAPI {
 
 		for (int i = 0; i < numPlayers; i++) {
 			players.get(i).drawCard();
-			switch(players.get(i).getName()){
-			case("Human Player"):
-			    cards[0] = players.get(i).getHeldCard();
-			    continue;
-			case("Computer 1"):
-			    cards[1] = players.get(i).getHeldCard();
-			    continue;
-			case("Computer 2"):
-			    cards[2] = players.get(i).getHeldCard();
-			    continue;
-			case("Computer 3"):
-			    cards[3] = players.get(i).getHeldCard();
-			    continue;
-			case("Computer 4"):
-			    cards[4] = players.get(i).getHeldCard();
-			    continue;
+			switch (players.get(i).getName()) {
+			case ("Human Player"):
+				cards[0] = players.get(i).getHeldCard();
+				continue;
+			case ("Computer 1"):
+				cards[1] = players.get(i).getHeldCard();
+				continue;
+			case ("Computer 2"):
+				cards[2] = players.get(i).getHeldCard();
+				continue;
+			case ("Computer 3"):
+				cards[3] = players.get(i).getHeldCard();
+				continue;
+			case ("Computer 4"):
+				cards[4] = players.get(i).getHeldCard();
+				continue;
 			default:
-			    System.err.println("There is no player");			
+				System.err.println("There is no player");
 			}
 		}
 
@@ -369,8 +292,7 @@ public class TopTrumpsRESTAPI {
 		return cardArray;
 
 	}
-	
-	
+
 	@GET
 	@Path("/showStats")
 	/**
@@ -386,75 +308,109 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 
 	}
-	
+
 	@GET
 	@Path("/printWinner")
 	/**
 	 * Method to display the winner of the round
 	 */
 	public String printWinner() throws IOException {
-		
+
 		String x = winner.getName();
 		String xAsJsonString = oWriter.writeValueAsString(x);
 		return xAsJsonString;
 	}
-	
-	
+
 	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
 		int test = winnerPile.size();
-		
-//		for (int i = 0; i < players.size(); i++) {
-//			winnerPile.add(players.get(i).getTopCard());
-//			if (players.get(0).compareTo(players.get(1)) == 0)
-//			test++;
-//			else
-//			test = players.size();
-//		}
-		
+
+		// for (int i = 0; i < players.size(); i++) {
+		// winnerPile.add(players.get(i).getTopCard());
+		// if (players.get(0).compareTo(players.get(1)) == 0)
+		// test++;
+		// else
+		// test = players.size();
+		// }
+
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
 	}
-	
+
 	@GET
 	@Path("/cardsLeft")
 	public String cardsLeft() throws IOException {
 		int[] hands = new int[players.size()];
-		
-		
-		/*for (int i = 0; i < players.size(); i++) {
-			hands[i] = players.get(i).getDeckSize();			
-		}*/
-		
-		//copied dante's method to match ordering...	
+
+		/*
+		 * for (int i = 0; i < players.size(); i++) { hands[i] =
+		 * players.get(i).getDeckSize(); }
+		 */
+
+		// copied dante's method to match ordering...
 		for (int i = 0; i < numPlayers; i++) {
 			players.get(i).drawCard();
-			switch(players.get(i).getName()){
-			case("Human Player"):
-			    hands[0] = players.get(i).getDeckSize();
-			    continue;
-			case("Computer 1"):
+			switch (players.get(i).getName()) {
+			case ("Human Player"):
+				hands[0] = players.get(i).getDeckSize();
+				continue;
+			case ("Computer 1"):
 				hands[1] = players.get(i).getDeckSize();
-			    continue;
-			case("Computer 2"):
+				continue;
+			case ("Computer 2"):
 				hands[2] = players.get(i).getDeckSize();
-			    continue;
-			case("Computer 3"):
+				continue;
+			case ("Computer 3"):
 				hands[3] = players.get(i).getDeckSize();
-			    continue;
-			case("Computer 4"):
+				continue;
+			case ("Computer 4"):
 				hands[4] = players.get(i).getDeckSize();
-			    continue;
+				continue;
 			default:
-			    System.err.println("NO");			
+				System.err.println("NO");
 			}
 		}
-		
+
 		String handArray = oWriter.writeValueAsString(hands);
 		System.err.println(handArray);
 		return handArray;
 	}
 
-	
+	@GET
+	@Path("/helloJSONList")
+	/**
+	 * Here is an example of a simple REST get request that returns a String. We
+	 * also illustrate here how we can convert Java objects to JSON strings.
+	 * 
+	 * @return - List of words as JSON
+	 * @throws IOException
+	 */
+	public String helloJSONList() throws IOException {
+
+		List<String> listOfWords = new ArrayList<String>();
+		listOfWords.add("Hello");
+		listOfWords.add("World!");
+
+		// We can turn arbitary Java objects directly into JSON strings using
+		// Jackson seralization, assuming that the Java objects are not too complex.
+		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
+		System.out.println(listAsJSONString);
+		return listAsJSONString;
+	}
+
+	@GET
+	@Path("/helloWord")
+	/**
+	 * Here is an example of how to read parameters provided in an HTML Get request.
+	 * 
+	 * @param Word
+	 *            - A word
+	 * @return - A String
+	 * @throws IOException
+	 */
+	public String helloWord(@QueryParam("Word") String Word) throws IOException {
+		return "Hello " + Word;
+	}
+
 }
