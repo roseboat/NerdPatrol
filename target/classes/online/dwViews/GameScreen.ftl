@@ -80,6 +80,9 @@
 		  margin:auto;
           display: none;
         }
+         #computerSelect{
+		  margin:auto;
+          display: none;
       </style>
 
   </head>
@@ -122,8 +125,8 @@
             <br>
 
             <div id="statusBar">
-             <h4><p> Round Number:
-                <strong><label id='roundNumber'></label></strong></h4></p>
+             <h3><p> Round Number:
+                <strong><label id='roundNumber'></label></strong></h3></p>
         
               <p> Active Player:
                 <strong><label id='activePlayer'></label></strong></p>
@@ -140,8 +143,8 @@
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button>
-            <div id="playerTurn"></div>
+            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button><br><br>
+            <button onclick="computerSelect()" id ='computerSelect'>COMPUTER CHOICE</button>
             <br>
             <br>
 
@@ -321,10 +324,13 @@
 
 
 
-
   	function revealcardSection() {
 
       document.getElementById("cardSection").style.display = "block";
+    }
+    function hideComputerButton() {
+
+      document.getElementById("computerSelection").style.display = "none";
     }
 
   </script>
@@ -344,8 +350,8 @@
           alert("Player number out of bounds");
         } else {
           buildCards();
+    
           hideSelection();
-
           revealBar();
           revealDrawCardButton();
         }
@@ -378,6 +384,27 @@
       x.style.display = "none";
     }
   }
+  
+    function hideCards() {
+    var opp1 = document.getElementById("card2");
+    if (opp1.style.display === "none") {} else {
+      opp1.style.display = "none";
+    }
+    var opp2 = document.getElementById("card3");
+    if (opp2.style.display === "none") {} else {
+    opp2.style.display = "none";
+    }
+    var opp3 = document.getElementById("card4");
+    if (opp3.style.display === "none") {} else {
+    opp3.style.display = "none";
+    }
+    var opp4 = document.getElementById("card5");
+    if (opp4.style.display === "none") {} else {
+    opp4.style.display = "none";
+    }
+    
+  }
+  
 
 function activePlayer() {
 
@@ -394,23 +421,32 @@ function activePlayer() {
 
 					switch (responseText) {
 					case ("Human Player"):
-						document.getElementById('card1').style.border = "thick solid #66FF33";
+						teststuff();
 						break;
+						
 					case ("Computer 1"):
-						document.getElementById('card2').style.border = "thick solid #66FF33";
+						revealComputerSelectButton();
 						disableHumanButtons();
+						revealCards();	
+						
 						break;
+					
 					case ("Computer 2"):
-						document.getElementById('card3').style.border = "thick solid #66FF33";
 						disableHumanButtons();
+						revealCards();
+						revealComputerSelectButton();
 						break;
+						
 					case ("Computer 3"):
-						document.getElementById('card4').style.border = "thick solid #66FF33";
 						disableHumanButtons();
+						revealCards();
+						revealComputerSelectButton();
+						
 						break;
 					case ("Computer 4"):
-						document.getElementById('card5').style.border = "thick solid #66FF33";
 						disableHumanButtons();
+						revealCards();
+						revealComputerSelectButton();
 						break;
 					}
 				}
@@ -423,7 +459,19 @@ function activePlayer() {
 	document.getElementById('humanCat4').disabled = true;
 	document.getElementById('humanCat5').disabled = true;
 	}
-
+	function enableHumanButtons() {
+	document.getElementById('humanCat1').disabled = false;
+	document.getElementById('humanCat2').disabled = false;
+	document.getElementById('humanCat3').disabled = false;
+	document.getElementById('humanCat4').disabled = false;
+	document.getElementById('humanCat5').disabled = false;
+	}
+	function teststuff () {
+		hideCards();
+		hideComputerButton();
+		enableHumanButtons();
+		
+		}
   function revealBar() {
 
     document.getElementById("statusBar").style.display = "block";
@@ -432,6 +480,41 @@ function activePlayer() {
 
     document.getElementById("drawCard").style.display = "block";
   }
+   function revealComputerSelectButton() {
+
+    document.getElementById("computerSelect").style.display = "block";
+  }
+  
+    function revealCards() {
+    document.getElementById("card2").style.display = "block";
+    document.getElementById("card3").style.display = "block";
+    document.getElementById("card4").style.display = "block";
+    document.getElementById("card5").style.display = "block";
+  }
+  
+
+
+	function computerSelect(){
+	     var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/computerSelect"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+       xhr.onload = function(e) {
+	var responseText = xhr.response; 
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('printCategory').innerHTML = responseText;
+		processRound();
+      
+      }
+
+      xhr.send();
+      revealCards();
+	}
+
+
+
 
     function selectCategory(x) {
       var number = x
@@ -443,17 +526,35 @@ function activePlayer() {
 
       xhr.onload = function(e) {
 
-      var responseText = xhr.response; // the text of the response
-      responseText = responseText.replace(/^"(.*)"$/, '$1');
-      document.getElementById('roundWinner').innerHTML = responseText;
+		processRound();
+      
       }
 
       xhr.send();
-
+	
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-
-
+      revealCards();
     }
+
+	function processRound(){
+	
+	var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/processRound"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+      xhr.onload = function(e) {
+var responseText = xhr.response; // the text of the response
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('roundWinner').innerHTML = responseText;
+}
+ xhr.send();
+	
+      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+      revealCards();
+
+}
 
     function cardTest() {
       var xhr = createCORSRequest('GET',
@@ -506,6 +607,8 @@ function activePlayer() {
       
 		cardPile();
       revealcardSection();
+       document.getElementById('printCategory').innerHTML = "";
+       document.getElementById('roundWinner').innerHTML = "";
       xhr.send();
     }
 

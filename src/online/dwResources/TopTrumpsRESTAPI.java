@@ -82,6 +82,11 @@ public class TopTrumpsRESTAPI {
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
 		System.err.println("Active player is " + activePlayer.getName());
+		
+		if (activePlayer != humanPlayer) {
+			computerSelect();
+		}
+		
 		return activePlayer.getName();
 	}
 
@@ -120,44 +125,52 @@ public class TopTrumpsRESTAPI {
 	// depending on the button pressed
 	// index is used to set the chosen category
 	// prints the chosen category & value on console (for testing)
+	
+	
+	@GET
+	@Path("/computerSelect")
+	public String computerSelect() {
+		
+		catIndex = activePlayer.chooseCategory();
+		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
+		return catString;
+		
+	}
+	
+	
 	@GET
 	@Path("/selectCategory")
-	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
-		
-		//increment round count here
-		numRounds++;
+	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
 		
 		catIndex = Number - 1;
+	}
+	
+	@GET
+	@Path("/processRound")
+	public String processRound() {
+		numRounds++;
 		
 		for (Player p : players) {
 			p.getHeldCard().setSelectedValue(catIndex);
 			// assigns the above value to each player
 			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			
 			p.getDeck().remove(0);
 		}
 				
 		Collections.sort(players, Collections.reverseOrder());
 
-		if (players.get(0).compareTo(players.get(1)) == 0) {
-			String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
-			System.err.println(draw);
-			return draw;
-			
-		} else {
+		winner = players.get(0);
+		/*Card activeCard = activePlayer.getHeldCard();
+		activeCard.setSelectedValue(catIndex);*/
+		System.err.println(players.toString());
+		System.err.println(winner.getName());
 
-			winner = players.get(0);
-			/*Card activeCard = activePlayer.getHeldCard();
-			activeCard.setSelectedValue(catIndex);*/
-			System.err.println(players.toString());
-			System.err.println(winner.getName());
+		//winner gets winner pile - cards are added to pile in sendCardArray().....
+		activePlayer = winner;
+		winner.addToDeck(winnerPile);
+		winnerPile.clear();
 
-			//winner gets winner pile
-			activePlayer = winner;
-			winner.addToDeck(winnerPile);
-			winnerPile.clear();
-			return winner.getName();
-		}
+		return winner.getName();
 	}
 
 	public void initiateRound() throws JsonProcessingException {
