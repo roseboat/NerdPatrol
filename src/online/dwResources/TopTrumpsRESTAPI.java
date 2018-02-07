@@ -139,32 +139,7 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/selectCategory")
 	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
-
 		catIndex = Number - 1;
-
-		
-		for (Player p : players) {
-			if (p != null) {
-				p.getHeldCard().setSelectedValue(catIndex);
-				// assigns the above value to each player
-				p.setChosenCat(p.getHeldCard().getSelectedValue());
-				
-				p.getDeck().remove(0);
-			}	
-		}
-				
-		Collections.sort(players, new Comparator<Player>() {
-			public int compare(Player p1, Player p2) {
-				if (p1 == null) {
-					return 1;
-				} else if (p2 == null) {
-					return -1;
-				} else {
-					return p1.compareTo(p2);
-				}
-			}
-		});
-
 	}
 
 
@@ -175,7 +150,7 @@ public class TopTrumpsRESTAPI {
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
 			if (players.get(i).getDeckSize() < 1) {
-				removePlayer(i);
+				players.set(i, null);
 			}
 		}
 
@@ -184,13 +159,26 @@ public class TopTrumpsRESTAPI {
 			numRounds++;
 
 			for (Player p : players) {
-				p.getHeldCard().setSelectedValue(catIndex);
-				// assigns the above value to each player
-				p.setChosenCat(p.getHeldCard().getSelectedValue());
-				p.getDeck().remove(0);
+				if (p != null) {
+					p.getHeldCard().setSelectedValue(catIndex);
+					// assigns the above value to each player
+					p.setChosenCat(p.getHeldCard().getSelectedValue());
+					
+					p.getDeck().remove(0);
+				}	
 			}
 
-			Collections.sort(players, Collections.reverseOrder());
+			Collections.sort(players, new Comparator<Player>() {
+				public int compare(Player p1, Player p2) {
+					if (p1 == null) {
+						return 1;
+					} else if (p2 == null) {
+						return -1;
+					} else {
+						return (p1.compareTo(p2) * -1);
+					}
+				}
+			});
 
 			if (players.get(0).compareTo(players.get(1)) == 0) {
 				String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
