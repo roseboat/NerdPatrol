@@ -145,7 +145,7 @@ public class GameManager {
 		else {
 			// starting player of next round is the winner
 			myLog.postRound(players);
-			p1 = winner;
+			activePlayer = winner;
 			winner.addToDeck(winnerPile);
 			winnerPile.clear();
 			System.out.println("The winner of this round is Player: " + winner.getName() + " who won with the "
