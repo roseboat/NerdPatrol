@@ -142,6 +142,14 @@ public class TopTrumpsRESTAPI {
 		catIndex = Number - 1;
 	}
 
+	public int checkDecks() {
+		int count = 0;
+		for (int i =0; i<players.size(); i++) {
+			if (players.get(i) != null && players.get(i).getDeckSize() > 0)
+				count++;	
+		}
+		return count;
+	}
 
 	@GET
 	@Path("/processRound")
@@ -149,12 +157,12 @@ public class TopTrumpsRESTAPI {
 
 		for (int i = 0; i < players.size(); i++) {
 			// checks to see if any players have run out of cards
-			if (players.get(i).getDeckSize() < 1) {
+			if (players.get(i) != null && players.get(i).getDeckSize() < 1) {
 				players.set(i, null);
 			}
 		}
 
-		if (players.size() > 1) {
+		if (checkDecks() > 1) {
 
 			numRounds++;
 
@@ -325,7 +333,7 @@ public class TopTrumpsRESTAPI {
 	@Path("/sendCardArray")
 	public String sendCardArray() throws IOException {
 		Card[] cards = new Card[numPlayers];
-
+		
 		for (int i = 0; i < numPlayers; i++) {
 			if (players.get(i) != null) {
 				players.get(i).drawCard();
