@@ -211,96 +211,12 @@ public class TopTrumpsRESTAPI {
 
 				return winner.getName();
 			}
-		} 
-		System.err.println(winner.getName() + " HAS WON THE GAME#################################");
+		} else
+			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
 		return endGame();
 	}
 
-	public void initiateRound() throws JsonProcessingException {
-		// check that two players are still in the game
-		while (players.size() > 1) {
-
-			for (int i = 0; i < players.size(); i++) {
-				// checks to see if any players have run out of cards
-				if (players.get(i).getDeckSize() < 1) {
-					removePlayer(i);
-					i--;
-				}
-				// all players draw their first card
-				players.get(i).drawCard();
-			}
-
-			if (players.size() > 1) {
-
-				// increment numRounds here
-				numRounds++;
-
-				// displays starting player's card
-				activePlayer.promptUser();
-
-				// first player selects the category for all players
-				// index corresponds to the index of the value held in the cardValues array in
-				// Card
-				int index = activePlayer.chooseCategory();
-
-				for (int i = 0; i < players.size(); i++) {
-					;
-
-					// sets the value that each player has for the chosen category on their top card
-					players.get(i).getHeldCard().setSelectedValue(index);
-					// assigns the above value to each player
-					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
-
-					// adds card to the winner's pile
-					winnerPile.add(players.get(i).getHeldCard());
-
-					// remove top cards from player's decks
-					players.get(i).getDeck().remove(0);
-				}
-
-				decideWinner(index);
-
-			} else
-				endGame();
-		}
-	}
-
-	public void decideWinner(int index) throws JsonProcessingException {
-
-		// log bit - could be put in log class
-		String category = "";
-		for (int i = 0; i < players.size(); i++) {
-			// gets the category
-			category = players.get(i).getHeldCard().getSelectedCategory(index);
-		}
-
-		// cards in winner pile given to the winner of the round
-		// winner pile resets
-		Collections.sort(players, Collections.reverseOrder());
-		winner = players.get(0);
-
-		if (winner.compareTo(players.get(1)) == 0)
-			drawHandler();
-		else {
-			// starting player of next round is the winner
-
-			activePlayer = winner; // what is this - pretty dodgy
-			winner.addToDeck(winnerPile);
-			winnerPile.clear();
-
-			// increment player wins count
-			incrementPlayerWins();
-		}
-	}
-
-	public void drawHandler() throws JsonProcessingException {
-
-		// increment drawCount
-		numDraws++;
-
-		// return to round loop
-		initiateRound();
-	}
+	
 
 	@GET
 	@Path("/endGame")
