@@ -24,6 +24,7 @@ public abstract class Player implements Comparable<Player>{
 		this.chosenCat = -1; //Just to give it an initial value 
 		playerWins = 0;
 	}
+	
 
 	public void drawCard() {
 
@@ -43,12 +44,18 @@ public abstract class Player implements Comparable<Player>{
 	 * @return 0, the chosen category of both players are equal
 	 * */
 	public int compareTo(Player other){
-	    if (this.chosenCat > other.chosenCat)
-	    	return 1;
-	    else if (this.chosenCat < other.chosenCat)
-	    	return -1;
-	    else
-	    	return 0;
+		
+		try {
+			if (this.chosenCat > other.chosenCat)
+		    	return 1;
+		    else if (this.chosenCat < other.chosenCat)
+		    	return -1;
+		    else
+		    	return 0;
+		} catch (NullPointerException e) {
+			return -1;
+		}
+		
 	}
 	
 	/**

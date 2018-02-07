@@ -140,7 +140,8 @@
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button>
+            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>NewStartInitiate Round</button>
+            <button onclick="removePlayerTest();">Remove computer 1</button>
             <div id="playerTurn"></div>
             <br>
             <br>
@@ -301,6 +302,9 @@
     // -----------------------------------------
     // Add your other Javascript methods Here
     // -----------------------------------------
+    
+    
+    
     // This is a reusable method for creating a CORS request. Do not edit this.
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
@@ -332,6 +336,8 @@
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
+  
+  
 
   function chooseNumberPlayers() {
     var number = document.getElementById('input1').value;
@@ -489,14 +495,16 @@ function activePlayer() {
 		cardExample = list[0];
 
         for (i = 0; i < 5; i++) {
-          var cardTitle = "#card" + (i + 1);
-          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-          $(cardTitle).find(".card-title").text(list[i].name);
-          $(cardTitle).find(".btn").each(function(j) {
-            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-          });
+        	
+        	if (list[i] != null){
+        		var cardTitle = "#card" + (i + 1);
+          		$(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+          		$(cardTitle).find(".card-title").text(list[i].name);
+         		$(cardTitle).find(".btn").each(function(j) {
+            		$(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+         		 });
+        	}
         }
-
       }
       
 		cardPile();
@@ -586,6 +594,20 @@ function activePlayer() {
 	}
 	xhr.send();
    }
+   
+   function removePlayerTest() {
+	var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/removePlayerTest");
+	if (!xhr) {
+		alert("dickfarts");
+	}
+	xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+		alert(responseText + " has been removed");
+	};
+	xhr.send();
+	}
+   
 
   </script>
 
