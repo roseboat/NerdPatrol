@@ -13,18 +13,9 @@ import java.util.Scanner;
 public final class Card implements Comparable<Card> {
 	private String name;
 	private int[] cardValues;
-	private int selectedValue;
+	private int selectedValue; // not needed?
 	private String[] categories;
-	
 	private final int NUMBER_OF_CATEGORIES = 5;
-
-//	//Is this constructor ever used?
-	public Card(String name, int a, int b, int c, int d, int e, String cat1, String cat2, String cat3, String cat4, String cat5) {
-
-		this.name = name;
-		this.cardValues = new int[] { a, b, c, d, e };
-		this.categories = new String[] {cat1, cat2, cat3, cat4, cat5};
-	}
 
 	/**
 	 * Card constructor instantiates all the category values in an array and the category names.
@@ -46,7 +37,6 @@ public final class Card implements Comparable<Card> {
 		sc.close();
 	}
 
-	
 	/**
 	 * CompareTo method from comparable interface. Players set their selected value
 	 * and compare cards via this method. It is configured this way to sort arrays of
@@ -84,22 +74,21 @@ public final class Card implements Comparable<Card> {
 		return showCard.toString();
 	}
 	
-	
 	/**
 	 * Returns the name of the card
-	 * 
 	 * @return name, String name of card
 	 * */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Sets the name of the cards
+	 * @param name, String name of card
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-
-	
 
 	/**
 	 *Returns the name of the category at selected index
@@ -138,18 +127,36 @@ public final class Card implements Comparable<Card> {
 		return this.cardValues;
 	}
 
+	/**
+	 * Sets an array of card category values
+	 * @param cardValues
+	 */
+	
 	public void setCardValues(int[] cardValues) {
 		this.cardValues = cardValues;
 	}
 
+	/**
+	 * Returns the number of categories on the Top Trumps card
+	 * @return NUMER_OF_CATEGORIES
+	 */
+	
 	public int getNUMBER_OF_CATEGORIES() {
 		return NUMBER_OF_CATEGORIES;
 	}
 
+	/**
+	 * Returns the name of the Top Trumps card categories
+	 * @return categories[], an array of category names
+	 */
 	public String[] getCategories () {
 		return categories;
 	}
 	
+	/**
+	 * Sets the name of the Top Trumps card categories
+	 * @param categories[], an array of Strings containing the category names
+	 */
 	public void setCategories(String[] categories) {
 		this.categories = categories;
 	}

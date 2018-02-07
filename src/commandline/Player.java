@@ -1,143 +1,173 @@
 package commandline;
+
 import java.util.ArrayList;
 
 /**
- * Player Class models a Player within the game either human or a computer. In both cases similar attributes will be associated with each
- * but differ in the way they choose categories to play within a round. Humans will require input from the user while the computer
- * will always choose the category with the highest value.
- * */
-public abstract class Player implements Comparable<Player>{
-	
-	protected Deck playerDeck;
-	protected String name;
-	protected Card heldCard;
-	private int chosenCat;
-	private int playerWins; 
+ * Player Class models a Player within the game either human or a computer. In
+ * both cases similar attributes will be associated with each but differ in the
+ * way they choose categories to play within a round. Humans will require input
+ * from the user while the computer will always choose the category with the
+ * highest value.
+ */
+
+public abstract class Player implements Comparable<Player> {
+
+	protected Deck playerDeck; // The deck that each player holds (ie. their hand)
+	protected String name; // The name of the player
+	protected Card heldCard; // The player's 'held' card is the card they are currently playing in a round
+	private int chosenCat; // The player's chosen category
 
 	/**
-	 * Constructs the player object with the name of the player and the deck that they will be using. ChosenCat corresponds to the category
-	 * the player has chosen, it is initialised to -1 to act as a form of null value.
-	 * */
+	 * Constructs the player object with the name of the player and the deck that
+	 * they will be using. ChosenCat corresponds to the category the player has
+	 * chosen, it is initialised to -1 to act as a form of null value.
+	 */
 	public Player(String name, Deck playerDeck) {
 		this.name = name;
 		this.playerDeck = playerDeck;
-		this.chosenCat = -1; //Just to give it an initial value 
-		playerWins = 0;
-	}
-	
+		this.chosenCat = -1;
 
+	}
+
+	/**
+	 * Declares that all Player objects must have a chooseCategory() method. This
+	 * method will be different depending on the kind of Player instantiated.
+	 * 
+	 * @return an int representing the index of a chosen category
+	 */
+	public abstract int chooseCategory();
+
+	/**
+	 * Declares that all Player objects must have a promptUser() method. Like the
+	 * chooseCategory() method, promptUser() will be different depending on the kind
+	 * of Player instantiated.
+	 */
+	public abstract void promptUser();
+
+	/**
+	 * Returns the name of the player.
+	 * 
+	 * @return name of the player
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * Calls the drawCard() method in the Deck class which returns the top card of a
+	 * deck. It then places this card in the heldCard instance variable.
+	 */
 	public void drawCard() {
 
 		if (this.playerDeck.getDeckSize() > 0) {
 			this.heldCard = this.playerDeck.drawCard();
-			//this.playerDeck.getDeck().remove(0);
-			
 		}
 	}
-	
+
 	/**
-	 * CompareTo method implemented by comparable. Compares to player objects based on the value of the category they have chosen.
+	 * CompareTo method implemented by comparable. Compares two player objects based
+	 * on the value of the category they have chosen.
 	 * 
-	 * @param other, Player object to be compared against
+	 * @param other,
+	 *            Player object to be compared against
 	 * @return 1, chosen category of this object is larger than the other
 	 * @return -1, chosen category of this object is smaller than the other
 	 * @return 0, the chosen category of both players are equal
-	 * */
-	public int compareTo(Player other){
-		
+	 */
+	public int compareTo(Player other) {
+
 		try {
 			if (this.chosenCat > other.chosenCat)
-		    	return 1;
-		    else if (this.chosenCat < other.chosenCat)
-		    	return -1;
-		    else
-		    	return 0;
+				return 1;
+			else if (this.chosenCat < other.chosenCat)
+				return -1;
+			else
+				return 0;
 		} catch (NullPointerException e) {
 			return -1;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Returns the card held by the player
 	 * 
 	 * @return heldCard, Card object held by the player
-	 * */
-	public Card getHeldCard() 	{
+	 */
+	public Card getHeldCard() {
 		return heldCard;
 	}
-	
+
 	/**
 	 * Returns the size of the deck
 	 * 
 	 * @return size of the deck held by the player
-	 * */
-	public int getDeckSize()	{
+	 */
+	public int getDeckSize() {
 		return playerDeck.getDeckSize();
 	}
 
 	/**
 	 * Adds cards won by a player to their deck
 	 * 
-	 * @param winnerPile, deck of cards that all players have submitted during a round
-	 * */
+	 * @param winnerPile,
+	 *            deck of cards that all players have submitted during a round
+	 */
 	public void addToDeck(Deck winnerPile) {
-			ArrayList<Card> winnerCards = winnerPile.getDeck();
-			playerDeck.addCards(winnerCards);
+		ArrayList<Card> winnerCards = winnerPile.getDeck();
+		playerDeck.addCards(winnerCards);
 	}
-	
+
 	/**
 	 * Returns the value of the chosen category.
 	 * 
 	 * @return chosenCat, returns the value of the chosen category
-	 * */
+	 */
 	public int getChosenCat() {
-	    return chosenCat;
+		return chosenCat;
 	}
 
 	/**
 	 * Sets the value of the chosen category.
 	 * 
-	 * @param chosenCat, integer value of the category a player has chosen
-	 * */
+	 * @param chosenCat,
+	 *            integer value of the category a player has chosen
+	 */
 	public void setChosenCat(int chosenCat) {
-	    this.chosenCat = chosenCat;
-	}
-	
-	
-	
-	/**
-	 * Returns the name of the player.
-	 * 
-	 * @return name of the player
-	 * */
-	public String getName(){
-	    return this.name;
+		this.chosenCat = chosenCat;
 	}
 
-	public abstract int chooseCategory();
-	public abstract void promptUser();
+	/**
+	 * Adds cards from a round or in the case of draws, many rounds, to the winner's
+	 * deck.
+	 * 
+	 * @param winnerPile,
+	 *            an array of card objects
+	 */
 
 	public void addToDeck(ArrayList<Card> winnerPile) {
 		playerDeck.addCards(winnerPile);
-		
+
 	}
-	
+
+	/**
+	 * Method to return a players deck of cards (ie. their entire hand)
+	 * 
+	 * @return an ArrayList of card objects
+	 */
+
 	public ArrayList<Card> getDeck() {
 		return playerDeck.getDeck();
 	}
-	
+
+	/**
+	 * toString method to access the name of the player
+	 * 
+	 * @return a String with the name of the Player
+	 */
 	@Override
 	public String toString() {
 		return name;
 	}
-	
-//	public void incrementPlayerWins() {
-//		playerWins++;
-//	}
-	
-//	public int getPlayerWins() {
-//		return playerWins;
-//	}
-	
+
 }
