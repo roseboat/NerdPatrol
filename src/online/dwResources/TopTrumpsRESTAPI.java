@@ -142,9 +142,14 @@ public class TopTrumpsRESTAPI {
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 
-	
+		//winner gets winner pile
+		activePlayer = winner;
+		winner.addToDeck(winnerPile);
+		winnerPile.clear();
 
 		return winner.getName();
+		
+		
 
 	}
 
@@ -215,7 +220,7 @@ public class TopTrumpsRESTAPI {
 		else {
 			// starting player of next round is the winner
 
-			activePlayer = winner;
+			activePlayer = winner; // what is this - pretty dodgy
 			winner.addToDeck(winnerPile);
 			winnerPile.clear();
 
