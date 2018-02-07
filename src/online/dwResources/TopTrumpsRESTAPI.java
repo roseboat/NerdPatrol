@@ -82,11 +82,11 @@ public class TopTrumpsRESTAPI {
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
 		System.err.println("Active player is " + activePlayer.getName());
-		
+
 		if (activePlayer != humanPlayer) {
 			computerSelect();
 		}
-		
+
 		return activePlayer.getName();
 	}
 
@@ -125,52 +125,67 @@ public class TopTrumpsRESTAPI {
 	// depending on the button pressed
 	// index is used to set the chosen category
 	// prints the chosen category & value on console (for testing)
-	
-	
+
 	@GET
 	@Path("/computerSelect")
 	public String computerSelect() {
-		
+
 		catIndex = activePlayer.chooseCategory();
 		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
 		return catString;
-		
+
 	}
-	
-	
+
 	@GET
 	@Path("/selectCategory")
 	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
-		
+
 		catIndex = Number - 1;
 	}
-	
+
 	@GET
 	@Path("/processRound")
-	public String processRound() {
-		numRounds++;
-		
-		for (Player p : players) {
-			p.getHeldCard().setSelectedValue(catIndex);
-			// assigns the above value to each player
-			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			p.getDeck().remove(0);
+	public String processRound() throws JsonProcessingException {
+
+		for (int i = 0; i < players.size(); i++) {
+			// checks to see if any players have run out of cards
+			if (players.get(i).getDeckSize() < 1) {
+				removePlayer(i);
+			}
 		}
-				
-		Collections.sort(players, Collections.reverseOrder());
 
-		winner = players.get(0);
-		/*Card activeCard = activePlayer.getHeldCard();
-		activeCard.setSelectedValue(catIndex);*/
-		System.err.println(players.toString());
-		System.err.println(winner.getName());
+		if (players.size() > 1) {
 
-		//winner gets winner pile - cards are added to pile in sendCardArray().....
-		activePlayer = winner;
-		winner.addToDeck(winnerPile);
-		winnerPile.clear();
+			numRounds++;
 
-		return winner.getName();
+			for (Player p : players) {
+				p.getHeldCard().setSelectedValue(catIndex);
+				// assigns the above value to each player
+				p.setChosenCat(p.getHeldCard().getSelectedValue());
+				p.getDeck().remove(0);
+			}
+
+			Collections.sort(players, Collections.reverseOrder());
+
+			winner = players.get(0);
+			/*
+			 * Card activeCard = activePlayer.getHeldCard();
+			 * activeCard.setSelectedValue(catIndex);
+			 */
+			System.err.println(players.toString());
+			System.err.println(winner.getName());
+
+			// winner gets winner pile - cards are added to pile in sendCardArray().....
+			activePlayer = winner;
+			winner.addToDeck(winnerPile);
+			
+			incrementPlayerWins();
+			winnerPile.clear(); 
+
+			return winner.getName();
+		} else
+			return endGame();
+
 	}
 
 	public void initiateRound() throws JsonProcessingException {
@@ -200,7 +215,8 @@ public class TopTrumpsRESTAPI {
 				// Card
 				int index = activePlayer.chooseCategory();
 
-				for (int i = 0; i < players.size(); i++) {;
+				for (int i = 0; i < players.size(); i++) {
+					;
 
 					// sets the value that each player has for the chosen category on their top card
 					players.get(i).getHeldCard().setSelectedValue(index);
@@ -312,8 +328,8 @@ public class TopTrumpsRESTAPI {
 				System.err.println("There is no player");
 			}
 		}
-		
-		//add cards to winner pile here
+
+		// add cards to winner pile here
 		for (Player p : players) {
 			winnerPile.add(p.getHeldCard());
 		}
@@ -348,7 +364,7 @@ public class TopTrumpsRESTAPI {
 		return numRoundsString;
 
 	}
-	
+
 	@GET
 	@Path("/printWinner")
 	/**
@@ -416,7 +432,5 @@ public class TopTrumpsRESTAPI {
 		System.err.println(handArray);
 		return handArray;
 	}
-
-
 
 }
