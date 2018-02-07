@@ -43,7 +43,5 @@ public class TopTrumps {
 			String[] commandArgs = {String.valueOf(printTestLog)};
 			TopTrumpsCLIApplication.main(commandArgs);
 		}
-		
 	}
-	
 }
