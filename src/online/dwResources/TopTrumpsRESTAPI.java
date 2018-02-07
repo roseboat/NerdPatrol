@@ -82,6 +82,11 @@ public class TopTrumpsRESTAPI {
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
 		System.err.println("Active player is " + activePlayer.getName());
+		
+		if (activePlayer != humanPlayer) {
+			computerSelect();
+		}
+		
 		return activePlayer.getName();
 	}
 
@@ -120,20 +125,35 @@ public class TopTrumpsRESTAPI {
 	// depending on the button pressed
 	// index is used to set the chosen category
 	// prints the chosen category & value on console (for testing)
+	
+	
+	@GET
+	@Path("/computerSelect")
+	public String computerSelect() {
+		
+		catIndex = activePlayer.chooseCategory();
+		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
+		return catString;
+		
+	}
+	
+	
 	@GET
 	@Path("/selectCategory")
-	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
-		
-		//increment round count here
-		numRounds++;
+	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
 		
 		catIndex = Number - 1;
+	}
+	
+	@GET
+	@Path("/processRound")
+	public String processRound() {
+		numRounds++;
 		
 		for (Player p : players) {
 			p.getHeldCard().setSelectedValue(catIndex);
 			// assigns the above value to each player
 			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			
 			p.getDeck().remove(0);
 		}
 				
@@ -151,7 +171,6 @@ public class TopTrumpsRESTAPI {
 		winnerPile.clear();
 
 		return winner.getName();
-	
 	}
 
 	public void initiateRound() throws JsonProcessingException {

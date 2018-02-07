@@ -122,8 +122,8 @@
             <br>
 
             <div id="statusBar">
-             <h4><p> Round Number:
-                <strong><label id='roundNumber'></label></strong></h4></p>
+             <h3><p> Round Number:
+                <strong><label id='roundNumber'></label></strong></h3></p>
         
               <p> Active Player:
                 <strong><label id='activePlayer'></label></strong></p>
@@ -140,8 +140,8 @@
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button>
-            <div id="playerTurn"></div>
+            <button onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button><br><br>
+            <button onclick="computerSelect()" id ='computerSelect'>COMPUTER CHOICE</button>
             <br>
             <br>
 
@@ -344,8 +344,8 @@
           alert("Player number out of bounds");
         } else {
           buildCards();
+    
           hideSelection();
-
           revealBar();
           revealDrawCardButton();
         }
@@ -479,6 +479,29 @@ function activePlayer() {
   }
   
 
+
+	function computerSelect(){
+	     var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/computerSelect"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+       xhr.onload = function(e) {
+	var responseText = xhr.response; 
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('printCategory').innerHTML = responseText;
+		processRound();
+      
+      }
+
+      xhr.send();
+      revealCards();
+	}
+
+
+
+
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -489,18 +512,35 @@ function activePlayer() {
 
       xhr.onload = function(e) {
 
-      var responseText = xhr.response; // the text of the response
-      responseText = responseText.replace(/^"(.*)"$/, '$1');
-      document.getElementById('roundWinner').innerHTML = responseText;
+		processRound();
+      
       }
 
       xhr.send();
 	
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
-
-
     }
+
+	function processRound(){
+	
+	var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/processRound"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+      xhr.onload = function(e) {
+var responseText = xhr.response; // the text of the response
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('roundWinner').innerHTML = responseText;
+}
+ xhr.send();
+	
+      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+      revealCards();
+
+}
 
     function cardTest() {
       var xhr = createCORSRequest('GET',
