@@ -101,6 +101,7 @@ public class TopTrumpsRESTAPI {
 
 		}
 		randomiseOrder();
+		numRounds = 1;
 
 	}
 
@@ -122,8 +123,12 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/selectCategory")
 	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
+		
+		//increment round count here
+		numRounds++;
+		
 		catIndex = Number - 1;
-
+		
 		for (Player p : players) {
 			p.getHeldCard().setSelectedValue(catIndex);
 			// assigns the above value to each player
@@ -131,9 +136,7 @@ public class TopTrumpsRESTAPI {
 			
 			p.getDeck().remove(0);
 		}
-		
-		
-		
+				
 		Collections.sort(players, Collections.reverseOrder());
 
 		winner = players.get(0);
@@ -142,7 +145,7 @@ public class TopTrumpsRESTAPI {
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 
-		//winner gets winner pile
+		//winner gets winner pile - cards are added to pile in sendCardArray().....
 		activePlayer = winner;
 		winner.addToDeck(winnerPile);
 		winnerPile.clear();
@@ -321,6 +324,15 @@ public class TopTrumpsRESTAPI {
 	}
 
 	@GET
+	@Path("/roundNumber")
+	public String roundNumber() throws JsonProcessingException {
+
+		String numRoundsString = oWriter.writeValueAsString(numRounds);
+		return numRoundsString;
+
+	}
+	
+	@GET
 	@Path("/printWinner")
 	/**
 	 * Method to display the winner of the round
@@ -388,40 +400,6 @@ public class TopTrumpsRESTAPI {
 		return handArray;
 	}
 
-	@GET
-	@Path("/helloJSONList")
-	/**
-	 * Here is an example of a simple REST get request that returns a String. We
-	 * also illustrate here how we can convert Java objects to JSON strings.
-	 * 
-	 * @return - List of words as JSON
-	 * @throws IOException
-	 */
-	public String helloJSONList() throws IOException {
 
-		List<String> listOfWords = new ArrayList<String>();
-		listOfWords.add("Hello");
-		listOfWords.add("World!");
-
-		// We can turn arbitary Java objects directly into JSON strings using
-		// Jackson seralization, assuming that the Java objects are not too complex.
-		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
-		System.out.println(listAsJSONString);
-		return listAsJSONString;
-	}
-
-	@GET
-	@Path("/helloWord")
-	/**
-	 * Here is an example of how to read parameters provided in an HTML Get request.
-	 * 
-	 * @param Word
-	 *            - A word
-	 * @return - A String
-	 * @throws IOException
-	 */
-	public String helloWord(@QueryParam("Word") String Word) throws IOException {
-		return "Hello " + Word;
-	}
 
 }
