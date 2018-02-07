@@ -137,7 +137,7 @@
             <hr>
             <h3>Let's Play!</h3>
             <br>
-            <button onclick="sendCardArray();cardsLeft()" id ='drawCard'>Draw Card</button>
+            <button onclick="sendCardArray();cardsLeft();cardPile()" id ='drawCard'>Draw Card</button>
             <div id="playerTurn"></div>
             <br>
             <br>
@@ -497,7 +497,8 @@ function activePlayer() {
         }
 
       }
-      cardPile();
+      
+		cardPile();
       revealcardSection();
       xhr.send();
     }
@@ -554,7 +555,7 @@ function activePlayer() {
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('roundWinner').innerHTML = responseText;
-	}
+	};
 	xhr.send();
 	}
 
@@ -568,7 +569,7 @@ function activePlayer() {
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
 			document.getElementById('pile').innerHTML = responseText;
-	}
+	};
 	xhr.send();
 	}
 

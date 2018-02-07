@@ -105,10 +105,8 @@ public class TopTrumpsRESTAPI {
 	}
 
 	public void randomiseOrder() {
-		// Collections.shuffle(players);
-
+		Collections.shuffle(players);
 		activePlayer = players.get(0);
-
 	}
 
 	@GET
@@ -130,14 +128,17 @@ public class TopTrumpsRESTAPI {
 			p.getHeldCard().setSelectedValue(catIndex);
 			// assigns the above value to each player
 			p.setChosenCat(p.getHeldCard().getSelectedValue());
-			winnerPile.add(p.getHeldCard());
+			
 			p.getDeck().remove(0);
 		}
+		
+		
+		
 		Collections.sort(players, Collections.reverseOrder());
 
 		winner = players.get(0);
-		Card activeCard = activePlayer.getHeldCard();
-		activeCard.setSelectedValue(catIndex);
+		/*Card activeCard = activePlayer.getHeldCard();
+		activeCard.setSelectedValue(catIndex);*/
 		System.err.println(players.toString());
 		System.err.println(winner.getName());
 
@@ -285,6 +286,11 @@ public class TopTrumpsRESTAPI {
 			default:
 				System.err.println("There is no player");
 			}
+		}
+		
+		//add cards to winner pile here
+		for (Player p : players) {
+			winnerPile.add(p.getHeldCard());
 		}
 
 		String cardArray = oWriter.writeValueAsString(cards);
