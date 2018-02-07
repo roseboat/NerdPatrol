@@ -83,6 +83,7 @@
          #computerSelect{
 		  margin:auto;
           display: none;
+          }
       </style>
 
   </head>
@@ -330,7 +331,7 @@
     }
     function hideComputerButton() {
 
-      document.getElementById("computerSelection").style.display = "none";
+      document.getElementById("computerSelect").style.display = "none";
     }
 
   </script>
@@ -421,14 +422,13 @@ function activePlayer() {
 
 					switch (responseText) {
 					case ("Human Player"):
-						humanFunctionOrder ();
+						humanFunctionOrder();
 						break;
 						
 					case ("Computer 1"):
 						revealComputerSelectButton();
 						disableHumanButtons();
 						revealCards();	
-						
 						break;
 					
 					case ("Computer 2"):
@@ -466,10 +466,11 @@ function activePlayer() {
 	document.getElementById('humanCat4').disabled = false;
 	document.getElementById('humanCat5').disabled = false;
 	}
-	function humanFunctionOrder () {
+	function humanFunctionOrder() {
+		
 		enableHumanButtons();
-		hideCards();
 		hideComputerButton();
+		hideCards();
 		}
 		
   function revealBar() {
