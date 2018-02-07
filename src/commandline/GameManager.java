@@ -6,25 +6,33 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Class responsible for organising flow of the game, in place of a dealer.
+ */
 public class GameManager {
-
 	private Human humanPlayer;
-	private Player p1;
-	// p1 begins each "round" of top trumps
-	private Player winner;
-	private Player gameWinner;
+	private Player activePlayer; //player whose turn it is 
+	private Player winner; //winner of round
+	private Player gameWinner; // winner of game
 	private int numPlayers;
 	private Deck deck;
-	private ArrayList<Card> winnerPile = new ArrayList<Card>();
-	private static ArrayList<Player> players;
-	private static Log myLog;
+	private ArrayList<Card> winnerPile = new ArrayList<Card>(); // stores cards that are 'in play'
+	private static ArrayList<Player> players; // players stored in this
 	private int numRounds;
 	private int numDraws;
-	private Database database;
-	private int[] playerWinCounts = new int[5];
-	// for system.out formatting clarity
-	private final String divider = "\r\n******************************************\r\n";
+	private static Log myLog;
+	private Database database; 
+	private int[] playerWinCounts = new int[5]; // for storing player win counts
+	private final String divider = "\r\n******************************************\r\n"; // for system.out formatting clarity
 
+	/**
+	 * Constructor
+	 * 
+	 * @param playerName
+	 *            - name of user (given as default value)
+	 * @param numberOfPlayers
+	 *            - number of players (given as 5 for CLI version)
+	 */
 	public GameManager(String playerName, int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
@@ -44,6 +52,8 @@ public class GameManager {
 		for (int i = 1; i < cards.length; i++) {
 			players.add(new Computer("Computer " + i, cards[i]));
 		}
+
+		// write to log
 		myLog.playerDecks(players);
 
 		// player to start game randomised
@@ -52,18 +62,10 @@ public class GameManager {
 		initiateRound();
 	}
 
-	// method to shuffle player order, to be used for who goes first in
-	// beginning
-	public void randomiseOrder() {
-		Collections.shuffle(players);
-		p1 = players.get(0);
-	}
-
-	// removes a player from the list
-	public void removePlayer(int i) {
-		players.remove(i);
-	}
-
+	/**
+	 * Core round loop. While loop keeps repeating code until only 1 player is
+	 * remaining. See internal comments for description.
+	 */
 	public void initiateRound() {
 		// check that two players are still in the game
 		while (players.size() > 1) {
@@ -86,18 +88,17 @@ public class GameManager {
 				System.out.println("Round number " + numRounds);
 
 				// displays starting player's card
-				p1.promptUser();
+				activePlayer.promptUser();
 
 				// first player selects the category for all players
-				// index corresponds to the index of the value held in the cardValues array in Card
-				int index = p1.chooseCategory();
+				// index corresponds to the index of the value held in the cardValues array in
+				// Card
+				int index = activePlayer.chooseCategory();
 
 				for (int i = 0; i < players.size(); i++) {
-
-				
-					//sets the value that each player has for the chosen category on their top card
+					// sets the value that each player has for the chosen category on their top card
 					players.get(i).getHeldCard().setSelectedValue(index);
-					//assigns the above value to each player 
+					// assigns the above value to each player
 					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
 
 					// adds card to the winner's pile
@@ -116,6 +117,65 @@ public class GameManager {
 		}
 	}
 
+	/**
+	 * Computes winner by comparing values.
+	 * 
+	 * @param index
+	 *            - dictates the card category, and thus the value, that players
+	 *            will be compared against.
+	 */
+	public void decideWinner(int index) {
+
+		// log bit - could be put in log class
+		String category = "";
+		for (int i = 0; i < players.size(); i++) {
+			// gets the category
+			category = players.get(i).heldCard.getSelectedCategory(index);
+		}
+		myLog.categoryChosen(category, players);
+
+		// cards in winner pile given to the winner of the round
+		// winner pile resets
+		Collections.sort(players, Collections.reverseOrder());
+		winner = players.get(0);
+		myLog.logRoundWinner(winner);
+
+		if (players.get(0).compareTo(players.get(1)) == 0)
+			drawHandler();
+		else {
+			// starting player of next round is the winner
+			myLog.postRound(players);
+			p1 = winner;
+			winner.addToDeck(winnerPile);
+			winnerPile.clear();
+			System.out.println("The winner of this round is Player: " + winner.getName() + " who won with the "
+					+ winner.heldCard.getName() + divider);
+
+			// increment player wins count
+			incrementPlayerWins();
+		}
+	}
+
+	/**
+	 * Handles draw situation, resets core game loop without providing a winner
+	 */
+	public void drawHandler() {
+
+		myLog.communalPile(winnerPile);
+
+		System.out.println("Round ended in a draw. The next round will be started." + divider);
+
+		// increment drawCount
+		numDraws++;
+
+		// return to round loop
+		initiateRound();
+	}
+
+	/**
+	 * Handles end game functionality: resets round number, draw number, player win
+	 * counts. Also saves game information to database.
+	 */
 	public void endGame() {
 		gameWinner = players.get(0);
 		myLog.logGameWinner(gameWinner);
@@ -132,53 +192,27 @@ public class GameManager {
 			playerWinCounts[i] = 0;
 	}
 
-	public void decideWinner(int index) {
-		
-			// log bit - could be put in log class
-			String category = "";
-			for (int i = 0; i < players.size(); i++) {
-				// gets the category
-				category = players.get(i).heldCard.getSelectedCategory(index);
-			}
-			myLog.categoryChosen(category, players);
-
-			// cards in winner pile given to the winner of the round
-			// winner pile resets
-			Collections.sort(players, Collections.reverseOrder());
-			winner = players.get(0);
-			myLog.logRoundWinner(winner);
-
-			if (players.get(0).compareTo(players.get(1)) == 0)
-				drawHandler();
-			else {
-				// starting player of next round is the winner
-				myLog.postRound(players);
-				p1 = winner;
-				winner.addToDeck(winnerPile);
-				winnerPile.clear();
-				System.out.println("The winner of this round is Player: " + winner.getName() + " who won with the "
-						+ winner.heldCard.getName() + divider);
-
-				// increment player wins count
-				incrementPlayerWins();
-			}			
+	/**
+	 * Shuffles the player order, so random player takes first turn
+	 */
+	public void randomiseOrder() {
+		Collections.shuffle(players);
+		activePlayer = players.get(0);
 	}
 
-	// method handles the situation when there is a draw
-	public void drawHandler() {
-
-		myLog.communalPile(winnerPile);
-
-		System.out.println("Round ended in a draw. The next round will be started." + divider);
-
-		// increment drawCount
-		numDraws++;
-		
-		//return to round loop 
-		initiateRound();
+	/**
+	 * Removes a player from the game
+	 * 
+	 * @param i
+	 *            - index position of player to be reomved (in players arrayList)
+	 */
+	public void removePlayer(int i) {
+		players.remove(i);
 	}
 
-	// method to increment the number of wins a player has
+	/**
+	 * Increments player win counts
+	 */
 	public void incrementPlayerWins() {
 		if (winner.getName().equals(humanPlayer.getName()))
 			playerWinCounts[0]++;
@@ -192,7 +226,9 @@ public class GameManager {
 			playerWinCounts[4]++;
 	}
 
-	// method to save game statistics
+	/**
+	 * Saves game statistics to database
+	 */
 	public void saveGameStats() {
 		database = new Database();
 		if (numPlayers == 2)
@@ -212,11 +248,3 @@ public class GameManager {
 		database.closeConnection();
 	}
 }
-
-// FOR TESTS
-// how many cards each player remaining has FOR TESTING
-/*
- * for (int i = 0; i < players.size(); i++) { System.err.println(
- * players.get(i).getName() + " has " + players.get(i).playerDeck.getDeckSize()
- * + " cards left"); }
- */
