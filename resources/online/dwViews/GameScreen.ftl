@@ -67,6 +67,13 @@
           text-align: center;
           display: none;
         }
+        
+        #winBar {
+         background-color: lightgreen;
+         padding: 5px 0;
+         text-align: center;
+         display: none;
+        }
 
         .card-img-top {
           width: 100%;
@@ -134,6 +141,10 @@
  				<p>
  				Cards to be Won: <strong><label id='pile'></label></strong></p>
  			
+            </div>
+            
+            <div id="winBar">
+            	<h2><label id='gameWinner'></label> has won the game</h2>
             </div>
 
            	<br>
@@ -379,6 +390,14 @@
     }
   }
   
+  function hideStatusBar() {
+   var x = document.getElementById("statusBar");
+    if (x.style.display === "none") {} else {
+      x.style.display = "none";
+    }
+  }
+ 
+  
     function hideCards() {
     var opp1 = document.getElementById("card2");
     if (opp1.style.display === "none") {} else {
@@ -464,6 +483,14 @@ function activePlayer() {
 
     document.getElementById("statusBar").style.display = "block";
   }
+  
+  
+  function revealBar2() {
+
+    document.getElementById("winBar").style.display = "block";
+  }
+  
+  
   function revealDrawCardButton() {
 
     document.getElementById("drawCard").style.display = "block";
@@ -596,6 +623,8 @@ var responseText = xhr.response; // the text of the response
       xhr.send();
     }
 
+
+
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/cardsLeft");
@@ -650,6 +679,23 @@ var responseText = xhr.response; // the text of the response
 			document.getElementById('roundWinner').innerHTML = responseText;
 	};
 	xhr.send();
+	}
+
+	function endGame() {
+
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/endGame");
+		if (!xhr) {
+			alert("alert");
+			}
+		xhr.onload = function(e) {
+		var responseText = xhr.response; // the text of the response
+			document.getElementById('gameWinner').innerHTML = responseText;
+	};
+	xhr.send();
+	
+	hideStatusBar();
+	revealBar2();
 	}
 
 	function cardPile() {
