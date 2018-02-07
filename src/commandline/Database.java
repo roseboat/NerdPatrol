@@ -27,6 +27,7 @@ public class Database {
 	 * Connects to postresql jdbc student database
 	 */
 	public void establishConnection() {
+		//database name, username and password for connecting to student database
 		String databaseName = "m_17_2354535k";
 		String username = "m_17_2354535k";
 		String password = "2354535k";
@@ -36,14 +37,15 @@ public class Database {
 					username, password);
 			// various exceptions caught and handled
 		} catch (SQLException e) {
-			System.err.println("Connection failed");
+			//print error info
+			System.err.println("Connection failed"); 
 			e.printStackTrace();
 			return;
 		}
 		if (connection != null) {
-			//System.out.println("Connection successful");
+			//System.out.println("Connection successful"); // test success for debugging removed for CLI product
 		} else {
-			System.err.println("Failed to make connection");
+			System.err.println("Failed to make connection"); //print error if failing to connect to database
 		}
 	}
 
@@ -74,6 +76,7 @@ public class Database {
 		Statement stmt = null;
 		// manual auto-increment for game number
 		int gameNumber = gameNumber() + 1;
+		//SQL query goes here
 		String query = "INSERT INTO toptrumps.gamestats VALUES (" + gameNumber + ", " + numberRounds + ", "
 				+ numberDraws + ", " + winsPlayer + ", " + winsComputer1 + ", null, null, null, '" + winner + "')";
 
@@ -83,8 +86,6 @@ public class Database {
 			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
-
-			JOptionPane.showMessageDialog(null, "Error - check data entered correctly");
 		}
 	}
 
@@ -111,8 +112,6 @@ public class Database {
 			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
-
-			JOptionPane.showMessageDialog(null, "Error - check data entered correctly");
 		}
 	}
 
@@ -139,8 +138,6 @@ public class Database {
 			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
-
-			JOptionPane.showMessageDialog(null, "Error - check data entered correctly");
 		}
 	}
 
@@ -167,8 +164,6 @@ public class Database {
 			System.out.println("The game information has been saved!");// for database insertion confirmation
 		} catch (SQLException e) {
 			System.err.println("error executing query " + query);
-
-			JOptionPane.showMessageDialog(null, "Error - check data entered correctly");
 		}
 	}
 
