@@ -139,25 +139,19 @@ public class TopTrumpsRESTAPI {
 				
 		Collections.sort(players, Collections.reverseOrder());
 
-		if (players.get(0).compareTo(players.get(1)) == 0) {
-			String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
-			System.err.println(draw);
-			return draw;
-			
-		} else {
+		winner = players.get(0);
+		/*Card activeCard = activePlayer.getHeldCard();
+		activeCard.setSelectedValue(catIndex);*/
+		System.err.println(players.toString());
+		System.err.println(winner.getName());
 
-			winner = players.get(0);
-			/*Card activeCard = activePlayer.getHeldCard();
-			activeCard.setSelectedValue(catIndex);*/
-			System.err.println(players.toString());
-			System.err.println(winner.getName());
+		//winner gets winner pile - cards are added to pile in sendCardArray().....
+		activePlayer = winner;
+		winner.addToDeck(winnerPile);
+		winnerPile.clear();
 
-			//winner gets winner pile
-			activePlayer = winner;
-			winner.addToDeck(winnerPile);
-			winnerPile.clear();
-			return winner.getName();
-		}
+		return winner.getName();
+	
 	}
 
 	public void initiateRound() throws JsonProcessingException {
