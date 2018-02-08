@@ -135,7 +135,7 @@
             <div id="statusBar">
              <h3><p> Round Number:
                 <strong><label id='roundNumber'></label></strong></h3></p>
-        
+
               <p> Active Player:
                 <strong><label id='activePlayer'></label></strong></p>
                 <p> Category Selected:
@@ -144,10 +144,10 @@
                 <strong><label id='roundWinner'></label></strong></p>
  				<p>
  				Cards to be Won: <strong><label id='cardPile'></label></strong></p>
- 			
+
             </div>
 			<div id="winBar">
-			<p>Winner: 
+			<p>Winner:
 			 <strong><label id='endGame'></label></strong></p></p>
 			</div>
            	<br>
@@ -181,7 +181,7 @@
                     <button onclick="selectCategory(5)" class="btn btn-default btn-block" id = "humanCat5">Cat5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
-    				
+
   					</div>
                 </div>
               </div>
@@ -193,20 +193,20 @@
                   <div class="card-body">
                     <h5 class="card-title">Avenger</h5>
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
+                    <button class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
-    				
+
   					</div>
-                  
+
                 </div>
               </div>
 
@@ -218,18 +218,18 @@
                     <h5 class="card-title">Avenger</h5>
 
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
+                    <button class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
-    				
+
   					</div>
                 </div>
               </div>
@@ -242,18 +242,18 @@
                     <h5 class="card-title">Avenger</h5>
 
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
+                    <button class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat2<span class="badge">4</span></button>
 
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat3<span class="badge">9</span></button>
 
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat4<span class="badge">3</span></button>
 
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
+                    <button class="btn btn-default btn-block" disabled>Cat5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
-    				
+
   					</div>
                 </div>
               </div>
@@ -266,18 +266,18 @@
                     <h5 class="card-title">Avenger</h5>
 
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
+                    <button class="btn btn-default btn-block" disabled><span class="badge">7</span></button>
 
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" disabled>C2345at2<span class="badge">4</span></button>
+                    <button class="btn btn-default btn-block" disabled>C2345at2<span class="badge">4</span></button>
 
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" disabled>C23454at3<span class="badge">9</span></button>
+                    <button class="btn btn-default btn-block" disabled>C23454at3<span class="badge">9</span></button>
 
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" disabled>Caagret4<span class="badge">3</span></button>
+                    <button class="btn btn-default btn-block" disabled>Caagret4<span class="badge">3</span></button>
 
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" disabled>Caasfgt5<span class="badge">2</span></button>
+                    <button class="btn btn-default btn-block" disabled>Caasfgt5<span class="badge">2</span></button>
                   </div>
                   <div class="card-footer text-muted">
-    				
+
   					</div>
                 </div>
               </div>
@@ -305,7 +305,7 @@
       // --------------------------------------------------------------------------
       // You can call other methods you want to run when the page first loads here
       // --------------------------------------------------------------------------
-     
+
 
     }
 
@@ -313,7 +313,7 @@
     // Add your other Javascript methods Here
     // -----------------------------------------
     // This is a reusable method for creating a CORS request. Do not edit this.
-    
+
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
       if ("withCredentials" in xhr) {
@@ -332,50 +332,71 @@
       return xhr;
     }
 
-		function disableHumanButtons() {
-		
+	function disableHumanButtons() {
 		document.getElementById('humanCat1').disabled = true;
 		document.getElementById('humanCat2').disabled = true;
 		document.getElementById('humanCat3').disabled = true;
 		document.getElementById('humanCat4').disabled = true;
 		document.getElementById('humanCat5').disabled = true;
-		}
-		
-		function enableHumanButtons() {
-		
+	}
+
+	function enableHumanButtons() {
 		document.getElementById('humanCat1').disabled = false;
 		document.getElementById('humanCat2').disabled = false;
 		document.getElementById('humanCat3').disabled = false;
 		document.getElementById('humanCat4').disabled = false;
 		document.getElementById('humanCat5').disabled = false;
-		}
-		
-		function humanFunctionOrder() {
-		
+	}
+
+    function hideComputerButton() {
+		document.getElementById("computerSelect").style.display = "none";
+    }
+
+    function hideCards() {
+        var opp1 = document.getElementById("card2");
+        if (opp1.style.display === "none") {} else {
+          opp1.style.display = "none";
+        }
+        var opp2 = document.getElementById("card3");
+        if (opp2.style.display === "none") {} else {
+        opp2.style.display = "none";
+        }
+        var opp3 = document.getElementById("card4");
+        if (opp3.style.display === "none") {} else {
+        opp3.style.display = "none";
+        }
+        var opp4 = document.getElementById("card5");
+        if (opp4.style.display === "none") {} else {
+        opp4.style.display = "none";
+        }
+
+    }
+
+	function humanFunctionOrder() {
 		enableHumanButtons();
 		hideComputerButton();
 		hideCards();
-		}
-		
-  		function revealBar() {
+	}
+
+  	function revealBar() {
     	document.getElementById("statusBar").style.display = "block";
-  		}
-  		
-  		function revealDrawCardButton() {
+  	}
+
+  	function revealDrawCardButton() {
     	document.getElementById("drawCard").style.display = "block";
-  		}
-  		
-   		function revealComputerSelectButton() {
+  	}
+
+   	function revealComputerSelectButton() {
 		document.getElementById("computerSelect").style.display = "block";
-  		}
-  		
+  	}
+
   	function revealCards() {
     	document.getElementById("card2").style.display = "block";
     	document.getElementById("card3").style.display = "block";
     	document.getElementById("card4").style.display = "block";
     	document.getElementById("card5").style.display = "block";
   	}
-  	
+
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
@@ -383,71 +404,46 @@
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
     }
-    
-    function hideComputerButton() {
-		document.getElementById("computerSelect").style.display = "none";
-    }
-    
-    
+
 	function hideSelection() {
 	    var x = document.getElementById("setPlayers");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
 	    }
-	 }
-	  
-	 function hideStatusBar() {
+	}
+
+	function hideStatusBar() {
 	    var x = document.getElementById("statusBar");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
 	    }
-	 }
-	  
-	 function hideCards() {
-	    var opp1 = document.getElementById("card2");
-	    if (opp1.style.display === "none") {} else {
-	      opp1.style.display = "none";
-	   	}
-		var opp2 = document.getElementById("card3");
-	    if (opp2.style.display === "none") {} else {
-	    opp2.style.display = "none";
-	    }
-	    var opp3 = document.getElementById("card4");
-	    if (opp3.style.display === "none") {} else {
-	    opp3.style.display = "none";
-	    }
-	    var opp4 = document.getElementById("card5");
-	    if (opp4.style.display === "none") {} else {
-	    opp4.style.display = "none";
-	    }
-	    
-	 }
-	 
-	function buildCards() {
+	}
 
-    var playerNum = $('#playerCount').val();
 
-    if (playerNum == 1) {
-      $("#card3").remove();
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 2) {
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 3) {
-      $("#card5").remove();
+
+	function buildCards() {}
+        var playerNum = $('#playerCount').val();
+        if (playerNum == 1) {
+          $("#card3").remove();
+          $("#card4").remove();
+          $("#card5").remove();
+        } else if (playerNum == 2) {
+          $("#card4").remove();
+          $("#card5").remove();
+        } else if (playerNum == 3) {
+          $("#card5").remove();
+        }
     }
-
-  }
-
   </script>
 
   <!-- Here are examples of how to call REST API Methods -->
   <script type="text/javascript">
-  
+
 
   function setPlayers() {
+    alert("set players called");
     var number = document.getElementById('playerCount').value;
+
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/setPlayers?Number=" + number); // Request type and URL+parameters
     if (!xhr) {
@@ -458,8 +454,9 @@
           alert("Player number out of bounds");
         } else {
           buildCards();
-    
+
           hideSelection();
+
           revealBar();
           revealDrawCardButton();
         }
@@ -468,10 +465,7 @@
     xhr.send();
   }
 
-
-
-	function activePlayer() {
-
+  function activePlayer() {
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/activePlayer");
 		if (!xhr) {
@@ -479,60 +473,65 @@
 		}
 		xhr.onload = function(e) {
 
-		var responseText = xhr.response; // the text of the response
-		responseText = responseText.replace(/^"(.*)"$/, '$1');
-		document.getElementById('activePlayer').innerHTML = responseText;
+		    var responseText = xhr.response; // the text of the response
+		    responseText = responseText.replace(/^"(.*)"$/, '$1');
+		    document.getElementById('activePlayer').innerHTML = responseText;
 
-		switch (responseText) {
-			case ("Human Player"):
-				humanFunctionOrder();
-				break;
-						
-			case ("Computer 1"):		
-				disableHumanButtons();
-				revealCards();	
-				revealComputerSelectButton();
-				break;
-					
-			case ("Computer 2"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-				break;
-						
-			case ("Computer 3"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-						
-				break;
-				case ("Computer 4"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-				break;
-				}
-		}
-				xhr.send();
-			}
-			
-			
+            if (responseText === "Human Player") {
+                humanFunctionOrder();
+            } else {
+                alert("Youve reached this else block");
+                revealComputerSelectButton();
+                disableHumanButtons();
+    		    revealCards();
+            }
+
+		// switch (responseText) {
+		// 	case ("Human Player"):
+		// 		humanFunctionOrder();
+		// 		break;
+        //
+		// 	case ("Computer 1"):
+		// 		disableHumanButtons();
+		// 		revealCards();
+		// 		revealComputerSelectButton();
+		// 		break;
+        //
+		// 	case ("Computer 2"):
+		// 		disableHumanButtons();
+		// 		revealCards();
+		// 		revealComputerSelectButton();
+		// 		break;
+        //
+		// 	case ("Computer 3"):
+		// 		disableHumanButtons();
+		// 		revealCards();
+		// 		revealComputerSelectButton();
+        //
+		// 		break;
+		// 		case ("Computer 4"):
+		// 		disableHumanButtons();
+		// 		revealCards();
+		// 		revealComputerSelectButton();
+		// 		break;
+		// 		}
+        };
+		xhr.send();
+	}
+
+
 
 	function computerSelect(){
-	     var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/computerSelect"); 
+	  var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/computerSelect");
       if (!xhr) {
         alert("CORS not supported");
       }
-
-       xhr.onload = function(e) {
-	var responseText = xhr.response; 
-      responseText = responseText.replace(/^"(.*)"$/, '$1');
-      document.getElementById('printCategory').innerHTML = responseText;
+      xhr.onload = function(e) {
+	    var responseText = xhr.response;
+        responseText = responseText.replace(/^"(.*)"$/, '$1');
+        document.getElementById('printCategory').innerHTML = responseText;
 		processRound();
-      
       }
-
       xhr.send();
       revealCards();
 	}
@@ -549,42 +548,35 @@
       xhr.onload = function(e) {
 
 		processRound();
-      
+
       }
 
       xhr.send();
-	
+
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
     }
 
 	function processRound(){
-	
-	var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/processRound"); 
+	  var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/processRound");
       if (!xhr) {
         alert("CORS not supported");
       }
-
       xhr.onload = function(e) {
-var responseText = xhr.response; // the text of the response
-      responseText = responseText.replace(/^"(.*)"$/, '$1');
-      document.getElementById('roundWinner').innerHTML = responseText;
-      
-  if (responseText== "EndGame"){
-  		hideStatusBar();
-		revealWinBar();
-  		endGame();
-  }
-}
- xhr.send();
-	
-      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-      revealCards();
-     
-     
-
-}
+        var responseText = xhr.response; // the text of the response
+        responseText = responseText.replace(/^"(.*)"$/, '$1');
+        document.getElementById('roundWinner').innerHTML = responseText;
+        if (responseText== "EndGame"){
+            hideStatusBar();
+		    revealWinBar();
+  		    endGame();
+        }
+      };
+    xhr.send();
+    document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+    revealCards();
+    }
 
     function cardTest() {
       var xhr = createCORSRequest('GET',
@@ -634,12 +626,12 @@ var responseText = xhr.response; // the text of the response
         }
 
       }
-      
+
       cardPile();
       revealcardSection();
       document.getElementById('printCategory').innerHTML = "";
       document.getElementById('roundWinner').innerHTML = "";
-    
+
       xhr.send();
     }
 
@@ -657,15 +649,15 @@ var responseText = xhr.response; // the text of the response
 
       for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
-        
+
         if (list[i] ==0){
         $("#card"+ (i+1)).remove();
         }
         else{
-        
+
         $(cardTitle).find(".card-footer").text(list[i]+" cards remaining...");
     	}
-       
+
       }
 
     }
@@ -702,7 +694,7 @@ var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('endGame').innerHTML = responseText;
 	}
-	
+
 	xhr.send();
 	}
 
@@ -734,12 +726,8 @@ var responseText = xhr.response; // the text of the response
    }
 
   </script>
-
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
   </body>
 </html>
