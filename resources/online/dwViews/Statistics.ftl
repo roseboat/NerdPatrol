@@ -81,6 +81,14 @@ footer {
 	background: rgba(255, 255, 255, 0.8);
 	padding: 10px;
 }
+
+.table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+
 </style>
 </head>
 <body>
@@ -114,6 +122,38 @@ footer {
 			<div class="col-lg-8 text-center" id="mainBody">
 				<h1>Game Statistics</h1><br>
 				<p id="testArea"></p>
+				
+				
+				
+				<table class="table table-sm">
+  <tbody>
+    <tr>
+      <th scope="row">Total Games Played</th>
+      <td id="num1"></td>
+    </tr>
+    <tr>
+      <th scope="row">Player Wins</th>
+      <td id="num2"></td>
+    </tr>
+    <tr>
+      <th scope="row">Computer Wins</th>
+      <td id="num3"></td>
+    </tr>
+    <tr>
+      <th scope="row">Highest Round Reached</th>
+      <td id="num4"></td>
+    </tr>
+        <tr>
+      <th scope="row">Average Draws Per Game</th>
+      <td id="num5"></td>
+    </tr>
+  </tbody>
+</table>
+				
+				
+				
+				
+				
 				<br />
 				<button class="btn btn-default" onclick="playGame();">Play a Game</button>
 				&nbsp;
@@ -136,7 +176,7 @@ footer {
 			// Method that is called on page load
 			function initalize() {
 		
-				gameStats();
+				statsTable();
 				
 			}
 			
@@ -177,28 +217,25 @@ footer {
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
 		
-				// This calls the getStats() REST method from TopTrumpsRESTAPI
-				function gameStats() {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/showStats"); // Request type and URL
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-					document.getElementById("testArea").innerHTML = responseText;
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-	
+
+			function statsTable() {
+    var xhr = createCORSRequest('GET',
+      "http://localhost:7777/toptrumps/statsTable");
+    if (!xhr) {
+      alert("Fucked it");
+    }
+    xhr.onload = function(e) {
+      var responseText = xhr.response; // the text of the response
+      var list = JSON.parse(responseText);
+
+      for (i = 0; i < 5; i++) {
+     	 	var tuple = "#num" + (i + 1);
+      		$(tuple).text(list[i]);
+      }
+	} 
+    xhr.send();
+  }
+  
 		</script>
 
 </body>

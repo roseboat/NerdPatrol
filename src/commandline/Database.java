@@ -302,5 +302,14 @@ public class Database {
 				+ ".\r\n The average number of draws per game is " + getNumberDraws() / gameNumber() + ".";
 		return stats;
 	}
-
+	
+	/**
+	 * Returns required statistics as an array - used in online mode
+	 */
+	public int[] getGameStatisticsOnline() {
+		int average = getNumberDraws() / gameNumber();
+		int[] stats = {gameNumber(), getPlayerWins(), getComputerWins(), getMaxRound(), average};
+		
+		return stats;
+	}
 }

@@ -294,21 +294,7 @@ public class TopTrumpsRESTAPI {
 
 	}
 
-	@GET
-	@Path("/showStats")
-	/**
-	 * Method to display the game statistics on the webpage
-	 */
-	public String gameStats() throws IOException {
-		Database db = new Database();
-		String x = db.getGameStatistics();
-		db.closeConnection();
-		db = null;
 
-		String xAsJsonString = oWriter.writeValueAsString(x);
-		return xAsJsonString;
-
-	}
 
 	@GET
 	@Path("/roundNumber")
@@ -388,7 +374,22 @@ public class TopTrumpsRESTAPI {
 		System.err.println(handArray);
 		return handArray;
 	}
-
+	
+	
+	
+	@GET
+	@Path("/statsTable")
+	public String statsTable() throws IOException {
+		Database db = new Database();
+		int[] x = db.getGameStatisticsOnline();
+		db.closeConnection();
+		db = null;
+		
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+	}
+	
+	
 	
 	@GET
 	@Path("/removePlayerTest")
@@ -398,6 +399,8 @@ public class TopTrumpsRESTAPI {
 		
 		return name;
 	}
+	
+	
 
 
 }
