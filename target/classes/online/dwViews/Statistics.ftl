@@ -89,12 +89,13 @@ footer {
 	width: 50%;
 	margin: 0px auto;
 	float: none;
+	font-size: 20px;
 }
 </style>
 </head>
 <body>
 	<!-- Call the initalize method when the page loads -->
-	<body onload="initalize()">
+<!-- 	<body onload="initalize()"> -->
 
 
 
@@ -123,7 +124,7 @@ footer {
 		<div class="container-fluid text-center">
 			<div class="col-lg-8 text-center" id="mainBody">
 				<h1>Game Statistics</h1>
-				<br>
+				
 				<p id="testArea"></p>
 
 
