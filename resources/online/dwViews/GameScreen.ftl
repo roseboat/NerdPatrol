@@ -186,7 +186,7 @@ b {
 				<div id="setPlayers">
 					<h1>Top Trumps!</h1>
 					
-					<h3>Choose the amount of players you'd like to play against:</h3>
+					<h3>Choose the number of opponents you'd like to play against:</h3>
 					
 					<br><select id="playerCount" style="font-size: 20px;">
 						<option value="1">1</option>
@@ -462,10 +462,6 @@ b {
   		
   		function revealDrawCardButton() {
     	document.getElementById("drawCard").style.display = "block";
-  		}
-  		
-   		function revealComputerSelectButton() {
-		document.getElementById("computerSelect").style.display = "block";
   		}
   		
   	function revealCards() {
