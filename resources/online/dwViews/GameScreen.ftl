@@ -214,7 +214,7 @@ b {
 					id='drawCard'>Draw Cards</button><br>
 			
 
-					Cards to be Won: <b><label id='cardPile'></label></b>&nbsp;
+					Cards in Pile: <b><label id='cardPile'></label></b>&nbsp;
 					Category Selected: <b><label id='printCategory'></label></b><br>
 					Round Winner: <b><label id='roundWinner'></label></b>
 
@@ -225,11 +225,11 @@ b {
 					<h1>
 						Winner: <strong><label id='endGame'></label></strong>!!!
 					</h1>
+					<img
+					src="http://blog.adsy.me/wp-content/uploads/2016/11/happy-open-hands-trump-transparent.png" style="width:325px;">
 				</div>
 				<br>
-				
-				
-
+			
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
@@ -464,7 +464,7 @@ b {
     	document.getElementById("drawCard").style.display = "block";
   		}
   		
-  	function revealCards() {
+ 	function revealCards() {
     	document.getElementById("card2").style.display = "block";
     	document.getElementById("card3").style.display = "block";
     	document.getElementById("card4").style.display = "block";
@@ -519,7 +519,6 @@ b {
 	    if (opp4.style.display === "none") {} else {
 	    opp4.style.display = "none";
 	    }
-	    
 	 }
 	 
 	function buildCards() {
@@ -536,7 +535,6 @@ b {
     } else if (playerNum == 3) {
       $("#card5").remove();
     }
-
   }
 
   </script>
@@ -544,6 +542,7 @@ b {
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
   
+var cardExample = undefined;
 
   function setPlayers() {
     var number = document.getElementById('playerCount').value;
@@ -562,7 +561,7 @@ b {
           revealBar();
           revealDrawCardButton();
         }
-    };
+    }
 
     xhr.send();
   }
@@ -612,9 +611,39 @@ b {
       }
 
       xhr.send();
-      revealCards();
+		revealCards(); // Do we need this here if we call it in processRound?
 	}
 
+	 function sendCardArray() {
+
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
+
+			cardExample = list[0];
+
+	        for (i = 0; i < 5; i++) {
+	          var cardTitle = "#card" + (i + 1);
+	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+	          $(cardTitle).find("#card-title").text(list[i].name);
+	          $(cardTitle).find(".btn").each(function(j) {
+	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+	          });
+	        }
+	      }
+	      cardPile();
+	      revealcardSection();
+	      document.getElementById('printCategory').innerHTML = "";
+	      document.getElementById('roundWinner').innerHTML = "";
+	    
+	      xhr.send();
+	    }
 
     function selectCategory(x) {
       var number = x
@@ -625,14 +654,12 @@ b {
       }
 
       xhr.onload = function(e) {
-    	  document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
     	  processRound();
-    	  
-    	  
+    	  disableHumanButtons();
       }
-      
       xhr.send();
-      revealCards();
+     document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+     revealCards(); // Do we need this here if we call it in processRound?
     }
 
 	function processRound(){
@@ -651,47 +678,21 @@ b {
       
   if (responseText== "EndGame"){
   		hideStatusBar();
-		revealWinBar();
   		endGame();
+		revealWinBar();
+		/* endGame(); */
   }
 }
  xhr.send();
-	
-     
       revealCards();
-
 }
-
-    function cardTest() {
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/cardTest");
-      if (!xhr) {
-        alert("Fucked it");
-      }
-      xhr.onload = function(e) {
-        var responseText = xhr.response; // the text of the response
-        var rT = JSON.parse(responseText);
-
-        $(".panel-heading").append("Deez Nuts");
-        $("#Cat1").append("Hello");
-        for (i = 0; i < rT.number_OF_CATEGORIES; i++) {
-          var catName = "#Cat" + (i + 1);
-          $(catName).html(rT.categories[i] + "<span class=\"badge\">" + rT.cardValues[i] + "</span>");
-        }
-
-        alert(rT.name);
-      }
-      xhr.send();
-    }
-
-	var cardExample = undefined;
 
     function sendCardArray() {
 
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/sendCardArray");
       if (!xhr) {
-        alert("Fucked it");
+        alert("No cards found");
       }
       xhr.onload = function(e) {
           activePlayer();
@@ -708,9 +709,7 @@ b {
             $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
           });
         }
-
       }
-      
       cardPile();
       revealcardSection();
       document.getElementById('printCategory').innerHTML = "";
@@ -738,45 +737,26 @@ b {
         $("#card"+ (i+1)).remove();
         }
         else{
-        
         $(cardTitle).find(".card-footer").text(list[i]+" cards left");
     	}
-       
       }
-
     }
     xhr.send();
   }
-
-    function setCategories() {
-
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/setCategories");
-      if (!xhr) {
-        alert("tester");
-      }
-      xhr.onload = function(e) {
-
-        var responseText = xhr.response; // the text of the response
-        responseText = responseText.replace(/^"(.*)"$/, '$1');
-        document.getElementById('Cat1').innerHTML = responseText;
-      }
-      xhr.send();
-    }
-
 
     function endGame() {
 
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/endGame");
 		if (!xhr) {
-			alert("tester");
+			alert("Error");
 			}
 		xhr.onload = function(e) {
 
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('endGame').innerHTML = responseText;
+			hideCards();
 	}
 	
 	xhr.send();
@@ -787,7 +767,7 @@ b {
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/cardPile");
 		if (!xhr) {
-			alert("dickfarts");
+			alert("No cards found");
 			}
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
