@@ -739,7 +739,7 @@ b {
         }
         else{
         
-        $(cardTitle).find(".card-footer").text(list[i]+" cards remaining...");
+        $(cardTitle).find(".card-footer").text(list[i]+" cards left");
     	}
        
       }
