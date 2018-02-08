@@ -1,29 +1,37 @@
 <html>
 
-  <head>
-    <!-- Web page title -->
-    <title>Top Trumps - Game</title>
+<head>
+<!-- Web page title -->
+<title>Top Trumps - Game</title>
 
 
-    <!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
+<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
+<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=VT323" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+	integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body onload="initalize()">
+	<!-- Call the initalize method when the page loads -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <body onload="initalize()">
-      <!-- Call the initalize method when the page loads -->
-
-      <style>
+	<style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -36,18 +44,49 @@
 
 body {
 	background-image:
-		url("http://i345.photobucket.com/albums/p374/roseboat/trump_green_zps6xddagln.jpg");
-	background-repeat: repeat;
+		url("http://123hdwallpaperpic.com/download/20150729/large-magellanic-cloud-galaxies-space-stars-2560x1600.jpg");
+	font-family: VT323;
+	font-size: 20px;
 }
+#mainBody {
+	background: rgba(255, 255, 255, 0.8);
+	padding: 10px;
+}
+
+.btn {
+	cursor: pointer;
+	font-size: 25px;
+	padding: 10px 10px;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 45px;
+}
+
+h3 {
+	font-weight: 700;
+	font-size: 30px;
+}
+
+
 
 /* Set black background color, white text and some padding */
 footer {
-   	width:100%;
+	width: 100%;
 	background-color: #555;
 	bottom: 0;
 	color: white;
 	padding: 10px;
 }
+
+.card-img-top {
+	width: 100%;
+	height: 5vw;
+	object-fit: cover;
+}
+
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
@@ -60,20 +99,16 @@ footer {
 }
 
 #statusBar {
-	background-color: #fae5c6; /*lightblue*/
+	background-color: #80e7c8;
 	padding: 5px 0;
 	text-align: center;
 	display: none;
 }
 
-.card-img-top {
-	width: 100%;
-	height: 5vw;
-	object-fit: cover;
-}
-
 #cardSection {
 	display: none;
+	font-family: Lato;
+	font-size: 12px;
 }
 
 #drawCard {
@@ -86,11 +121,6 @@ footer {
 	display: none;
 }
 
-#mainBody {
-	background: rgba(255, 255, 255, 0.8);
-	padding: 20px;
-	}
-
 #winBar {
 	background-color: lightgreen;
 	padding: 5px 0;
@@ -99,66 +129,77 @@ footer {
 	display: none;
 }
 </style>
+</head>
 
-  </head>
+<body>
 
-  <body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/toptrumps/" style="font-size: 28px">Top Trumps</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/toptrumps/">Home</a></li>
+				<li class="active"><a href="/game/">Game</a></li>
+				<li><a href="/toptrumps/stats/">Statistics</a></li>
+			</ul>
+		</div>
+	</nav>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/toptrumps/">Top Trumps</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/toptrumps/">Home</a></li>
-          <li class="active"><a href="/game/">Game</a></li>
-          <li><a href="/toptrumps/stats/">Statistics</a></li>
-        </ul>
-      </div>
-    </nav>
+	<div class="row">
+		<div class="col-lg-12" style="padding: 15px;"></div>
+	</div>
 
-      <div class="row">
-     <div class="col-lg-12" style="padding: 15px;"></div></div>
-     
-     <div class="row content">
-     <div class="col-lg-2"></div>
+	<div class="row content">
+		<div class="col-lg-2"></div>
 
-        <div class="container-fluid text-center">
-          <div class="col-lg-8 text-center" id="mainBody">
-            <h1>Top Trumps!</h1>
+		<div class="container-fluid text-center">
+			<div class="col-lg-8 text-center" id="mainBody">
+				
 
 
-            <div id="setPlayers">
-              <p><h3><strong>Choose the amount of players you'd like to play against:</strong></h3></p>
-				<br>
-              <select id="playerCount" style="font-size:20px;">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select><br><br>
-              <button class="btn btn-default" onclick="setPlayers();" style="padding:5px;">Start Game!</button><br><br>
-            </div>
+				<div id="setPlayers">
+					<h1>Top Trumps!</h1>
+					
+					<h3>
+						<strong>Choose the amount of players you'd like to play
+							against:</strong>
+					</h3>
+					
+					<br> <select id="playerCount" style="font-size: 20px;">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select><br>
+					<br>
+					<button class="btn btn-default" onclick="setPlayers();"
+						style="padding: 5px;">Start Game!</button>
+					<br>
+					<br>
+				</div>
 
 
 				<div id="statusBar">
-					<h3> Round Number:
-                <strong><label id='roundNumber'></label></strong>
+					<h3>
+						Round Number: <strong><label id='roundNumber'></label></strong>
 					</h3>
-        
-              <p> Active Player:
-                <strong><label id='activePlayer'></label></strong>
+
+					<p>
+						Active Player: <strong><label id='activePlayer'></label></strong>
 					</p>
-                <p> Category Selected:
-                <strong><label id='printCategory'></label></strong>
+					<p>
+						Category Selected: <strong><label id='printCategory'></label></strong>
 					</p>
-                <p> Round Winner:
-                <strong><label id='roundWinner'></label></strong>
+					<p>
+						Round Winner: <strong><label id='roundWinner'></label></strong>
 					</p>
- 				<p>
- 				Cards to be Won: <strong><label id='cardPile'></label></strong>
+					<p>
+						Cards to be Won: <strong><label id='cardPile'></label></strong>
 					</p>
-            </div>
+					
+				
+				</div>
 
 
 				<div id="winBar">
@@ -166,132 +207,184 @@ footer {
 						Winner: <strong><label id='endGame'></label></strong>
 					</p>
 				</div>
+
+				<hr>
 			
-            <hr>
-            <h3>Let's Play!</h3>
-            <br>
-            <button class="btn btn-default" onclick="sendCardArray();cardsLeft();cardPile();roundNumber()" id ='drawCard'>Draw Card</button><br><br>
-            <button class="btn btn-default" onclick="computerSelect()" id ='computerSelect'>COMPUTER CHOICE</button>
-            <br>
+				<button class="btn btn-default"
+					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					id='drawCard'>Draw Card</button>
+				
+				&nbsp;
+				<button class="btn btn-default" onclick="computerSelect()"
+					id='computerSelect'>COMPUTER CHOICE</button>
+				<br>
 
-            <div class="row text-center" id ='cardSection'>
+				<div class="row text-center" id='cardSection'>
 
-              <div class="col-sm-1"></div>
+					<div class="col-sm-1"></div>
 
-              <div class="col-lg-2">
-                <div class="card" id="card1" style="display">
-                  <h4 class="card-header">Human Player</h4>
-                  <img class="card-img-top" src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
+					<div class="col-lg-2">
+						<div class="card" id="card1" style="">
+							<h4 class="card-header">Human Player</h4>
+							<img class="card-img-top"
+								src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"></h5>
 
-                    <button onclick="selectCategory(1)" class="btn btn-default btn-block" id = "humanCat1"><span class="badge"></span></button>
-                    <button onclick="selectCategory(2)" class="btn btn-default btn-block" id = "humanCat2"><span class="badge"></span></button>
-                    <button onclick="selectCategory(3)" class="btn btn-default btn-block" id = "humanCat3"><span class="badge"></span></button>
-                    <button onclick="selectCategory(4)" class="btn btn-default btn-block" id = "humanCat4"><span class="badge"></span></button>
-                    <button onclick="selectCategory(5)" class="btn btn-default btn-block" id = "humanCat5"><span class="badge"></span></button>
-                  </div>
-                  <div class="card-footer text-muted">
-    				
-  					</div>
-                </div>
-              </div>
+								<button onclick="selectCategory(1)"
+									class="btn btn-default btn-block" id="humanCat1">
+									<span class="badge"></span>
+								</button>
+								<button onclick="selectCategory(2)"
+									class="btn btn-default btn-block" id="humanCat2">
+									<span class="badge"></span>
+								</button>
+								<button onclick="selectCategory(3)"
+									class="btn btn-default btn-block" id="humanCat3">
+									<span class="badge"></span>
+								</button>
+								<button onclick="selectCategory(4)"
+									class="btn btn-default btn-block" id="humanCat4">
+									<span class="badge"></span>
+								</button>
+								<button onclick="selectCategory(5)"
+									class="btn btn-default btn-block" id="humanCat5">
+									<span class="badge"></span>
+								</button>
+							</div>
+							<div class="card-footer text-muted"></div>
+						</div>
+					</div>
 
-              <div class="col-lg-2">
-                <div class="card" id="card2">
-                  <h4 class="card-header">Computer Player 1</h4>
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
+					<div class="col-lg-2">
+						<div class="card" id="card2">
+							<h4 class="card-header">Computer Player 1</h4>
+							<img class="card-img-top" src="..." alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"></h5>
 
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                  </div>
-                  <div class="card-footer text-muted">
-    				
-  					</div>
-                </div>
-              </div>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+							</div>
+							<div class="card-footer text-muted"></div>
+						</div>
+					</div>
 
-              <div class="col-lg-2">
-                <div class="card" id="card3">
-                  <h4 class="card-header">Computer Player 2</h4>
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
+					<div class="col-lg-2">
+						<div class="card" id="card3">
+							<h4 class="card-header">Computer Player 2</h4>
+							<img class="card-img-top" src="..." alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"></h5>
 
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                  </div>
-                  <div class="card-footer text-muted">
-    				
-  					</div>
-                </div>
-              </div>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+							</div>
+							<div class="card-footer text-muted"></div>
+						</div>
+					</div>
 
-              <div class="col-lg-2">
-                <div class="card" id="card4">
-                  <h4 class="card-header">Computer Player 3</h4>
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
+					<div class="col-lg-2">
+						<div class="card" id="card4">
+							<h4 class="card-header">Computer Player 3</h4>
+							<img class="card-img-top" src="..." alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"></h5>
 
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                  </div>
-                  <div class="card-footer text-muted">
-    				
-  					</div>
-                </div>
-              </div>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+							</div>
+							<div class="card-footer text-muted"></div>
+						</div>
+					</div>
 
-              <div class="col-lg-2">
-                <div class="card" id="card5">
-                  <h4 class="card-header">Computer Player 4</h4>
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
+					<div class="col-lg-2">
+						<div class="card" id="card5">
+							<h4 class="card-header">Computer Player 4</h4>
+							<img class="card-img-top" src="..." alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"></h5>
 
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                    <button class="btn btn-default btn-block" disabled><span class="badge"></span></button>
-                  </div>
-                  <div class="card-footer text-muted">
-    				
-  					</div>
-                </div>
-              </div>
-            </div>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+								<button class="btn btn-default btn-block" disabled>
+									<span class="badge"></span>
+								</button>
+							</div>
+							<div class="card-footer text-muted"></div>
+						</div>
+					</div>
+				</div>
 
-            <div class="col-sm-1"></div>
-          </div>
+				<div class="col-sm-1"></div>
+			</div>
 
-		<div class="col-lg-2"></div>
-       </div>
-       </div>
-       
-        
-       <div class="row content">
-     <div class="col-lg-12" style="padding: 10px;"></div></div>
-        
-			
-						<footer class="container-fluid text-center">
-							<p>Created by the Nerd Patrol</p>
-					</footer>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
+
+
+	<div class="row content">
+		<div class="col-lg-12" style="padding: 10px;"></div>
+	</div>
+
+
+	<footer class="container-fluid text-center">
+		<p>Created by the Nerd Patrol</p>
+	</footer>
 </body>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     // Method that is called on page load
     function initalize() {
       // --------------------------------------------------------------------------
@@ -434,8 +527,8 @@ footer {
 
   </script>
 
-  <!-- Here are examples of how to call REST API Methods -->
-  <script type="text/javascript">
+<!-- Here are examples of how to call REST API Methods -->
+<script type="text/javascript">
   
 
   function setPlayers() {
@@ -728,10 +821,18 @@ var responseText = xhr.response; // the text of the response
   </script>
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
 
 
-  </body>
+</body>
 </html>
