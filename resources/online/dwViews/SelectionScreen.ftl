@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=VT323" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -28,27 +28,41 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	padding: 0;
 }
-
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
 	height: 100%
 }
 
-/* Set gray background color and 100% height */
-.sidenav {
-	padding-top: 20px;
-	background-color: #f1f1f1;
-	height: 100%;
+body {
+	background-image:
+		url("http://123hdwallpaperpic.com/download/20150729/large-magellanic-cloud-galaxies-space-stars-2560x1600.jpg");
+	font-family: VT323;
+	font-size: 25px;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 45px;
+}
+
+.btn {
+	cursor: pointer;
+	font-size: 25px;
+	padding: 10px 10px;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /* Set black background color, white text and some padding */
 footer {
+	width: 100%;
 	background-color: #555;
+	bottom: 0;
 	color: white;
-	padding: 15px;
+	padding: 10px;
+	font-size: 20px;
 }
-
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
@@ -59,6 +73,11 @@ footer {
 		height: auto;
 	}
 }
+
+#mainBody {
+	background: rgba(255, 255, 255, 0.8);
+	padding: 10px;
+}
 </style>
 </head>
 <body>
@@ -66,44 +85,55 @@ footer {
 	<!-- Call the initalize method when the page loads -->
 <body onload="initalize()">
 
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/toptrumps/">Top Trumps</a>
-				</div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/toptrumps/">Home</a></li>
-					<li><a href="/toptrumps/game/">Game</a></li>
-					<li><a href="/toptrumps/stats/">Statistics</a></li>
-				</ul>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/toptrumps/" style="font-size: 28px">Top Trumps</a>
 			</div>
-		</nav>
-	</div>
-	<div class="container-fluid text-center">
-		<div class="row content">
-
-
-			<div class="col-sm-12 text-center">
-				<h1>Top Trumps Home!</h1>
-				<img src="http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/presidential_reading_level/img/trump.png">
-				
-				<p>Choose whether you want to play a game or view statistics</p>
-				<br>
-
-				<button class="btn btn-default" onclick="playGame();">Play a Game</button>
-				&nbsp;
-				<button class="btn btn-default" onclick="viewStatistics();">View Game Statistics</button>
-			</div>
-
-
-			<br> <br>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/toptrumps/">Home</a></li>
+				<li><a href="/toptrumps/game/">Game</a></li>
+				<li><a href="/toptrumps/stats/">Statistics</a></li>
+			</ul>
 		</div>
+	</nav>
+	
+	<div class="row">
+		<div class="col-lg-12" style="padding: 15px;"></div>
+	</div>
+	
+	<div class="row content">
+		<div class="col-lg-2"></div>
+
+		<div class="container-fluid text-center">
+			<div class="col-lg-8 text-center" id="mainBody">
+	
+				<h1>Top Trumps Home!</h1>
+				<img
+					src="http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/presidential_reading_level/img/trump.png" style="width:275px;">
+
+				<p>Choose whether you want to play a game or view statistics</p>
+
+				<button class="btn btn-default" onclick="playGame();" >Play
+					a Game</button>
+				&nbsp;
+				<button class="btn btn-default" onclick="viewStatistics();">View
+					Game Statistics</button>
+					<br><br>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row content">
+		<div class="col-lg-12" style="padding: 10px;"></div>
 	</div>
 
 
 	<footer class="container-fluid text-center">
 		<p>Created by the Nerd Patrol</p>
 	</footer>
+	
 </body>
 
 
@@ -115,23 +145,9 @@ footer {
 		
 			// Method that is called on page load
 			function initalize() {
-			
-				// --------------------------------------------------------------------------
-				// You can call other methods you want to run when the page first loads here
-				// --------------------------------------------------------------------------
-				
-				// For example, lets call our sample methods
-				//helloJSONList();
-				//helloWord("Student");
-				//printCard();
 				
 			}
-			
-			// -----------------------------------------
-			// Add your other Javascript methods Here
-			// -----------------------------------------
-			
-			
+	
 			
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -170,66 +186,6 @@ footer {
     		function viewStatistics(){
     			window.location='http://localhost:7777/toptrumps/stats';
     		}
-    		
-    		function printer(){
-    			var word = document.getElementById("testText").value;
-    			document.getElementById("testArea").innerHTML = word;
-    			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/printer?Word="+word);
-    			if(!xhr){
-    				alert("CORS not supported");
-    			}
-    			//xhr.onload = function(e) {
-    				//var responseText = xhr.response;
-    				//alert(responseText);
-    			//};
-    			xhr.send();
-    		}
-			
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloJSONList() {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-			
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloWord(word) {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-			
-		
 
 		</script>
 </body>

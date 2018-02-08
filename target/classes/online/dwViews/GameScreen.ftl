@@ -156,6 +156,13 @@ footer {
 
 		<div class="container-fluid text-center">
 			<div class="col-lg-8 text-center" id="mainBody">
+
+
+					<h3>
+						<strong>Choose the amount of players you'd like to play
+							against:</strong>
+					</h3>
+
 				<div id="setPlayers">
 					<h1>Top Trumps!</h1>
 
@@ -207,15 +214,13 @@ footer {
 				</div>
 				<br>
 
-
 				<button class="btn btn-default"
 					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
 					id='drawCard'>Draw Card</button>
-                    <button class="btn btn-default" onclick="computerSelect();"
-                        id='computerSelect'>COMPUTER CHOICE</button>
 
-
-
+				&nbsp;
+				<button class="btn btn-default" onclick="computerSelect()"
+					id='computerSelect'>COMPUTER CHOICE</button>
 				<br>
 
 				<div class="row text-center" id='cardSection'>
@@ -574,47 +579,17 @@ footer {
 	xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
 		//responseText = responseText.replace(/^"(.*)"$/, '$1');
-        alert(responseText);
 		document.getElementById('activePlayer').innerHTML = responseText;
 
-        if (responseText === "Human Player"){
-            humanFunctionOrder();
-        } else {
 
-            revealComputerSelectButton();
-            disableHumanButtons();
-            revealCards();
-        }
+			if (responseText != "Human Player")	{
+				setTimeout("computerSelect()", 3000);
+				disableHumanButtons();
+				revealCards();
+			}
+			else
+			humanFunctionOrder();
 
-		// switch (responseText) {
-		// 	case ("Human Player"):
-		// 		humanFunctionOrder();
-		// 		break;
-        //
-		// 	case ("Computer 1"):
-		// 		disableHumanButtons();
-		// 		revealCards();
-		// 		revealComputerSelectButton();
-		// 		break;
-        //
-		// 	case ("Computer 2"):
-		// 		disableHumanButtons();
-		// 		revealCards();
-		// 		revealComputerSelectButton();
-		// 		break;
-        //
-		// 	case ("Computer 3"):
-		// 		disableHumanButtons();
-		// 		revealCards();
-		// 		revealComputerSelectButton();
-        //
-		// 		break;
-		// 		case ("Computer 4"):
-		// 		disableHumanButtons();
-		// 		revealCards();
-		// 		revealComputerSelectButton();
-		// 		break;
-			// }
 		}
 		xhr.send();
 	}
@@ -625,6 +600,7 @@ footer {
 
 
     function selectCategory(x) {
+    $("#drawCard").attr('disabled',false);
       var number = x
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/selectCategory?Number=" + number); // Request type and URL+parameters
@@ -642,6 +618,7 @@ footer {
 
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
+
     }
 
 	function processRound(){
@@ -653,7 +630,7 @@ footer {
       }
 
       xhr.onload = function(e) {
-var responseText = xhr.response; // the text of the response
+	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
 
@@ -665,7 +642,7 @@ var responseText = xhr.response; // the text of the response
 }
  xhr.send();
 
-      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+
       revealCards();
 
 
@@ -703,6 +680,7 @@ var responseText = xhr.response; // the text of the response
       if (!xhr) {
         alert("Fucked it");
       }
+      $("#drawCard").attr('disabled',true);
       xhr.onload = function(e) {
           activePlayer();
         var responseText = xhr.response; // the text of the response
