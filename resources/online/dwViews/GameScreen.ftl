@@ -100,7 +100,7 @@ footer {
 }
 
 #statusBar {
-	background-color: #80e7c8;
+	/* background-color: #80e7c8; */
 	padding: 5px 0;
 	text-align: center;
 	display: none;
@@ -131,6 +131,11 @@ footer {
 	padding: 10px;
 }
 
+b {
+	font-weight: bold;
+	color: #a980e7;
+}
+
 #drawCard {
 	margin: auto;
 	display: none;
@@ -142,7 +147,7 @@ footer {
 }
 
 #winBar {
-	background-color: lightgreen;
+	/* background-color: lightgreen; */
 	padding: 5px 0;
 	text-align: center;
 	margin: auto;
@@ -160,7 +165,7 @@ footer {
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/toptrumps/" style="font-size: 25px;">Home</a></li>
-				<li class="active"><a href="/game/" style="font-size: 25px;">Game</a></li>
+				<li class="active"><a href="/toptrumps/game/" style="font-size: 25px;">Game</a></li>
 				<li><a href="/toptrumps/stats/" style="font-size: 25px;">Statistics</a></li>
 			</ul>
 		</div>
@@ -181,12 +186,9 @@ footer {
 				<div id="setPlayers">
 					<h1>Top Trumps!</h1>
 					
-					<h3>
-						<strong>Choose the amount of players you'd like to play
-							against:</strong>
-					</h3>
+					<h3>Choose the amount of players you'd like to play against:</h3>
 					
-					<br> <select id="playerCount" style="font-size: 20px;">
+					<br><select id="playerCount" style="font-size: 20px;">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -201,42 +203,32 @@ footer {
 
 
 				<div id="statusBar">
-					<h3>
+					<h1>
 						Round Number: <strong><label id='roundNumber'></label></strong>
+					</h1>
+					<h3>
+						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
-
-					<p>
-						Active Player: <strong><label id='activePlayer'></label></strong>
-					</p>
-					<p>
-						Category Selected: <strong><label id='printCategory'></label></strong>
-					</p>
-					<p>
-						Round Winner: <strong><label id='roundWinner'></label></strong>
-					</p>
-					<p>
-						Cards to be Won: <strong><label id='cardPile'></label></strong>
-					</p>
-					
-				
-				</div>
-
-
-				<div id="winBar">
-					<p>
-						Winner: <strong><label id='endGame'></label></strong>
-					</p>
-				</div>
-				<br>
-				
-				<button class="btn btn-default"
+					<button class="btn btn-default"
 					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
-					id='drawCard'>Draw Card</button>
-				
-				&nbsp;
-				<button class="btn btn-default" onclick="computerSelect()"
-					id='computerSelect'>COMPUTER CHOICE</button>
+					id='drawCard'>Draw Card</button><br>
+			
+
+					Cards to be Won: <b><label id='cardPile'></label></b>&nbsp;
+					Category Selected: <b><label id='printCategory'></label></b><br>
+					Round Winner: <b><label id='roundWinner'></label></b>
+
+				</div>
+			
+			
+				<div id="winBar">
+					<h1>
+						Winner: <strong><label id='endGame'></label></strong>!!!
+					</h1>
+				</div>
 				<br>
+				
+				
 
 				<div class="row text-center" id='cardSection'>
 
@@ -387,7 +379,8 @@ footer {
 						</div>
 					</div>
 				</div>
-
+				
+				
 				<div class="col-sm-1"></div>
 			</div>
 
@@ -632,14 +625,12 @@ footer {
       }
 
       xhr.onload = function(e) {
-
-		processRound();
-      
+    	  processRound();
+    	  document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+    	  
       }
-
+      
       xhr.send();
-	
-      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
     }
 
@@ -666,8 +657,6 @@ footer {
 	
      
       revealCards();
-     
-     
 
 }
 
