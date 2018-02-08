@@ -17,6 +17,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=VT323" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
@@ -36,7 +37,7 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
-	font-size: 25px;
+	padding: 0;
 }
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
@@ -51,7 +52,7 @@ body {
 }
 #mainBody {
 	background: rgba(255, 255, 255, 0.8);
-	padding: 10px;
+	padding: 20px;
 }
 
 .btn {
@@ -71,8 +72,6 @@ h3 {
 	font-size: 30px;
 }
 
-
-
 /* Set black background color, white text and some padding */
 footer {
 	width: 100%;
@@ -80,6 +79,7 @@ footer {
 	bottom: 0;
 	color: white;
 	padding: 10px;
+	font-size: 20px;
 }
 
 .card-img-top {
@@ -106,10 +106,29 @@ footer {
 	display: none;
 }
 
+/* Formats all the buttons in the card section */
+
+#cardSection button {
+	cursor: pointer;
+	font-size: 14px;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 0;
+}
+
 #cardSection {
 	display: none;
-	font-family: Lato;
-	font-size: 12px;
+	font-family: VT323;
+	font-size: 15px;
+}
+
+.card-header {
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.card-subtitle{
+	font-size: 18px;
+	padding: 10px;
 }
 
 #drawCard {
@@ -140,9 +159,9 @@ footer {
 				<a class="navbar-brand" href="/toptrumps/" style="font-size: 28px">Top Trumps</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="/toptrumps/">Home</a></li>
-				<li class="active"><a href="/game/">Game</a></li>
-				<li><a href="/toptrumps/stats/">Statistics</a></li>
+				<li><a href="/toptrumps/" style="font-size: 25px;">Home</a></li>
+				<li class="active"><a href="/game/" style="font-size: 25px;">Game</a></li>
+				<li><a href="/toptrumps/stats/" style="font-size: 25px;">Statistics</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -229,12 +248,13 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card1" style="">
-							<h4 class="card-header">Human Player</h4>
+							<div class="card-header">Human Player</div>
+							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
 								src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg"
 								alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title"></h5>
+
 
 								<button onclick="selectCategory(1)"
 									class="btn btn-default btn-block" id="humanCat1">
@@ -263,10 +283,11 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card2">
-							<h4 class="card-header">Computer Player 1</h4>
+							<div class="card-header">Computer Player 1</div>
+							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title"></h5>
+
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -290,10 +311,11 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card3">
-							<h4 class="card-header">Computer Player 2</h4>
+							<div class="card-header">Computer Player 2</div>
+							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title"></h5>
+
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -317,10 +339,10 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card4">
-							<h4 class="card-header">Computer Player 3</h4>
+							<div class="card-header">Computer Player 3</div>
+							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title"></h5>
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -344,10 +366,10 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card5">
-							<h4 class="card-header">Computer Player 4</h4>
+							<div class="card-header">Computer Player 4</div>
+							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title"></h5>
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -581,15 +603,13 @@ footer {
 		//responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
 
-
 			if (responseText != "Human Player")	{
-				setTimeout("computerSelect()", 3000);
+				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
 				revealCards();
-			}
+				}
 			else
-			humanFunctionOrder();
-
+				humanFunctionOrder();
 		}
 		xhr.send();
 	}
@@ -600,7 +620,6 @@ footer {
 
 
     function selectCategory(x) {
-    $("#drawCard").attr('disabled',false);
       var number = x
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/selectCategory?Number=" + number); // Request type and URL+parameters
@@ -680,7 +699,6 @@ footer {
       if (!xhr) {
         alert("Fucked it");
       }
-      $("#drawCard").attr('disabled',true);
       xhr.onload = function(e) {
           activePlayer();
         var responseText = xhr.response; // the text of the response
@@ -691,7 +709,7 @@ footer {
         for (i = 0; i < 5; i++) {
           var cardTitle = "#card" + (i + 1);
           $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-          $(cardTitle).find(".card-title").text(list[i].name);
+          $(cardTitle).find("#card-title").text(list[i].name);
           $(cardTitle).find(".btn").each(function(j) {
             $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
           });
