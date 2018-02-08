@@ -211,7 +211,7 @@ b {
 					</h3>
 					<button class="btn btn-default"
 					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
-					id='drawCard'>Draw Card</button><br>
+					id='drawCard'>Draw Cards</button><br>
 			
 
 					Cards to be Won: <b><label id='cardPile'></label></b>&nbsp;
@@ -236,7 +236,7 @@ b {
 
 					<div class="col-lg-2">
 						<div class="card" id="card1" style="">
-							<div class="card-header">Human Player</div>
+							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
 								src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg"
@@ -271,7 +271,7 @@ b {
 
 					<div class="col-lg-2">
 						<div class="card" id="card2">
-							<div class="card-header">Computer Player 1</div>
+							<div class="card-header">Computer 1</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -299,7 +299,7 @@ b {
 
 					<div class="col-lg-2">
 						<div class="card" id="card3">
-							<div class="card-header">Computer Player 2</div>
+							<div class="card-header">Computer 2</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -327,7 +327,7 @@ b {
 
 					<div class="col-lg-2">
 						<div class="card" id="card4">
-							<div class="card-header">Computer Player 3</div>
+							<div class="card-header">Computer 3</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -354,7 +354,7 @@ b {
 
 					<div class="col-lg-2">
 						<div class="card" id="card5">
-							<div class="card-header">Computer Player 4</div>
+							<div class="card-header">Computer 4</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -453,7 +453,6 @@ b {
 		function humanFunctionOrder() {
 		
 		enableHumanButtons();
-		hideComputerButton();
 		hideCards();
 		}
 		
@@ -484,8 +483,12 @@ b {
   		document.getElementById("cardSection").style.display = "block";
     }
     
-    function hideComputerButton() {
-		document.getElementById("computerSelect").style.display = "none";
+    function disableDrawButton(){
+    		document.getElementById("drawCard").disabled = true;
+    }
+    
+    function enableDrawButton(){
+    		document.getElementById("drawCard").disabled = false;
     }
     
     
@@ -578,7 +581,8 @@ b {
 			alert("tester");
 		}
 		xhr.onload = function(e) {
-
+			
+		disableDrawButton();
 		var responseText = xhr.response; // the text of the response
 		responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
@@ -586,10 +590,11 @@ b {
 			if (responseText != "Human Player")	{		
 				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
-				revealCards();	
+				revealCards();
 				}
-			else
+			else{
 				humanFunctionOrder();
+				}
 		}
 				xhr.send();
 			}
@@ -608,7 +613,6 @@ b {
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('printCategory').innerHTML = responseText;
 		processRound();
-      
       }
 
       xhr.send();
@@ -625,8 +629,9 @@ b {
       }
 
       xhr.onload = function(e) {
-    	  processRound();
     	  document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+    	  processRound();
+    	  
     	  
       }
       
@@ -646,6 +651,7 @@ b {
 	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
+      enableDrawButton();
       
   if (responseText== "EndGame"){
   		hideStatusBar();
