@@ -36,6 +36,7 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	font-size: 25px;
 }
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
@@ -207,9 +208,8 @@ footer {
 						Winner: <strong><label id='endGame'></label></strong>
 					</p>
 				</div>
-
-				<hr>
-			
+				<br>
+				
 				<button class="btn btn-default"
 					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
 					id='drawCard'>Draw Card</button>
