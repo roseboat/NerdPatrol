@@ -189,7 +189,7 @@ public class TopTrumpsRESTAPI {
 			});
 
 			if (players.get(0).compareTo(players.get(1)) == 0) {
-				String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
+				String draw = "Draw between " + players.get(0).getName() + " & " + players.get(1).getName();
 				System.err.println("DRAW~~~~~~~~~~~~~");
 				return draw;
 			} else {
