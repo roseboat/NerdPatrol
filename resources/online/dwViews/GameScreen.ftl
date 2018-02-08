@@ -589,36 +589,14 @@ footer {
 		var responseText = xhr.response; // the text of the response
 		responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
-
-		switch (responseText) {
-			case ("Human Player"):
-				humanFunctionOrder();
-				break;
 						
-			case ("Computer 1"):		
+			if (responseText != "Human Player")	{		
+				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
 				revealCards();	
-				revealComputerSelectButton();
-				break;
-					
-			case ("Computer 2"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-				break;
-						
-			case ("Computer 3"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-						
-				break;
-				case ("Computer 4"):
-				disableHumanButtons();
-				revealCards();
-				revealComputerSelectButton();
-				break;
 				}
+			else
+				humanFunctionOrder();
 		}
 				xhr.send();
 			}
@@ -674,7 +652,7 @@ footer {
       }
 
       xhr.onload = function(e) {
-var responseText = xhr.response; // the text of the response
+	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
       
@@ -686,7 +664,7 @@ var responseText = xhr.response; // the text of the response
 }
  xhr.send();
 	
-      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+     
       revealCards();
      
      
