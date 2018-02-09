@@ -224,9 +224,12 @@ public class TopTrumpsRESTAPI {
 	public String endGame() throws JsonProcessingException {
 
 		if (checkDecks() ==1)	{
-		gameWinner = players.get(0);
-		numRounds = 0;
-		numDraws = 0;
+			//save game stats here
+			saveGameStats(); 
+			// then reset records
+			gameWinner = players.get(0);
+			numRounds = 0;
+			numDraws = 0;
 		
 		for (int i = 0; i < playerWinCounts.length; i++) {
 			playerWinCounts[i] = 0;
@@ -375,7 +378,27 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 	}
 	
-	
+	/**
+	 * Saves game statistics to database //This is exactly as it is in GM - should work but can't test as not in lab..
+	 */
+	public void saveGameStats() {
+		Database db = new Database();
+		if (numPlayers == 2)
+			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1]);
+		else if (numPlayers == 3)
+			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2]);
+		else if (numPlayers == 4)
+			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3]);
+		else if (numPlayers == 4)
+			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3]);
+		else if (numPlayers == 5)
+			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
+					playerWinCounts[2], playerWinCounts[3], playerWinCounts[4]);
+		db.closeConnection();
+	}
 	
 	@GET
 	@Path("/removePlayerTest")
