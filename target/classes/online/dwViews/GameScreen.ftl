@@ -680,6 +680,7 @@ var cardExample = undefined;
   		hideStatusBar();
   		endGame();
 		revealWinBar();
+		alert("Game stats saved");
 		/* endGame(); */
   }
 }

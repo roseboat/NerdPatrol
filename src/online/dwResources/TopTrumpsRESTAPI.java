@@ -222,12 +222,14 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/endGame")
 	public String endGame() throws JsonProcessingException {
-
+		String gameWinnerName = "";
 		if (checkDecks() ==1)	{
 			//save game stats here
-			saveGameStats(); 
+			 
 			// then reset records
 			gameWinner = players.get(0);
+			gameWinnerName = gameWinner.getName();
+			saveGameStats();
 			numRounds = 0;
 			numDraws = 0;
 		
@@ -235,7 +237,7 @@ public class TopTrumpsRESTAPI {
 			playerWinCounts[i] = 0;
 		}
 		}
-		String gameWinnerString = oWriter.writeValueAsString(gameWinner.getName());
+		String gameWinnerString = oWriter.writeValueAsString(gameWinnerName);
 		return gameWinnerString;
 	}
 
