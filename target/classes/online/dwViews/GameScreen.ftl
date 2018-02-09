@@ -153,6 +153,10 @@ b {
 	margin: auto;
 	display: none;
 }
+	
+#playAgain {
+	display: none;
+}
 </style>
 </head>
 
@@ -230,6 +234,13 @@ b {
 					src="http://blog.adsy.me/wp-content/uploads/2016/11/happy-open-hands-trump-transparent.png" style="width:325px;">
 				</div>
 				<br>
+				
+				<div id="playAgain">
+				<form>
+    				<input TYPE="button" VALUE="Play Again"
+        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'"> 
+				</form>
+				</div>
 			
 				<div class="row text-center" id='cardSection'>
 
@@ -475,6 +486,10 @@ b {
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
+  	
+  	function revealPlayAgain() {
+		document.getElementById("playAgain").style.display = "block";
+  	}
 
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
@@ -661,6 +676,7 @@ var cardExample = undefined;
   		hideStatusBar();
   		endGame();
 		revealWinBar();
+		revealPlayAgain();
 		alert("Game stats saved");
   }
 }
