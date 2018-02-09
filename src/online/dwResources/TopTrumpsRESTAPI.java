@@ -89,7 +89,11 @@ public class TopTrumpsRESTAPI {
 
 		return activePlayer.getName();
 	}
-
+	
+	/*	method that creates game based on number of players
+		and declares a winnerPile
+		this method also will randomise the order of players for
+		who goes first. Round number is set to 1.*/
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -143,7 +147,7 @@ public class TopTrumpsRESTAPI {
 		return catString;
 		
 	}
-
+	// a count for player decks remaining in game
 	public int checkDecks() {
 		int count = 0;
 		for (int i =0; i<players.size(); i++) {
@@ -152,7 +156,13 @@ public class TopTrumpsRESTAPI {
 		}
 		return count;
 	}
-
+	
+	/* round logic is based here. First, it loops through players to check
+	if they have run out of cards
+	if more than one player decks remain then increase round number
+	and loop through players that are not null. Retrieves there held card
+	values then remove that card from top of deck
+	compares this card with every other remaining players held card */
 	@GET
 	@Path("/processRound")
 	public String processRound() throws JsonProcessingException {
