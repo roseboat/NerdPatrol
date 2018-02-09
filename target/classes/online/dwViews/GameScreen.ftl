@@ -100,7 +100,7 @@ footer {
 }
 
 #statusBar {
-	/* background-color: #80e7c8; */
+
 	padding: 5px 0;
 	text-align: center;
 	display: none;
@@ -209,8 +209,9 @@ b {
 					<h3>
 						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
+					
 					<button class="btn btn-default"
-					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					onclick="drawCardFunction()"
 					id='drawCard'>Draw Cards</button><br>
 			
 
@@ -495,7 +496,7 @@ b {
 	    }
 	 }
 	  
-	 function hideStatusBar() {
+	 function hideTopBars() {
 	    var x = document.getElementById("statusBar");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
@@ -536,6 +537,16 @@ b {
       $("#card5").remove();
     }
   }
+	
+	function drawCardFunction() {
+		
+		sendCardArray();
+		cardsLeft();
+		cardPile();
+		roundNumber();
+	
+	}
+	
 
   </script>
 
@@ -556,8 +567,8 @@ var cardExample = undefined;
           alert("Player number out of bounds");
         } else {
           buildCards();
-    
           hideSelection();
+          drawCardFunction();
           revealBar();
           revealDrawCardButton();
         }
@@ -614,37 +625,6 @@ var cardExample = undefined;
 		revealCards(); // Do we need this here if we call it in processRound?
 	}
 
-	 function sendCardArray() {
-
-	      var xhr = createCORSRequest('GET',
-	        "http://localhost:7777/toptrumps/sendCardArray");
-	      if (!xhr) {
-	        alert("No cards found");
-	      }
-	      xhr.onload = function(e) {
-	          activePlayer();
-	        var responseText = xhr.response; // the text of the response
-	        var list = JSON.parse(responseText);
-
-			cardExample = list[0];
-
-	        for (i = 0; i < 5; i++) {
-	          var cardTitle = "#card" + (i + 1);
-	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-	          $(cardTitle).find("#card-title").text(list[i].name);
-	          $(cardTitle).find(".btn").each(function(j) {
-	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-	          });
-	        }
-	      }
-	      cardPile();
-	      revealcardSection();
-	      document.getElementById('printCategory').innerHTML = "";
-	      document.getElementById('roundWinner').innerHTML = "";
-	    
-	      xhr.send();
-	    }
-
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -688,36 +668,36 @@ var cardExample = undefined;
       revealCards();
 }
 
-    function sendCardArray() {
+	 function sendCardArray() {
 
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/sendCardArray");
-      if (!xhr) {
-        alert("No cards found");
-      }
-      xhr.onload = function(e) {
-          activePlayer();
-        var responseText = xhr.response; // the text of the response
-        var list = JSON.parse(responseText);
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
 
-		cardExample = list[0];
+			cardExample = list[0];
 
-        for (i = 0; i < 5; i++) {
-          var cardTitle = "#card" + (i + 1);
-          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-          $(cardTitle).find("#card-title").text(list[i].name);
-          $(cardTitle).find(".btn").each(function(j) {
-            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-          });
-        }
-      }
-      cardPile();
-      revealcardSection();
-      document.getElementById('printCategory').innerHTML = "";
-      document.getElementById('roundWinner').innerHTML = "";
-    
-      xhr.send();
-    }
+	        for (i = 0; i < 5; i++) {
+	          var cardTitle = "#card" + (i + 1);
+	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+	          $(cardTitle).find("#card-title").text(list[i].name);
+	          $(cardTitle).find(".btn").each(function(j) {
+	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+	          });
+	        }
+	      }
+	      cardPile();
+	      revealcardSection();
+	      document.getElementById('printCategory').innerHTML = "";
+	      document.getElementById('roundWinner').innerHTML = "";
+	    
+	      xhr.send();
+	    }
 
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
