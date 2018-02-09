@@ -496,7 +496,7 @@ b {
 	    }
 	 }
 	  
-	 function hideTopBars() {
+	 function hideStatusBar() {
 	    var x = document.getElementById("statusBar");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
@@ -544,7 +544,6 @@ b {
 		cardsLeft();
 		cardPile();
 		roundNumber();
-	
 	}
 	
 
