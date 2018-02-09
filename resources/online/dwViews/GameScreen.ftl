@@ -236,7 +236,7 @@ b {
 					<div class="col-sm-1"></div>
 
 					<div class="col-lg-2">
-						<div class="card" id="card1" style="">
+						<div class="card" id="card1">
 							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
@@ -545,7 +545,6 @@ b {
 		cardPile();
 		roundNumber();
 	}
-	
 
   </script>
 
@@ -576,14 +575,12 @@ var cardExample = undefined;
     xhr.send();
   }
 
-
-
 	function activePlayer() {
 
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/activePlayer");
 		if (!xhr) {
-			alert("tester");
+			alert("No active Player error");
 		}
 		xhr.onload = function(e) {
 			
@@ -591,7 +588,7 @@ var cardExample = undefined;
 		var responseText = xhr.response; // the text of the response
 		responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
-						
+	
 			if (responseText != "Human Player")	{		
 				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
