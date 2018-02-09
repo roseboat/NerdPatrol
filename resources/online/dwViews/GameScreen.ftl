@@ -542,7 +542,7 @@ b {
 		
 		sendCardArray();
 		cardsLeft();
-		cardPile();
+		
 		roundNumber();
 	}
 
@@ -576,7 +576,7 @@ var cardExample = undefined;
   }
 
 	function activePlayer() {
-
+		cardPile();
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/activePlayer");
 		if (!xhr) {
@@ -614,7 +614,9 @@ var cardExample = undefined;
 	var responseText = xhr.response; 
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('printCategory').innerHTML = responseText;
+      
 		processRound();
+		
       }
 
       xhr.send();
@@ -630,6 +632,7 @@ var cardExample = undefined;
       }
 
       xhr.onload = function(e) {
+      
     	  processRound();
     	  disableHumanButtons();
       }
@@ -651,7 +654,7 @@ var cardExample = undefined;
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
       enableDrawButton();
-      
+      cardPile(); //this one reduces it at end of round
   if (responseText== "EndGame"){
   		hideStatusBar();
   		endGame();
@@ -687,7 +690,6 @@ var cardExample = undefined;
 	          });
 	        }
 	      }
-	      cardPile();
 	      revealcardSection();
 	      document.getElementById('printCategory').innerHTML = "";
 	      document.getElementById('roundWinner').innerHTML = "";
