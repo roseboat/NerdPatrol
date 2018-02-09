@@ -137,8 +137,11 @@ public class TopTrumpsRESTAPI {
 
 	@GET
 	@Path("/selectCategory")
-	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
+	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
 		catIndex = Number - 1;
+		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
+		return catString;
+		
 	}
 
 	public int checkDecks() {

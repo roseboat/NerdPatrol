@@ -620,7 +620,6 @@ var cardExample = undefined;
       }
 
       xhr.send();
-		revealCards(); // Do we need this here if we call it in processRound?
 	}
 
     function selectCategory(x) {
@@ -633,12 +632,15 @@ var cardExample = undefined;
 
       xhr.onload = function(e) {
       
+    	  var responseText = xhr.response; 
+          responseText = responseText.replace(/^"(.*)"$/, '$1');
+          document.getElementById('printCategory').innerHTML = responseText;
+    	  
     	  processRound();
     	  disableHumanButtons();
       }
       xhr.send();
-     document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-     revealCards(); // Do we need this here if we call it in processRound?
+
     }
 
 	function processRound(){
@@ -660,7 +662,6 @@ var cardExample = undefined;
   		endGame();
 		revealWinBar();
 		alert("Game stats saved");
-		/* endGame(); */
   }
 }
  xhr.send();
