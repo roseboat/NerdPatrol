@@ -100,7 +100,7 @@ footer {
 }
 
 #statusBar {
-	/* background-color: #80e7c8; */
+
 	padding: 5px 0;
 	text-align: center;
 	display: none;
@@ -151,6 +151,10 @@ b {
 	padding: 5px 0;
 	text-align: center;
 	margin: auto;
+	display: none;
+}
+
+#playAgain {
 	display: none;
 }
 </style>
@@ -210,8 +214,9 @@ b {
 					<h3>
 						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
+
 					<button class="btn btn-default"
-					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					onclick="drawCardFunction()"
 					id='drawCard'>Draw Cards</button><br>
 
 
@@ -253,12 +258,22 @@ b {
 					id='computerSelect'>COMPUTER CHOICE</button>
 				<br>
 
+
+
+				<div id="playAgain">
+				<form>
+    				<input TYPE="button" VALUE="Play Again"
+        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'">
+				</form>
+				</div>
+
+
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
 
 					<div class="col-lg-2">
-						<div class="card" id="card1" style="">
+						<div class="card" id="card1">
 							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
@@ -522,6 +537,10 @@ b {
 		document.getElementById("winBar").style.display = "block";
   	}
 
+  	function revealPlayAgain() {
+		document.getElementById("playAgain").style.display = "block";
+  	}
+
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
     }
@@ -555,6 +574,15 @@ b {
           $("#card5").remove();
         }
     }
+  }
+
+	function drawCardFunction() {
+
+		sendCardArray();
+		cardsLeft();
+
+		roundNumber();
+	}
 
   </script>
 
@@ -576,6 +604,7 @@ b {
           buildCards();
 
           hideSelection();
+          drawCardFunction();
           revealBar();
           revealDrawCardButton();
         }
@@ -584,6 +613,7 @@ b {
     xhr.send();
   }
 
+<<<<<<< HEAD
   function computerSelect(){
        var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/computerSelect");
@@ -610,6 +640,18 @@ b {
 		alert("tester");
 	}
 	xhr.onload = function(e) {
+=======
+	function activePlayer() {
+		cardPile();
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/activePlayer");
+		if (!xhr) {
+			alert("No active Player error");
+		}
+		xhr.onload = function(e) {
+
+		disableDrawButton();
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 		var responseText = xhr.response; // the text of the response
 		//responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
@@ -693,12 +735,14 @@ b {
 	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
-
+      enableDrawButton();
+      cardPile(); //this one reduces it at end of round
   if (responseText== "EndGame"){
   		hideStatusBar();
   		endGame();
 		revealWinBar();
-		/* endGame(); */
+		revealPlayAgain();
+		alert("Game stats saved");
   }
 }
  xhr.send();
@@ -710,37 +754,35 @@ b {
 
 }
 
-    function sendCardArray() {
+	 function sendCardArray() {
 
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/sendCardArray");
-      if (!xhr) {
-        alert("No cards found");
-      }
-      xhr.onload = function(e) {
-          activePlayer();
-        var responseText = xhr.response; // the text of the response
-        var list = JSON.parse(responseText);
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
 
-		cardExample = list[0];
+			cardExample = list[0];
 
-        for (i = 0; i < 5; i++) {
-          var cardTitle = "#card" + (i + 1);
-          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-          $(cardTitle).find("#card-title").text(list[i].name);
-          $(cardTitle).find(".btn").each(function(j) {
-            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-          });
-        }
-      }
+	        for (i = 0; i < 5; i++) {
+	          var cardTitle = "#card" + (i + 1);
+	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+	          $(cardTitle).find("#card-title").text(list[i].name);
+	          $(cardTitle).find(".btn").each(function(j) {
+	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+	          });
+	        }
+	      }
+	      revealcardSection();
+	      document.getElementById('printCategory').innerHTML = "";
+	      document.getElementById('roundWinner').innerHTML = "";
 
-      cardPile();
-      revealcardSection();
-      document.getElementById('printCategory').innerHTML = "";
-      document.getElementById('roundWinner').innerHTML = "";
-
-      xhr.send();
-    }
+	      xhr.send();
+	    }
 
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',

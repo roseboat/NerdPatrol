@@ -100,7 +100,7 @@ footer {
 }
 
 #statusBar {
-	/* background-color: #80e7c8; */
+
 	padding: 5px 0;
 	text-align: center;
 	display: none;
@@ -151,6 +151,10 @@ b {
 	padding: 5px 0;
 	text-align: center;
 	margin: auto;
+	display: none;
+}
+	
+#playAgain {
 	display: none;
 }
 </style>
@@ -210,8 +214,9 @@ b {
 					<h3>
 						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
+					
 					<button class="btn btn-default"
-					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					onclick="drawCardFunction()"
 					id='drawCard'>Draw Cards</button><br>
 
 
@@ -243,6 +248,7 @@ b {
 					src="http://blog.adsy.me/wp-content/uploads/2016/11/happy-open-hands-trump-transparent.png" style="width:325px;">
 				</div>
 				<br>
+<<<<<<< HEAD
 
 				<button class="btn btn-default"
 					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
@@ -253,12 +259,22 @@ b {
 					id='computerSelect'>COMPUTER CHOICE</button>
 				<br>
 
+=======
+				
+				<div id="playAgain">
+				<form>
+    				<input TYPE="button" VALUE="Play Again"
+        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'"> 
+				</form>
+				</div>
+			
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
 
 					<div class="col-lg-2">
-						<div class="card" id="card1" style="">
+						<div class="card" id="card1">
 							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
@@ -521,6 +537,10 @@ b {
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
+  	
+  	function revealPlayAgain() {
+		document.getElementById("playAgain").style.display = "block";
+  	}
 
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
@@ -555,6 +575,18 @@ b {
           $("#card5").remove();
         }
     }
+<<<<<<< HEAD
+=======
+  }
+	
+	function drawCardFunction() {
+		
+		sendCardArray();
+		cardsLeft();
+		
+		roundNumber();
+	}
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 
   </script>
 
@@ -574,8 +606,12 @@ b {
           alert("Player number out of bounds");
         } else {
           buildCards();
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
           hideSelection();
+          drawCardFunction();
           revealBar();
           revealDrawCardButton();
         }
@@ -584,6 +620,7 @@ b {
     xhr.send();
   }
 
+<<<<<<< HEAD
   function computerSelect(){
        var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/computerSelect");
@@ -610,11 +647,28 @@ b {
 		alert("tester");
 	}
 	xhr.onload = function(e) {
+=======
+	function activePlayer() {
+		cardPile();
+		var xhr = createCORSRequest('GET',
+				"http://localhost:7777/toptrumps/activePlayer");
+		if (!xhr) {
+			alert("No active Player error");
+		}
+		xhr.onload = function(e) {
+			
+		disableDrawButton();
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 		var responseText = xhr.response; // the text of the response
 		//responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
+<<<<<<< HEAD
 
 			if (responseText != "Human Player")	{
+=======
+	
+			if (responseText != "Human Player")	{		
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
 				revealCards();
@@ -628,6 +682,7 @@ b {
 
 
 
+<<<<<<< HEAD
 
 
 	 function sendCardArray() {
@@ -661,6 +716,20 @@ b {
 	      xhr.send();
 	    }
 
+=======
+       xhr.onload = function(e) {
+	var responseText = xhr.response; 
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('printCategory').innerHTML = responseText;
+      
+		processRound();
+		
+      }
+
+      xhr.send();
+	}
+
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -670,6 +739,7 @@ b {
       }
 
       xhr.onload = function(e) {
+<<<<<<< HEAD
 
 		processRound();
 
@@ -679,6 +749,18 @@ b {
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
       revealCards();
 
+=======
+      
+    	  var responseText = xhr.response; 
+          responseText = responseText.replace(/^"(.*)"$/, '$1');
+          document.getElementById('printCategory').innerHTML = responseText;
+    	  
+    	  processRound();
+    	  disableHumanButtons();
+      }
+      xhr.send();
+
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
     }
 
 	function processRound(){
@@ -693,12 +775,18 @@ b {
 	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
+<<<<<<< HEAD
 
+=======
+      enableDrawButton();
+      cardPile(); //this one reduces it at end of round
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
   if (responseText== "EndGame"){
   		hideStatusBar();
   		endGame();
 		revealWinBar();
-		/* endGame(); */
+		revealPlayAgain();
+		alert("Game stats saved");
   }
 }
  xhr.send();
@@ -710,20 +798,21 @@ b {
 
 }
 
-    function sendCardArray() {
+	 function sendCardArray() {
 
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/sendCardArray");
-      if (!xhr) {
-        alert("No cards found");
-      }
-      xhr.onload = function(e) {
-          activePlayer();
-        var responseText = xhr.response; // the text of the response
-        var list = JSON.parse(responseText);
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
 
-		cardExample = list[0];
+			cardExample = list[0];
 
+<<<<<<< HEAD
         for (i = 0; i < 5; i++) {
           var cardTitle = "#card" + (i + 1);
           $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
@@ -741,6 +830,23 @@ b {
 
       xhr.send();
     }
+=======
+	        for (i = 0; i < 5; i++) {
+	          var cardTitle = "#card" + (i + 1);
+	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+	          $(cardTitle).find("#card-title").text(list[i].name);
+	          $(cardTitle).find(".btn").each(function(j) {
+	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+	          });
+	        }
+	      }
+	      revealcardSection();
+	      document.getElementById('printCategory').innerHTML = "";
+	      document.getElementById('roundWinner').innerHTML = "";
+	    
+	      xhr.send();
+	    }
+>>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
