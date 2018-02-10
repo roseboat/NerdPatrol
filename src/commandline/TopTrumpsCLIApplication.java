@@ -1,6 +1,7 @@
 package commandline;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -19,11 +20,11 @@ public class TopTrumpsCLIApplication {
 	 */
 	public static void main(String[] args) {
 
-
-//		boolean writeGameLogsToFile = false; // Should we write game logs to file?
-//		if (args[0].equalsIgnoreCase("true"))
-//			writeGameLogsToFile = true; // Command line selection
-
+	    	System.err.println(Arrays.toString(args));
+		boolean writeGameLogsToFile = false; // Should we write game logs to file?
+		if (args[0].equalsIgnoreCase("true")) {
+			writeGameLogsToFile = true; // Command line selection
+		}
 
 		// State
 		boolean userWantsToQuit = false; // flag to check whether the user wants to quit the application
@@ -38,7 +39,9 @@ public class TopTrumpsCLIApplication {
 			String userInput = sc.nextLine();
 
 			if (userInput.matches("play")) {
-				GameManager gm = new GameManager("Human Player", 5);
+			    	System.out.println("Please enter your name:");
+			    	String name = sc.nextLine();
+				GameManager gm = new GameManager(name, 5, writeGameLogsToFile);
 
 			} else if (userInput.matches("stats")) {
 				Database db = new Database();

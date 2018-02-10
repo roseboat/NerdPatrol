@@ -100,7 +100,7 @@ footer {
 }
 
 #statusBar {
-	background-color: #80e7c8;
+	/* background-color: #80e7c8; */
 	padding: 5px 0;
 	text-align: center;
 	display: none;
@@ -131,6 +131,11 @@ footer {
 	padding: 10px;
 }
 
+b {
+	font-weight: bold;
+	color: #a980e7;
+}
+
 #drawCard {
 	margin: auto;
 	display: none;
@@ -142,7 +147,7 @@ footer {
 }
 
 #winBar {
-	background-color: lightgreen;
+	/* background-color: lightgreen; */
 	padding: 5px 0;
 	text-align: center;
 	margin: auto;
@@ -160,7 +165,7 @@ footer {
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/toptrumps/" style="font-size: 25px;">Home</a></li>
-				<li class="active"><a href="/game/" style="font-size: 25px;">Game</a></li>
+				<li class="active"><a href="/toptrumps/game/" style="font-size: 25px;">Game</a></li>
 				<li><a href="/toptrumps/stats/" style="font-size: 25px;">Statistics</a></li>
 			</ul>
 		</div>
@@ -175,12 +180,6 @@ footer {
 
 		<div class="container-fluid text-center">
 			<div class="col-lg-8 text-center" id="mainBody">
-
-
-					<h3>
-						<strong>Choose the amount of players you'd like to play
-							against:</strong>
-					</h3>
 
 				<div id="setPlayers">
 					<h1>Top Trumps!</h1>
@@ -205,9 +204,16 @@ footer {
 
 
 				<div id="statusBar">
-					<h3>
+					<h1>
 						Round Number: <strong><label id='roundNumber'></label></strong>
+					</h1>
+					<h3>
+						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
+					<button class="btn btn-default"
+					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					id='drawCard'>Draw Cards</button><br>
+
 
 					<p>
 						Active Player: <strong><label id='activePlayer'></label></strong>
@@ -226,10 +232,15 @@ footer {
 				</div>
 
 
+				</div>
+
+
 				<div id="winBar">
-					<p>
-						Winner: <strong><label id='endGame'></label></strong>
-					</p>
+					<h1>
+						Winner: <strong><label id='endGame'></label></strong>!!!
+					</h1>
+					<img
+					src="http://blog.adsy.me/wp-content/uploads/2016/11/happy-open-hands-trump-transparent.png" style="width:325px;">
 				</div>
 				<br>
 
@@ -248,7 +259,7 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card1" style="">
-							<div class="card-header">Human Player</div>
+							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
 								src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg"
@@ -283,7 +294,7 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card2">
-							<div class="card-header">Computer Player 1</div>
+							<div class="card-header">Computer 1</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -311,7 +322,7 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card3">
-							<div class="card-header">Computer Player 2</div>
+							<div class="card-header">Computer 2</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -339,7 +350,7 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card4">
-							<div class="card-header">Computer Player 3</div>
+							<div class="card-header">Computer 3</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -366,7 +377,7 @@ footer {
 
 					<div class="col-lg-2">
 						<div class="card" id="card5">
-							<div class="card-header">Computer Player 4</div>
+							<div class="card-header">Computer 4</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
@@ -391,6 +402,7 @@ footer {
 						</div>
 					</div>
 				</div>
+
 
 				<div class="col-sm-1"></div>
 			</div>
@@ -484,7 +496,6 @@ footer {
 
 	function humanFunctionOrder() {
 		enableHumanButtons();
-		hideComputerButton();
 		hideCards();
 	}
 
@@ -568,7 +579,7 @@ footer {
           revealBar();
           revealDrawCardButton();
         }
-    };
+    }
 
     xhr.send();
   }
@@ -608,8 +619,9 @@ footer {
 				disableHumanButtons();
 				revealCards();
 				}
-			else
+			else{
 				humanFunctionOrder();
+				}
 		}
 		xhr.send();
 	}
@@ -618,6 +630,36 @@ footer {
 
 
 
+	 function sendCardArray() {
+
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
+
+			cardExample = list[0];
+
+	        for (i = 0; i < 5; i++) {
+	          var cardTitle = "#card" + (i + 1);
+	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
+	          $(cardTitle).find("#card-title").text(list[i].name);
+	          $(cardTitle).find(".btn").each(function(j) {
+	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
+	          });
+	        }
+	      }
+	      cardPile();
+	      revealcardSection();
+	      document.getElementById('printCategory').innerHTML = "";
+	      document.getElementById('roundWinner').innerHTML = "";
+
+	      xhr.send();
+	    }
 
     function selectCategory(x) {
       var number = x
@@ -632,7 +674,6 @@ footer {
 		processRound();
 
       }
-
       xhr.send();
 
       document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
@@ -655,8 +696,9 @@ footer {
 
   if (responseText== "EndGame"){
   		hideStatusBar();
-		revealWinBar();
   		endGame();
+		revealWinBar();
+		/* endGame(); */
   }
 }
  xhr.send();
@@ -668,36 +710,12 @@ footer {
 
 }
 
-    function cardTest() {
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/cardTest");
-      if (!xhr) {
-        alert("Fucked it");
-      }
-      xhr.onload = function(e) {
-        var responseText = xhr.response; // the text of the response
-        var rT = JSON.parse(responseText);
-
-        $(".panel-heading").append("Deez Nuts");
-        $("#Cat1").append("Hello");
-        for (i = 0; i < rT.number_OF_CATEGORIES; i++) {
-          var catName = "#Cat" + (i + 1);
-          $(catName).html(rT.categories[i] + "<span class=\"badge\">" + rT.cardValues[i] + "</span>");
-        }
-
-        alert(rT.name);
-      }
-      xhr.send();
-    }
-
-	var cardExample = undefined;
-
     function sendCardArray() {
 
       var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/sendCardArray");
       if (!xhr) {
-        alert("Fucked it");
+        alert("No cards found");
       }
       xhr.onload = function(e) {
           activePlayer();
@@ -714,7 +732,6 @@ footer {
             $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
           });
         }
-
       }
 
       cardPile();
@@ -749,40 +766,23 @@ footer {
     	}
 
       }
-
     }
     xhr.send();
   }
-
-    function setCategories() {
-
-      var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/setCategories");
-      if (!xhr) {
-        alert("tester");
-      }
-      xhr.onload = function(e) {
-
-        var responseText = xhr.response; // the text of the response
-        responseText = responseText.replace(/^"(.*)"$/, '$1');
-        document.getElementById('Cat1').innerHTML = responseText;
-      }
-      xhr.send();
-    }
-
 
     function endGame() {
 
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/endGame");
 		if (!xhr) {
-			alert("tester");
+			alert("Error");
 			}
 		xhr.onload = function(e) {
 
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('endGame').innerHTML = responseText;
+			hideCards();
 	}
 
 	xhr.send();
@@ -793,7 +793,7 @@ footer {
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/cardPile");
 		if (!xhr) {
-			alert("dickfarts");
+			alert("No cards found");
 			}
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response

@@ -1,7 +1,13 @@
 package commandline;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -86,7 +92,9 @@ public final class Deck {
 	 */
 	private void loadDeck(String deckName) {
 
-		FileReader fr = null;
+		//FileReader fr = null;
+	    	InputStream fr = null;
+	    	BufferedReader reader;
 		Scanner in = null;
 		try {
 			try {
@@ -95,7 +103,12 @@ public final class Deck {
 				int count = 0;
 
 				// reads file, and puts scanner around the reader
-				fr = new FileReader(DECK_NAME);
+				//fr = new FileReader(DECK_NAME);
+//				Path p = Paths.get(DECK_NAME);
+//				System.out.println(p.toUri());
+				fr = getClass().getClassLoader().getResourceAsStream(DECK_NAME);
+				System.err.println(fr);
+				reader = new BufferedReader(new InputStreamReader(fr));
 				in = new Scanner(fr);
 
 				// gets data line by line

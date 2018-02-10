@@ -11,7 +11,6 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -189,7 +188,7 @@ public class TopTrumpsRESTAPI {
 			});
 
 			if (players.get(0).compareTo(players.get(1)) == 0) {
-				String draw = "A draw occured between " + players.get(0).getName() + " and " + players.get(1).getName();
+				String draw = "Draw between " + players.get(0).getName() + " & " + players.get(1).getName();
 				System.err.println("DRAW~~~~~~~~~~~~~");
 				return draw;
 			} else {
@@ -256,7 +255,7 @@ public class TopTrumpsRESTAPI {
 		Card[] cards = new Card[numPlayers];
 		
 		for (int i = 0; i < numPlayers; i++) {
-			if (players.get(i) != null) {
+			if (players.get(i) != null && players.get(i).getDeckSize() > 0) {
 				players.get(i).drawCard();
 				switch (players.get(i).getName()) {
 				case ("Human Player"):
@@ -281,9 +280,9 @@ public class TopTrumpsRESTAPI {
 		}
 
 		// add cards to winner pile here
-		for (Player p : players) {
-			if (p != null) {
-				winnerPile.add(p.getHeldCard());
+		for (int i = 0; i < numPlayers; i++) {
+			if (players.get(i) != null && players.get(i).getDeckSize() > 0) {
+				winnerPile.add(players.get(i).getHeldCard());
 			}		
 		}
 		
@@ -294,21 +293,7 @@ public class TopTrumpsRESTAPI {
 
 	}
 
-	@GET
-	@Path("/showStats")
-	/**
-	 * Method to display the game statistics on the webpage
-	 */
-	public String gameStats() throws IOException {
-		Database db = new Database();
-		String x = db.getGameStatistics();
-		db.closeConnection();
-		db = null;
 
-		String xAsJsonString = oWriter.writeValueAsString(x);
-		return xAsJsonString;
-
-	}
 
 	@GET
 	@Path("/roundNumber")
@@ -336,14 +321,6 @@ public class TopTrumpsRESTAPI {
 	public String cardPile() throws IOException {
 		int test = winnerPile.size();
 
-		// for (int i = 0; i < players.size(); i++) {
-		// winnerPile.add(players.get(i).getTopCard());
-		// if (players.get(0).compareTo(players.get(1)) == 0)
-		// test++;
-		// else
-		// test = players.size();
-		// }
-
 		String xAsJsonString = oWriter.writeValueAsString(test);
 		return xAsJsonString;
 	}
@@ -353,15 +330,10 @@ public class TopTrumpsRESTAPI {
 	public String cardsLeft() throws IOException {
 		int[] hands = new int[numPlayers];
 
-		/*
-		 * for (int i = 0; i < players.size(); i++) { hands[i] =
-		 * players.get(i).getDeckSize(); }
-		 */
-
 		// copied dante's method to match ordering...
 		for (int i = 0; i < numPlayers; i++) {
 			if (players.get(i) != null) {	
-				players.get(i).drawCard();
+//				players.get(i).drawCard();
 				switch (players.get(i).getName()) {
 				case ("Human Player"):
 					hands[0] = players.get(i).getDeckSize();
@@ -388,7 +360,22 @@ public class TopTrumpsRESTAPI {
 		System.err.println(handArray);
 		return handArray;
 	}
-
+	
+	
+	
+	@GET
+	@Path("/statsTable")
+	public String statsTable() throws IOException {
+		Database db = new Database();
+		int[] x = db.getGameStatisticsOnline();
+		db.closeConnection();
+		db = null;
+		
+		String xAsJsonString = oWriter.writeValueAsString(x);
+		return xAsJsonString;
+	}
+	
+	
 	
 	@GET
 	@Path("/removePlayerTest")
@@ -398,6 +385,8 @@ public class TopTrumpsRESTAPI {
 		
 		return name;
 	}
+	
+	
 
 
 }
