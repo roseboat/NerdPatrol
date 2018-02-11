@@ -23,6 +23,7 @@ public class GameManager {
 	private boolean writeToLog;
 	private final String divider = "\r\n******************************************\r\n"; // print divider between rounds for clarity
 
+
 	/**
 	 * Constructor
 	 * 
@@ -31,17 +32,15 @@ public class GameManager {
 	 * @param numberOfPlayers
 	 *            - number of players (given as 5 for CLI version)
 	 */
-	public GameManager(String playerName, int numberOfPlayers, boolean writeToLog) {
+	public GameManager(String playerName, int numberOfPlayers) {
 		this.numPlayers = numberOfPlayers;
 		this.deck = new Deck();
-		this.writeToLog = writeToLog;
-		
-		if (writeToLog) {
-		    myLog = new Log();
-		    myLog.logDeck(deck);
-		}
-		
+
+		myLog = new Log();
+		myLog.logDeck(deck);
+
 		// deck is shuffled
+
 		this.deck.shuffle();
 		if (writeToLog){
 		    myLog.logShuffle(deck);
@@ -57,9 +56,7 @@ public class GameManager {
 		}
 
 		// write to log
-		if (writeToLog) {
-		    myLog.playerDecks(players);
-		}
+		myLog.playerDecks(players);
 
 		// player to start game randomised
 		randomiseOrder();
@@ -74,6 +71,7 @@ public class GameManager {
 	public void initiateRound() {
 		// check that two players are still in the game
 		while (players.size() > 1) {
+
 			for (int i = 0; i < players.size(); i++) {
 				// checks to see if any players have run out of cards
 				if (players.get(i).getDeckSize() < 1) {
@@ -88,11 +86,14 @@ public class GameManager {
 
 				// increment numRounds here
 				numRounds++;
-				// Displays round number, the name of the active player and the user's card
+				// Displays round number
 				System.out.println("Round number " + numRounds);
+
+
 				System.out.println("The active player is: " + activePlayer.getName());
 				System.out.println("Your card is:\r\n" + humanPlayer.getHeldCard().cardToString());
 				
+
 				// first player selects the category for all players
 				// index corresponds to the index of the value held in the cardValues array in
 				// Card
@@ -110,10 +111,8 @@ public class GameManager {
 					// remove top cards from player's decks
 					players.get(i).playerDeck.getDeck().remove(0);
 				}
-				
-				if (writeToLog){
-				    myLog.cardsInPlay(winnerPile);
-				}	
+
+				myLog.cardsInPlay(winnerPile);
 				// move on to computing a result
 				decideWinner(index);
 
@@ -137,25 +136,19 @@ public class GameManager {
 			// gets the category
 			category = players.get(i).heldCard.getSelectedCategory(index);
 		}
-		if (writeToLog) {
-		    myLog.categoryChosen(category, players);
-		}
+		myLog.categoryChosen(category, players);
 
 		// cards in winner pile given to the winner of the round
 		// winner pile resets
 		Collections.sort(players, Collections.reverseOrder());
 		winner = players.get(0);
-		if (writeToLog) {
-		    myLog.logRoundWinner(winner);
-		}
+		myLog.logRoundWinner(winner);
 
 		
 		if (players.get(0).compareTo(players.get(1)) == 0)
 			drawHandler();
 		else {
-		    	if (writeToLog) {
-		    	    myLog.postRound(players);
-		    	}
+			myLog.postRound(players);
 			// starting player of next round is the winner			
 			activePlayer = winner;
 			//winner gets cards in the pile
@@ -163,8 +156,8 @@ public class GameManager {
 			// this pile resets 
 			winnerPile.clear();
 			// display to command line
-			System.out.println("The winner of this round is " + winner.getName() + " who won with:\r\n"
-					+ winner.heldCard.cardToString() + divider);
+			System.out.println("The winner of this round is Player: " + winner.getName() + " who won with the "
+					+ winner.heldCard.getName() + divider);
 
 			// increment player wins count
 			incrementPlayerWins();
@@ -175,10 +168,9 @@ public class GameManager {
 	 * Handles draw situation, resets core game loop without providing a winner
 	 */
 	public void drawHandler() {
-	    	
-	    	if (writeToLog) {
-	    	    myLog.communalPile(winnerPile);
-	    	}
+
+		myLog.communalPile(winnerPile);
+
 		// print to command line
 		System.out.println("Round ended in a draw. The next round will be started." + divider);
 
@@ -195,11 +187,8 @@ public class GameManager {
 	 */
 	public void endGame() {
 		gameWinner = players.get(0);
-		if (writeToLog) {
-		    myLog.logGameWinner(gameWinner);
-		    myLog.close();
-		}
-		
+		myLog.logGameWinner(gameWinner);
+		myLog.close();
 		System.out.println(gameWinner.getName() + " has won the game!");
 
 		//save game stats
@@ -227,7 +216,6 @@ public class GameManager {
 	 *            - index position of player to be reomved (in players arrayList)
 	 */
 	public void removePlayer(int i) {
-	    	System.out.println(players.get(i).getName() + " has been eliminated");
 		players.remove(i);
 	}
 

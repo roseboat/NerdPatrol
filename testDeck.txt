@@ -1,0 +1,11 @@
+description health dps skill ebola support
+doomfist 6 8 8 2 1
+tracer 3 7 9 7 0
+hanzo 4 6 7 8 1
+junkrat 4 8 2 8 1
+toblerone 5 3 1 10 5
+bastion 7 10 0 7 3
+symmetra 4 5 2 9 5
+mercy 4 2 3 5 9
+genjo 4 6 9 8 2
+widowmaker 4 6 7 7 2

@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 import commandline.TopTrumpsCLIApplication;
 
 import online.TopTrumpsOnlineApplication;
@@ -10,6 +8,10 @@ public class TopTrumps {
 
 	/** This is the main class for the TopTrumps Application */
 	public static void main(String[] args) {
+		
+		System.out.println("--------------------");
+		System.out.println("--- Top Nerd Patrol   -look at this -- Calvin was here");
+		System.out.println("--------------------"); //etest 
 		
 		// command line switches
 		boolean onlineMode = false;
