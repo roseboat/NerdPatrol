@@ -118,7 +118,7 @@ footer {
 #cardSection {
 	display: none;
 	font-family: VT323;
-	font-size: 15px;
+	font-size: 15px;	
 }
 
 .card-header {
@@ -153,7 +153,7 @@ b {
 	margin: auto;
 	display: none;
 }
-
+	
 #playAgain {
 	display: none;
 }
@@ -184,16 +184,15 @@ b {
 
 		<div class="container-fluid text-center">
 			<div class="col-lg-8 text-center" id="mainBody">
+				
+
 
 				<div id="setPlayers">
 					<h1>Top Trumps!</h1>
-
-					<h3>
-						<strong>Choose the amount of players you'd like to play
-							against:</strong>
-					</h3>
-
-					<br> <select id="playerCount" style="font-size: 20px;">
+					
+					<h3>Choose the number of opponents you'd like to play against:</h3>
+					
+					<br><select id="playerCount" style="font-size: 20px;">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -214,32 +213,19 @@ b {
 					<h3>
 						Active Player: <b><label id='activePlayer'></label></b>
 					</h3>
-
+					
 					<button class="btn btn-default"
 					onclick="drawCardFunction()"
 					id='drawCard'>Draw Cards</button><br>
+			
 
-
-					<p>
-						Active Player: <strong><label id='activePlayer'></label></strong>
-					</p>
-					<p>
-						Category Selected: <strong><label id='printCategory'></label></strong>
-					</p>
-					<p>
-						Round Winner: <strong><label id='roundWinner'></label></strong>
-					</p>
-					<p>
-						Cards to be Won: <strong><label id='cardPile'></label></strong>
-					</p>
-
+					Cards in Pile: <b><label id='cardPile'></label></b>&nbsp;
+					Category Selected: <b><label id='printCategory'></label></b><br>
+					Round Winner: <b><label id='roundWinner'></label></b>
 
 				</div>
-
-
-				</div>
-
-
+			
+			
 				<div id="winBar">
 					<h1>
 						Winner: <strong><label id='endGame'></label></strong>!!!
@@ -248,26 +234,14 @@ b {
 					src="http://blog.adsy.me/wp-content/uploads/2016/11/happy-open-hands-trump-transparent.png" style="width:325px;">
 				</div>
 				<br>
-
-				<button class="btn btn-default"
-					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
-					id='drawCard'>Draw Card</button>
-
-				&nbsp;
-				<button class="btn btn-default" onclick="computerSelect()"
-					id='computerSelect'>COMPUTER CHOICE</button>
-				<br>
-
-
-
+				
 				<div id="playAgain">
 				<form>
     				<input TYPE="button" VALUE="Play Again"
-        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'">
+        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'"> 
 				</form>
 				</div>
-
-
+			
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
@@ -280,7 +254,7 @@ b {
 								src="http://dcs.gla.ac.uk/~richardm/TopTrumps/Idris.jpg"
 								alt="Card image cap">
 							<div class="card-body">
-
+							
 
 								<button onclick="selectCategory(1)"
 									class="btn btn-default btn-block" id="humanCat1">
@@ -313,7 +287,7 @@ b {
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-
+							
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -341,7 +315,7 @@ b {
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top" src="..." alt="Card image cap">
 							<div class="card-body">
-
+							
 
 								<button class="btn btn-default btn-block" disabled>
 									<span class="badge"></span>
@@ -417,8 +391,8 @@ b {
 						</div>
 					</div>
 				</div>
-
-
+				
+				
 				<div class="col-sm-1"></div>
 			</div>
 
@@ -443,7 +417,7 @@ b {
       // --------------------------------------------------------------------------
       // You can call other methods you want to run when the page first loads here
       // --------------------------------------------------------------------------
-
+     
 
     }
 
@@ -451,7 +425,7 @@ b {
     // Add your other Javascript methods Here
     // -----------------------------------------
     // This is a reusable method for creating a CORS request. Do not edit this.
-
+    
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
       if ("withCredentials" in xhr) {
@@ -470,73 +444,49 @@ b {
       return xhr;
     }
 
-	function disableHumanButtons() {
+		function disableHumanButtons() {
+		
 		document.getElementById('humanCat1').disabled = true;
 		document.getElementById('humanCat2').disabled = true;
 		document.getElementById('humanCat3').disabled = true;
 		document.getElementById('humanCat4').disabled = true;
 		document.getElementById('humanCat5').disabled = true;
-	}
-
-	function enableHumanButtons() {
+		}
+		
+		function enableHumanButtons() {
+		
 		document.getElementById('humanCat1').disabled = false;
 		document.getElementById('humanCat2').disabled = false;
 		document.getElementById('humanCat3').disabled = false;
 		document.getElementById('humanCat4').disabled = false;
 		document.getElementById('humanCat5').disabled = false;
-	}
-
-    function hideComputerButton() {
-    	document.getElementById("computerSelect").style.display = "none";
-    }
-
-    function hideCards() {
-   	    var opp1 = document.getElementById("card2");
-   	    if (opp1.style.display === "none") {} else {
-   	      opp1.style.display = "none";
-   	   	}
-   		var opp2 = document.getElementById("card3");
-   	    if (opp2.style.display === "none") {} else {
-   	    opp2.style.display = "none";
-   	    }
-   	    var opp3 = document.getElementById("card4");
-   	    if (opp3.style.display === "none") {} else {
-   	    opp3.style.display = "none";
-   	    }
-   	    var opp4 = document.getElementById("card5");
-   	    if (opp4.style.display === "none") {} else {
-   	    opp4.style.display = "none";
-   	    }
-   	 }
-
-	function humanFunctionOrder() {
+		}
+		
+		function humanFunctionOrder() {
+		
 		enableHumanButtons();
 		hideCards();
-	}
-
-  	function revealBar() {
+		}
+		
+  		function revealBar() {
     	document.getElementById("statusBar").style.display = "block";
-  	}
-
-  	function revealDrawCardButton() {
+  		}
+  		
+  		function revealDrawCardButton() {
     	document.getElementById("drawCard").style.display = "block";
-  	}
-
-   	function revealComputerSelectButton() {
-		document.getElementById("computerSelect").style.display = "block";
-  	}
-
-  	function revealCards() {
+  		}
+  		
+ 	function revealCards() {
     	document.getElementById("card2").style.display = "block";
     	document.getElementById("card3").style.display = "block";
     	document.getElementById("card4").style.display = "block";
     	document.getElementById("card5").style.display = "block";
   	}
-
+  	
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
-
+  	
   	function revealPlayAgain() {
 		document.getElementById("playAgain").style.display = "block";
   	}
@@ -544,43 +494,70 @@ b {
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
     }
-
+    
+    function disableDrawButton(){
+    		document.getElementById("drawCard").disabled = true;
+    }
+    
+    function enableDrawButton(){
+    		document.getElementById("drawCard").disabled = false;
+    }
+    
+    
 	function hideSelection() {
 	    var x = document.getElementById("setPlayers");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
 	    }
-	}
-
-	function hideStatusBar() {
+	 }
+	  
+	 function hideStatusBar() {
 	    var x = document.getElementById("statusBar");
 	    if (x.style.display === "none") {} else {
 	      x.style.display = "none";
 	    }
-    }
-
-
+	 }
+	  
+	 function hideCards() {
+	    var opp1 = document.getElementById("card2");
+	    if (opp1.style.display === "none") {} else {
+	      opp1.style.display = "none";
+	   	}
+		var opp2 = document.getElementById("card3");
+	    if (opp2.style.display === "none") {} else {
+	    opp2.style.display = "none";
+	    }
+	    var opp3 = document.getElementById("card4");
+	    if (opp3.style.display === "none") {} else {
+	    opp3.style.display = "none";
+	    }
+	    var opp4 = document.getElementById("card5");
+	    if (opp4.style.display === "none") {} else {
+	    opp4.style.display = "none";
+	    }
+	 }
+	 
 	function buildCards() {
-        var playerNum = $('#playerCount').val();
 
-        if (playerNum == 1) {
-          $("#card3").remove();
-          $("#card4").remove();
-          $("#card5").remove();
-        } else if (playerNum == 2) {
-          $("#card4").remove();
-          $("#card5").remove();
-        } else if (playerNum == 3) {
-          $("#card5").remove();
-        }
+    var playerNum = $('#playerCount').val();
+
+    if (playerNum == 1) {
+      $("#card3").remove();
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 2) {
+      $("#card4").remove();
+      $("#card5").remove();
+    } else if (playerNum == 3) {
+      $("#card5").remove();
     }
   }
-
+	
 	function drawCardFunction() {
-
+		
 		sendCardArray();
 		cardsLeft();
-
+		
 		roundNumber();
 	}
 
@@ -588,7 +565,8 @@ b {
 
 <!-- Here are examples of how to call REST API Methods -->
 <script type="text/javascript">
-
+  
+var cardExample = undefined;
 
   function setPlayers() {
     var number = document.getElementById('playerCount').value;
@@ -602,7 +580,6 @@ b {
           alert("Player number out of bounds");
         } else {
           buildCards();
-
           hideSelection();
           drawCardFunction();
           revealBar();
@@ -613,34 +590,6 @@ b {
     xhr.send();
   }
 
-<<<<<<< HEAD
-  function computerSelect(){
-       var xhr = createCORSRequest('GET',
-      "http://localhost:7777/toptrumps/computerSelect");
-    if (!xhr) {
-      alert("CORS not supported");
-    }
-
-     xhr.onload = function(e) {
-  var responseText = xhr.response;
-    responseText = responseText.replace(/^"(.*)"$/, '$1');
-    document.getElementById('printCategory').innerHTML = responseText;
-      processRound();
-
-    }
-
-    xhr.send();
-    revealCards();
-  }
-
-  function activePlayer() {
-	var xhr = createCORSRequest('GET',
-				"http://localhost:7777/toptrumps/activePlayer");
-	if (!xhr) {
-		alert("tester");
-	}
-	xhr.onload = function(e) {
-=======
 	function activePlayer() {
 		cardPile();
 		var xhr = createCORSRequest('GET',
@@ -649,14 +598,13 @@ b {
 			alert("No active Player error");
 		}
 		xhr.onload = function(e) {
-
+			
 		disableDrawButton();
->>>>>>> bd5dcf985677e6ebe3737f6fb8688a444aebd675
 		var responseText = xhr.response; // the text of the response
-		//responseText = responseText.replace(/^"(.*)"$/, '$1');
+		responseText = responseText.replace(/^"(.*)"$/, '$1');
 		document.getElementById('activePlayer').innerHTML = responseText;
-
-			if (responseText != "Human Player")	{
+	
+			if (responseText != "Human Player")	{		
 				setTimeout("computerSelect()", 2000);
 				disableHumanButtons();
 				revealCards();
@@ -665,43 +613,29 @@ b {
 				humanFunctionOrder();
 				}
 		}
-		xhr.send();
+				xhr.send();
+			}
+			
+			
+
+	function computerSelect(){
+	     var xhr = createCORSRequest('GET',
+        "http://localhost:7777/toptrumps/computerSelect"); 
+      if (!xhr) {
+        alert("CORS not supported");
+      }
+
+       xhr.onload = function(e) {
+	var responseText = xhr.response; 
+      responseText = responseText.replace(/^"(.*)"$/, '$1');
+      document.getElementById('printCategory').innerHTML = responseText;
+      
+		processRound();
+		
+      }
+
+      xhr.send();
 	}
-
-
-
-
-
-	 function sendCardArray() {
-
-	      var xhr = createCORSRequest('GET',
-	        "http://localhost:7777/toptrumps/sendCardArray");
-	      if (!xhr) {
-	        alert("No cards found");
-	      }
-	      xhr.onload = function(e) {
-	          activePlayer();
-	        var responseText = xhr.response; // the text of the response
-	        var list = JSON.parse(responseText);
-
-			cardExample = list[0];
-
-	        for (i = 0; i < 5; i++) {
-	          var cardTitle = "#card" + (i + 1);
-	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
-	          $(cardTitle).find("#card-title").text(list[i].name);
-	          $(cardTitle).find(".btn").each(function(j) {
-	            $(this).html(list[i].categories[j] + "  " + "<span class=\"badge\">" + list[i].cardValues[j] + "</span>");
-	          });
-	        }
-	      }
-	      cardPile();
-	      revealcardSection();
-	      document.getElementById('printCategory').innerHTML = "";
-	      document.getElementById('roundWinner').innerHTML = "";
-
-	      xhr.send();
-	    }
 
     function selectCategory(x) {
       var number = x
@@ -712,21 +646,22 @@ b {
       }
 
       xhr.onload = function(e) {
-
-		processRound();
-
+      
+    	  var responseText = xhr.response; 
+          responseText = responseText.replace(/^"(.*)"$/, '$1');
+          document.getElementById('printCategory').innerHTML = responseText;
+    	  
+    	  processRound();
+    	  disableHumanButtons();
       }
       xhr.send();
-
-      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
-      revealCards();
 
     }
 
 	function processRound(){
-
+	
 	var xhr = createCORSRequest('GET',
-        "http://localhost:7777/toptrumps/processRound");
+        "http://localhost:7777/toptrumps/processRound"); 
       if (!xhr) {
         alert("CORS not supported");
       }
@@ -746,12 +681,7 @@ b {
   }
 }
  xhr.send();
-
-
       revealCards();
-
-
-
 }
 
 	 function sendCardArray() {
@@ -780,7 +710,7 @@ b {
 	      revealcardSection();
 	      document.getElementById('printCategory').innerHTML = "";
 	      document.getElementById('roundWinner').innerHTML = "";
-
+	    
 	      xhr.send();
 	    }
 
@@ -798,15 +728,13 @@ b {
 
       for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
-
+        
         if (list[i] ==0){
         $("#card"+ (i+1)).remove();
         }
         else{
-
-        $(cardTitle).find(".card-footer").text(list[i]+" cards remaining...");
+        $(cardTitle).find(".card-footer").text(list[i]+" cards left");
     	}
-
       }
     }
     xhr.send();
@@ -826,7 +754,7 @@ b {
 			document.getElementById('endGame').innerHTML = responseText;
 			hideCards();
 	}
-
+	
 	xhr.send();
 	}
 
