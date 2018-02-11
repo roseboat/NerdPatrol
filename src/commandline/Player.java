@@ -37,12 +37,6 @@ public abstract class Player implements Comparable<Player> {
 	 */
 	public abstract int chooseCategory();
 
-	/**
-	 * Declares that all Player objects must have a promptUser() method. Like the
-	 * chooseCategory() method, promptUser() will be different depending on the kind
-	 * of Player instantiated.
-	 */
-	public abstract void promptUser();
 
 	/**
 	 * Returns the name of the player.
