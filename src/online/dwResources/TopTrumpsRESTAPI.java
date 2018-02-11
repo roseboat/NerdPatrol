@@ -71,15 +71,26 @@ public class TopTrumpsRESTAPI {
 		numPlayers = conf.getNumAIPlayers() + 1;
 	}
 
+	/**
+	 * Sets the number of players to play the game. Acquires the input from the drop down menu in 
+	 * the online guy and calls the startGame() method to initialise a game of toptrumps
+	 * 
+	 * @param Number, int to represent the number of players taking part in the game
+	 * */
 	@GET
 	@Path("/setPlayers")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setPlayers(@QueryParam("Number") int Number) throws IOException {
 		numPlayers = Number + 1;
-		System.err.println("the number of players: " + numPlayers);
 		startGame();
 	}
 
+	/**
+	 * Returns the name of the active player to update the GUI during the start of a round. The 
+	 * active player is the player who gets to choose the category for that round of top trumps.
+	 * 
+	 * @return name, String name of the active player.
+	 * */
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
@@ -92,11 +103,13 @@ public class TopTrumpsRESTAPI {
 		return activePlayer.getName();
 	}
 
-	/*
-	 * method that creates game based on number of players and declares a
-	 * winnerPile this method also will randomise the order of players for who
-	 * goes first. Round number is set to 1.
-	 */
+	/**
+	 * Method creates game based on number of players and declares a winnerPile (the storage
+	 * are for cards played in a round as an Arraylist of card objects).
+	 * It also loads the relevant information for the required deck and splits it amongst the players.
+	 * This method also will randomise the order of players for
+	 * who goes first. Round number is set to 1.
+	 * */
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -116,6 +129,9 @@ public class TopTrumpsRESTAPI {
 		numRounds = 1;
 	}
 
+	/**
+	 * Randomises the order of the players. The active player is the one at the start of the array.
+	 * */
 	public void randomiseOrder() {
 		Collections.shuffle(players);
 		activePlayer = players.get(0);
@@ -125,8 +141,12 @@ public class TopTrumpsRESTAPI {
 		players.remove(i);
 	}
 
-	// returns an index depending on the button pressed
-	// index is used to set the chosen category
+	/**
+	 * This method is executed if it is the computer's turn and the computer selects the
+	 * category to play for that round.
+	 * 
+	 * @return catString - String representation of the name of the category selected
+	 * */
 	@GET
 	@Path("/computerSelect")
 	public String computerSelect() {
@@ -137,6 +157,13 @@ public class TopTrumpsRESTAPI {
 
 	}
 
+	/**
+	 * This method is executed if it is the human's turn and the human selects the
+	 * category to play for that round using the appropriate button in the GUI
+	 * 
+	 * @param Number - int representation of index in cardArray for card selected
+	 * @return catString - String representation of the name of the category selected
+	 * */
 	@GET
 	@Path("/selectCategory")
 	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
@@ -146,7 +173,11 @@ public class TopTrumpsRESTAPI {
 
 	}
 
-	// a count for player decks remaining in game
+	/**
+	 * Method checks if players still have cards in their decks
+	 * 
+	 * @return count - the number of players with cards left
+	 * */
 	public int checkDecks() {
 		int count = 0;
 		for (int i = 0; i < players.size(); i++) {
@@ -192,7 +223,6 @@ public class TopTrumpsRESTAPI {
 			//if draw return top two players, else give top player winnerPile and clear it
 			if (players.get(0).compareTo(players.get(1)) == 0) {
 				String draw = "Draw between " + players.get(0).getName() + " & " + players.get(1).getName();
-				System.err.println("DRAW~~~~~~~~~~~~~");
 				return draw;
 			} else {
 
@@ -208,7 +238,6 @@ public class TopTrumpsRESTAPI {
 				return winner.getName();
 			}
 		} else {
-			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
 			return "EndGame";
 		}
 	}

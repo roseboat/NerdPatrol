@@ -222,7 +222,7 @@ public class GameManager {
 	}
 
 	/**
-	 * Increments player win counts
+	 * Increments player round win counts
 	 */
 	public void incrementPlayerWins() {
 		if (winner.getName().equals(humanPlayer.getName()))
