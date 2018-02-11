@@ -89,11 +89,7 @@ public class TopTrumpsRESTAPI {
 
 		return activePlayer.getName();
 	}
-	
-	/*	method that creates game based on number of players
-		and declares a winnerPile
-		this method also will randomise the order of players for
-		who goes first. Round number is set to 1.*/
+
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -141,13 +137,10 @@ public class TopTrumpsRESTAPI {
 
 	@GET
 	@Path("/selectCategory")
-	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
+	public void selectCategory(@QueryParam("Number") int Number) throws IOException {
 		catIndex = Number - 1;
-		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
-		return catString;
-		
 	}
-	// a count for player decks remaining in game
+
 	public int checkDecks() {
 		int count = 0;
 		for (int i =0; i<players.size(); i++) {
@@ -156,13 +149,7 @@ public class TopTrumpsRESTAPI {
 		}
 		return count;
 	}
-	
-	/* round logic is based here. First, it loops through players to check
-	if they have run out of cards
-	if more than one player decks remain then increase round number
-	and loop through players that are not null. Retrieves there held card
-	values then remove that card from top of deck
-	compares this card with every other remaining players held card */
+
 	@GET
 	@Path("/processRound")
 	public String processRound() throws JsonProcessingException {
@@ -235,22 +222,17 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/endGame")
 	public String endGame() throws JsonProcessingException {
-		String gameWinnerName = "";
+
 		if (checkDecks() ==1)	{
-			//save game stats here
-			 
-			// then reset records
-			gameWinner = players.get(0);
-			gameWinnerName = gameWinner.getName();
-			saveGameStats();
-			numRounds = 0;
-			numDraws = 0;
+		gameWinner = players.get(0);
+		numRounds = 0;
+		numDraws = 0;
 		
 		for (int i = 0; i < playerWinCounts.length; i++) {
 			playerWinCounts[i] = 0;
 		}
 		}
-		String gameWinnerString = oWriter.writeValueAsString(gameWinnerName);
+		String gameWinnerString = oWriter.writeValueAsString(gameWinner.getName());
 		return gameWinnerString;
 	}
 
@@ -393,27 +375,7 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 	}
 	
-	/**
-	 * Saves game statistics to database //This is exactly as it is in GM - should work but can't test as not in lab..
-	 */
-	public void saveGameStats() {
-		Database db = new Database();
-		if (numPlayers == 2)
-			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1]);
-		else if (numPlayers == 3)
-			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
-					playerWinCounts[2]);
-		else if (numPlayers == 4)
-			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
-					playerWinCounts[2], playerWinCounts[3]);
-		else if (numPlayers == 4)
-			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
-					playerWinCounts[2], playerWinCounts[3]);
-		else if (numPlayers == 5)
-			db.gameStats(gameWinner.getName(), numRounds, numDraws, playerWinCounts[0], playerWinCounts[1],
-					playerWinCounts[2], playerWinCounts[3], playerWinCounts[4]);
-		db.closeConnection();
-	}
+	
 	
 	@GET
 	@Path("/removePlayerTest")

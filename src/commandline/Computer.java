@@ -25,9 +25,9 @@ public final class Computer extends Player {
 	 */
 	public void promptUser() {
 
-		StringBuilder computerTurn = new StringBuilder(name + "'s top card:\r\n");
-		computerTurn.append(heldCard.cardToString()); // gets a String representation of the Computer user's card
-		System.out.println(computerTurn);
+//		StringBuilder computerTurn = new StringBuilder(name + "'s top card:\r\n");
+//		computerTurn.append(heldCard.cardToString()); // gets a String representation of the Computer user's card
+//		System.out.println(computerTurn);
 	}
 
 	/**

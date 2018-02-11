@@ -305,7 +305,6 @@ public class Database {
 	
 	/**
 	 * Returns required statistics as an array - used in online mode
-	 * @return an array of integers - various statistics
 	 */
 	public int[] getGameStatisticsOnline() {
 		int average = getNumberDraws() / gameNumber();

@@ -18,7 +18,7 @@ public class TopTrumpsJSONConfiguration extends Configuration{
 
 	/** Get the Deck File location */
 	public String getDeckFile() {
-		return deckFile;
+	    return deckFile;
 	}
 
 	/** Set the Deck File location */
