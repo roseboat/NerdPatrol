@@ -4,11 +4,8 @@ import commandline.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
 @Consumes(MediaType.APPLICATION_JSON) // This resource can take JSON content as input
@@ -33,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
  * 
  * Below are provided some sample methods that illustrate how to create REST API
  * methods in Dropwizard. You will need to replace these with methods that allow
- * a TopTrumps game to be controled from a Web page.
+ * a TopTrumps game to be controlled from a Web page.
  */
 public class TopTrumpsRESTAPI {
 
@@ -69,19 +67,29 @@ public class TopTrumpsRESTAPI {
 		numPlayers = conf.getNumAIPlayers() + 1;
 	}
 
+	/**
+	 * Sets the number of players to play the game. Acquires the input from the drop down menu in 
+	 * the online guy and calls the startGame() method to initialise a game of toptrumps
+	 * 
+	 * @param Number, int to represent the number of players taking part in the game
+	 * */
 	@GET
 	@Path("/setPlayers")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setPlayers(@QueryParam("Number") int Number) throws IOException {
 		numPlayers = Number + 1;
-		System.err.println("the number of players: " + numPlayers);
 		startGame();
 	}
 
+	/**
+	 * Returns the name of the active player to update the GUI during the start of a round. The 
+	 * active player is the player who gets to choose the category for that round of top trumps.
+	 * 
+	 * @return name, String name of the active player.
+	 * */
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
-		System.err.println("Active player is " + activePlayer.getName());
 
 		if (activePlayer != humanPlayer) {
 			computerSelect();
@@ -90,10 +98,13 @@ public class TopTrumpsRESTAPI {
 		return activePlayer.getName();
 	}
 	
-	/*	method that creates game based on number of players
-		and declares a winnerPile
-		this method also will randomise the order of players for
-		who goes first. Round number is set to 1.*/
+	/**
+	 * Method creates game based on number of players and declares a winnerPile (the storage
+	 * are for cards played in a round as an Arraylist of card objects).
+	 * It also loads the relevant information for the required deck and splits it amongst the players.
+	 * This method also will randomise the order of players for
+	 * who goes first. Round number is set to 1.
+	 * */
 	public void startGame() {
 		gameDeck = new Deck(deckFile);
 		Collections.shuffle(gameDeck.getDeck());
@@ -120,9 +131,9 @@ public class TopTrumpsRESTAPI {
 	}
 
 	
-	public void removePlayer(int i) {
-		players.remove(i);
-	}
+//	public void removePlayer(int i) {
+//		players.remove(i);
+//	}
 
 	// returns an index
 	// depending on the button pressed
@@ -157,12 +168,13 @@ public class TopTrumpsRESTAPI {
 		return count;
 	}
 	
-	/* round logic is based here. First, it loops through players to check
+	/** round logic is based here. First, it loops through players to check
 	if they have run out of cards
 	if more than one player decks remain then increase round number
 	and loop through players that are not null. Retrieves there held card
 	values then remove that card from top of deck
-	compares this card with every other remaining players held card */
+	compares this card with every other remaining players held card 
+	*/
 	@GET
 	@Path("/processRound")
 	public String processRound() throws JsonProcessingException {

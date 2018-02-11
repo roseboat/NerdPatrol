@@ -95,9 +95,7 @@ public class GameManager {
 				System.out.println("Round number " + numRounds);
 				System.out.println("The active player is: " + activePlayer.getName());
 				System.out.println("Your card is:\r\n" + humanPlayer.getHeldCard().cardToString());
-				// displays starting player's card
-				activePlayer.promptUser();
-
+				
 				// first player selects the category for all players
 				// index corresponds to the index of the value held in the cardValues array in
 				// Card

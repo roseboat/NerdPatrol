@@ -25,22 +25,6 @@ public final class Human extends Player {
 	}
 
 	/**
-	 * Instantiates the mandatory promptUser() method for a Human user.
-	 * 
-	 * The user's card is printed to the console, and the user is requested to input
-	 * a number corresponding the position of the category within the list. This
-	 * method does not handle user input, only the information that is shown to the
-	 * human player.
-	 */
-	public void promptUser() {
-		StringBuilder humanTurn = new StringBuilder(name + ", please choose your value!\r\n");
-		//humanTurn.append(heldCard.cardToString()); // Prints the Human user's card to the screen
-		humanTurn.append("(Press 1, 2, 3, 4 or 5)"); // Prompts the user for input (a positive integer from 1 to 5)
-														// corresponding to the category of their choice
-		System.out.println(humanTurn);
-	}
-
-	/**
 	 * The user is able to make their choice based on the card that is presented to
 	 * them. The input they select corresponds to the category position
 	 * 
@@ -49,6 +33,9 @@ public final class Human extends Player {
 	 * @return index, the index of the chosen category in the cardValues array.
 	 */
 	public int chooseCategory() {
+	    	StringBuilder humanTurn = new StringBuilder(name + ", please choose your value!\r\n");
+	    	humanTurn.append("(Press 1, 2, 3, 4 or 5)"); // Prompts the user for input (a positive integer from 1 to 5)												// corresponding to the category of their choice
+		System.out.println(humanTurn);
 		Scanner sc = new Scanner(System.in); // Creates a new Scanner object to handle user input
 		int index = 0;
 		int choice = 0;

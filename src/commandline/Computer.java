@@ -20,17 +20,6 @@ public final class Computer extends Player {
 	}
 
 	/**
-	 * Instantiates the mandatory promptUser() method for a Computer user. Prints
-	 * the Computer player's card to the Command Line.
-	 */
-	public void promptUser() {
-
-//		StringBuilder computerTurn = new StringBuilder(name + "'s top card:\r\n");
-//		computerTurn.append(heldCard.cardToString()); // gets a String representation of the Computer user's card
-//		System.out.println(computerTurn);
-	}
-
-	/**
 	 * Instantiates the mandatory chooseCategory() method for a Computer player. The
 	 * computer player will always choose the category with the highest value.
 	 * 

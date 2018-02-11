@@ -20,7 +20,11 @@ public class TopTrumpsCLIApplication {
 	 */
 	public static void main(String[] args) {
 
-	    	System.err.println(Arrays.toString(args));
+	    	System.out.println("------------------------");
+	    	System.out.println("-------Top Trumps-------");
+	    	System.out.println("------------------------");
+
+	    
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
 		if (args[0].equalsIgnoreCase("true")) {
 			writeGameLogsToFile = true; // Command line selection

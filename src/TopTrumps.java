@@ -39,7 +39,6 @@ public class TopTrumps {
 		} else if (commandLineMode) {
 			// Start the command line application
 			String[] commandArgs = {String.valueOf(printTestLog)};
-			System.err.println(Arrays.toString(commandArgs));
 			TopTrumpsCLIApplication.main(commandArgs);
 		}
 	}

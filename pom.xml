@@ -5,22 +5,24 @@
   <version>1.0</version>
   <name>Top Trumps Application Project</name>
   <description>This is the template java project for the Top Trumps Assessed Excercise for IT Software Development at Glasgow 2018. </description>
-  
+
   <!-- Specify which version of Dropwizard we are going to use for histing the REST API and Website -->
   <properties>
     <dropwizard.version>1.2.2</dropwizard.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
-  
+
   <!-- These are the other software libruaries developed by third parties that we need -->
   <dependencies>
-  
+
   	<!-- Dropwizard is a bundle of REST API hosting tools -->
     <dependency>
         <groupId>io.dropwizard</groupId>
         <artifactId>dropwizard-core</artifactId>
         <version>${dropwizard.version}</version>
     </dependency>
-    
+
     <!-- When hosting a website with dropwizard, we need to specify a language for writing views,
          In this case, we are using freemarker https://freemarker.apache.org/ -->
 	<dependency>
@@ -28,7 +30,13 @@
     	<artifactId>dropwizard-views-freemarker</artifactId>
     	<version>${dropwizard.version}</version>
 	</dependency>
-	
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.jaxrs</groupId>
+        <artifactId>jackson-jaxrs-json-provider</artifactId>
+        <version>2.9.4</version>
+    </dependency>
+
 	<!-- One of the requirements is to save results in a (mysql) database, so lets import the
 	     database connection driver libruary for that as well -->
 	<dependency>
@@ -36,21 +44,23 @@
     	<artifactId>mysql-connector-java</artifactId>
     	<version>5.1.38</version>
 	</dependency>
-	
+
 	<dependency>
    	 <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <version>42.2.0</version>
 	</dependency>
 
-    
+
   </dependencies>
-  
+
   <build>
-  
+
   	<!-- Where do our Java sources come from? -->
     <sourceDirectory>src</sourceDirectory>
-    
+    <resources><resource><directory>resources</directory></resource></resources>
+
+
     <!-- Plugin Management for users working with the Eclipse IDE. org.eclipse.m2e:lifecycle-mapping
          instructs eclipse how to build the maven project -->
     <pluginManagement>
@@ -140,10 +150,10 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-    
+
     <!-- Plugins, these do things like compiling the java sources and packaging into a jar -->
     <plugins>
-    
+
       <!-- Compiles your java sources -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -153,7 +163,7 @@
           <target/>
         </configuration>
       </plugin>
-      
+
       <!-- Packages those sources in a Jar file -->
       <plugin>
             <groupId>org.apache.maven.plugins</groupId>

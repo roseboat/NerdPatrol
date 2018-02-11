@@ -92,9 +92,7 @@ public final class Deck {
 	 */
 	private void loadDeck(String deckName) {
 
-		//FileReader fr = null;
-	    	InputStream fr = null;
-	    	BufferedReader reader;
+		FileReader fr = null;
 		Scanner in = null;
 		try {
 			try {
@@ -103,12 +101,7 @@ public final class Deck {
 				int count = 0;
 
 				// reads file, and puts scanner around the reader
-				//fr = new FileReader(DECK_NAME);
-//				Path p = Paths.get(DECK_NAME);
-//				System.out.println(p.toUri());
-				fr = getClass().getClassLoader().getResourceAsStream(DECK_NAME);
-				System.err.println(fr);
-				reader = new BufferedReader(new InputStreamReader(fr));
+				fr = new FileReader(DECK_NAME);
 				in = new Scanner(fr);
 
 				// gets data line by line
