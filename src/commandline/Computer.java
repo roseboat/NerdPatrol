@@ -1,7 +1,7 @@
 package commandline;
 
 /**
- * Computer class extends the Player class and models the behaviour of a
+ * Computer class extends the Player class and models the behavior of a
  * computer player.
  */
 
@@ -27,8 +27,9 @@ public final class Computer extends Player {
 	 */
 	public int chooseCategory() {
 
-		int[] values = heldCard.getCardValues(); // Gets the values of all the categories on the Computer player's held
-													// card and places them in an array
+	    	// Gets the values of all the categories on the Computer player's held
+		// card and places them in an array
+		int[] values = heldCard.getCardValues(); 
 
 		int max = values[0]; // Sets the maximum value to the first value in the array
 		int index = 0; // Sets an int named index to the default value of 0
@@ -39,8 +40,7 @@ public final class Computer extends Player {
 		for (int i = 0; i < values.length; i++) {
 			if (max < values[i]) {
 				max = values[i];
-				index = i; // Sets the index value to the position in the array in which the largest
-							// element can be found
+				index = i;
 			}
 		}
 		

@@ -1,6 +1,5 @@
 package commandline;
 
-import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,7 +52,6 @@ public final class Human extends Player {
 					System.out.println("You have chosen " + heldCard.getSelectedCategory(index));
 					setChosenCat(heldCard.getCardValues()[index]); // Gets the actual value that the user has chosen and
 																	// sets the Human player's chosenCat to that value
-				
 					return index; // Returns the index and leaves the for loop
 				}
 

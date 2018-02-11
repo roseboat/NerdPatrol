@@ -181,12 +181,12 @@ public class TopTrumpsRESTAPI {
 	}
 
 	
-	/** round logic is based here. First, it loops through players to check
-	if they have run out of cards
-	if more than one player decks remain then increase round number
-	and loop through players that are not null. Retrieves there held card
-	values then remove that card from top of deck
-	compares this card with every other remaining players held card 
+	/** Round logic is based here. First, it loops through players to check
+	 * if they have run out of cards via the checkDecks() method
+	 * if more than one player decks remain then increase round number
+	 * and loop through players that are not null. Retrieves there held card
+	 * values then remove that card from top of deck
+	 * compares this card with every other remaining players held card 
 	*/
 
 	@GET
@@ -224,9 +224,6 @@ public class TopTrumpsRESTAPI {
 
 				winner = players.get(0);
 
-				System.err.println(players.toString());
-				System.err.println(winner.getName());
-
 				// winner gets winner pile - cards are added to pile in
 				activePlayer = winner;
 				winner.addToDeck(winnerPile);
@@ -241,7 +238,13 @@ public class TopTrumpsRESTAPI {
 			return "EndGame";
 		}
 	}
-	//compareCards method to sort cards from highest to lowest
+	
+	/**
+	 * Method is used to sort the player array. The winning player is sorted towards the
+	 * start of the array. It accounts for null values in players and moves them towards
+	 * the back of the array.
+	 * It is used to determine the winner or if a draw has occurred
+	 * */
 	public void compareCards() {
 		Collections.sort(players, new Comparator<Player>() {
 			public int compare(Player p1, Player p2) {
@@ -256,9 +259,12 @@ public class TopTrumpsRESTAPI {
 		});	
 	}
 
-	// method to end game when there is only one deck remaining
-	// saves game stats and then resets records
-	// returns the winner of game
+	/**
+	 * Method to end game when only one deck is left.
+	 * Game Stats are saved and resets records
+	 * 
+	 * @return gameWinnerString - String name of the winner of the game
+	 * */
 	@GET
 	@Path("/endGame")
 	public String endGame() throws JsonProcessingException {
@@ -278,7 +284,10 @@ public class TopTrumpsRESTAPI {
 		return gameWinnerString;
 	}
 
-	// player win counter
+	/**
+	 * Method is called at the end of the round. It increments the number of
+	 * round wins for the winner of the round.
+	 * */
 	public void incrementPlayerWins() {
 		if (winner.getName().equals(humanPlayer.getName()))
 			playerWinCounts[0]++;
@@ -292,8 +301,13 @@ public class TopTrumpsRESTAPI {
 			playerWinCounts[4]++;
 	}
 
-	// gets the topcard of each in-game players deck
-	// and returns these cards
+	/**
+	 * Constructs an array of card objects to be displayed in the GUI. The cards
+	 * are sorted in accordance with the order of players. Human first then the computer players.
+	 * This is done to ensure cards are being loaded in the correct slots within the GUI.
+	 * 
+	 * @return cardArray - JSON String list of JSON objects used to represent cards
+	 * */
 	@GET
 	@Path("/sendCardArray")
 	public String sendCardArray() throws IOException {
@@ -332,12 +346,15 @@ public class TopTrumpsRESTAPI {
 		}
 
 		String cardArray = oWriter.writeValueAsString(cards);
-		System.err.println(cardArray);
 		return cardArray;
 
 	}
 	
-	//number of round method
+	/**
+	 * Returns the number of the active round
+	 * 
+	 * @return numRoundsString - String representation of round number
+	 * */
 	@GET
 	@Path("/roundNumber")
 	public String roundNumber() throws JsonProcessingException {
@@ -347,11 +364,13 @@ public class TopTrumpsRESTAPI {
 
 	}
 
-	@GET
-	@Path("/printWinner")
 	/**
 	 * Method to display the winner of the round
+	 * 
+	 * @return xAsJsonString - String name of the winner of the game
 	 */
+	@GET
+	@Path("/printWinner")
 	public String printWinner() throws IOException {
 
 		String x = winner.getName();
@@ -359,6 +378,11 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 	}
 	
+	/**
+	 * Returns the number of cards within the communal pile
+	 * 
+	 * @return xAsJsonString - String number of cards in communal pile
+	 * */
 	@GET
 	@Path("/cardPile")
 	public String cardPile() throws IOException {
@@ -368,8 +392,12 @@ public class TopTrumpsRESTAPI {
 		return xAsJsonString;
 	}
 
-	// loops through each player that is not null
-	// and method to return amount of cards left
+	/**
+	 * Returns the size of the deck of each player as an array. The array is in the same
+	 * order as the card containers are loaded in the GUI.
+	 * 
+	 * @return handArray - String array of numbers to represent the size of each players deck.
+	 * */
 	@GET
 	@Path("/cardsLeft")
 	public String cardsLeft() throws IOException {
@@ -395,16 +423,21 @@ public class TopTrumpsRESTAPI {
 					hands[4] = players.get(i).getDeckSize();
 					continue;
 				default:
-					System.err.println("NO");
+					System.err.println("One of the player names is incorrect");
 				}
 			}
 		}
 
 		String handArray = oWriter.writeValueAsString(hands);
-		System.err.println(handArray);
 		return handArray;
 	}
 
+	/**
+	 * Method to populate the saved statistics of the game
+	 * 
+	 * @return xAsJsonString - String representation of array containing pertinent information
+	 * game statistics
+	 * */
 	@GET
 	@Path("/statsTable")
 	public String statsTable() throws IOException {
@@ -418,7 +451,7 @@ public class TopTrumpsRESTAPI {
 	}
 
 	/**
-	 * Saves game statistics to database
+	 * Saves game statistics to database at the end of the game.
 	 */
 	public void saveGameStats() {
 		Database db = new Database();

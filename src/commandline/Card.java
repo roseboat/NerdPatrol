@@ -1,8 +1,5 @@
 package commandline;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -13,7 +10,7 @@ import java.util.Scanner;
 public final class Card implements Comparable<Card> {
 	private String name;
 	private int[] cardValues;
-	private int selectedValue; // not needed?
+	private int selectedValue;
 	private String[] categories;
 	private final int NUMBER_OF_CATEGORIES = 5;
 
@@ -22,7 +19,6 @@ public final class Card implements Comparable<Card> {
 	 * 
 	 * @param line, String of numbers separated by whitespace representing categories 
 	 * @param categories, array of category names
-	 * @return nothing
 	 * */
 	protected Card(String line, String[] categories) {
 		Scanner sc = new Scanner(line);
