@@ -652,9 +652,10 @@ var cardExample = undefined;
           document.getElementById('printCategory').innerHTML = responseText;
     	  
     	  processRound();
-    	  disableHumanButtons();
+    	  
       }
       xhr.send();
+      disableHumanButtons();
 
     }
 
