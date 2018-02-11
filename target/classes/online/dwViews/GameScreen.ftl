@@ -462,7 +462,7 @@ b {
 		document.getElementById('humanCat5').disabled = false;
 		}
 		
-		function humanFunctionOrder() {
+		function humanFunction() {
 		
 		enableHumanButtons();
 		hideCards();
@@ -477,10 +477,19 @@ b {
   		}
   		
  	function revealCards() {
-    	document.getElementById("card2").style.display = "block";
-    	document.getElementById("card3").style.display = "block";
-    	document.getElementById("card4").style.display = "block";
-    	document.getElementById("card5").style.display = "block";
+ 	
+ 	    for (i = 1; i < 5; i++) {
+	    	var cardTitle = "card" + (i + 1);
+	          
+	        if (cards[i] == null) { 
+	          continue; }
+	          
+	    var opp1 = document.getElementById(cardTitle);
+	    
+	    opp1.style.display = "block";
+	   	}
+	  		
+ 
   	}
   	
    	function revealWinBar() {
@@ -519,22 +528,21 @@ b {
 	 }
 	  
 	 function hideCards() {
-	    var opp1 = document.getElementById("card2");
+	 	
+
+	    for (i = 1; i < 5; i++) {
+	    	var cardTitle = "card" + (i + 1);
+	          
+	        if (cards[i] == null) { 
+	          continue; }
+	          
+	    var opp1 = document.getElementById(cardTitle);
 	    if (opp1.style.display === "none") {} else {
-	      opp1.style.display = "none";
+	    opp1.style.display = "none";
 	   	}
-		var opp2 = document.getElementById("card3");
-	    if (opp2.style.display === "none") {} else {
-	    opp2.style.display = "none";
-	    }
-	    var opp3 = document.getElementById("card4");
-	    if (opp3.style.display === "none") {} else {
-	    opp3.style.display = "none";
-	    }
-	    var opp4 = document.getElementById("card5");
-	    if (opp4.style.display === "none") {} else {
-	    opp4.style.display = "none";
-	    }
+	  		
+	  	}
+	  	
 	 }
 	 
 	function buildCards() {
@@ -567,6 +575,7 @@ b {
 <script type="text/javascript">
   
 var cardExample = undefined;
+var cards= undefined;
 
   function setPlayers() {
     var number = document.getElementById('playerCount').value;
@@ -610,7 +619,7 @@ var cardExample = undefined;
 				revealCards();
 				}
 			else{
-				humanFunctionOrder();
+				humanFunction();
 				}
 		}
 				xhr.send();
@@ -698,9 +707,10 @@ var cardExample = undefined;
 	        var list = JSON.parse(responseText);
 
 			cardExample = list[0];
-
+			cards= list;
 	        for (i = 0; i < 5; i++) {
 	          var cardTitle = "#card" + (i + 1);
+	          if (list[i] == null) { continue; }
 	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
 	          $(cardTitle).find("#card-title").text(list[i].name);
 	          $(cardTitle).find(".btn").each(function(j) {
@@ -726,10 +736,12 @@ var cardExample = undefined;
       var list = JSON.parse(responseText);
 
 		cardExample = list[0];
+		
 
       for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
         
+    
         if (list[i] ==0){
         $("#card"+ (i+1)).remove();
         }
