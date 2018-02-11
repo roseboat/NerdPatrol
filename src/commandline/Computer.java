@@ -20,7 +20,6 @@ public final class Computer extends Player {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Instantiates the mandatory promptUser() method for a Computer user. Prints
 	 * the Computer player's card to the Command Line.
 	 */
@@ -32,8 +31,6 @@ public final class Computer extends Player {
 	}
 
 	/**
-=======
->>>>>>> d17337ae57557e8b44ae08ff38a18995521e9812
 	 * Instantiates the mandatory chooseCategory() method for a Computer player. The
 	 * computer player will always choose the category with the highest value.
 	 * 

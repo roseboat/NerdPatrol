@@ -25,7 +25,7 @@ public final class Human extends Player {
 	}
 
 	/**
-<<<<<<< HEAD
+
 	 * Instantiates the mandatory promptUser() method for a Human user.
 	 * 
 	 * The user's card is printed to the console, and the user is requested to input
@@ -42,8 +42,6 @@ public final class Human extends Player {
 	}
 
 	/**
-=======
->>>>>>> d17337ae57557e8b44ae08ff38a18995521e9812
 	 * The user is able to make their choice based on the card that is presented to
 	 * them. The input they select corresponds to the category position
 	 * 
