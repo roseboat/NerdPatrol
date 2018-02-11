@@ -412,19 +412,7 @@ b {
 </body>
 
 <script type="text/javascript">
-    // Method that is called on page load
-    function initalize() {
-      // --------------------------------------------------------------------------
-      // You can call other methods you want to run when the page first loads here
-      // --------------------------------------------------------------------------
-     
 
-    }
-
-    // -----------------------------------------
-    // Add your other Javascript methods Here
-    // -----------------------------------------
-    // This is a reusable method for creating a CORS request. Do not edit this.
     
     function createCORSRequest(method, url) {
       var xhr = new XMLHttpRequest();
@@ -443,8 +431,9 @@ b {
       }
       return xhr;
     }
-
-		function disableHumanButtons() {
+    
+	// Disable human category buttons
+	function disableHumanButtons() {
 		
 		document.getElementById('humanCat1').disabled = true;
 		document.getElementById('humanCat2').disabled = true;
@@ -453,7 +442,8 @@ b {
 		document.getElementById('humanCat5').disabled = true;
 		}
 		
-		function enableHumanButtons() {
+	// Enable human category buttons
+	function enableHumanButtons() {
 		
 		document.getElementById('humanCat1').disabled = false;
 		document.getElementById('humanCat2').disabled = false;
@@ -462,20 +452,24 @@ b {
 		document.getElementById('humanCat5').disabled = false;
 		}
 		
-		function humanFunction() {
-		
+	//function to call other functions when humans turn
+	function humanFunction() {
 		enableHumanButtons();
 		hideCards();
 		}
 		
-  		function revealBar() {
+	// reveals status bar
+  	function revealBar() {
     	document.getElementById("statusBar").style.display = "block";
   		}
   		
-  		function revealDrawCardButton() {
+  	// Function to reveal "Draw Card button
+  	function revealDrawCardButton() {
     	document.getElementById("drawCard").style.display = "block";
   		}
   		
+  	// The function to loop through players cards and reveal them
+  	// if player card is not in game then continue onto next
  	function revealCards() {
  	
  	    for (i = 1; i < 5; i++) {
@@ -492,6 +486,7 @@ b {
  
   	}
   	
+  	//reveal and hide functions
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
@@ -505,13 +500,12 @@ b {
     }
     
     function disableDrawButton(){
-    		document.getElementById("drawCard").disabled = true;
+    	document.getElementById("drawCard").disabled = true;
     }
     
     function enableDrawButton(){
-    		document.getElementById("drawCard").disabled = false;
+    	document.getElementById("drawCard").disabled = false;
     }
-    
     
 	function hideSelection() {
 	    var x = document.getElementById("setPlayers");
@@ -528,8 +522,6 @@ b {
 	 }
 	  
 	 function hideCards() {
-	 	
-
 	    for (i = 1; i < 5; i++) {
 	    	var cardTitle = "card" + (i + 1);
 	          
@@ -545,38 +537,41 @@ b {
 	  	
 	 }
 	 
+	//function to remove players at start of game depending on
+	//how many players are selected to play against 
 	function buildCards() {
-
-    var playerNum = $('#playerCount').val();
-
-    if (playerNum == 1) {
-      $("#card3").remove();
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 2) {
-      $("#card4").remove();
-      $("#card5").remove();
-    } else if (playerNum == 3) {
-      $("#card5").remove();
-    }
-  }
 	
+    	var playerNum = $('#playerCount').val();
+
+    	if (playerNum == 1) {
+      		$("#card3").remove();
+      		$("#card4").remove();
+      		$("#card5").remove();
+    	} else if (playerNum == 2) {
+     		$("#card4").remove();
+      		$("#card5").remove();
+    	} else if (playerNum == 3) {
+      		$("#card5").remove();
+    	}
+  	}
+  
+	//Draw card function that sends held cards array and what cards left.
 	function drawCardFunction() {
-		
 		sendCardArray();
 		cardsLeft();
-		
 		roundNumber();
 	}
 
   </script>
 
-<!-- Here are examples of how to call REST API Methods -->
+
 <script type="text/javascript">
   
-var cardExample = undefined;
+var cardList = undefined;
 var cards= undefined;
 
+  //gets player count at start of game that must be between 1 and 4
+  //if player amount is in bounds then carry on with game logic
   function setPlayers() {
     var number = document.getElementById('playerCount').value;
     var xhr = createCORSRequest('GET',
@@ -595,10 +590,13 @@ var cards= undefined;
           revealDrawCardButton();
         }
     }
-
     xhr.send();
   }
-
+	
+	// gets the active player and if it is not human
+	// then computerSelect function called, timedOut for 2seconds,
+	// disable humans buttons, and reveal all cards to be shown on screen
+	// else do humanFunction function.
 	function activePlayer() {
 		cardPile();
 		var xhr = createCORSRequest('GET',
@@ -622,11 +620,12 @@ var cards= undefined;
 				humanFunction();
 				}
 		}
-				xhr.send();
-			}
+		xhr.send();
+	}
 			
 			
-
+	// computerSelect function to get the selection of
+	// computers category value.
 	function computerSelect(){
 	     var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/computerSelect"); 
@@ -638,14 +637,13 @@ var cards= undefined;
 	var responseText = xhr.response; 
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('printCategory').innerHTML = responseText;
-      
+     
 		processRound();
-		
       }
-
       xhr.send();
 	}
-
+	
+	// function to get selected value number of specific category when clicked
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -668,6 +666,10 @@ var cards= undefined;
 
     }
 
+	// Logic of round
+	// if end of game then reveal winner Bar,
+	// reveals play again button and alert to
+	//allow user know stats saved.
 	function processRound(){
 	
 	var xhr = createCORSRequest('GET',
@@ -682,18 +684,19 @@ var cards= undefined;
       document.getElementById('roundWinner').innerHTML = responseText;
       enableDrawButton();
       cardPile(); //this one reduces it at end of round
-  if (responseText== "EndGame"){
-  		hideStatusBar();
-  		endGame();
-		revealWinBar();
-		revealPlayAgain();
-		alert("Game stats saved");
-  }
-}
- xhr.send();
-      revealCards();
-}
-
+  		if (responseText== "EndGame"){
+  			hideStatusBar();
+  			endGame();
+			revealWinBar();
+			revealPlayAgain();
+			alert("Game stats saved");
+  		}
+	}
+ 		xhr.send();
+      	revealCards();
+	}
+	
+	//loops through held cards and gets thier images,names, category names, and values 
 	 function sendCardArray() {
 
 	      var xhr = createCORSRequest('GET',
@@ -706,7 +709,7 @@ var cards= undefined;
 	        var responseText = xhr.response; // the text of the response
 	        var list = JSON.parse(responseText);
 
-			cardExample = list[0];
+			cardList = list[0];
 			cards= list;
 	        for (i = 0; i < 5; i++) {
 	          var cardTitle = "#card" + (i + 1);
@@ -725,6 +728,7 @@ var cards= undefined;
 	      xhr.send();
 	    }
 
+	// loops through cards and remove player if 0 cards left
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/cardsLeft");
@@ -735,10 +739,9 @@ var cards= undefined;
       var responseText = xhr.response; // the text of the response
       var list = JSON.parse(responseText);
 
-		cardExample = list[0];
+	cardList = list[0];
 		
-
-      for (i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
         
     
@@ -752,7 +755,8 @@ var cards= undefined;
     }
     xhr.send();
   }
-
+  
+	//function end game and show winner name 
     function endGame() {
 
 		var xhr = createCORSRequest('GET',
@@ -770,7 +774,8 @@ var cards= undefined;
 	
 	xhr.send();
 	}
-
+	
+	//shows cards in pile amount
 	function cardPile() {
 
 		var xhr = createCORSRequest('GET',
@@ -781,10 +786,11 @@ var cards= undefined;
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
 			document.getElementById('cardPile').innerHTML = responseText;
-	};
+		};
 	xhr.send();
 	}
-
+	
+	// function to get round number
    function roundNumber() {
    		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/roundNumber");
@@ -794,25 +800,24 @@ var cards= undefined;
 		xhr.onload = function(e) {
 		var responseText = xhr.response; // the text of the response
 			document.getElementById('roundNumber').innerHTML = responseText;
-	}
+		}
 	xhr.send();
    }
 
   </script>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 
-
-</body>
+	</body>
 </html>
