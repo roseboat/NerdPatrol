@@ -34,7 +34,7 @@ public final class Human extends Player {
 	 */
 	public void promptUser() {
 		StringBuilder humanTurn = new StringBuilder(name + ", please choose your value!\r\n");
-		//humanTurn.append(heldCard.cardToString()); // Prints the Human user's card to the screen
+		humanTurn.append(heldCard.cardToString()); // Prints the Human user's card to the screen
 		humanTurn.append("(Press 1, 2, 3, 4 or 5)"); // Prompts the user for input (a positive integer from 1 to 5)
 														// corresponding to the category of their choice
 		System.out.println(humanTurn);
