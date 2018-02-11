@@ -729,7 +729,7 @@ var cards= undefined;
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/cardsLeft");
     if (!xhr) {
-      alert("Fucked it");
+      alert("cards left not found");
     }
     xhr.onload = function(e) {
       var responseText = xhr.response; // the text of the response

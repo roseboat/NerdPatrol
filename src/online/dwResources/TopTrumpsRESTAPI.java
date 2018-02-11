@@ -76,14 +76,14 @@ public class TopTrumpsRESTAPI {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setPlayers(@QueryParam("Number") int Number) throws IOException {
 		numPlayers = Number + 1;
-		System.err.println("the number of players: " + numPlayers);
+	//	System.err.println("the number of players: " + numPlayers); testing
 		startGame();
 	}
 
 	@GET
 	@Path("/activePlayer")
 	public String activePlayer() throws IOException {
-		System.err.println("Active player is " + activePlayer.getName());
+	//	System.err.println("Active player is " + activePlayer.getName()); testing
 
 		if (activePlayer != humanPlayer) {
 			computerSelect();
@@ -192,7 +192,7 @@ public class TopTrumpsRESTAPI {
 			//if draw return top two players, else give top player winnerPile and clear it
 			if (players.get(0).compareTo(players.get(1)) == 0) {
 				String draw = "Draw between " + players.get(0).getName() + " & " + players.get(1).getName();
-				System.err.println("DRAW~~~~~~~~~~~~~");
+			//	System.err.println("DRAW~~~~~~~~~~~~~");
 				return draw;
 			} else {
 
@@ -208,7 +208,7 @@ public class TopTrumpsRESTAPI {
 				return winner.getName();
 			}
 		} else {
-			System.err.println(winner.getName() + " HAS WON THE GAME#################################");
+		//	System.err.println(winner.getName() + " HAS WON THE GAME"); testing
 			return "EndGame";
 		}
 	}
