@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class Log {
 
-	// Instance variables for Log class
 	private final String logFileName = "toptrumps.log";
 	private PrintWriter writeToLog;
 
@@ -31,6 +30,7 @@ public class Log {
 
 	/**
 	 * Method to write the contents of the complete deck to the log file
+	 * Loops through the entire deck.
 	 * 
 	 * @param deck,
 	 *            the entire card deck
@@ -41,7 +41,6 @@ public class Log {
 		writeToLog.write("The contents of the deck is as follows:\r\n\r\n");
 		ArrayList<Card> deckOfCards = deck.getDeck();
 
-		// Loops through the deck and prints each card to the log file
 		for (int i = 0; i < deckOfCards.size(); i++) {
 			String card = deckOfCards.get(i).cardToString();
 			writeToLog.write(card + "\r\n\r\n");
@@ -60,7 +59,7 @@ public class Log {
 
 	public void logShuffle(Deck deck) {
 		writeToLog.write("The cards have been shuffled.\r\n");
-		logDeck(deck); // calls the logDeck method
+		logDeck(deck);
 	}
 
 	/**

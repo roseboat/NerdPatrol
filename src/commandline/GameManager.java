@@ -1,10 +1,7 @@
 package commandline;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 
 /**
  * Class responsible for organising flow of the game, in place of a dealer.
@@ -23,7 +20,9 @@ public class GameManager {
 	private static Log myLog;
 	private Database database; 
 	private int[] playerWinCounts = new int[5]; // for storing player win counts
-	private final String divider = "\r\n******************************************\r\n"; // for system.out formatting clarity
+	private boolean writeToLog;
+	private final String divider = "\r\n******************************************\r\n"; // print divider between rounds for clarity
+
 
 	/**
 	 * Constructor
@@ -41,9 +40,12 @@ public class GameManager {
 		myLog.logDeck(deck);
 
 		// deck is shuffled
-		Collections.shuffle(deck.getDeck());
-		myLog.logShuffle(deck);
 
+		this.deck.shuffle();
+		if (writeToLog){
+		    myLog.logShuffle(deck);
+		}
+		
 		// cards are dealt
 		Deck[] cards = deck.advancedSplit(this.numPlayers);
 		humanPlayer = new Human(playerName, cards[0]);
@@ -129,7 +131,6 @@ public class GameManager {
 	 */
 	public void decideWinner(int index) {
 
-		// log bit - could be put in log class
 		String category = "";
 		for (int i = 0; i < players.size(); i++) {
 			// gets the category
@@ -143,7 +144,7 @@ public class GameManager {
 		winner = players.get(0);
 		myLog.logRoundWinner(winner);
 
-		//are the top two players drawing?
+		
 		if (players.get(0).compareTo(players.get(1)) == 0)
 			drawHandler();
 		else {
@@ -190,10 +191,10 @@ public class GameManager {
 		myLog.close();
 		System.out.println(gameWinner.getName() + " has won the game!");
 
-		// save game stats here
+		//save game stats
 		saveGameStats();
 
-		// reset database statistics
+		//reset database statistics
 		numRounds = 0;
 		numDraws = 0;
 		for (int i = 0; i < playerWinCounts.length; i++)

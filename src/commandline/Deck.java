@@ -90,7 +90,6 @@ public final class Deck {
 		Scanner in = null;
 		try {
 			try {
-
 				// count to get the first line in text file (it is unique)
 				int count = 0;
 
@@ -111,21 +110,19 @@ public final class Deck {
 					} else {
 						dataLine = in.nextLine(); // gets data from other lines
 						buildDeck(dataLine); // sends each line of info to deck building class
-						// System.err.println(dataLine);
 					}
 
 					count++;
 				}
 
 			} finally {
-				// close if necessary
 				if (fr != null) {
 					fr.close();
 					in.close();
 				}
 			}
 		} catch (IOException ioe) {
-			System.out.println("File i/o error");
+			ioe.printStackTrace();
 			System.exit(1);
 		}
 	}
@@ -157,7 +154,7 @@ public final class Deck {
 	/**
 	 * Shuffles the card objects in the Deck
 	 */
-	private void shuffle() {
+	public void shuffle() {
 		Collections.shuffle(deck);
 	}
 

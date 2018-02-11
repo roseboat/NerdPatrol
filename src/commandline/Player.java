@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public abstract class Player implements Comparable<Player> {
 
-	protected Deck playerDeck; // The deck that each player holds (ie. their hand)
-	protected String name; // The name of the player
-	protected Card heldCard; // The player's 'held' card is the card they are currently playing in a round
-	private int chosenCat; // The player's chosen category
+	protected Deck playerDeck;
+	protected String name;
+	protected Card heldCard;
+	private int chosenCat;
 
 	/**
 	 * Constructs the player object with the name of the player and the deck that
@@ -102,7 +102,7 @@ public abstract class Player implements Comparable<Player> {
 	}
 
 	/**
-	 * Adds cards won by a player to their deck
+	 * Add cards won by a player to their deck
 	 * 
 	 * @param winnerPile,
 	 *            deck of cards that all players have submitted during a round
