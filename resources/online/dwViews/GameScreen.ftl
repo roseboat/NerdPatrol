@@ -43,7 +43,6 @@
 .row.content {
 	height: 100%
 }
-
 body {
 	background-image:
 		url("http://123hdwallpaperpic.com/download/20150729/large-magellanic-cloud-galaxies-space-stars-2560x1600.jpg");
@@ -54,24 +53,20 @@ body {
 	background: rgba(255, 255, 255, 0.8);
 	padding: 20px;
 }
-
 .btn {
 	cursor: pointer;
 	font-size: 25px;
 	padding: 10px 10px;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
 h1 {
 	font-weight: 700;
 	font-size: 45px;
 }
-
 h3 {
 	font-weight: 700;
 	font-size: 30px;
 }
-
 /* Set black background color, white text and some padding */
 footer {
 	width: 100%;
@@ -81,13 +76,11 @@ footer {
 	padding: 10px;
 	font-size: 20px;
 }
-
 .card-img-top {
 	width: 100%;
 	height: 5vw;
 	object-fit: cover;
 }
-
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
@@ -98,63 +91,48 @@ footer {
 		height: auto;
 	}
 }
-
 #statusBar {
-
 	padding: 5px 0;
 	text-align: center;
 	display: none;
 }
-
 /* Formats all the buttons in the card section */
-
 #cardSection button {
 	cursor: pointer;
 	font-size: 14px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 0;
 }
-
 #cardSection {
 	display: none;
 	font-family: VT323;
 	font-size: 15px;
 }
-
 .card-header {
 	font-weight: 400;
 	font-size: 20px;
 }
-
 .card-subtitle{
 	font-size: 18px;
 	padding: 10px;
 }
-
 b {
 	font-weight: bold;
 	color: #a980e7;
 }
-
 #drawCard {
 	margin: auto;
 	display: none;
 }
-
 #computerSelect {
 	margin: auto;
 	display: none;
 }
-
 #winBar {
 	/* background-color: lightgreen; */
 	padding: 5px 0;
 	text-align: center;
 	margin: auto;
-	display: none;
-}
-
-#playAgain {
 	display: none;
 }
 </style>
@@ -235,19 +213,12 @@ b {
 				</div>
 				<br>
 
-				<div id="playAgain">
-				<form>
-    				<input TYPE="button" VALUE="Play Again"
-        			onclick="window.location.href='http://localhost:7777/toptrumps/game/'">
-				</form>
-				</div>
-
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
 
 					<div class="col-lg-2">
-						<div class="card" id="card1">
+						<div class="card" id="card1" style="">
 							<div class="card-header">Human</div>
 							<h5 class="card-subtitle text-muted" id="card-title"></h5>
 							<img class="card-img-top"
@@ -418,9 +389,7 @@ b {
       // You can call other methods you want to run when the page first loads here
       // --------------------------------------------------------------------------
 
-
     }
-
     // -----------------------------------------
     // Add your other Javascript methods Here
     // -----------------------------------------
@@ -443,7 +412,6 @@ b {
       }
       return xhr;
     }
-
 		function disableHumanButtons() {
 
 		document.getElementById('humanCat1').disabled = true;
@@ -486,11 +454,6 @@ b {
    	function revealWinBar() {
 		document.getElementById("winBar").style.display = "block";
   	}
-
-  	function revealPlayAgain() {
-		document.getElementById("playAgain").style.display = "block";
-  	}
-
   	function revealcardSection() {
   		document.getElementById("cardSection").style.display = "block";
     }
@@ -538,9 +501,7 @@ b {
 	 }
 
 	function buildCards() {
-
     var playerNum = $('#playerCount').val();
-
     if (playerNum == 1) {
       $("#card3").remove();
       $("#card4").remove();
@@ -557,7 +518,7 @@ b {
 
 		sendCardArray();
 		cardsLeft();
-
+		cardPile();
 		roundNumber();
 	}
 
@@ -567,7 +528,6 @@ b {
 <script type="text/javascript">
 
 var cardExample = undefined;
-
   function setPlayers() {
     var number = document.getElementById('playerCount').value;
     var xhr = createCORSRequest('GET',
@@ -586,16 +546,13 @@ var cardExample = undefined;
           revealDrawCardButton();
         }
     }
-
     xhr.send();
   }
-
 	function activePlayer() {
-		cardPile();
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/activePlayer");
 		if (!xhr) {
-			alert("No active Player error");
+			alert("tester");
 		}
 		xhr.onload = function(e) {
 
@@ -617,26 +574,21 @@ var cardExample = undefined;
 			}
 
 
-
 	function computerSelect(){
 	     var xhr = createCORSRequest('GET',
         "http://localhost:7777/toptrumps/computerSelect");
       if (!xhr) {
         alert("CORS not supported");
       }
-
        xhr.onload = function(e) {
 	var responseText = xhr.response;
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('printCategory').innerHTML = responseText;
-
 		processRound();
-
       }
-
       xhr.send();
+		revealCards(); // Do we need this here if we call it in processRound?
 	}
-
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -644,20 +596,14 @@ var cardExample = undefined;
       if (!xhr) {
         alert("CORS not supported");
       }
-
       xhr.onload = function(e) {
-
-    	  var responseText = xhr.response;
-          responseText = responseText.replace(/^"(.*)"$/, '$1');
-          document.getElementById('printCategory').innerHTML = responseText;
-
     	  processRound();
     	  disableHumanButtons();
       }
       xhr.send();
-
+     document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+     revealCards(); // Do we need this here if we call it in processRound?
     }
-
 	function processRound(){
 
 	var xhr = createCORSRequest('GET',
@@ -665,27 +611,24 @@ var cardExample = undefined;
       if (!xhr) {
         alert("CORS not supported");
       }
-
       xhr.onload = function(e) {
 	var responseText = xhr.response; // the text of the response
       responseText = responseText.replace(/^"(.*)"$/, '$1');
       document.getElementById('roundWinner').innerHTML = responseText;
       enableDrawButton();
-      cardPile(); //this one reduces it at end of round
+
   if (responseText== "EndGame"){
   		hideStatusBar();
   		endGame();
 		revealWinBar();
-		revealPlayAgain();
 		alert("Game stats saved");
+		/* endGame(); */
   }
 }
  xhr.send();
       revealCards();
 }
-
 	 function sendCardArray() {
-
 	      var xhr = createCORSRequest('GET',
 	        "http://localhost:7777/toptrumps/sendCardArray");
 	      if (!xhr) {
@@ -695,9 +638,7 @@ var cardExample = undefined;
 	          activePlayer();
 	        var responseText = xhr.response; // the text of the response
 	        var list = JSON.parse(responseText);
-
 			cardExample = list[0];
-
 	        for (i = 0; i < 5; i++) {
 	          var cardTitle = "#card" + (i + 1);
 	          $(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].name + ".jpg");
@@ -707,13 +648,13 @@ var cardExample = undefined;
 	          });
 	        }
 	      }
+	      cardPile();
 	      revealcardSection();
 	      document.getElementById('printCategory').innerHTML = "";
 	      document.getElementById('roundWinner').innerHTML = "";
 
 	      xhr.send();
 	    }
-
 	function cardsLeft() {
     var xhr = createCORSRequest('GET',
       "http://localhost:7777/toptrumps/cardsLeft");
@@ -723,9 +664,7 @@ var cardExample = undefined;
     xhr.onload = function(e) {
       var responseText = xhr.response; // the text of the response
       var list = JSON.parse(responseText);
-
 		cardExample = list[0];
-
       for (i = 0; i < 5; i++) {
         var cardTitle = "#card" + (i + 1);
 
@@ -739,16 +678,13 @@ var cardExample = undefined;
     }
     xhr.send();
   }
-
     function endGame() {
-
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/endGame");
 		if (!xhr) {
 			alert("Error");
 			}
 		xhr.onload = function(e) {
-
 		var responseText = xhr.response; // the text of the response
 			responseText = responseText.replace(/^"(.*)"$/, '$1');
 			document.getElementById('endGame').innerHTML = responseText;
@@ -757,9 +693,7 @@ var cardExample = undefined;
 
 	xhr.send();
 	}
-
 	function cardPile() {
-
 		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/cardPile");
 		if (!xhr) {
@@ -771,7 +705,6 @@ var cardExample = undefined;
 	};
 	xhr.send();
 	}
-
    function roundNumber() {
    		var xhr = createCORSRequest('GET',
 				"http://localhost:7777/toptrumps/roundNumber");
@@ -784,7 +717,6 @@ var cardExample = undefined;
 	}
 	xhr.send();
    }
-
   </script>
 
 

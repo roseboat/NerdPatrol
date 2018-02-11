@@ -126,14 +126,21 @@ public class TopTrumpsRESTAPI {
 		numRounds = 1;
 	}
 
+	/**
+	 * Randomises the order of the players. The active player is the one at the start of the array.
+	 * */
 	public void randomiseOrder() {
 		Collections.shuffle(players);
 		activePlayer = players.get(0);
 	}
 
 
-	// returns an index depending on the button pressed
-	// index is used to set the chosen category
+	/**
+	 * This method is executed if it is the computer's turn and the computer selects the
+	 * category to play for that round.
+	 * 
+	 * @return catString - String representation of the name of the category selected
+	 * */
 	@GET
 	@Path("/computerSelect")
 	public String computerSelect() {
@@ -141,9 +148,15 @@ public class TopTrumpsRESTAPI {
 		catIndex = activePlayer.chooseCategory();
 		String catString = activePlayer.getHeldCard().getSelectedCategory(catIndex);
 		return catString;
-
 	}
 
+	/**
+	 * This method is executed if it is the human's turn and the human selects the
+	 * category to play for that round using the appropriate button in the GUI
+	 * 
+	 * @param Number - int representation of index in cardArray for card selected
+	 * @return catString - String representation of the name of the category selected
+	 * */
 	@GET
 	@Path("/selectCategory")
 	public String selectCategory(@QueryParam("Number") int Number) throws IOException {
@@ -153,7 +166,11 @@ public class TopTrumpsRESTAPI {
 
 	}
 
-	// a count for player decks remaining in game
+	/**
+	 * Method checks if players still have cards in their decks
+	 * 
+	 * @return count - the number of players with cards left
+	 * */
 	public int checkDecks() {
 		int count = 0;
 		for (int i = 0; i < players.size(); i++) {
