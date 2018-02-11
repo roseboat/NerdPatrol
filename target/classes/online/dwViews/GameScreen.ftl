@@ -235,6 +235,20 @@ b {
 				</div>
 				<br>
 
+<<<<<<< HEAD
+=======
+				<button class="btn btn-default"
+					onclick="sendCardArray();cardsLeft();cardPile();roundNumber()"
+					id='drawCard'>Draw Card</button>
+
+				&nbsp;
+				<button class="btn btn-default" onclick="computerSelect()"
+					id='computerSelect'>COMPUTER CHOICE</button>
+				<br>
+
+
+
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
 				<div id="playAgain">
 				<form>
     				<input TYPE="button" VALUE="Play Again"
@@ -242,6 +256,10 @@ b {
 				</form>
 				</div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
 				<div class="row text-center" id='cardSection'>
 
 					<div class="col-sm-1"></div>
@@ -580,6 +598,10 @@ var cardExample = undefined;
           alert("Player number out of bounds");
         } else {
           buildCards();
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
           hideSelection();
           drawCardFunction();
           revealBar();
@@ -613,8 +635,29 @@ var cardExample = undefined;
 				humanFunctionOrder();
 				}
 		}
+<<<<<<< HEAD
 				xhr.send();
 			}
+=======
+		xhr.send();
+	}
+
+
+
+
+
+	 function sendCardArray() {
+
+	      var xhr = createCORSRequest('GET',
+	        "http://localhost:7777/toptrumps/sendCardArray");
+	      if (!xhr) {
+	        alert("No cards found");
+	      }
+	      xhr.onload = function(e) {
+	          activePlayer();
+	        var responseText = xhr.response; // the text of the response
+	        var list = JSON.parse(responseText);
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
 
 
 
@@ -625,6 +668,7 @@ var cardExample = undefined;
         alert("CORS not supported");
       }
 
+<<<<<<< HEAD
        xhr.onload = function(e) {
 	var responseText = xhr.response;
       responseText = responseText.replace(/^"(.*)"$/, '$1');
@@ -637,6 +681,8 @@ var cardExample = undefined;
       xhr.send();
 	}
 
+=======
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
     function selectCategory(x) {
       var number = x
       var xhr = createCORSRequest('GET',
@@ -647,6 +693,7 @@ var cardExample = undefined;
 
       xhr.onload = function(e) {
 
+<<<<<<< HEAD
     	  var responseText = xhr.response;
           responseText = responseText.replace(/^"(.*)"$/, '$1');
           document.getElementById('printCategory').innerHTML = responseText;
@@ -656,6 +703,16 @@ var cardExample = undefined;
       }
       xhr.send();
 
+=======
+		processRound();
+
+      }
+      xhr.send();
+
+      document.getElementById('printCategory').innerHTML = cardExample.categories[x-1];
+      revealCards();
+
+>>>>>>> f0074c9ec99659a9231aebf9c767e67881507cee
     }
 
 	function processRound(){
