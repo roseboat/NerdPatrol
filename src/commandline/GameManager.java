@@ -101,9 +101,11 @@ public class GameManager {
 
 				for (int i = 0; i < players.size(); i++) {
 					// sets the value that each player has for the chosen category on their top card
-					players.get(i).getHeldCard().setSelectedValue(index);
+					players.get(i).setSelectedValue(index);
+					
 					// assigns the above value to each player
-					players.get(i).setChosenCat(players.get(i).getHeldCard().getSelectedValue());
+					int chosenCat= players.get(i).getSelectedValue();
+					players.get(i).setChosenCat(chosenCat);
 
 					// adds card to the winner's pile
 					winnerPile.add(players.get(i).getHeldCard());
@@ -220,7 +222,7 @@ public class GameManager {
 	}
 
 	/**
-	 * Increments player win counts
+	 * Increments player round win counts
 	 */
 	public void incrementPlayerWins() {
 		if (winner.getName().equals(humanPlayer.getName()))

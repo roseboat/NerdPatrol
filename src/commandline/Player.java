@@ -82,6 +82,24 @@ public abstract class Player implements Comparable<Player> {
 		}
 
 	}
+	
+	/**
+	 * Returns the value of the card held by the player
+	 * 
+	 * @return heldCard.getSelectedValue, int value of the card held by the player
+	 */
+	public int getSelectedValue() {
+		return heldCard.getSelectedValue();
+	}
+	
+	/**
+	 * Sets the value of the card held by the player
+	 * 
+	 * @param heldCard.setSelectedValue, int value of the card held by the player
+	 */
+	public void setSelectedValue(int selectedValue)	{
+		heldCard.setSelectedValue(selectedValue);
+	}
 
 	/**
 	 * Returns the card held by the player
